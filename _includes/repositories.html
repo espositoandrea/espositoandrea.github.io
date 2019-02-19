@@ -4,8 +4,14 @@
         <div class="content">
             <ul class="list-unstyled">
                 {% for repository in site.github.public_repositories %}
-                <li><i class="fab fa-github-square"></i> <a href="{{ repository.html_url }}"
-                        target="_blank">{{ repository.name }}</a></li>
+                <li>
+                    {% if repository.fork %}
+                    <i class="fas fa-code-branch"></i>
+                    {% else %}
+                    <i class="fab fa-github-square"></i>
+                    {% endif %}
+                    <a href="{{ repository.html_url }}" target="_blank">{{ repository.name }}</a>
+                </li>
                 {% endfor %}
             </ul>
         </div>
