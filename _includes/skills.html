@@ -1,0 +1,22 @@
+<aside class="skills aside section">
+    <div class="section-inner">
+        <h2 class="heading">Skills</h2>
+        <div class="content">
+            <p class="intro">{{site.data.skills.intro}}</p>
+            <div class="skillset">
+                {% assign skills = site.data.skills.skills-levels | sort: 'name' %}
+                {% for skill in skills %}
+                <div class="item">
+                    <h3 class="level-title">{{ skill.name }}<span class="level-label" data-toggle="tooltip"
+                            data-placement="left" data-animation="true" title="{{ skill.tooltip }}"><i
+                                class="fas fa-info-circle"></i>{{ skill.level-text }}</span></h3>
+                    <div class="level-bar">
+                        <div class="level-bar-inner" data-level="{{ skill.level }}%">
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</aside>

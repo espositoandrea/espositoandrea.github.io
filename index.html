@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<div class="container sections-wrapper">
+    <div class="row">
+        <div class="primary col-lg-8 col-12">
+            <section class="about section">
+                <div class="section-inner">
+                    <h2 class="heading">About Me</h2>
+                    <div class="content">
+                        <p>{{ site.author.bio }}</p>
+                    </div>
+                    <!--//content-->
+                </div>
+                <!--//section-inner-->
+            </section>
+            <!--//section-->
+
+            {% include blogposts.html %}
+
+        </div>
+        <!--//primary-->
+        <div class="secondary col-lg-4 col-12">
+            {% include contacts.html %}
+
+            {% include skills.html %}
+
+            {% include education.html %}
+
+            {% include languages.html %}
+
+            {% include repositories.html %}
+
+        </div>
+        <!--//secondary-->
+    </div>
+    <!--//row-->
+</div>
+<!--//masonry-->

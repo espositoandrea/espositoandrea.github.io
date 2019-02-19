@@ -1,0 +1,16 @@
+<aside class="languages aside section">
+    <div class="section-inner">
+        <h2 class="heading">Languages</h2>
+        <div class="content">
+            <ul class="list-unstyled">
+                {% for language in site.data.languages %}
+                <li class="item">
+                    <span class="title"><strong>{{language.name}}:</strong></span>
+                    <span class="level">{{ language.level }} <br class="visible-xs" />
+                    {% for i in (1..language.stars.full)%}<i class="fas fa-star"></i>{% endfor %}{% if language.stars.half %}<i class="fas fa-star-half"></i>{% endif %}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</aside>

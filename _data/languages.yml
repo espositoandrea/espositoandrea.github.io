@@ -1,0 +1,10 @@
+- name: "Italian"
+  level: "Native Speaker"
+  stars:
+    full: 5
+    half: false
+- name: "English"
+  level: "Professional"
+  stars:
+    full: 4
+    half: true

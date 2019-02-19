@@ -1,0 +1,25 @@
+intro: >-
+  I'm a Computer Science student and I love constantly
+  challenging myself learning new programming languages. 
+  So, sometimes, i like to self-evaluate my skills.
+skills-levels:
+  - name: "C/C++"
+    level: 85
+    level-text: "Good"
+    tooltip: "C++ was my first programming language, so I'm studying it since 2012."
+  - name: "L<sup>A</sup>T<sub>E</sub>X"
+    level: 80
+    level-text: "Good"
+    tooltip: "I love the way LaTeX documents look."
+  - name: "HTML5 &amp; CSS3"
+    level: 75
+    level-text: "Above average"
+    tooltip: "Well, you're looking at something I modified using HTML and CSS, so..."
+  - name: "Python"
+    level: 70
+    level-text: "Above average"
+    tooltip: "Though I don't really like this language, I can still use it."
+  - name: "RegEx &amp; Automata"
+    level: 90
+    level-text: "Very good"
+    tooltip: "RegEx and Automata are not languages, but I love them and I'm good at them so why not."

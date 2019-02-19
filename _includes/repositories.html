@@ -1,0 +1,13 @@
+<aside class="list conferences aside section">
+    <div class="section-inner">
+        <h2 class="heading">Repositories</h2>
+        <div class="content">
+            <ul class="list-unstyled">
+                {% for repository in site.github.public_repositories %}
+                <li><i class="fab fa-github-square"></i> <a href="{{ repository.html_url }}"
+                        target="_blank">{{ repository.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</aside>
