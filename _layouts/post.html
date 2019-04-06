@@ -6,15 +6,14 @@ layout: default
     <div class="row">
         <div class="primary col-lg-8 col-12">
 
-
             <section class="latest section">
                 <div class="section-inner">
                     <div class="content">
 
-                        <div class="item featured">
+                        <article class="item featured" lang="{{ page.lang | default: 'en' }}" id="post-content">
                             <h1>{{ page.title }}</h1>
                             {{content}}
-                        </div>
+                        </article>
                     </div>
             </section>
 
@@ -28,6 +27,15 @@ layout: default
                             <li><a href="/index.html"><i class="fas fa-home"></i>Home</a></li>
                         </ul>
                     </div>
+                </div>
+            </aside>
+            <aside class='languages aside section'>
+                <div class='section-inner'>
+                    <nav role='navigation' class='table-of-contents'>
+                        <h2 class="heading">Table of Contents</h2>
+                        <ul data-toc="article#post-content">
+                        </ul>
+                    </nav>
                 </div>
             </aside>
 
