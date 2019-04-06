@@ -19,6 +19,10 @@ skills-levels:
     level: 70
     level-text: "Above average"
     tooltip: "Though I don't really like this language, I can still use it."
+  - name: "JavaScript"
+    level: 70
+    level-text: "Above average"
+    tooltip: "An example of app that I developed using JS is 'StrumentalMente'."
   - name: "RegEx &amp; Automata"
     level: 90
     level-text: "Very good"
