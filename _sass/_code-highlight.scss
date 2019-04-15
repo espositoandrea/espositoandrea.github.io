@@ -1,0 +1,32 @@
+@import "_highlight-theme";
+
+.highlight {
+	padding: 16px;
+	overflow-x: auto;
+	pre {
+		margin: 0;
+	}
+}
+
+.rouge-table {
+	tr {
+		background: transparent;
+		border: none;
+		td {
+			border: none;
+			padding: 0;
+			&.gutter.gl {
+				padding-right: 10px;
+			}
+		}
+	}
+}
+
+.lineno {
+	color: #ccc;
+	display: inline-block;
+	padding: 0 5px;
+	border-right: 1px solid #ccc;
+	text-align: right;
+	user-select: none;
+}

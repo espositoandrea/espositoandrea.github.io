@@ -1,12 +1,6 @@
-- type: "Location"
-  icon: "fas fa-map-marker-alt"
-  text: "Italy"
-  link:
-    haslink: false
-- type: "Email"
-  icon: "fas fa-envelope"
-  text: "andrea.esposito099@gmail.com"
-  link:
-    haslink: true
-    url: "mailto:andrea.esposito099@gmail.com"
-    target-blank: false
+- name: "GitHub"
+  value: "espositoandrea"
+  link: "https://github.com/espositoandrea/"
+- name: "LinkedIn"
+  value: "esposito-andrea"
+  link: "https://linkedin.com/in/esposito-andrea/"

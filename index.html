@@ -1,40 +1,139 @@
 ---
 layout: default
+permalink: /index.html
 ---
 
-<div class="container sections-wrapper">
-    <div class="row">
-        <div class="primary col-lg-8 col-12">
-            <section class="about section">
-                <div class="section-inner">
-                    <h2 class="heading">About Me</h2>
-                    <div class="content">
-                        <p>{{ site.author.bio }}</p>
-                    </div>
-                    <!--//content-->
-                </div>
-                <!--//section-inner-->
-            </section>
-            <!--//section-->
+<h2 id="about">About Me</h2>
 
-            {% include blogposts.html %}
+<img alt="Andrea Esposito's profile picture" class="profile-picture" src="https://github.com/espositoandrea.png"/>
+<p>I'm Andrea Esposito, a Computer Science's Student. I'm a Bachelor's student
+        of Computer Science. My languages: C++ and
+    <span>L<sup>A</sup>T<sub>E</sub>X</span>.</p>
 
-        </div>
-        <!--//primary-->
-        <div class="secondary col-lg-4 col-12">
-            {% include contacts.html %}
+<h3 id="personal-information">Personal Information</h3>
+<ul>
+    {% for info in site.data.information %}
+        <li>
+            <strong>{{ info.name }}:</strong>
+            {{ info.value }}
+        </li>
+    {% endfor %}
+</ul>
 
-            {% include skills.html %}
+<h3 id="languages">Languages</h3>
 
-            {% include education.html %}
+<ul>
+    {% for language in site.data.languages %}
+        <li>
+            <strong>{{ language.name }}:</strong>
+            {{ language.level }}
+        </li>
+    {% endfor %}
+</ul>
 
-            {% include languages.html %}
+<h3 id="contacts">Contacts</h3>
+<ul>
+    <li>
+        <strong>Mail:</strong>
+        <a href="mailto:{{ site.author.mail }}">{{ site.author.mail }}</a>
+    </li>
+    {% for contact in site.data.contacts %}
+        <li>
+            <strong>{{ contact.name }}:</strong>
+            <a href="{{ contact.link }}" target="_blank">{{ contact.value }}</a>
+        </li>
+    {% endfor %}
+</ul>
 
-            {% include repositories.html %}
+<h3 id="life-philosophy">Life philosophy</h3>
 
-        </div>
-        <!--//secondary-->
-    </div>
-    <!--//row-->
-</div>
-<!--//masonry-->
+<blockquote>If you can think of it, you can do it.</blockquote>
+
+<h2 id="education">Education</h2>
+<ul>
+    {% for edu in site.data.education reversed %}
+        <li>
+            <strong>{{ edu.title }}</strong>
+            ({{ edu.years }}),
+            <em>{{ edu.location }}</em>.
+            {% if edu.notes %}
+                {{ edu.notes }}.
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<h2 id="awards-and-certifications">Awards and Certifications</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Award / Certificate</th>
+            <th>Year</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for award in site.data.awards %}
+            <tr>
+                <td>{{ award.name }}</td>
+                <td>{{ award.year }}</td>
+                <td>{{ award.category }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 id="skills">Skills</h2>
+
+<p>I'm a Computer Science student and I love constantly challenging myself learning
+        new programming languages. So, sometimes, I like to self-evaluate my skills.</p>
+
+<ul>
+    {% for skill in site.data.skills %}
+        <li>
+            {{ skill.name }}
+            ({{ skill.level }}%)
+        </li>
+    {% endfor %}
+</ul>
+
+<h2 id="publications">Publications</h2>
+
+{% assign publications = site.data.publications | sort: 'type' %}
+{% for type in publications %}
+
+    <h3 id="{{ type.type | downcase }}">{{ type.type }}</h3>
+    <ol>
+        {% for entry in type.entries %}
+            <li>
+                {{ entry.author }},
+                <em>{{ entry.title }}.
+                    {% if entry.subtitle %}
+                        {{ entry.subtitle }}.
+                    {% endif %}
+                </em>
+                {% if entry.publisher %}
+                    {{ entry.publisher }},
+                    {% if entry.address %}
+                        {{ entry.address }},
+                    {% endif %}
+                {% endif %}
+                <time datetime="{{ entry.date }}">{{ entry.date }}</time>
+            </li>
+        {% endfor %}
+    </ol>
+{% endfor %}
+
+<h2 id="posts">Posts</h2>
+<ul>
+    {% for post in site.posts %}
+        <li>
+            <strong>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </strong>
+            <em>(published on:
+                {{ post.date | date: "%d %B %Y" }})</em><br/>
+            <p>{{ post.excerpt }}</p>
+        </li>
+    {% endfor %}
+</ul>
