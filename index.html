@@ -25,8 +25,8 @@ permalink: /index.html
 <ul>
     {% for language in site.data.languages %}
         <li>
-            <strong>{{ language.name }}:</strong>
-            {{ language.level }}
+            <strong>{{ language.name.en }}:</strong>
+            {{ language.level.en }}
         </li>
     {% endfor %}
 </ul>
@@ -51,13 +51,13 @@ permalink: /index.html
 
 <h2 id="education">Education</h2>
 <ul>
-    {% for edu in site.data.education reversed %}
+    {% for edu in site.data.education %}
         <li>
-            <strong>{{ edu.title }}</strong>
-            ({{ edu.years }}),
-            <em>{{ edu.location }}</em>.
+            <strong>{{ edu.title.en }}</strong>
+            ({{ edu.years.start | date: '%b %Y' }} &ndash; {{ edu.years.end | date: '%b %Y' }}),
+            <em>{{ edu.institute.en }} ({{ edu.location.en }})</em>.
             {% if edu.notes %}
-                {{ edu.notes }}.
+                {{ edu.notes.en }}
             {% endif %}
         </li>
     {% endfor %}
@@ -99,12 +99,12 @@ permalink: /index.html
 
 <h2 id="publications">Publications</h2>
 
-{% assign publications = site.data.publications | sort: 'type' %}
+{% assign publications = site.data.publications %}
 {% for type in publications %}
 
-    <h3 id="{{ type.type | downcase }}">{{ type.type }}</h3>
+    <h3 id="{{ type[0] | downcase }}">{{ type[0] | capitalize}}</h3>
     <ol>
-        {% for entry in type.entries %}
+        {% for entry in type[1] %}
             <li>
                 {{ entry.author }},
                 <em>{{ entry.title }}.

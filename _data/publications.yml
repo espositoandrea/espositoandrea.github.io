@@ -1,14 +1,18 @@
-- type: "Books"
-  entries:
-    - title: "Analisi Matematica"
-      subtitle: "Appunti per l'informatica"
-      author: "Andrea Esposito"
-      date: "2018"
-      publisher: "Photocity Edizioni"
-      address: "Napoli (IT)"
-    - title: "Matematica Discreta"
-      subtitle: "Appunti per l'informatica"
-      author: "Andrea Esposito"
-      date: "2018"
-      publisher: "Photocity Edizioni"
-      address: "Napoli (IT)"
+---
+book:
+- bibtex_key: esposito:analisi
+  bibtex_type: :book
+  author: Andrea Esposito
+  location: Napoli, IT
+  publisher: Photocity Ed.
+  date: '2018'
+  subtitle: Appunti per l'Informatica
+  title: Analisi Matematica
+- bibtex_key: esposito:discreta
+  bibtex_type: :book
+  author: Andrea Esposito
+  location: Napoli, IT
+  publisher: Photocity Ed.
+  date: '2018'
+  subtitle: Appunti per l'Informatica
+  title: Matematica Discreta
