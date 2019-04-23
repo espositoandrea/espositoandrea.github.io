@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: 'en' }}">
 
 <head>
 	<meta charset="UTF-8">
@@ -14,12 +14,15 @@
 
 <body>
 	<header class="navbar wrapper cd-main-header js-cd-main-header">
-		<a href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}"><h1>Andrea Esposito</h1></a>
+		<a id="logo-text" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">
+			Andrea Esposito
+		</a>
+		{% include navigation.html %}
 	</header>
 	<hr />
 	<div class="wrapper">
 		<div id="toc">
-			<h2>Table of Contents</h2>
+			<h1>{{ site.data._strings.toc[page.lang] }}</h1>
 			{% include toc.html html=content %}
 		</div>
 		<div class="content-wrapper">

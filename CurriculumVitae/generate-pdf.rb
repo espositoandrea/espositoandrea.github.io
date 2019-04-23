@@ -5,20 +5,7 @@ require "bibtex"
 require "time"
 
 def translate(str, lang = "it")
-  keys = {
-    "present" => {
-      "it" => "presente",
-      "en" => "present",
-    },
-    "italian" => {
-      "it" => "italiano",
-      "en" => "italian",
-    },
-    "english" => {
-      "it" => "inglese",
-      "en" => "english",
-    },
-  }
+  keys = YAML.load_file("../_data/_strings.yml")
   return keys[str.downcase][lang.downcase]
 end
 

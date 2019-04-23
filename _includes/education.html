@@ -1,0 +1,15 @@
+<h1 id="education">{{ site.data._strings.education[page.lang] }}</h1>
+<ul>
+    {% for edu in site.data.education %}
+        <li>
+            {% capture end_date %}{% if edu.years.end != '01-01-0000' %}{% include date.html date=edu.years.end mode='short' %}{% else %}{{ site.data._strings.present[page.lang] }}{% endif %}{% endcapture %}
+            <strong>{{ edu.title[page.lang] }}</strong>
+            ({% include date.html date=edu.years.start mode='short' %} &ndash; {{ end_date }}),
+            <em>{{ edu.institute[page.lang] }}
+                ({{ edu.location[page.lang] }})</em>.
+            {% if edu.notes %}
+                {{ edu.notes[page.lang] }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

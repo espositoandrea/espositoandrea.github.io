@@ -1,0 +1,42 @@
+<h1 id="about">{{ site.data._strings.about[page.lang] }}</h1>
+
+<img alt="Andrea Esposito's profile picture" class="profile-picture" src="https://github.com/espositoandrea.png"/>
+<p>{{ site.data._strings.about_intro[page.lang] }}</p>
+
+<h2 id="personal-information">{{ site.data._strings.personal_info[page.lang] }}</h2>
+<ul>
+    {% for info in site.data.information %}
+        <li>
+            <strong>{{ info.name[page.lang] }}:</strong>
+            {{ info.value[page.lang] }}
+        </li>
+    {% endfor %}
+</ul>
+
+<h2 id="languages">{{ site.data._strings.languages[page.lang] }}</h2>
+
+<ul>
+    {% for language in site.data.languages %}
+        <li>
+            <strong>{{ language.name[page.lang] }}:</strong>
+            {{ language.level[page.lang] }}
+        </li>
+    {% endfor %}
+</ul>
+
+<h2 id="contacts">{{ site.data._strings.contacts[page.lang] }}</h2>
+<ul>
+    <li>
+        <strong>Mail:</strong>
+        <a href="mailto:{{ site.author.mail }}">{{ site.author.mail }}</a>
+    </li>
+    {% for contact in site.data.contacts %}
+        <li>
+            <strong>{{ contact.name }}:</strong>
+            <a href="{{ contact.link }}" target="_blank">{{ contact.value }}</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2 id="life-philosophy">{{ site.data._strings.life_philosophy[page.lang] }}</h2>
+<blockquote>{{ site.data._strings.life_philosophy_text[page.lang] }}</blockquote>

@@ -1,0 +1,19 @@
+<h1 id="awards-and-certifications">{{ site.data._strings.awards[page.lang] }}</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Award / Certificate</th>
+            <th>Year</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for award in site.data.awards %}
+            <tr>
+                <td>{{ award.name }}</td>
+                <td>{{ award.year }}</td>
+                <td>{{ award.category }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+<h1 id="publications">{{ site.data._strings.publications[page.lang] }}</h1>
+
+{% assign publications = site.data.publications %}
+{% for type in publications %}
+    {% assign entry_type = type[0] | downcase | append: 's' %}
+    <h2 id="{{ entry_type }}">{{ site.data._strings[entry_type][page.lang] }}</h2>
+    <ol>
+        {% for entry in type[1] %}
+            <li>
+                {{ entry.author }},
+                <em>{{ entry.title }}.
+                    {% if entry.subtitle %}
+                        {{ entry.subtitle }}.
+                    {% endif %}
+                </em>
+                {% if entry.publisher %}
+                    {{ entry.publisher }},
+                    {% if entry.address %}
+                        {{ entry.address }},
+                    {% endif %}
+                {% endif %}
+                <time datetime="{{ entry.date }}">{{ entry.date }}</time>
+            </li>
+        {% endfor %}
+    </ol>
+{% endfor %}

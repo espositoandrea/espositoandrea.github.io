@@ -27,20 +27,25 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 
-# defaults:
-#   -
-#     scope:
-#       path: ""
-#       type: "posts"
-#     values:
-#       layout: "post"
-#   -
-#     scope:
-#       path: ""
-#       type: "pages"
-#     values:
-#       layout: "default"
+whitelist:
+  - jekyll-redirect-from
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      is_post: true
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "pages"
+  #   values:
+  #     layout: "default"
 
 author:
   name: "Andrea Esposito"

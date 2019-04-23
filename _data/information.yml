@@ -1,4 +1,12 @@
-- name: "Sex"
-  value: "Male"
-- name: "Date of birth"
-  value: "18 August 1999"
+- name:
+    it: "Sesso"
+    en: "Sex"
+  value: 
+    it: "Maschio"
+    en: "Male"
+- name:
+    it: "Data di nascita"
+    en: "Date of birth"
+  value: 
+    it: "18 agosto 1999"
+    en: "18 August 1999"

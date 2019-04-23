@@ -1,0 +1,129 @@
+about:
+  it: "Su di me"
+  en: "About me"
+about_intro:
+  it: >
+    Sono Andrea Esposito, uno studente di Informatica.
+    Sono uno studente per la laurea triennale in Informatica.
+    Le mie lingue: C++ e <span>L<sup>A</sup>T<sub>E</sub>X</span>.
+  en: >
+    I'm Andrea Esposito, a Computer Science's Student.
+    I'm a Bachelor's student of Computer Science.
+    My languages: C++ and <span>L<sup>A</sup>T<sub>E</sub>X</span>.
+awards:
+  it: "Premi e certificazioni"
+  en: "Awards and Certifications"
+books:
+  it: "Libri"
+  en: "Books"
+contacts:
+  it: "Contatti"
+  en: "Contacts"
+education:
+  it: "Istruzione"
+  en: "Education"
+english:
+  it: "inglese"
+  en: "english"
+italian:
+  it: "italiano"
+  en: "italian"
+languages:
+  it: "Lingue"
+  en: "Languages"
+life_philosophy:
+  it: "Filosofia di vita"
+  en: "Life Philosophy"
+life_philosophy_text:
+  it: "Se lo si può pensare, lo si può fare."
+  en: "If you can think of it, you can do it."
+personal_info:
+  it: "Informazioni personali"
+  en: "Personal Information"
+posts:
+  it: "Post"
+  en: "Posts"
+posts_warning:
+  it: >
+    Si noti che i vari post sono scritti in una sola lingua e <em>non</em>
+    saranno tradotti. Si può conoscere in che lingua il post è stato scritto
+    guardando vicino al suo titolo nella seguente lista.
+  en: >
+    Note that the various posts are written only in one language and will
+    <em>not</em> be translated. You can see the language in which the post is
+    written next to its title in the following list.
+present:
+  it: "Presente"
+  en: "Present"
+publications:
+  it: "Pubblicazioni"
+  en: "Publications"
+published:
+  it: "pubblicato il"
+  en: "published on"
+skills:
+  it: "Abilità"
+  en: "Skills"
+skills_intro:
+  it: >
+    Sono uno studente di Informatica e amo sfidarmi quotidianamente
+    nell'apprendere nuovi linguaggi di programmazione. Quindi, a volte, mi piace
+    auto-valutare le mie abilità.
+  en: >
+    I'm a Computer Science student and I love constantly challenging myself learning
+    new programming languages. So, sometimes, I like to self-evaluate my
+    skills.
+toc:
+  it: "Indice"
+  en: "Table of Contents"
+_months:
+  it:
+    - long: gennaio
+      short: gen
+    - long: febbraio
+      short: feb
+    - long: marzo
+      short: mar
+    - long: aprile
+      short: apr
+    - long: maggio
+      short: mag
+    - long: giugno
+      short: giu
+    - long: luglio
+      short: lug
+    - long: agosto
+      short: ago
+    - long: settembre
+      short: set
+    - long: ottobre
+      short: ott
+    - long: novembre
+      short: nov
+    - long: dicembre
+      short: dic
+  en:
+    - long: January
+      short: Jan
+    - long: February
+      short: Feb
+    - long: March
+      short: Mar
+    - long: April
+      short: Apr
+    - long: May
+      short: May
+    - long: June
+      short: Jun
+    - long: July
+      short: Jul
+    - long: August
+      short: Aug
+    - long: September
+      short: Sept
+    - long: October
+      short: Oct
+    - long: Novembre
+      short: Nov
+    - long: Dicembre
+      short: Dic

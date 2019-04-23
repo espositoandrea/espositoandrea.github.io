@@ -1,0 +1,16 @@
+<nav>
+    <ul>
+        {% unless page.is_post %}
+            {% for lang in site.data._languages %}
+                {% if lang.code == page.lang %}
+                    {% assign lang_link = "#" %}
+                {% else %}
+                    {% assign lang_link = page.translations[lang.code] %}
+                {% endif %}
+                <li><a href="{{ lang_link }}" title="Read in {{ lang.name.en }} ({{ lang.name.original }})">{{ lang.code }}</a></li>
+            {% endfor %}
+        {% else %}
+            <li><a href="#">{{ page.lang }}</a></li>
+        {% endunless %}
+    </ul>
+</nav>

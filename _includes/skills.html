@@ -1,0 +1,12 @@
+<h1 id="skills">{{ site.data._strings.skills[page.lang] }}</h1>
+
+<p>{{ site.data._strings.skills_intro[page.lang] }}</p>
+
+<ul>
+    {% for skill in site.data.skills %}
+        <li>
+            {{ skill.name }}
+            ({{ skill.level }}%)
+        </li>
+    {% endfor %}
+</ul>

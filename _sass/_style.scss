@@ -36,6 +36,11 @@ footer {
 	margin: -10px 0 0 15px;
 	float: right;
 	border-radius: 50%;
+
+	@media screen and (max-width: $medium-breakpoint) {
+		height: 30%;
+		width: 30%;
+	}
 }
 
 .language-level-container {
@@ -86,6 +91,7 @@ table {
 }
 
 hr {
+	clear: both;
 	border: 0;
 	height: 0;
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -148,14 +154,55 @@ blockquote {
 	}
 }
 
+a {
+	color: $primary-color;
+	text-decoration: none;
+	transition: 0.2s;
+	&:hover {
+		text-decoration: underline;
+		color: $primary-color;
+	}
+}
+
 header {
+	padding: 50px 0;
+	@media only screen and (max-width: $medium-breakpoint) {
+		padding: 50px 0px 0px 0px;
+	}
 	a {
-		color: inherit;
-		text-decoration: none;
-		transition: 0.2s;
-		&:hover {
-			text-decoration: underline;
-			color: $primary-color;
+		float: left;
+		&#logo-text {
+			color: black;
+			font-size: 2em;
+		}
+		@media only screen and (max-width: $medium-breakpoint) {
+			width: 100%;
+			float: none;
+		}
+	}
+
+	nav ul {
+		@media only screen and (max-width: $medium-breakpoint) {
+			padding: 10px 0 10px 0;
+			margin: 0;
+			display: block;
+			float: none;
+			text-align: center;
+			width: 100%;
+		}
+		margin: 0;
+		padding: 5px 0 5px 0;
+		margin-left: 20px;
+		float: right;
+		list-style-type: none;
+		li {
+			@media only screen and (max-width: $medium-breakpoint) {
+				margin: 0;
+				float: none;
+				display: inline-block;
+			}
+			margin: 0 5px 0 10px;
+			float: left;
 		}
 	}
 }

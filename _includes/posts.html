@@ -1,0 +1,15 @@
+<h1 id="posts">{{ site.data._strings.posts[page.lang] }}</h1>
+<p>{{ site.data._strings.posts_warning[page.lang] }}</p>
+<ul>
+    {% for post in site.posts %}
+    <li>
+        <strong>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+        </strong>
+        [{{ post.lang }}]
+        <em>({{ site.data._strings.published[page.lang] }}:
+            {% include date.html date=post.date day=true%})</em><br />
+        <p>{{ post.excerpt }}</p>
+    </li>
+    {% endfor %}
+</ul>

@@ -2,6 +2,7 @@
 layout: post
 author: Andrea Esposito
 title: Second Challenge
+lang: en
 categories: [cpp, challenge]
 tags: [cpp, challenge, coding, add, function]
 image: "https://espositoandrea.github.io/assets/images/challenge-2.jpg"

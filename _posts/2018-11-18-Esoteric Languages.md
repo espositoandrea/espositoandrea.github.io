@@ -2,6 +2,7 @@
 layout: post
 author: Andrea Esposito
 title: Esoteric Languages
+lang: en
 categories: [coding]
 tags: [coding, hello world, brainfuck, cow]
 image: "https://espositoandrea.github.io/assets/images/esoteric-languages.jpg"
