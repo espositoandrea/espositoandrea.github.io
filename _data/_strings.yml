@@ -76,6 +76,9 @@ skills_intro:
 toc:
   it: "Indice"
   en: "Table of Contents"
+written_in:
+  it: "Scritto in"
+  en: "Written in"
 _months:
   it:
     - long: gennaio

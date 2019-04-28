@@ -1,9 +1,9 @@
-<h1 id="about">{{ site.data._strings.about[page.lang] }}</h1>
+<h2 id="about">{{ site.data._strings.about[page.lang] }}</h2>
 
-<img alt="Andrea Esposito's profile picture" class="profile-picture" src="https://github.com/espositoandrea.png"/>
+<img alt="Andrea Esposito's profile picture" class="profile-picture" src="/assets/images/profile.jpg"/>
 <p>{{ site.data._strings.about_intro[page.lang] }}</p>
 
-<h2 id="personal-information">{{ site.data._strings.personal_info[page.lang] }}</h2>
+<h3 id="personal-information">{{ site.data._strings.personal_info[page.lang] }}</h3>
 <ul>
     {% for info in site.data.information %}
         <li>
@@ -13,18 +13,18 @@
     {% endfor %}
 </ul>
 
-<h2 id="languages">{{ site.data._strings.languages[page.lang] }}</h2>
+<h3 id="languages">{{ site.data._strings.languages[page.lang] }}</h3>
 
 <ul>
     {% for language in site.data.languages %}
         <li>
-            <strong>{{ language.name[page.lang] }}:</strong>
-            {{ language.level[page.lang] }}
+            <strong>{{ language[1].name[page.lang] }}:</strong>
+            {{ language[1].level[page.lang] }}
         </li>
     {% endfor %}
 </ul>
 
-<h2 id="contacts">{{ site.data._strings.contacts[page.lang] }}</h2>
+<h3 id="contacts">{{ site.data._strings.contacts[page.lang] }}</h3>
 <ul>
     <li>
         <strong>Mail:</strong>
@@ -38,5 +38,5 @@
     {% endfor %}
 </ul>
 
-<h2 id="life-philosophy">{{ site.data._strings.life_philosophy[page.lang] }}</h2>
+<h3 id="life-philosophy">{{ site.data._strings.life_philosophy[page.lang] }}</h3>
 <blockquote>{{ site.data._strings.life_philosophy_text[page.lang] }}</blockquote>

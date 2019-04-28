@@ -1,9 +1,9 @@
-<h1 id="publications">{{ site.data._strings.publications[page.lang] }}</h1>
+<h2 id="publications">{{ site.data._strings.publications[page.lang] }}</h2>
 
 {% assign publications = site.data.publications %}
 {% for type in publications %}
     {% assign entry_type = type[0] | downcase | append: 's' %}
-    <h2 id="{{ entry_type }}">{{ site.data._strings[entry_type][page.lang] }}</h2>
+    <h3 id="{{ entry_type }}">{{ site.data._strings[entry_type][page.lang] }}</h3>
     <ol>
         {% for entry in type[1] %}
             <li>

@@ -1,0 +1,118 @@
+@function header-counter-content($current-header) {
+	$counter-content: counter(h2-counter);
+	@if $current-header > 2 {
+		@for $j from 3 through $current-header {
+			$counter-content: $counter-content + '"."' + counter(h#{$j}-counter);
+		}
+	}
+	$counter-content: $counter-content + '".\0000a0\0000a0"';
+	@return $counter-content;
+}
+
+body {
+	padding: 1em;
+}
+
+@for $i from 1 through 6 {
+	h#{$i} {
+		font-weight: bold;
+		margin: 2em 0px 15px 0px;
+		@if $i < 6 {
+			counter-reset: h#{$i + 1}-counter;
+		}
+		@if $i > 1 {
+			counter-increment: h#{$i}-counter;
+			&::before {
+				display: contents;
+				content: header-counter-content($i);
+			}
+		}
+		&.nocount {
+			counter-increment: none;
+			&::before {
+				content: none;
+			}
+		}
+	}
+}
+
+h1 {
+	color: #000;
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+h4 {
+	font-size: 1.3em;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	color: #777777;
+	background-color: inherit;
+	font-size: 1em;
+}
+
+hr {
+	height: 0.1em;
+	border: 0;
+	color: #cccccc;
+	background-color: #cccccc;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+li,
+table,
+pre {
+	margin: 15px 0;
+}
+
+code,
+pre {
+	font: $main-font-mono;
+	border-radius: 3px;
+	background-color: #f8f8f8;
+	color: inherit;
+}
+
+code {
+	border: 1px solid #eaeaea;
+	margin: 0 2px;
+	padding: 0 5px;
+}
+
+pre {
+	border: 1px solid #cccccc;
+	line-height: 1.25em;
+	overflow: auto;
+	padding: 6px 10px;
+	& > code {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+a,
+a:visited {
+	background-color: inherit;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}

@@ -1,4 +1,5 @@
-<h1 id="awards-and-certifications">{{ site.data._strings.awards[page.lang] }}</h1>
+{% assign awards = site.data.awards | sort: 'year' | reverse %}
+<h2 id="awards-and-certifications">{{ site.data._strings.awards[page.lang] }}</h2>
 <table>
     <thead>
         <tr>
@@ -8,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for award in site.data.awards %}
+        {% for award in awards %}
             <tr>
                 <td>{{ award.name }}</td>
                 <td>{{ award.year }}</td>

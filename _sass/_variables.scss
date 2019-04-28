@@ -1,6 +1,9 @@
-$main-font: 11pt "IBM Plex Mono", monospace;
+$main-font-sans: 14px "Helvetica Neue", Arial, Freesans, clean, sans-serif;
+$main-font-mono: 11pt "IBM Plex Mono", monospace;
+$main-font: $main-font-sans;
 
 $primary-color: #BB0B0B;
+$white-bg: #fefefe;
 
 /* Screen breakpoints */
 $xlarge-breakpoint: 1199px;

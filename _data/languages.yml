@@ -1,16 +1,22 @@
-- name:
-    it: "Italiano"
-    en: "Italian"
-  level: 
-    it: "Madrelingua"
-    en: "Native Speaker"
-  stars:
-    full: 5
-- name:
+en:
+  name:
     it: "Inglese"
     en: "English"
+    original: "English"
   level: 
     it: "Professionale"
     en: "Professional"
+  flag: ""
   stars:
-    full: 4
+    full: 5
+it:
+  name:
+    it: "Italiano"
+    en: "Italian" 
+    original: "Italiano"
+  level: 
+    it: "Madrelingua"
+    en: "Native Speaker"
+  flag: ""
+  stars:
+    full: 5

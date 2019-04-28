@@ -8,7 +8,7 @@
 	<link href="/assets/favicon.ico" rel="shortcut icon">
 	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
 	<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet">
-	<link href="/assets/css/main.css" rel="stylesheet">
+	<link href="{{ site.baseurl }}/assets/css/main.css?{{ site.time | date: '%s' }}" rel="stylesheet">
 	<title>Andrea Esposito</title>
 </head>
 
@@ -18,19 +18,30 @@
 			Andrea Esposito
 		</a>
 		{% include navigation.html %}
+		<button type="button" id="toc-button" onclick="openCloseMobileToc();" title="Open Table of Contents">
+			<div id="nav-icon3">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</button>
 	</header>
 	<hr />
 	<div class="wrapper">
 		<div id="toc">
-			<h1>{{ site.data._strings.toc[page.lang] }}</h1>
-			{% include toc.html html=content %}
+			<div>
+				<h2 class="nocount">{{ site.data._strings.toc[page.lang] }}</h2>
+				{% include toc.html html=content ordered=true %}
+			</div>
 		</div>
 		<div class="content-wrapper">
+			<h1 id="post-title">{{ page.title }}</h1>
 			{{ content }}
 		</div>
 	</div>
 	<hr />
-	<footer class="navbar wrapper">
+	<footer class="wrapper">
 		<p>Copyright &copy; 2019, Andrea Esposito.</p>
 	</footer>
 	<a href="#" id="myBtn" title="Go to top">
@@ -53,6 +64,27 @@
 					.getElementById("myBtn")
 					.style
 					.display = "none";
+			}
+		}
+
+		var canClick = true;
+		function openCloseMobileToc() {
+			if (canClick) {
+				canClick = false;
+				var toc = document.getElementById("toc");
+				var tocButton = document.getElementById("toc-button");
+				var isCurrentlyOpen = toc.style.display == "block";
+				if (!isCurrentlyOpen) {
+					toc.style.display = "block";
+				}
+				else {
+					setTimeout(() => { toc.style.display = "none"; }, 300);
+				}
+				isCurrentlyOpen = !isCurrentlyOpen;
+				toc.children[0].className = isCurrentlyOpen ? "opening" : "closing";
+				tocButton.children[0].classList.toggle('open');// = isCurrentlyOpen ? "<i class=\"fas fa-times\"></i>" : "<i class=\"fas fa-bars\"></i>";
+				toc.onclick = openCloseMobileToc;
+				setTimeout(() => { canClick = true; }, 300);
 			}
 		}
 	</script>
