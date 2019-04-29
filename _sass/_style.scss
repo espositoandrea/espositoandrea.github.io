@@ -29,7 +29,7 @@ body {
 }
 
 footer {
-	font-size: 8pt;
+	font-size: 0.75rem;
 }
 
 .profile-picture {
@@ -141,15 +141,15 @@ hr {
 blockquote {
 	background: #f9f9f9;
 	border-left: 10px solid #ccc;
-	margin: 1.5em 10px;
-	padding: 0.5em 10px;
+	margin: 1.5rem 10px;
+	padding: 0.5rem 10px;
 	quotes: "\201C""\201D";
 	&:before {
 		color: #ccc;
 		content: open-quote;
-		font-size: 4em;
-		line-height: 0.1em;
-		margin-right: 0.25em;
+		font-size: 4rem;
+		line-height: 0.1rem;
+		margin-right: 0.25rem;
 		vertical-align: -0.4em;
 	}
 	p {
@@ -176,7 +176,7 @@ header {
 		float: left;
 		&#logo-text {
 			color: black;
-			font-size: 2em;
+			font-size: 2rem;
 		}
 		@media only screen and (max-width: $medium-breakpoint) {
 			width: 100%;
@@ -362,7 +362,7 @@ header {
 }
 
 .content-wrapper {
-	margin-right: calc(320px + 1em);
+	margin-right: calc(320px + 1rem);
 	/* float: left; */
 	/* overflow: auto; */
 	/* background: rgba(26, 188, 156, 0.4); */
