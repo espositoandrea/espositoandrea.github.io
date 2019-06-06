@@ -7,7 +7,7 @@
             <a href="{{ post.url }}">{{ post.title }}</a>
         </strong>
         <abbr class="monospaced" title="{{ site.data._strings.written_in[page.lang] }} {{ site.data.languages[post.lang].name[page.lang] }}">[{{ post.lang }}]</abbr>
-        <em>({{ site.data._strings.published[page.lang] }}:
+        <em>({{ site.data._strings.published[page.lang] }}
             {% include date.html date=post.date day=true%})</em><br />
         <p>{{ post.excerpt }}</p>
     </li>
