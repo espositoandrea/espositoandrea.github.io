@@ -37,6 +37,9 @@ life_philosophy:
 life_philosophy_text:
   it: "Se lo si può pensare, lo si può fare."
   en: "If you can think of it, you can do it."
+organization:
+  it: "Organizzazione"
+  en: "Organization"
 personal_info:
   it: "Informazioni personali"
   en: "Personal Information"
@@ -55,6 +58,18 @@ posts_warning:
 present:
   it: "Presente"
   en: "Present"
+projects:
+  it: "Progetti"
+  en: "Projects"
+projects_intro:
+  it: >
+    È qui riportata una lista di progetti <em>open-source</em> a cui ho
+    lavorato. Sono elencati, in ordine, prima i progetti personali poi tutti i
+    progetti di terzi a cui ho preso parte. 
+  en: >
+    Here is a list of <em>open-source</em> projects on which I worked. In the
+    following list are presented both personal projects and third-party
+    projects in which I took part.
 publications:
   it: "Pubblicazioni"
   en: "Publications"

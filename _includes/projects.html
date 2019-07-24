@@ -1,0 +1,56 @@
+<h2 id="projects">{{ site.data._strings.projects[page.lang] }}</h2>
+<p>{{ site.data._strings.projects_intro[page.lang] }}</p>
+<ul id="my-repositories">
+    {% for repository in site.github.public_repositories %}
+    <li>
+        {{ repository.name | replace: "-", " " }}
+        {% if repository.fork %}
+        <small><em>(fork)</em></small>
+        {% endif %}
+        [ <a href="{{ repository.html_url }}" target="_blank">repo</a>
+        {% if repository.has_pages %}
+        | <a href="{{repository.homepage}}">docs</a></a>
+        {% endif %}
+        ]
+    </li>
+    {% endfor %}
+</ul>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('https://api.github.com/users/espositoandrea/orgs')
+        .then(function (response) {
+            let base = document.getElementById("my-repositories");
+            response.data.forEach(organization => {
+                let header = base.appendChild(document.createElement("li"));
+                header.id = organization.login + "-repositories";
+                header.innerHTML = organization.login + " (<em>{{ site.data._strings.organization[page.lang] }}</em>)";
+                header.style.fontWeight = "bold";
+                let list = header.appendChild(document.createElement("ul"));
+                list.style.fontWeight = "initial";
+                axios.get('https://api.github.com/orgs/' + organization.login + '/repos')
+                    .then(function (response) {
+                        response.data = response.data.filter((repository) => { console.log(repository.name); return !repository.name.match(/.*?\.github\.io/) });
+                        if (response.data.length == 0) {
+                            header.parentNode.removeChild(header);
+                            list.parentNode.removeChild(list);
+                        }
+                        response.data.forEach(repository => {
+                            let newElement = document.createElement("li");
+                            repository.name = repository.name.replace(/\-/g, " ");
+                            newElement.innerHTML = repository.name;
+
+                            if (repository.fork)
+                                newElement.innerHTML += "<small><em>(fork)</em></small>";
+
+                            newElement.innerHTML += " [ <a href='" + repository.html_url + "' target='_blank'>repo</a>";
+                            if (repository.has_pages)
+                                newElement.innerHTML += " | <a href='" + repository.homepage + "' target='_blank'>docs</a>";
+
+                            newElement.innerHTML += " ]";
+                            list.appendChild(newElement);
+                        });
+                    });
+            });
+        });
+</script>
