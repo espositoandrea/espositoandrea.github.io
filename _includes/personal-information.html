@@ -18,7 +18,7 @@
 <ul>
     {% for language in site.data.languages %}
     <li itemprop="knowsLanguage" itemscope itemtype="https://schema.org/Language">
-        <strong itemprop="name">{{ language[1].name[page.lang] }}:</strong>
+        <strong itemprop="name">{{ language[1].name[page.lang] }}</strong>:
         {{ language[1].level[page.lang] }}
     </li>
     {% endfor %}
