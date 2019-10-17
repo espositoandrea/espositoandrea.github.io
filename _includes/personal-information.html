@@ -1,15 +1,15 @@
 <h2 id="about">{{ site.data._strings.about[page.lang] }}</h2>
 
-<img alt="Andrea Esposito's profile picture" class="profile-picture" src="/assets/images/profile.jpg"/>
+<img alt="Andrea Esposito's profile picture" class="profile-picture" src="/assets/images/profile.jpg" />
 <p>{{ site.data._strings.about_intro[page.lang] }}</p>
 
 <h3 id="personal-information">{{ site.data._strings.personal_info[page.lang] }}</h3>
 <ul>
     {% for info in site.data.information %}
-        <li>
-            <strong>{{ info.name[page.lang] }}:</strong>
-            {{ info.value[page.lang] }}
-        </li>
+    <li>
+        <strong>{{ info.name[page.lang] }}:</strong>
+        {{ info.value[page.lang] }}
+    </li>
     {% endfor %}
 </ul>
 
@@ -17,10 +17,10 @@
 
 <ul>
     {% for language in site.data.languages %}
-        <li>
-            <strong>{{ language[1].name[page.lang] }}:</strong>
-            {{ language[1].level[page.lang] }}
-        </li>
+    <li itemprop="knowsLanguage" itemscope itemtype="https://schema.org/Language">
+        <strong itemprop="name">{{ language[1].name[page.lang] }}:</strong>
+        {{ language[1].level[page.lang] }}
+    </li>
     {% endfor %}
 </ul>
 
@@ -31,10 +31,10 @@
         <a href="mailto:{{ site.author.mail }}">{{ site.author.mail }}</a>
     </li>
     {% for contact in site.data.contacts %}
-        <li>
-            <strong>{{ contact.name }}:</strong>
-            <a href="{{ contact.link }}" target="_blank">{{ contact.value }}</a>
-        </li>
+    <li>
+        <strong>{{ contact.name }}:</strong>
+        <a href="{{ contact.link }}" target="_blank">{{ contact.value }}</a>
+    </li>
     {% endfor %}
 </ul>
 

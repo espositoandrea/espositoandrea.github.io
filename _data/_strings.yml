@@ -3,13 +3,13 @@ about:
   en: "About me"
 about_intro:
   it: >
-    Sono Andrea Esposito, uno studente di Informatica.
-    Sono uno studente per la laurea triennale in Informatica.
-    Le mie lingue: C++ e <span>L<sup>A</sup>T<sub>E</sub>X</span>.
+    Sono <span itemprop="name">Andrea Esposito</span>, uno studente di
+    Informatica. Sono uno studente per la laurea triennale in Informatica. Le
+    mie lingue: C++ e <span>L<sup>A</sup>T<sub>E</sub>X</span>.
   en: >
-    I'm Andrea Esposito, a Computer Science's Student.
-    I'm a bachelor's student in Computer Science.
-    My languages: C++ and <span>L<sup>A</sup>T<sub>E</sub>X</span>.
+    I'm <span itemprop="name">Andrea Esposito</span>, a Computer Science's
+    Student. I'm a bachelor's student in Computer Science. My languages: C++ and
+    <span>L<sup>A</sup>T<sub>E</sub>X</span>.
 awards:
   it: "Premi e certificazioni"
   en: "Awards and Certifications"
