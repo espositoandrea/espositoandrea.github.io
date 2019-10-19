@@ -28,28 +28,32 @@ def load_languages
   f = File.new("./common/languages.tex", "w")
   for language in languages
     f.puts(
-      "\\DeclareTranslationFallback{#{Iso639[language["name"]["en"]].alpha2}}{#{language["name"]["en"]}}"
+      "\\DeclareTranslationFallback{#{Iso639[language[1]["name"]["en"]].alpha2}}{#{language[1]["name"]["en"]}}"
     )
     f.puts(
-      "\\DeclareTranslationFallback{#{Iso639[language["name"]["en"]].alpha2}-level}{#{language["level"]["en"]}}"
+      "\\DeclareTranslationFallback{#{Iso639[language[1]["name"]["en"]].alpha2}-level}{#{language[1]["level"]["en"]}}"
     )
-    for isoCode in language["name"].keys
+    for isoCode in language[1]["name"].keys
+      next if isoCode == "original"
       f.puts(
-        "\\DeclareTranslation{#{Iso639[isoCode]}}{#{Iso639[language["name"]["en"]].alpha2}}{#{language["name"][isoCode]}}"
+        "\\DeclareTranslation{#{Iso639[isoCode]}}{#{Iso639[language[1]["name"]["en"]].alpha2}}{#{language[1]["name"][isoCode]}}"
       )
       f.puts(
-        "\\DeclareTranslation{#{Iso639[isoCode]}}{#{Iso639[language["name"]["en"]].alpha2}-level}{#{language["level"][isoCode]}}"
+        "\\DeclareTranslation{#{Iso639[isoCode]}}{#{Iso639[language[1]["name"]["en"]].alpha2}-level}{#{language[1]["level"][isoCode]}}"
       )
     end
     f.puts
   end
   f.close
   f = File.new("./common/sidebar_languages.tex", "w")
+  i = 0
+  max = languages.size
   for language in languages
+    i = i + 1
     f.puts(
-      "\\cvskill{\\GetTranslation{#{Iso639[language["name"]["en"]].alpha2}} (\\GetTranslation{#{Iso639[language["name"]["en"]].alpha2}-level})}{#{language["stars"]["full"]}}"
+      "\\cvskill{\\GetTranslation{#{Iso639[language[1]["name"]["en"]].alpha2}} (\\GetTranslation{#{Iso639[language[1]["name"]["en"]].alpha2}-level})}{#{language[1]["stars"]["full"]}}"
     )
-    f.puts("\\divider") unless language.equal? languages.last
+    f.puts("\\divider") unless i.equal? max
   end
   f.close
 end

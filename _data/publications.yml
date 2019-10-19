@@ -8,6 +8,7 @@ book:
   date: '2018'
   subtitle: Appunti per l'Informatica
   title: Analisi Matematica
+  isbn: '9788866829201'
 - bibtex_key: esposito:discreta
   bibtex_type: :book
   author: Andrea Esposito
@@ -16,3 +17,4 @@ book:
   date: '2018'
   subtitle: Appunti per l'Informatica
   title: Matematica Discreta
+  isbn: '9788866829317'

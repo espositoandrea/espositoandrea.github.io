@@ -1,17 +1,35 @@
-<nav>
-    <ul>
-        {% unless page.is_post %}
-            {% for lang in site.data.languages %}
-                {% assign code = lang[0] %}
-                {% if code == page.lang %}
-                    {% assign lang_link = "#" %}
-                {% else %}
-                    {% assign lang_link = page.translations[code] %}
-                {% endif %}
-                <li><a href="{{ lang_link }}" title="Read in {{ lang[1].name.en }} ({{ lang[1].name.original }})">{{ code }}</a></li>
-            {% endfor %}
-        {% else %}
-            <li><a href="#">{{ page.lang }}</a></li>
-        {% endunless %}
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">Andrea Esposito</a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            {% unless page.is_post %}
+                {% for lang in site.data.languages %}
+                    {% assign code = lang[0] %}
+                    {% if code == page.lang %}
+                        {% assign lang_link = "#" %}
+                        {% assign active_class = " active" %}
+                    {% else %}
+                        {% assign lang_link = page.translations[code] %}
+                        {% assign active_class = "" %}
+                    {% endif %}
+                    <li class="nav-item{{ active_class }}">
+                        <a class="nav-link" href="{{ lang_link }}" title="Read in {{ lang[1].name.en }} ({{ lang[1].name.original }})">
+                            {{ code }}
+                            {% if active_class == " active" %}
+                                <span class="sr-only">(current)</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ page.lang }}</a>
+                </li>
+            {% endunless %}
+        </ul>
+    </div>
 </nav>

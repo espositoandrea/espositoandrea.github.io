@@ -8,17 +8,24 @@
 	<link href="/assets/favicon.ico" rel="shortcut icon">
 	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
 	<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet">
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+	<script crossorigin="anonymous" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
+	<script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 	<link href="{{ site.baseurl }}/assets/css/main.css?{{ site.time | date: '%s' }}" rel="stylesheet">
 	<title>Andrea Esposito</title>
 </head>
 
-<body>
-	<header class="navbar wrapper cd-main-header js-cd-main-header">
+<body data-spy="scroll" data-target="#toc">
+	<!-- <header class="navbar wrapper cd-main-header js-cd-main-header">
 		<a id="logo-text" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">
 			Andrea Esposito
-		</a>
-		{% include navigation.html %}
-		<button type="button" id="toc-button" onclick="openCloseMobileToc();" title="Open Table of Contents">
+		</a> -->
+	{% include navigation.html %}
+	<!-- <button type="button" id="toc-button" onclick="openCloseMobileToc();" title="Open Table of Contents">
 			<div id="nav-icon3">
 				<span></span>
 				<span></span>
@@ -26,28 +33,28 @@
 				<span></span>
 			</div>
 		</button>
-	</header>
-	<hr />
-	<div class="wrapper">
-		<div id="toc">
-			<div>
-				<h2 class="nocount">{{ site.data._strings.toc[page.lang] }}</h2>
-				{% include toc.html html=content ordered=true %}
+	</header> -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<h2 data-toc-skip>{{ site.data._strings.toc[page.lang] }}</h2>
+				<nav id="toc" class="nav flex-column nav-pills sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical" data-toggle="toc">
+					<!-- {% include toc.html html=content ordered=true %} -->
+				</nav>
 			</div>
-		</div>
-		<div class="content-wrapper" itemscope itemtype="https://schema.org/Person">
-			<h1 id="post-title">{{ page.title }}</h1>
-			{{ content }}
+			<main class="col-sm-9 content-wrapper" itemscope itemtype="https://schema.org/Person">
+				<h1 data-toc-skip id="post-title">{{ page.title }}</h1>
+				{{ content }}
+			</main>
 		</div>
 	</div>
-	<hr />
-	<footer class="wrapper">
-		<p>Copyright &copy; 2019, Andrea Esposito.</p>
+	<footer class="row text-center">
+		<div class="col-12">
+			<p>Copyright &copy; 2019, Andrea Esposito.</p>
+		</div>
 	</footer>
-	<a href="#" id="myBtn" title="Go to top">
-		<i class="fas fa-chevron-up"></i>
-	</a>
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+	<a href="#" id="myBtn" title="Go to top"><i class="fas fa-chevron-up"></i></a>
+	<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 	<script>
 		window.onscroll = function () {
 			scrollFunction()

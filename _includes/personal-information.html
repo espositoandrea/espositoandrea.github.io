@@ -1,7 +1,13 @@
 <h2 id="about">{{ site.data._strings.about[page.lang] }}</h2>
 
-<img alt="Andrea Esposito's profile picture" class="profile-picture" src="/assets/images/profile.jpg" />
-<p>{{ site.data._strings.about_intro[page.lang] }}</p>
+<div class="row">
+    <div class="col-sm-8">
+        <p>{{ site.data._strings.about_intro[page.lang] }}</p>
+    </div>
+    <div class="col-sm-4 text-center">
+        <img src="/assets/images/profile.jpg" alt="" class="w-100 rounded-circle img-responsive">
+    </div>
+</div>
 
 <h3 id="personal-information">{{ site.data._strings.personal_info[page.lang] }}</h3>
 <ul>

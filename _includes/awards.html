@@ -1,16 +1,16 @@
 {% assign awards = site.data.awards | sort: 'year' | reverse %}
 <h2 id="awards-and-certifications">{{ site.data._strings.awards[page.lang] }}</h2>
-<table>
+<table class="table">
     <thead>
         <tr>
-            <th>Award / Certificate</th>
-            <th>Year</th>
-            <th>Description</th>
+            <th scope="col">Award / Certificate</th>
+            <th scope="col">Year</th>
+            <th scope="col">Description</th>
         </tr>
     </thead>
     <tbody>
         {% for award in awards %}
-            <tr>
+            <tr scope="row">
                 <td>{{ award.name }}</td>
                 <td>{{ award.year }}</td>
                 <td>{{ award.category }}</td>
