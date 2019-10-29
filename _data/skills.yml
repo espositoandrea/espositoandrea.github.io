@@ -1,9 +1,11 @@
 - name: "C/C++"
   level: 85
+- name: "Java"
+  level: 75
 - name: "L<sup>A</sup>T<sub>E</sub>X"
   level: 82
 - name: "<abbr title=\"HyperText Markup Language 5\">HTML5</abbr> &amp; <abbr title=\"Cascading Style Sheets 3\">CSS3</abbr>"
-  level: 75
+  level: 80
 - name: "Python"
   level: 70
 - name: "JavaScript"

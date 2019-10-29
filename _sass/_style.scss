@@ -44,19 +44,16 @@ nav[data-toggle="toc"] {
 // 	font-size: 0.75rem;
 // }
 
-// .profile-picture {
-// 	height: 25%;
-// 	width: 25%;
-// 	position: relative;
-// 	margin: -10px 0 0 15px;
-// 	float: right;
-// 	border-radius: 50%;
+#profile-picture {
+	position: absolute;
+	top: 0;
+	left: 0;
 
-// 	@media screen and (max-width: $medium-breakpoint) {
-// 		height: 30%;
-// 		width: 30%;
-// 	}
-// }
+	@media screen and (max-width: $medium-breakpoint) {
+		position: relative;
+		margin-bottom: 16px;
+	}
+}
 
 // .language-level-container {
 // 	vertical-align: middle;

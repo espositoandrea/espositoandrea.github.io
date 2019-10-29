@@ -12,6 +12,7 @@ def hash_from_repo(repo)
       'homepage' => repo.homepage,
       'image' => movie.images[0],
       'description' => repo.description,
+      'homepage' => repo.homepage
   }
 end
 
