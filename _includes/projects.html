@@ -1,36 +1,14 @@
 <h2 id="projects">{{ site.data._strings.projects[page.lang] }}</h2>
 <p>{{ site.data._strings.projects_intro[page.lang] }}</p>
-<ul id="my-repositories">
-    {% for repository in site.data.repos_data.espositoandrea %}
-    <li>
-        {{ repository.name | replace: "-", " " }}
-        {% if repository.fork %}
-        <small><em>(fork)</em></small>
-        {% endif %}
-        [ <a href="{{ repository.html_url }}" target="_blank">repo</a>
-        {% if repository.has_pages %}
-        | <a href="{{repository.homepage}}">docs</a></a>
-        {% endif %}
-        ]
-    </li>
+
+<div class="card-columns">
+    {% for repo in site.data.repos_data.espositoandrea %}
+        {% include single-project.html repository=repo organization=null %}
     {% endfor %}
+
     {% for org in site.data.repos_data.orgs %}
-    <li id="{{ org[0] }}-repositories" style="font-weight: bold;"> {{ org[0] }} (<em>Organization</em>)
-        <ul style="font-weight: initial;">
-            {% for repository in org[1] %}
-            <li>
-                {{ repository.name | replace: "-", " " }}
-                {% if repository.fork %}
-                <small><em>(fork)</em></small>
-                {% endif %}
-                [ <a href="{{ repository.html_url }}" target="_blank">repo</a>
-                {% if repository.has_pages %}
-                | <a href="{{repository.homepage}}">docs</a></a>
-                {% endif %}
-                ]
-            </li>
-            {% endfor %}
-        </ul>
-    </li>
+        {% for repo in org[1] %}
+            {% include single-project.html repository=repo organization=org %}
+        {% endfor %}
     {% endfor %}
-</ul>
+</div>

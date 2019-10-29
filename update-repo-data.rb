@@ -10,7 +10,8 @@ def hash_from_repo(repo)
       'html_url' => repo.html_url,
       'has_pages' => repo.has_pages,
       'homepage' => repo.homepage,
-      'image' => movie.images[0]
+      'image' => movie.images[0],
+      'description' => repo.description,
   }
 end
 

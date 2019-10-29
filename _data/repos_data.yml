@@ -6,36 +6,42 @@ espositoandrea:
   has_pages: false
   homepage: 
   image: https://repository-images.githubusercontent.com/148814852/0aec1c00-fa34-11e9-9f8b-55162f8f8165
+  description: A project created as part of a university exam
 - name: I-Love-Beer
   fork: false
   html_url: https://github.com/espositoandrea/I-Love-Beer
   has_pages: true
   homepage: https://espositoandrea.github.io/I-Love-Beer/
   image: https://repository-images.githubusercontent.com/154951162/56658180-ac1e-11e9-9d75-540389213c49
+  description: An android app for those who love beer
 - name: Lowpoly-World-Generator
   fork: false
   html_url: https://github.com/espositoandrea/Lowpoly-World-Generator
   has_pages: true
   homepage: https://espositoandrea.github.io/Lowpoly-World-Generator/
   image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
+  description: A generator of lowpoly worlds.
 - name: rouge
   fork: true
   html_url: https://github.com/espositoandrea/rouge
   has_pages: false
   homepage: ''
   image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
+  description: A pure-ruby code highlighter that is compatible with pygments http://rouge.jneen.net/
 - name: Turing-Machine-Executor
   fork: false
   html_url: https://github.com/espositoandrea/Turing-Machine-Executor
   has_pages: false
   homepage: ''
-  image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
+  image: https://repository-images.githubusercontent.com/169231499/34607400-fa43-11e9-892f-118e7e01e32e
+  description: An executor of Turing machines.
 - name: UdaWave
   fork: false
   html_url: https://github.com/espositoandrea/UdaWave
   has_pages: false
   homepage: ''
   image: https://repository-images.githubusercontent.com/137190773/50a8e480-fa34-11e9-9b33-4c355f9a78a7
+  description: Project created as part of a university exam.
 orgs:
   F-S-C:
   - name: Cicerone
@@ -43,16 +49,20 @@ orgs:
     html_url: https://github.com/F-S-C/Cicerone
     has_pages: true
     homepage: https://f-s-c.github.io/Cicerone/
-    image: https://repository-images.githubusercontent.com/189208771/09f29700-d899-11e9-936b-4fd9205a4ed7
+    image: https://repository-images.githubusercontent.com/189208771/0f203580-fa44-11e9-9be7-afa8e8057a14
+    description: A system created for a University exam using the SCRUM agile process.
   - name: StrumentalMente
     fork: false
     html_url: https://github.com/F-S-C/StrumentalMente
     has_pages: false
     homepage: https://strumentalmente.it/
-    image: https://avatars1.githubusercontent.com/u/45092970?s=400&v=4
+    image: https://repository-images.githubusercontent.com/157839641/c7e67480-fa44-11e9-8fbb-61ecd7e400ce
+    description: A multimedia application that was designed following the Alessi &
+      Trollip Model.
   - name: The-Doomed-Ship
     fork: false
     html_url: https://github.com/F-S-C/The-Doomed-Ship
     has_pages: true
     homepage: https://f-s-c.github.io/The-Doomed-Ship/
     image: https://avatars1.githubusercontent.com/u/45092970?s=400&v=4
+    description: 'The Doomed Ship: an Adventure'
