@@ -19,14 +19,14 @@ espositoandrea:
   html_url: https://github.com/espositoandrea/Lowpoly-World-Generator
   has_pages: true
   homepage: https://espositoandrea.github.io/Lowpoly-World-Generator/
-  image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
+  image: https://repository-images.githubusercontent.com/149435319/8625fe80-fb16-11e9-9853-1058a900d825
   description: A generator of lowpoly worlds.
 - name: rouge
   fork: true
   html_url: https://github.com/espositoandrea/rouge
   has_pages: false
   homepage: ''
-  image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
+  image: https://repository-images.githubusercontent.com/158081747/b6b96880-fb15-11e9-9ecc-f8c13e15d969
   description: A pure-ruby code highlighter that is compatible with pygments http://rouge.jneen.net/
 - name: Turing-Machine-Executor
   fork: false
