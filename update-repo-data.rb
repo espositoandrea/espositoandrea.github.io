@@ -3,15 +3,20 @@ require 'octokit'
 require 'yaml'
 
 def hash_from_repo(repo)
-  movie = OpenGraph.new(repo.html_url)
+  repo_metadata = OpenGraph.new(repo.html_url)
+  languages_metadata = Octokit.languages(repo.id)
+  languages = Hash[languages_metadata.to_hash.map{ |k, v| [k.to_s, v] }]
+
   {
       'name' => repo.name,
       'fork' => repo.fork,
       'html_url' => repo.html_url,
       'has_pages' => repo.has_pages,
       'homepage' => repo.homepage,
-      'image' => movie.images[0],
-      'description' => repo.description
+      'image' => repo_metadata.images[0],
+      'description' => repo.description,
+      'language' => repo.language,
+      'languages' => languages.to_a.sort_by(&:last).to_h.keys # Force languages to be ordered from most to less used
   }
 end
 

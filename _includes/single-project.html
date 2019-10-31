@@ -14,12 +14,17 @@
             {% endif %}
         </h5>
         <p class="card-text">{{ include.repository.description | markdownify }}</p>
+        <p class="card-text">
+            {% for language in include.repository.languages%}
+            <span class="badge badge-pill {% if forloop.first %} badge-info {% else %} badge-secondary {% endif %}">{{ language }}</span>
+            {% endfor %}
+        </p>
     </div>
     <div class="card-footer text-center">
         <div aria-label="Links" class="btn-group d-flex" role="group">
             <a href="{{ include.repository.html_url }}" target="_blank" class="btn btn-primary">Repo</a>
             {% if include.repository.has_pages %}
-                <a href="{{include.repository.homepage}}" class="btn btn-secondary">Docs</a>
+                <a href="{{include.repository.homepage}}" class="btn btn-secondary">Website</a>
             {% endif %}
         </div>
     </div>
