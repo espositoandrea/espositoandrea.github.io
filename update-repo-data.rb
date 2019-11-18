@@ -16,7 +16,7 @@ def hash_from_repo(repo)
       'image' => repo_metadata.images[0],
       'description' => repo.description,
       'language' => repo.language,
-      'languages' => languages.to_a.sort_by(&:last).to_h.keys # Force languages to be ordered from most to less used
+      'languages' => languages.to_a.sort_by(&:last).reverse.to_h.keys # Force languages to be ordered from most to less used
   }
 end
 
