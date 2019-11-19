@@ -1,6 +1,8 @@
 - name: "GitHub"
   value: "espositoandrea"
+  icon: "fab fa-github"
   link: "https://github.com/espositoandrea/"
 - name: "LinkedIn"
   value: "esposito-andrea"
+  icon: "fab fa-linkedin-in"
   link: "https://linkedin.com/in/esposito-andrea/"

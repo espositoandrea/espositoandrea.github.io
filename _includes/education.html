@@ -1,6 +1,8 @@
-<h2 id="education">{{ site.data._strings.education[page.lang] }}</h2>
-<ul>
-    {% for edu in site.data.education %}
+<section id="education" class="resume-section p-3 p-lg-5 d-flex align-items-center">
+	<div class="w-100">
+    <h2>{{ site.data._strings.education[page.lang] }}</h2>
+    <ul>
+        {% for edu in site.data.education %}
         <li>
             {% capture end_date %}{% if edu.years.end != '01-01-0000' %}{% include date.html date=edu.years.end mode='short' %}{% else %}{{ site.data._strings.present[page.lang] }}{% endif %}{% endcapture %}
             <strong>{{ edu.title[page.lang] }}</strong>
@@ -8,8 +10,10 @@
             <em>{{ edu.institute[page.lang] }}
                 ({{ edu.location[page.lang] }})</em>.
             {% if edu.notes %}
-                {{ edu.notes[page.lang] }}
+            {{ edu.notes[page.lang] }}
             {% endif %}
         </li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
+	</div>
+</section>

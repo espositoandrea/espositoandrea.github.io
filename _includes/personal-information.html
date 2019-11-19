@@ -1,48 +1,48 @@
-<h2 id="about">{{ site.data._strings.about[page.lang] }}</h2>
+<section id="about" class="resume-section p-3 p-lg-5 d-flex align-items-center">
+    <div class="w-100">
+        <h1 class="mb-0">Andrea
+            <span class="text-primary">Esposito</span>
+        </h1>
+        <div class="subheading mb-5">3542 Berry Street · Cheyenne Wells, CO 80810 · (317) 585-8468 ·
+            <a href="mailto:{{ site.author.mail }}">{{ site.author.mail }}</a>
+        </div>
+        <p class="lead mb-3">{{ site.data._strings.about_intro[page.lang] }}</p>
+            <div class="row mb-3">
+                <div class="col-lg-6">
+                    <h3 id="personal-information">{{ site.data._strings.personal_info[page.lang] }}</h3>
+                    <ul>
+                        {% for info in site.data.information %}
+                        <li>
+                            <strong>{{ info.name[page.lang] }}:</strong>
+                            {{ info.value[page.lang] }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+    
+                <div class="col-lg-6">
+                    <h3 id="languages">{{ site.data._strings.languages[page.lang] }}</h3>
+    
+                    <ul>
+                        {% for language in site.data.languages %}
+                        <li itemprop="knowsLanguage" itemscope itemtype="https://schema.org/Language">
+                            <strong itemprop="name">{{ language[1].name[page.lang] }}</strong>:
+                            {{ language[1].level[page.lang] }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        <div class="social-icons">
+            {% for contact in site.data.contacts %}
+            <a href="{{ contact.link }}">
+                <span class="sr-only">{{ contact.name }}</span>
+                <i class="{{ contact.icon }}"></i>
+            </a>
+            {% endfor %}
+        </div>
 
-<div class="row">
-    <div class="col-sm-8">
-        <p>{{ site.data._strings.about_intro[page.lang] }}</p>
+
+
     </div>
-    <div class="col-sm-4 text-center">
-        <img id="profile-picture" src="/assets/images/profile.jpg" alt="" class="w-100 rounded-circle img-responsive">
-    </div>
-</div>
-
-<h3 id="personal-information">{{ site.data._strings.personal_info[page.lang] }}</h3>
-<ul>
-    {% for info in site.data.information %}
-    <li>
-        <strong>{{ info.name[page.lang] }}:</strong>
-        {{ info.value[page.lang] }}
-    </li>
-    {% endfor %}
-</ul>
-
-<h3 id="languages">{{ site.data._strings.languages[page.lang] }}</h3>
-
-<ul>
-    {% for language in site.data.languages %}
-    <li itemprop="knowsLanguage" itemscope itemtype="https://schema.org/Language">
-        <strong itemprop="name">{{ language[1].name[page.lang] }}</strong>:
-        {{ language[1].level[page.lang] }}
-    </li>
-    {% endfor %}
-</ul>
-
-<h3 id="contacts">{{ site.data._strings.contacts[page.lang] }}</h3>
-<ul>
-    <li>
-        <strong>Mail:</strong>
-        <a href="mailto:{{ site.author.mail }}">{{ site.author.mail }}</a>
-    </li>
-    {% for contact in site.data.contacts %}
-    <li>
-        <strong>{{ contact.name }}:</strong>
-        <a href="{{ contact.link }}" target="_blank">{{ contact.value }}</a>
-    </li>
-    {% endfor %}
-</ul>
-
-<h3 id="life-philosophy">{{ site.data._strings.life_philosophy[page.lang] }}</h3>
-<blockquote>{{ site.data._strings.life_philosophy_text[page.lang] }}</blockquote>
+</section>

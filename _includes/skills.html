@@ -1,12 +1,16 @@
-<h2 id="skills">{{ site.data._strings.skills[page.lang] }}</h2>
+<section id="skills" class="resume-section p-3 p-lg-5 d-flex align-items-center">
+	<div class="w-100">
+    <h2>{{ site.data._strings.skills[page.lang] }}</h2>
 
-<p>{{ site.data._strings.skills_intro[page.lang] }}</p>
+    <p>{{ site.data._strings.skills_intro[page.lang] }}</p>
 
-<ul>
-    {% for skill in site.data.skills %}
+    <ul>
+        {% for skill in site.data.skills %}
         <li>
             {{ skill.name }}
             ({{ skill.level }}%)
         </li>
-    {% endfor %}
-</ul>
+        {% endfor %}
+    </ul>
+	</div>
+</section>
