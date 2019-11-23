@@ -18,3 +18,12 @@ book:
   subtitle: Appunti per l'Informatica
   title: Matematica Discreta
   isbn: '9788866829317'
+- bibtex_key: esposito:statistica
+  bibtex_type: :book
+  author: Andrea Esposito
+  location: Napoli, IT
+  publisher: Photocity Ed.
+  date: '2019'
+  subtitle: Appunti per l'Informatica
+  title: Statistica Matematica
+  isbn: '9788866829676'
