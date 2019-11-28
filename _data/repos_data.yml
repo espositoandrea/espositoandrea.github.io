@@ -32,6 +32,16 @@ espositoandrea:
   languages:
   - C++
   - C
+- name: Make-to-Batch
+  fork: false
+  html_url: https://github.com/espositoandrea/Make-to-Batch
+  has_pages: false
+  homepage: 
+  image: https://repository-images.githubusercontent.com/224272650/2fe2d300-121c-11ea-83a4-8c36c6cd9e1e
+  description: A Makefile to Batch converter.
+  language: Python
+  languages:
+  - Python
 - name: rouge
   fork: true
   html_url: https://github.com/espositoandrea/rouge
@@ -62,6 +72,8 @@ espositoandrea:
   language: Python
   languages:
   - Python
+  - Batchfile
+  - Makefile
 - name: UdaWave
   fork: false
   html_url: https://github.com/espositoandrea/UdaWave
@@ -89,6 +101,21 @@ orgs:
     - CSS
     - HTML
     - Hack
+  - name: Emotionally
+    fork: false
+    html_url: https://github.com/F-S-C/Emotionally
+    has_pages: true
+    homepage: https://f-s-c.github.io/Emotionally/
+    image: https://avatars1.githubusercontent.com/u/45092970?s=400&v=4
+    description: A system capable of detecting and analyzing emotions thanks to Affectiva's
+      cloud-based APIs.
+    language: PHP
+    languages:
+    - PHP
+    - HTML
+    - Vue
+    - Batchfile
+    - Makefile
   - name: StrumentalMente
     fork: false
     html_url: https://github.com/F-S-C/StrumentalMente
