@@ -25,7 +25,7 @@
     height: 100vh;
     .navbar-brand {
       display: flex;
-
+      flex-direction: column;
       margin: auto auto 0;
       padding: 0.5rem;
       .img-profile {
@@ -34,6 +34,23 @@
         border: 0.5rem solid fade-out($white, 0.8);
       }
     }
+
+    hr {
+      border-color: rgba(255, 255, 255, 0.5);
+      width: 100%;
+      margin: 1rem auto;
+    }
+
+    .social-icons a {
+      width: 32px;
+      height: 32px;
+      font-size: 10pt;
+      line-height: 32px;
+      color: #bb0b0b;
+      background-color: white;
+      margin-right: 3px;
+    }
+
     .navbar-collapse {
       display: flex;
       align-items: flex-start;
