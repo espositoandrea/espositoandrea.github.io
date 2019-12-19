@@ -35,13 +35,15 @@ espositoandrea:
 - name: Make-to-Batch
   fork: false
   html_url: https://github.com/espositoandrea/Make-to-Batch
-  has_pages: false
-  homepage: 
+  has_pages: true
+  homepage: https://espositoandrea.github.io/Make-to-Batch/
   image: https://repository-images.githubusercontent.com/224272650/2fe2d300-121c-11ea-83a4-8c36c6cd9e1e
   description: A Makefile to Batch converter.
   language: Python
   languages:
   - Python
+  - Batchfile
+  - Makefile
 - name: rouge
   fork: true
   html_url: https://github.com/espositoandrea/rouge
