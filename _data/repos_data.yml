@@ -1,5 +1,15 @@
 ---
 espositoandrea:
+- name: Delta-Icons
+  fork: true
+  html_url: https://github.com/espositoandrea/Delta-Icons
+  has_pages: false
+  homepage: 
+  image: https://repository-images.githubusercontent.com/229563879/95f40a80-24e9-11ea-91de-05a8a4c63852
+  description: Delta Icon Pack for Android
+  language: Java
+  languages:
+  - Java
 - name: Hack-Assembler
   fork: false
   html_url: https://github.com/espositoandrea/Hack-Assembler
