@@ -4,3 +4,8 @@
 @import "nav.scss";
 @import "resume-item.scss";
 @import "bootstrap-overrides.scss";
+
+::selection {
+    background-color: $primary;
+    color: $white;
+}

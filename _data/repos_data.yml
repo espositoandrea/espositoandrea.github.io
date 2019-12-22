@@ -118,7 +118,7 @@ orgs:
     html_url: https://github.com/F-S-C/Emotionally
     has_pages: true
     homepage: https://f-s-c.github.io/Emotionally/
-    image: https://avatars1.githubusercontent.com/u/45092970?s=400&v=4
+    image: https://repository-images.githubusercontent.com/223893721/1d8f4880-24ed-11ea-8dbe-3d0e4986f4f2
     description: A system capable of detecting and analyzing emotions thanks to Affectiva's
       cloud-based APIs.
     language: PHP
