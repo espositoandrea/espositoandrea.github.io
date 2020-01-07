@@ -1,83 +1,63 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">Andrea Esposito</a>
-    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">Andrea Esposito</a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            {% unless page.is_post %}
-                {% for lang in site.data.languages %}
-                    {% assign code = lang[0] %}
-                    {% if code == page.lang %}
-                        {% assign lang_link = "#" %}
-                        {% assign active_class = " active" %}
-                    {% else %}
-                        {% assign lang_link = page.translations[code] %}
-                        {% assign active_class = "" %}
-                    {% endif %}
-                    <li class="nav-item{{ active_class }}">
-                        <a class="nav-link" href="{{ lang_link }}" title="Read in {{ lang[1].name.en }} ({{ lang[1].name.original }})">
-                            {{ code }}
-                            {% if active_class == " active" %}
-                                <span class="sr-only">(current)</span>
-                            {% endif %}
-                        </a>
-                    </li>
-                {% endfor %}
-            {% else %}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ page.lang }}</a>
+                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
                 </li>
-            {% endunless %}
-        </ul>
-    </div>
-</nav> -->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger"
-        href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">
-        <span class="d-block d-lg-block mb-lg-3">Andrea Esposito</span>
-        <span class="d-none d-lg-block">
-            <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/assets/images/profile.jpg" alt="">
-        </span>
-    </a>
-    <div class="d-none d-lg-block social-icons mt-2">
-        {% for contact in site.data.contacts %}
-        <a href="{{ contact.link }}">
-            <span class="sr-only">{{ contact.name }}</span>
-            <i class="{{ contact.icon }}"></i>
-        </a>
-        {% endfor %}
-    </div>
-    <hr class="d-none d-lg-block" />
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#awards">Awards and Certifications</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#posts">Posts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-            </li>
-        </ul>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#education">Education</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#awards">Awards and Certifications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#posts">Posts</a>
+                </li>
+                <li class="nav-item mr-auto">
+                    <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbar-language-selector" role="button">
+                        Language
+                    </a>
+                    <div aria-labelledby="navbar-language-selector" class="dropdown-menu">
+                        {% unless page.is_post %}
+                            {% for lang in site.data.languages %}
+                                {% assign code = lang[0] %}
+                                {% if code == page.lang %}
+                                    {% assign lang_link = "#" %}
+                                    {% assign active_class = " active" %}
+                                {% else %}
+                                    {% assign lang_link = page.translations[code] %}
+                                    {% assign active_class = "" %}
+                                {% endif %}
+                                <a class="dropdown-item" href="{{ lang_link }}" title="Read in {{ lang[1].name.en }} ({{ lang[1].name.original }})">
+                                    {{ code }}
+                                    {% if active_class == " active" %}
+                                        <span class="sr-only">(current)</span>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        {% else %}
+                            <a class="dropdown-item" href="#">{{ page.lang }}</a>
+                        {% endunless %}
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>

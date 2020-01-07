@@ -1,17 +1,21 @@
 ---
-layout: default
+layout: base
 lang: en
 permalink: /index.html
-title: "Andrea Esposito's Resume"
+title: "Andrea Esposito"
 translations:
   en: /index.html
   it: /it/index.html
 ---
 
-{% include personal-information.html %}
-{% include education.html %}
-{% include awards.html %}
-{% include skills.html %}
-{% include publications.html %}
-{% include posts.html %}
-{% include projects.html %}
+<main class="container-fluid p-0" itemscope itemtype="https://schema.org/Person">
+	<!-- <h1 data-toc-skip id="post-title">{{ page.title }}</h1> -->
+  {% include introduction.html %}
+  {% include education.html %}
+  {% include awards.html %}
+  {% include skills.html %}
+  {% include publications.html %}
+  {% include posts.html %}
+  {% include projects.html %}
+</main>
+

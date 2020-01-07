@@ -1,0 +1,31 @@
+@import "_variables.scss";
+@import "code-highlight.scss";
+
+.resume-section {
+  position: relative;
+  &:nth-of-type(odd) {
+    background-position: top center;
+    background-size: cover;
+    background-color: red;
+    color: white;
+  }
+}
+
+.overlay {
+  background-color: black;
+  opacity: 0.75;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.resume-section > div.w-100.container {
+  z-index: 1;
+}
+
+.fill-viewport {
+  min-height: 100vh;
+}
