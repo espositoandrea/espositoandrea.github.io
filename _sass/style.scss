@@ -6,7 +6,6 @@
 .resume-section {
   position: relative;
   &:nth-of-type(odd) {
-    background-position: top center;
     background-size: cover;
     background-color: $primary;
     color: rgba(255, 255, 255, 0.5);
@@ -35,4 +34,9 @@
 body {
   position: relative;
   padding-top: 50px !important;
+}
+
+section#about {
+  background-image: url('/assets/images/background.jpg');
+  background-position: top center;
 }
