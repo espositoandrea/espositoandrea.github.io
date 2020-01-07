@@ -1,4 +1,6 @@
 @import "_variables.scss";
+@import "bootstrap/bootstrap.scss";
+
 @import "code-highlight.scss";
 
 .resume-section {
@@ -6,26 +8,31 @@
   &:nth-of-type(odd) {
     background-position: top center;
     background-size: cover;
-    background-color: red;
-    color: white;
+    background-color: $primary;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  &.overlay::after {
+    background-color: black;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 0;
+    content: "";
   }
 }
 
-.overlay {
-  background-color: black;
-  opacity: 0.75;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  position: absolute;
-  z-index: 0;
-}
-
-.resume-section > div.w-100.container {
+.resume-section > div {
   z-index: 1;
 }
 
 .fill-viewport {
   min-height: 100vh;
+}
+
+body {
+  position: relative;
+  padding-top: 50px !important;
 }

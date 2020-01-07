@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="main-navigation">
     <div class="container">
         <a class="navbar-brand" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">Andrea Esposito</a>
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
@@ -7,7 +7,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mr-auto">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link js-scroll-trigger" href="#about">About</a>
                 </li>
                 <li class="nav-item">
@@ -32,7 +32,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbar-language-selector" role="button">
-                        Language
+                        {{site.data._strings.languages[page.lang]}}
                     </a>
                     <div aria-labelledby="navbar-language-selector" class="dropdown-menu">
                         {% unless page.is_post %}
