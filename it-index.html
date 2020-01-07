@@ -8,10 +8,12 @@ translations:
   it: /it/index.html
 ---
 
-{% include introduction.html %}
-{% include education.html %}
-{% include awards.html %}
-{% include skills.html %}
-{% include publications.html %}
-{% include posts.html %}
-{% include projects.html %}
+<main class="container-fluid p-0" itemscope itemtype="https://schema.org/Person">
+  {% include introduction.html %}
+  {% include education.html %}
+  {% include awards.html %}
+  {% include skills.html %}
+  {% include publications.html %}
+  {% include projects.html %}
+  {% include posts.html %}
+</main>

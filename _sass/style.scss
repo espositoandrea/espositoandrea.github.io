@@ -8,7 +8,10 @@
   &:nth-of-type(odd) {
     background-size: cover;
     background-color: $primary;
-    color: rgba(255, 255, 255, 0.5);
+    @extend .text-white;
+    a {
+      color: white;
+    }
   }
   &.overlay::after {
     background-color: black;
@@ -39,4 +42,8 @@ body {
 section#about {
   background-image: url('/assets/images/background.jpg');
   background-position: top center;
+}
+
+html{
+  scroll-behavior: smooth;
 }

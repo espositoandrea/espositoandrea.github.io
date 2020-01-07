@@ -15,51 +15,28 @@
     <title>Andrea Esposito</title>
 </head>
 
-<body data-spy="scroll" data-target="#main-navigation" id="page-top">
+<body data-spy="scroll" data-target="#main-navigation" id="page-top" data-offset="50">
     <header>
         {% include navigation.html %}
     </header>
 
     {{content}}
 
-    <footer class="text-center">
-        Copyright &copy; 2019, Andrea Esposito.
+    <footer class="text-center bg-dark pt-5">
+        <div class="text-light py-4" style="background-color: rgba(0, 0, 0, 0.25);">
+            Copyright &copy; 2019, Andrea Esposito.
+        </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <!-- <script>
-		(function ($) {
-			"use strict"; // Start of use strict
-
-			// Smooth scrolling using jQuery easing
-			$('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-				if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-					var target = $(this.hash);
-					target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-					if (target.length) {
-						$('html, body').animate({
-							scrollTop: (target.offset().top)
-						}, 1000, "easeInOutExpo");
-						return false;
-					}
-				}
-			});
-
-			// Closes responsive menu when a scroll trigger link is clicked
-			$('.js-scroll-trigger').click(() => {
-				$('.navbar-collapse').collapse('hide');
-			});
-
-		})(jQuery); // End of use strict
-	</script> -->
 </body>
 
 </html>

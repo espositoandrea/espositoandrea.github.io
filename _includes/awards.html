@@ -1,24 +1,24 @@
 {% assign awards = site.data.awards | sort: 'year' | reverse %}
-<section id="awards" class="resume-section p-3 p-lg-5 d-flex align-items-center">
-	<div class="w-100">
-    <h2>{{ site.data._strings.awards[page.lang] }}</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Award / Certificate</th>
-                <th scope="col">Year</th>
-                <th scope="col">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for award in awards %}
-            <tr scope="row">
-                <td>{{ award.name }}</td>
-                <td>{{ award.year }}</td>
-                <td>{{ award.category }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-	</div>
+<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
+    <div class="w-100 container">
+        <h2>{{ site.data._strings.awards[page.lang] }}</h2>
+        <table class="table text-white">
+            <thead>
+                <tr>
+                    <th scope="col">Award / Certificate</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for award in awards %}
+                    <tr scope="row">
+                        <td>{{ award.name }}</td>
+                        <td>{{ award.year }}</td>
+                        <td>{{ award.category }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </section>
