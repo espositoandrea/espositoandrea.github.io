@@ -1,27 +1,34 @@
 <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
     <div class="w-100 container">
-        <h2>{{ site.data._strings.education[page.lang] }}</h2>
-        <ul>
-            {% for edu in site.data.education %}
-                <li>
-                    {% capture end_date %}
+        <div class="row">
+            <div class="col-md-6">
+                <img src="/assets/images/profile.jpg" alt="Andrea Esposito" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ site.data._strings.education[page.lang] }}</h2>
+                <ul>
+                    {% for edu in site.data.education %}
+                    <li>
+                        {% capture end_date %}
                         {% if edu.years.end != '01-01-0000' %}
-                            {% include date.html date=edu.years.end mode='short' %}
+                        {% include date.html date=edu.years.end mode='short' %}
                         {% else %}
-                            {{ site.data._strings.present[page.lang] }}
+                        {{ site.data._strings.present[page.lang] }}
                         {% endif %}
-                    {% endcapture %}
-                    <strong>{{ edu.title[page.lang] }}</strong>
-                    ({% include date.html date=edu.years.start mode='short' %}
-                    &ndash;
-                    {{ end_date }}),
-                    <em>{{ edu.institute[page.lang] }}
-                        ({{ edu.location[page.lang] }})</em>.
-                    {% if edu.notes %}
-                        {{ edu.notes[page.lang] }}
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+                        {% endcapture %}
+                        <strong>{{ edu.title[page.lang] }}</strong>
+                        ({% include date.html date=edu.years.start mode='short' %}
+                        &ndash;
+                        {{ end_date }}),
+                        <em>{{ edu.institute[page.lang] }}
+                            ({{ edu.location[page.lang] }})</em>.
+                            {% if edu.notes %}
+                            {{ edu.notes[page.lang] }}
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
     </div>
 </section>
