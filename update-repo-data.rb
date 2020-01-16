@@ -7,12 +7,14 @@ def hash_from_repo(repo)
   languages_metadata = Octokit.languages(repo.id)
   languages = Hash[languages_metadata.to_hash.map{ |k, v| [k.to_s, v] }]
 
+  website = !repo.homepage.nil? ? repo.homepage : (repo.has_pages ? "https://#{repo.owner.login}.github.io/#{repo.name}" : nil)
+
   {
       'name' => repo.name,
       'fork' => repo.fork,
       'html_url' => repo.html_url,
-      'has_pages' => repo.has_pages,
-      'homepage' => repo.homepage,
+      'homepage' => website,
+      'has_website' => !website.nil?,
       'image' => repo_metadata.images[0],
       'description' => repo.description,
       'language' => repo.language,
