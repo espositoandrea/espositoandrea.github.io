@@ -40,7 +40,7 @@ The code to output "Hello World!" to the screen is the following.
 The code can be splitted in more lines to make it more readable. The same code can
 be written and commented like this:
 
-{% highlight brainfuck %}
+```brainfuck
 [
    This program will print "Hello World!" to the screen
 ]
@@ -62,7 +62,7 @@ be written and commented like this:
 ------. print 'l'
 --------. print 'd'
 >+. print '!'
-{% endhighlight %}
+```
 
 ## COW Progamming Language
 

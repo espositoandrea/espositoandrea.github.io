@@ -2,8 +2,19 @@
 layout: default
 ---
 
-<p>{{ page.date | date_to_string }} - {{ page.author }}</p>
-
-{{ page.redirect.from }}
-
-{{ content }}
+<article class="p-3 p-lg-5 d-flex align-items-center">
+    <div class="w-100">
+        <header>
+            <h1>{{page.title}}</h1>
+            <p class="lead">{{ page.date | date_to_string }} - {{ page.author }}</p>
+        </header>
+        
+        {{ page.redirect.from }}
+        
+        <aside class="rounded p-3 border bg-light mb-3">
+            <h2>Table of Contents</h2>
+            {% include toc.html html=content %}
+        </aside>
+        {{content}}
+    </div>
+</article>

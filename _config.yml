@@ -17,13 +17,15 @@ title: Andrea Esposito
 description: >- # this means to ignore newlines until "baseurl:"
   Andrea Esposito's website and blog.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://espositoandrea.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 repository: "espositoandrea/espositoandrea.github.io"
 twitter_username: MineAnd99
 github_username:  espositoandrea
 
 # Build settings
 markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
 theme: minima
 plugins:
   - jekyll-feed
