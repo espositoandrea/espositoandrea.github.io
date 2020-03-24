@@ -1,15 +1,5 @@
 ---
 espositoandrea:
-- name: AsciiDoc-Publishing-Toolbox
-  fork: false
-  html_url: https://github.com/espositoandrea/AsciiDoc-Publishing-Toolbox
-  homepage: 
-  has_website: false
-  image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
-  description: A publishing toolbox for AsciiDoc
-  language: Ruby
-  languages:
-  - Ruby
 - name: CyberSecurity
   fork: false
   html_url: https://github.com/espositoandrea/CyberSecurity
@@ -143,12 +133,22 @@ orgs:
     - CSS
     - HTML
     - Hack
+  - name: elearning
+    fork: false
+    html_url: https://github.com/F-S-C/elearning
+    homepage: 
+    has_website: false
+    image: https://avatars1.githubusercontent.com/u/45092970?s=400&v=4
+    description: 
+    language: Ruby
+    languages:
+    - Ruby
   - name: Emotionally
     fork: false
     html_url: https://github.com/F-S-C/Emotionally
-    homepage: https://f-s-c.github.io/Emotionally/
+    homepage: https://fscgroup.ddns.net/emotionally/public/
     has_website: true
-    image: https://repository-images.githubusercontent.com/223893721/1d8f4880-24ed-11ea-8dbe-3d0e4986f4f2
+    image: https://repository-images.githubusercontent.com/223893721/257f5b80-69fc-11ea-94b1-f74884b25c15
     description: A system capable of detecting and analyzing emotions thanks to Affectiva's
       cloud-based APIs.
     language: PHP
@@ -185,3 +185,38 @@ orgs:
     - Java
     - Python
     - HTML
+  StrumentalMente:
+  - name: server
+    fork: false
+    html_url: https://github.com/StrumentalMente/server
+    homepage: 
+    has_website: false
+    image: https://repository-images.githubusercontent.com/248218665/44a4bd00-6918-11ea-96a8-55b464c2c62b
+    description: 
+    language: Ruby
+    languages:
+    - Ruby
+    - HTML
+    - JavaScript
+    - CSS
+  AsciiDoc-Publishing-Toolbox:
+  - name: asciidoc_publishing_toolbox
+    fork: false
+    html_url: https://github.com/AsciiDoc-Publishing-Toolbox/asciidoc_publishing_toolbox
+    homepage: 
+    has_website: false
+    image: https://avatars1.githubusercontent.com/u/62381586?s=400&v=4
+    description: A publishing toolbox for AsciiDoc
+    language: Ruby
+    languages:
+    - Ruby
+    - Shell
+  - name: document-schema
+    fork: false
+    html_url: https://github.com/AsciiDoc-Publishing-Toolbox/document-schema
+    homepage: https://asciidoc-publishing-toolbox.github.io/document-schema/
+    has_website: true
+    image: https://avatars1.githubusercontent.com/u/62381586?s=400&v=4
+    description: 
+    language: 
+    languages: []
