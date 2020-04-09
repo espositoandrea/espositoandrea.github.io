@@ -136,8 +136,8 @@ orgs:
   - name: elearning
     fork: false
     html_url: https://github.com/F-S-C/elearning
-    homepage: 
-    has_website: false
+    homepage: https://f-s-c.github.io/elearning/
+    has_website: true
     image: https://avatars1.githubusercontent.com/u/45092970?s=400&v=4
     description: 
     language: Ruby
@@ -146,7 +146,7 @@ orgs:
   - name: Emotionally
     fork: false
     html_url: https://github.com/F-S-C/Emotionally
-    homepage: https://fscgroup.ddns.net/emotionally/public/
+    homepage: https://fscgroup.ddns.net/emotionally
     has_website: true
     image: https://repository-images.githubusercontent.com/223893721/257f5b80-69fc-11ea-94b1-f74884b25c15
     description: A system capable of detecting and analyzing emotions thanks to Affectiva's
@@ -161,7 +161,7 @@ orgs:
   - name: StrumentalMente
     fork: false
     html_url: https://github.com/F-S-C/StrumentalMente
-    homepage: https://strumentalmente.it/
+    homepage: https://strumentalmente.github.io/
     has_website: true
     image: https://repository-images.githubusercontent.com/157839641/c7e67480-fa44-11e9-8fbb-61ecd7e400ce
     description: A multimedia application that was designed following the Alessi &
@@ -186,6 +186,17 @@ orgs:
     - Python
     - HTML
   StrumentalMente:
+  - name: ProjectDocumentation
+    fork: false
+    html_url: https://github.com/StrumentalMente/ProjectDocumentation
+    homepage: https://strumentalmente.github.io/ProjectDocumentation/
+    has_website: true
+    image: https://avatars2.githubusercontent.com/u/62140583?s=400&v=4
+    description: 
+    language: Ruby
+    languages:
+    - Ruby
+    - CSS
   - name: server
     fork: false
     html_url: https://github.com/StrumentalMente/server
@@ -211,6 +222,7 @@ orgs:
     languages:
     - Ruby
     - Shell
+    - CSS
   - name: document-schema
     fork: false
     html_url: https://github.com/AsciiDoc-Publishing-Toolbox/document-schema
