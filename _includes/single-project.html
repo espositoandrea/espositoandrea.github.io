@@ -23,7 +23,7 @@
     <div class="card-footer text-center">
         <div aria-label="Links" class="btn-group d-flex" role="group">
             <a href="{{ include.repository.html_url }}" target="_blank" class="btn btn-primary">Repo</a>
-            {% if include.repository.has_pages %}
+            {% if include.repository.has_website %}
                 <a href="{{include.repository.homepage}}" target="_blank" class="btn btn-secondary">Website</a>
             {% endif %}
         </div>
