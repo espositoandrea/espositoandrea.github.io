@@ -9,12 +9,27 @@ translations:
 ---
 
 <main class="container-fluid p-0" itemscope itemtype="https://schema.org/Person">
-  {% include introduction.html %}
-  {% include education.html %}
-  {% include awards.html %}
-  {% include skills.html %}
-  {% include publications.html %}
-  {% include projects.html %}
-  {% include posts.html %}
+    <section class="resume-section p-3 p-lg-5" id="about">
+        <div class="w-100 container">
+            {% include introduction.html %}
+        </div>
+    </section>
+    <section class="resume-section p-3 p-lg-5" id="education">
+        <div class="w-100 container">
+            {% include education.html %}
+        </div>
+    </section>
+    {% comment %} {% include awards.html %} {% endcomment %}
+    {% comment %} {% include skills.html %} {% endcomment %}
+    <section class="resume-section p-3 p-lg-5" id="publications" itemprop="author">
+        <div class="w-100 container">
+            {% include publications.html %}
+        </div>
+    </section>
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="projects">
+        <div class="w-100 container">
+            {% include projects.html %}
+        </div>
+    </section>
+    {% comment %} {% include posts.html %} {% endcomment %}
 </main>
-

@@ -9,25 +9,9 @@
     <link href="{{ site.baseurl }}/assets/favicon.ico" rel="shortcut icon">
 
     <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet">
-
-    <link href="{{ site.baseurl }}/assets/css/main.css?{{ site.time | date: '%s' }}" rel="stylesheet">
-    <title>Andrea Esposito</title>
-</head>
-
-<body data-spy="scroll" data-target="#main-navigation" id="page-top" data-offset="50">
-    <header>
-        {% include navigation.html %}
-    </header>
-
-    {{content}}
-
-    <footer class="text-center bg-dark pt-5">
-        <div class="text-light py-4" style="background-color: rgba(0, 0, 0, 0.25);">
-            Copyright &copy; 2019, Andrea Esposito.
-        </div>
-    </footer>
-
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+        rel="stylesheet">
+    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -37,6 +21,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+    <link href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s' }}" rel="stylesheet">
+    <title>Andrea Esposito</title>
+</head>
+
+<body data-spy="scroll" data-target="#main-navigation" id="page-top" data-offset="50">
+    <header>
+        {% include navigation.html %}
+    </header>
+
+    {{ content }}
+
+    <footer class="text-center bg-dark pt-5">
+        <div class="text-light py-4" style="background-color: rgba(0, 0, 0, 0.25);">
+            Copyright &copy; 2019&ndash;2020, Andrea Esposito.
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -5,14 +5,14 @@
 
 .resume-section {
   position: relative;
-  &:nth-of-type(odd) {
-    background-size: cover;
-    background-color: $primary;
-    @extend .text-white;
-    a {
-      color: white;
-    }
-  }
+  // &:nth-of-type(even) {
+  //   background-size: cover;
+  //   background-color: $primary;
+  //   @extend .text-white;
+  //   a {
+  //     color: white;
+  //   }
+  // }
   &.overlay::after {
     background-color: black;
     opacity: 0.8;
@@ -37,11 +37,6 @@
 body {
   position: relative;
   padding-top: 50px !important;
-}
-
-section#about {
-  background-image: url('/assets/images/background.jpg');
-  background-position: top center;
 }
 
 html{

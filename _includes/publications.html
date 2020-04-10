@@ -1,44 +1,40 @@
-<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="publications" itemprop="author">
-    <div class="w-100 container">
-        <h2>{{ site.data._strings.publications[page.lang] }}</h2>
+<h2>{{ site.data._strings.publications[page.lang] }}</h2>
 
-        {% assign publications = site.data.publications %}
-        {% for type in publications %}
-            {% assign entry_type = type[0] | downcase | append: 's' %}
-            <h3 id="{{ entry_type }}">{{ site.data._strings[entry_type][page.lang] }}</h3>
-            <div class="card-deck">
-                {% for entry in type[1] %}
-                    <div class="card bg-primary border-primary" itemscope itemtype="https://schema.org/Book">
-                        <div class="card-body">
-                            <p class="h5 card-title" itemprop="name">{{ entry.title }}.
-                                {% if entry.subtitle %}
-                                    {{ entry.subtitle }}.
-                                {% endif %}
-                            </p>
+{% assign publications = site.data.publications %}
+{% for type in publications %}
+    {% assign entry_type = type[0] | downcase | append: 's' %}
+    <h3 id="{{ entry_type }}">{{ site.data._strings[entry_type][page.lang] }}</h3>
+    <ul>
+        {% for entry in type[1] %}
+            <li itemscope itemtype="https://schema.org/Book">
+                <span itemprop="author">{{ entry.author }}</span>
+                (<time itemprop="datePublished" datetime="{{ entry.date }}">{{ entry.date }}</time>),
 
-                            <p class="my-0" itemprop="author">{{ entry.author }}</p>
-                            <p class="font-italic">
-                                <span itemprop="publisher">
-                                    {% if entry.publisher %}
-                                        {{ entry.publisher }},
-                                        {% if entry.address %}
-                                            {{ entry.address }},
-                                        {% endif %}
-                                    {% endif %}
-                                </span>
-                                <time itemprop="datePublished" datetime="{{ entry.date }}">{{ entry.date }}</time>
-                            </p>
-                            {% if entry_type == "books" %}
-                                <p class="mt-2">ISBN:
-                                    <a href="https://www.google.com/search?q={{ entry.isbn }}" target="_blank">
-                                        <span itemprop="isbn">{{ entry.isbn }}</span>
-                                    </a>
-                                </p>
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+                {% if entry.subtitle %}
+                    {% assign title = entry.title | append: '. ' | append: entry.subtitle %}
+                {% else %}
+                    {% assign title = entry.title %}
+                {% endif %}
+
+                &ldquo;<span itemprop="name">{{ title }}</span>&rdquo;.
+
+
+                {% if entry.publisher %}
+                    {% if entry.address %}
+                        {% assign publisher = entry.publisher | append: ' (' | append: entry.address | append: ')' %}
+                    {% else %}
+                        {% assign publisher = entry.publisher %}
+                    {% endif %}
+                    <span class="font-italic" itemprop="publisher">{{ publisher }}</span>.
+                {% endif %}
+
+                {% if entry_type == "books" %}
+                    ISBN:
+                    <a href="https://www.google.com/search?q={{ entry.isbn }}" target="_blank">
+                        <span itemprop="isbn">{{ entry.isbn }}</span>
+                    </a>
+                {% endif %}
+            </li>
         {% endfor %}
-    </div>
-</section>
+    </ul>
+{% endfor %}
