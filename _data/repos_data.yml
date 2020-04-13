@@ -1,12 +1,12 @@
 ---
 espositoandrea:
-- name: CyberSecurity
+- name: APKBackdoor
   fork: false
-  html_url: https://github.com/espositoandrea/CyberSecurity
-  homepage: https://espositoandrea.github.io/CyberSecurity
+  html_url: https://github.com/espositoandrea/APKBackdoor
+  homepage: https://espositoandrea.github.io/APKBackdoor/
   has_website: true
   image: https://repository-images.githubusercontent.com/227552553/45609c80-580d-11ea-906e-671339f67a3e
-  description: 
+  description: A tool to create a backdoor in a functioning APK
   language: Python
   languages:
   - Python
@@ -146,7 +146,7 @@ orgs:
   - name: Emotionally
     fork: false
     html_url: https://github.com/F-S-C/Emotionally
-    homepage: https://fscgroup.ddns.net/emotionally
+    homepage: https://fscgroup.ddns.net/emotionally/
     has_website: true
     image: https://repository-images.githubusercontent.com/223893721/257f5b80-69fc-11ea-94b1-f74884b25c15
     description: A system capable of detecting and analyzing emotions thanks to Affectiva's
