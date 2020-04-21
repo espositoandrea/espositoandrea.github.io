@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
 require 'open-uri'
-require 'opengraph_parser'
+require 'ogp'
 require 'octokit'
 require 'yaml'
+require 'faraday'
 
 def update_profile
   print 'Updating profile picture...'
@@ -15,7 +16,7 @@ def update_profile
 end
 
 def hash_from_repo(repo)
-  repo_metadata = OpenGraph.new(repo.html_url)
+  repo_metadata = OGP::OpenGraph.new(Faraday.get(repo.html_url).body)
   languages_metadata = Octokit.languages(repo.id)
   languages = Hash[languages_metadata.to_hash.map{ |k, v| [k.to_s, v] }]
 
@@ -27,7 +28,7 @@ def hash_from_repo(repo)
       'html_url' => repo.html_url,
       'homepage' => website,
       'has_website' => !website.nil?,
-      'image' => repo_metadata.images[0],
+      'image' => repo_metadata.image.url,
       'description' => repo.description,
       'language' => repo.language,
       'languages' => languages.to_a.sort_by(&:last).reverse.to_h.keys # Force languages to be ordered from most to less used

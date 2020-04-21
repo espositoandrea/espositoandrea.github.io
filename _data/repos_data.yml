@@ -64,16 +64,6 @@ espositoandrea:
   - Python
   - Batchfile
   - Makefile
-- name: NavettaBot
-  fork: false
-  html_url: https://github.com/espositoandrea/NavettaBot
-  homepage: 
-  has_website: false
-  image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
-  description: 
-  language: Kotlin
-  languages:
-  - Kotlin
 - name: rouge
   fork: true
   html_url: https://github.com/espositoandrea/rouge
@@ -117,6 +107,19 @@ espositoandrea:
   languages:
   - C
   - C++
+- name: whatsapp-image-fixer
+  fork: false
+  html_url: https://github.com/espositoandrea/whatsapp-image-fixer
+  homepage: 
+  has_website: false
+  image: https://avatars2.githubusercontent.com/u/23329364?s=400&v=4
+  description: 
+  language: TypeScript
+  languages:
+  - TypeScript
+  - JavaScript
+  - CSS
+  - HTML
 orgs:
   F-S-C:
   - name: Cicerone
@@ -138,7 +141,7 @@ orgs:
     html_url: https://github.com/F-S-C/elearning
     homepage: https://f-s-c.github.io/elearning/
     has_website: true
-    image: https://avatars1.githubusercontent.com/u/45092970?s=400&v=4
+    image: https://repository-images.githubusercontent.com/248219723/daed6680-8421-11ea-8f78-bc92312e8234
     description: 
     language: Ruby
     languages:
@@ -185,31 +188,7 @@ orgs:
     - Java
     - Python
     - HTML
-  StrumentalMente:
-  - name: ProjectDocumentation
-    fork: false
-    html_url: https://github.com/StrumentalMente/ProjectDocumentation
-    homepage: https://strumentalmente.github.io/ProjectDocumentation/
-    has_website: true
-    image: https://avatars2.githubusercontent.com/u/62140583?s=400&v=4
-    description: 
-    language: Ruby
-    languages:
-    - Ruby
-    - CSS
-  - name: server
-    fork: false
-    html_url: https://github.com/StrumentalMente/server
-    homepage: 
-    has_website: false
-    image: https://repository-images.githubusercontent.com/248218665/44a4bd00-6918-11ea-96a8-55b464c2c62b
-    description: 
-    language: Ruby
-    languages:
-    - Ruby
-    - HTML
-    - JavaScript
-    - CSS
+  StrumentalMente: []
   AsciiDoc-Publishing-Toolbox:
   - name: asciidoc_publishing_toolbox
     fork: false
