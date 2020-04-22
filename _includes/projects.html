@@ -1,14 +1,4 @@
 <h2>{{ site.data._strings.projects[page.lang] }}</h2>
 <p>{{ site.data._strings.projects_intro[page.lang] }}</p>
 
-<div class="card-columns">
-    {% for repo in site.data.repos_data.espositoandrea %}
-        {% include single-project.html repository=repo organization=null %}
-    {% endfor %}
-
-    {% for org in site.data.repos_data.orgs %}
-        {% for repo in org[1] %}
-            {% include single-project.html repository=repo organization=org %}
-        {% endfor %}
-    {% endfor %}
-</div>
+{% repositories site.data.repos_data %}
