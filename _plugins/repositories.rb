@@ -49,8 +49,8 @@ module Jekyll
         doc.div(class: 'card') {
           unless organization.nil?
             doc.div(class: "card-header text-muted") {
-              doc.text organization
-              (doc.em { doc.text 'Organization' })
+              doc.text "#{organization} "
+              doc.em { doc.text '(Organization)' }
             }
           end
           doc.img(src: repo_metadata.image.url, class: "card-img-top", alt: repository.name.gsub('-', ' '))
