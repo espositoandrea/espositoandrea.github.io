@@ -1,0 +1,53 @@
+name: Build and Deploy Jekyll
+on:
+  push:
+    branches:
+      - source
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: source
+      
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.5'
+
+      - name: Setup Cache
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install dependencies
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Build
+        run: bundle exec jekyll build
+
+      - name: Commit changes
+        run: |
+          git clone https://espositoandrea:${{ secrets.GITHUB_TOKEN }}@github.com/espositoandrea/espositoandrea.github.io.git --branch master --single-branch master
+          rm -fr master/*
+          cp -r _site/* master/
+          cd master
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update website" -a || true
+          # The above command will fail if no changes were present, so we ignore
+          # that.
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: master
+          directory: master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
