@@ -22,26 +22,18 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <link href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s' }}" rel="stylesheet">
-    
+
     <script type="application/ld+json">
         {% include linked-data.json %}
     </script>
-    
+
     <title>Andrea Esposito</title>
 </head>
 
-<body data-spy="scroll" data-target="#main-navigation" id="page-top" data-offset="50">
-    <header>
-        {% include navigation.html %}
-    </header>
-
+<body data-spy="scroll" data-target="#main-navigation" id="page-top" data-offset="50" 
+    {% if layout.body_class %} class="{{ layout.body_class | join: ' ' }}" {% endif %} 
+    {% if layout.body_style %} style="{{ layout.body_style }}" {% endif %}>
     {{ content }}
-
-    <footer class="text-center bg-dark pt-5">
-        <div class="text-light py-4" style="background-color: rgba(0, 0, 0, 0.25);">
-            Copyright &copy; 2019&ndash;2020, Andrea Esposito.
-        </div>
-    </footer>
 </body>
 
 </html>

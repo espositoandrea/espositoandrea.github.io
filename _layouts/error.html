@@ -1,0 +1,19 @@
+---
+layout: base
+body_class:
+- d-flex
+- flex-column
+body_style: >-
+    height: 100vh;
+    padding-top: 0 !important;
+---
+
+<div class="flex-grow-1 container text-center d-flex align-items-center justify-content-center">
+    <div>
+        <h1 class="display-1">{{ page.error.code }}</h1>
+
+        <p><strong>{{ page.error.message | markdownify }}</strong></p>
+        <p>{{ page.error.description | markdownify }}</p>
+        <a class="btn btn-primary" href="{{ '/' | absolute_url }}">Go to the home page</a>
+    </div>
+</div>
