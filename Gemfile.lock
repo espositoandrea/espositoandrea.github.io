@@ -93,7 +93,7 @@ GEM
       faraday (> 0.8, < 2.0)
     tzinfo (2.0.2)
       concurrent-ruby (~> 1.0)
-    tzinfo-data (1.2019.3)
+    tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
 
 PLATFORMS

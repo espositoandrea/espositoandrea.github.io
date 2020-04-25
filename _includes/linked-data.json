@@ -1,0 +1,34 @@
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "{{ '/' | absolute_url }}",
+    "sameAs": {{ site.data.contacts | map: 'link' | append: '' | join: "," }},
+    "mainEntity": {
+        "@type": "Person",
+        "givenName": "{{ site.author.firstName }}",
+        "familyName": "{{ site.author.surname }}",
+        "honorificPrefix": "{{ site.author.honorificPrefix }}",
+        "email": "{{ site.author.mail }}",
+        "gender": "https://schema.org/Male",
+        "image": "{% profile_pic %}",
+        "jobTitle": "{{ site.author.jobTitle }}",
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Università degli Studi di Bari \"A. Moro\"",
+            "alternateName": "UniBa",
+            "logo": "https://www.uniba.it/immagini/logo-uniba-a-colori"
+        },
+        "knowsLanguage": [
+            {
+                "@type": "Language",
+                "name": "Italian",
+                "alternateName": "it"
+            },
+            {
+                "@type": "Language",
+                "name": "English",
+                "alternateName": "en"
+            }
+        ]
+    }
+}

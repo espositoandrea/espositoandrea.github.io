@@ -10,7 +10,7 @@ module Jekyll
     end
 
     def render(context)
-      data = open('https://github.com/espositoandrea.png').read
+      data = URI.open('https://github.com/espositoandrea.png').read
       "data:image/jpg;base64,#{Base64.strict_encode64 data}"
     end
 

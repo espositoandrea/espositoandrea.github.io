@@ -9,9 +9,8 @@
     <link href="{{ site.baseurl }}/assets/favicon.ico" rel="shortcut icon">
 
     <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-        rel="stylesheet">
-    
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet">
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -22,6 +21,11 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <link href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s' }}" rel="stylesheet">
+    
+    <script type="application/ld+json">
+        {% include linked-data.json %}
+    </script>
+    
     <title>Andrea Esposito</title>
 </head>
 

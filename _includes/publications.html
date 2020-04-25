@@ -6,9 +6,9 @@
     <h3 id="{{ entry_type }}">{{ site.data._strings[entry_type][page.lang] }}</h3>
     <ul>
         {% for entry in type[1] %}
-            <li itemscope itemtype="https://schema.org/Book">
-                <span itemprop="author">{{ entry.author }}</span>
-                (<time itemprop="datePublished" datetime="{{ entry.date }}">{{ entry.date }}</time>),
+            <li>
+                <span>{{ entry.author }}</span>
+                (<time datetime="{{ entry.date }}">{{ entry.date }}</time>),
 
                 {% if entry.subtitle %}
                     {% assign title = entry.title | append: '. ' | append: entry.subtitle %}
@@ -16,7 +16,7 @@
                     {% assign title = entry.title %}
                 {% endif %}
 
-                &ldquo;<span itemprop="name">{{ title }}</span>&rdquo;.
+                &ldquo;<span>{{ title }}</span>&rdquo;.
 
 
                 {% if entry.publisher %}
@@ -25,13 +25,13 @@
                     {% else %}
                         {% assign publisher = entry.publisher %}
                     {% endif %}
-                    <span class="font-italic" itemprop="publisher">{{ publisher }}</span>.
+                    <span class="font-italic">{{ publisher }}</span>.
                 {% endif %}
 
                 {% if entry_type == "books" %}
                     ISBN:
                     <a href="https://www.google.com/search?q={{ entry.isbn }}" target="_blank">
-                        <span itemprop="isbn">{{ entry.isbn }}</span>
+                        <span>{{ entry.isbn }}</span>
                     </a>
                 {% endif %}
             </li>

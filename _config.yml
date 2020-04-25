@@ -48,6 +48,10 @@ defaults:
 
 author:
   name: "Andrea Esposito"
+  firstName: Andrea
+  surname: Esposito
+  honorificPrefix: Mr
+  jobTitle: Student
   mail: "esposito_andrea99@hotmail.com"
 
 # Exclude from processing.

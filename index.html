@@ -8,7 +8,7 @@ translations:
   it: /it/index.html
 ---
 
-<main class="container-fluid p-0" itemscope itemtype="https://schema.org/Person">
+<main class="container-fluid p-0">
     <section class="resume-section p-3 p-lg-5" id="about">
         <div class="w-100 container">
             {% include introduction.html %}
@@ -21,7 +21,7 @@ translations:
     </section>
     {% comment %} {% include awards.html %} {% endcomment %}
     {% comment %} {% include skills.html %} {% endcomment %}
-    <section class="resume-section p-3 p-lg-5" id="publications" itemprop="author">
+    <section class="resume-section p-3 p-lg-5" id="publications">
         <div class="w-100 container">
             {% include publications.html %}
         </div>

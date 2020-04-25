@@ -5,8 +5,8 @@
     <div class="col-auto mb-3 mb-md-0">
         <div class="mb-4">
             <h1 class="mb-0 text-uppercase">
-                <span itemprop="givenName">Andrea</span>
-                <span itemprop="familyName">Esposito</span>
+                <span>Andrea</span>
+                <span>Esposito</span>
             </h1>
             Bachelor&rsquo;s Student of Computer Science
         </div>
@@ -21,9 +21,9 @@
         <!-- <p class="lead mb-3">{{ site.data._strings.about_intro[page.lang] }}</p> -->
         <div class="social-icons">
             {% for contact in site.data.contacts %}
-                <a href="{{ contact.link }}">
+                <a class="mr-2" href="{{ contact.link }}">
                     <span class="sr-only">{{ contact.name }}</span>
-                    <i class="{{ contact.icon }}"></i>
+                    <i class="fa-lg {{ contact.icon }}"></i>
                 </a>
             {% endfor %}
         </div>

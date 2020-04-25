@@ -13,6 +13,14 @@ module Jekyll
     end
 
     def render(context)
+      if ENV['JEKYLL_ENV'] != 'production'
+        return <<~HTML
+          <div>
+            Repository not requested: not in a production environment (<code>JEKYLL_ENV = '#{ENV['JEKYLL_ENV']}'</code>).
+          </div>
+        HTML
+      end
+      
       @repositories = context[@repositories.strip]
       username = "#{context['site.github_username']}"
 
