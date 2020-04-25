@@ -28,8 +28,10 @@ kramdown:
   syntax_highlighter: rouge
 theme: minima
 plugins:
+  - jekyll-asciidoc
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-sitemap
 
 defaults:
   -
