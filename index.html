@@ -3,33 +3,22 @@ layout: default
 lang: en
 permalink: /index.html
 title: "Andrea Esposito"
-translations:
-  en: /index.html
-  it: /it/index.html
 ---
 
-<main class="container-fluid p-0">
-    <section class="resume-section p-3 p-lg-5" id="about">
-        <div class="w-100 container">
-            {% include introduction.html %}
-        </div>
+<main class="container p-0">
+    <section class="p-3 p-lg-5" id="about">
+        {% include introduction.html %}
     </section>
-    <section class="resume-section p-3 p-lg-5" id="education">
-        <div class="w-100 container">
-            {% include education.html %}
-        </div>
+    <section class="p-3 p-lg-5" id="education">
+        {% include education.html %}
     </section>
     {% comment %} {% include awards.html %} {% endcomment %}
     {% comment %} {% include skills.html %} {% endcomment %}
-    <section class="resume-section p-3 p-lg-5" id="publications">
-        <div class="w-100 container">
-            {% include publications.html %}
-        </div>
+    <section class="p-3 p-lg-5" id="publications">
+        {% include publications.html %}
     </section>
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="projects">
-        <div class="w-100 container">
-            {% include projects.html %}
-        </div>
+    <section class="p-3 p-lg-5" id="projects">
+        {% include projects.html %}
     </section>
     {% comment %} {% include posts.html %} {% endcomment %}
 </main>

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <meta name="google-site-verification" content="dhfKLjZs_wpaHCN7Xqfok6Pish0zIgaVjCMFsgEc__0" />
-
+    
     <link href="{{ site.baseurl }}/assets/favicon.ico" rel="shortcut icon">
 
     <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -23,16 +22,14 @@
         crossorigin="anonymous"></script>
     <link href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s' }}" rel="stylesheet">
 
+    {% seo %}
+
     <script type="application/ld+json">
         {% include linked-data.json %}
     </script>
-
-    <title>Andrea Esposito</title>
 </head>
 
-<body data-spy="scroll" data-target="#main-navigation" id="page-top" data-offset="50" 
-    {% if layout.body_class %} class="{{ layout.body_class | join: ' ' }}" {% endif %} 
-    {% if layout.body_style %} style="{{ layout.body_style }}" {% endif %}>
+<body data-spy="scroll" data-target="#main-navigation" id="page-top" data-offset="50" class="d-flex flex-column">
     {{ content }}
 </body>
 
