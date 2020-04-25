@@ -11,7 +11,7 @@ module Jekyll
 
     def render(context)
       data = open('https://github.com/espositoandrea.png').read
-      "data:image/jpg;base64,#{Base64.encode64 data}"
+      "data:image/jpg;base64,#{Base64.strict_encode64 data}"
     end
 
     Liquid::Template.register_tag 'profile_pic', self
