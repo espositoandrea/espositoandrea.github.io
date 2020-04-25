@@ -61,7 +61,7 @@ module Jekyll
               doc.em { doc.text '(Organization)' }
             }
           end
-          doc.img(src: repo_metadata.image.url, class: "card-img-top", alt: repository.name.gsub('-', ' '))
+          doc.img(src: "data:image/jpg;base64,#{Base64.strict_encode64 URI.open(repo_metadata.image.url).read}", class: "card-img-top", alt: repository.name.gsub('-', ' '))
           doc.div(class: 'card-body') {
             doc.h5(class: "card-title") {
               doc.text repository.name.gsub("-", " ")
