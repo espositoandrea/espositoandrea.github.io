@@ -2,7 +2,41 @@
 layout: default
 ---
 
-<article class="container p-3 p-lg-5">
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement":[
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "{{ '/' | absolute_url }}"
+            },
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Blog",
+                "item": "{{ '/blog/' | absolute_url }}"
+            },
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Posts",
+                "item": "{{ '/blog/posts/' | absolute_url }}"
+            },
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "{{ page.title | smartify}}",
+                "item": "{{ page.url | absolute_url }}"
+            }
+        ]
+    }
+</script>
+
+<main>
+    <article class="container p-3 p-lg-5">
         <header class="text-center">
             <h1>{{ page.title | smartify }}</h1>
             <div class="lead">
@@ -16,6 +50,26 @@ layout: default
                     <span class="badge badge-pill badge-primary mx-1">{{ category }}</span>
                 {% endfor %}
             </div>
+            <nav aria-label="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ '/' | absolute_url }}">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ '/blog/' | absolute_url }}">Blog</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ '/blog/posts/' | absolute_url }}">Posts</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/">{{ page.date | date: '%Y'}}</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%m' }}/">{{ page.date | date: '%m'}}</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ page.title | smartify }}</li>
+                </ol>
+            </nav>
             <hr/>
         </header>
         
@@ -24,7 +78,7 @@ layout: default
             {% include toc.html html=content %}
         </aside>
 
-        {{content}}
+        {{ content }}
         
         <footer>
             <hr/>
@@ -35,4 +89,5 @@ layout: default
                 {% endfor %}
             </div>
         </footer>
-</article>
+    </article>
+</main>
