@@ -1,0 +1,26 @@
+---
+layout: default
+lang: en
+---
+
+<main class="container p-3 flex-grow-1">
+    <header>
+        <h1>Archive of posts
+            {{ content | smartify }}</h1>
+        <hr/>
+    </header>
+
+    <ul>
+        {% for post in page.posts %}
+            <li>
+                <a href="{{ post.url | absolute_url }}">
+                    {{ post.title | smartify }}
+                </a>
+                &mdash; Published by
+                <span>{{ post.author }}</span>
+                on
+                <span>{{ post.date | date: "%B %e, %Y" }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</main>

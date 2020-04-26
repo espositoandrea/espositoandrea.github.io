@@ -20,7 +20,24 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate-v2
-  - jekyll-archive
+  - jekyll-archives
+
+jekyll-archives:
+  enabled:
+    - year
+    - month
+    - categories
+    - tags
+  layouts:
+    year: archives/year
+    month: archives/month
+    category: archives/categories-and-tags
+    tag: archives/categories-and-tags
+  permalinks:
+    year: /blog/posts/:year/
+    month: /blog/posts/:year/:month/
+    category: /blog/posts/categories/:name.html
+    tag: /blog/posts/tags/:name.html
 
 permalink: /blog/posts/:year/:month/:title.html
 

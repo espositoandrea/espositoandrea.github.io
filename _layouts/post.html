@@ -15,19 +15,31 @@ layout: default
             },
             {
                 "@type": "ListItem",
-                "position": 1,
+                "position": 2,
                 "name": "Blog",
                 "item": "{{ '/blog/' | absolute_url }}"
             },
             {
                 "@type": "ListItem",
-                "position": 1,
+                "position": 3,
                 "name": "Posts",
                 "item": "{{ '/blog/posts/' | absolute_url }}"
             },
             {
                 "@type": "ListItem",
-                "position": 1,
+                "position": 4,
+                "name": "{{ page.date | date: '%Y'}}",
+                "item": "{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "{{ page.date | date: '%m'}}",
+                "item": "{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 6,
                 "name": "{{ page.title | smartify}}",
                 "item": "{{ page.url | absolute_url }}"
             }
@@ -47,7 +59,9 @@ layout: default
             </div>
             <div class="my-2">
                 {% for category in page.categories %}
-                    <span class="badge badge-pill badge-primary mx-1">{{ category }}</span>
+                    <a href="{{ '/blog/posts/categories/' | absolute_url | append: category }}" class="badge badge-pill badge-primary mx-1">
+                        {{ category }}
+                    </a>
                 {% endfor %}
             </div>
             <nav aria-label="breadcrumbs">
@@ -65,7 +79,7 @@ layout: default
                         <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/">{{ page.date | date: '%Y'}}</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%m' }}/">{{ page.date | date: '%m'}}</a>
+                        <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/">{{ page.date | date: '%m'}}</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">{{ page.title | smartify }}</li>
                 </ol>
@@ -85,7 +99,7 @@ layout: default
             <div class="text-muted">
                 Tags:
                 {% for tag in page.tags %}
-                    <span class="mx-1">#{{ tag }}</span>
+                    <a href="{{ '/blog/posts/tags/' | absolute_url | append: tag }}" class="text-muted mx-1">#{{ tag }}</a>
                 {% endfor %}
             </div>
         </footer>
