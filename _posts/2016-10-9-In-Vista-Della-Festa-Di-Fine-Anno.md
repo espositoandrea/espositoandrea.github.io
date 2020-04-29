@@ -377,6 +377,6 @@ a raggiungere.</p>
 1. _Tiki-Toki_, Il 1800 e il Romanticismo (<a href="http://www.tiki-toki.com/timeline/entry/715066/Il-1800-e-il-Romanticismo/" target="_blank">URL</a>)
 
 ### Immagini
-1. _Wikipedia_, l'enciclopedia libera </em>(<a href="https://it.wikipedia.org" target="_blank">URL</a>)
+1. _Wikipedia, l'enciclopedia libera_ m<a href="https://it.wikipedia.org" target="_blank">URL</a>)
 2. _YouMath_ (<a href="http://www.youmath.it/" target="_blank">URL</a>)
 3. _Università di Trento_ (<a href="http://www.science.unitn.it/" target="_blank">URL</a>)
