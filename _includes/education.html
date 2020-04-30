@@ -1,17 +1,17 @@
-<h2>{{ site.data._strings.education[page.lang] }}</h2>
+<h2>Education</h2>
 <ul>
     {% for edu in site.data.education %}
-        {% capture end_date %}
+        {%- capture end_date -%}
             {% if edu.years.end != '01-01-0000' %}
-                {% include date.html date=edu.years.end mode='short' %}
+                {{ edu.years.end | date: "%b %Y" }}
             {% else %}
-                {{ site.data._strings.present[page.lang] }}
+                Present
             {% endif %}
-        {% endcapture %}
+        {%- endcapture -%}
 
         <li>
             <strong>{{ edu.title[page.lang] | smartify }}</strong>
-            ({% include date.html date=edu.years.start mode='short' %}
+            ({{ edu.years.start | date: "%b %Y" }}
             &ndash;
             {{ end_date | strip }}),
             <em>{{ edu.institute[page.lang] | smartify }}
