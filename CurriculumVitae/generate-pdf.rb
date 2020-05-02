@@ -3,14 +3,19 @@ require "htmlentities"
 require "iso639"
 require "bibtex"
 require "time"
+require 'i18n'
+
+FULL_DATA=YAML.load_file("../_data/curriculum.yml")
+I18n.available_locales = [:en, :it]
+I18n.load_path += Dir[File.expand_path('locales') + '/*.yml']
 
 def translate(str, lang = "it")
-  keys = YAML.load_file("../_data/_strings.yml")
-  return keys[str.downcase][lang.downcase]
+  I18n.locale = lang.downcase.to_sym
+  I18n.t str.downcase
 end
 
 def load_skills
-  skills = YAML.load_file("../_data/skills.yml")
+  skills = FULL_DATA["skills"]
   f = File.new("./common/cs_skills.tex", "w")
   skills.sort_by! { |skill| skill["level"] }.reverse!
   for skill in skills
@@ -59,25 +64,27 @@ def load_languages
 end
 
 def load_bib
-  bib = BibTeX.open("./common/bibliography.bib")
-  f = File.new("../_data/publications.yml", "w")
-  hash = Hash.new { |h, k| h[k] = [] }
-  for entry in bib
-    entry.author = entry.author.gsub(/(.*?), (.*)/, '\2 \1')
-    hash[entry.type.to_s] << (entry.to_hash(:quotes => "").transform_keys! { |k| k.to_s })
+  
+  f = FULL_DATA['publications']
+  f.each do|e|
+    e.transform_keys!(&:to_sym)
+    e[:bibtex_type] = e[:type].to_sym
+    e[:bibtex_key] = e[:key]
+    e.delete :type
+    e.delete :key
   end
-  f.puts hash.to_yaml
-  f.close
+  bib = f.map { |e| BibTeX::Entry.new(**e)}
+  File.open("./common/bibliography.bib", "w") { |f| f.puts bib }
 end
 
 def load_education
-  educationSteps = YAML.load_file("../_data/education.yml")
+  educationSteps = FULL_DATA['education']
   for language in ["it", "en"]
     f = File.new("./#{translate(Iso639[language].to_s, language).capitalize}/education.tex", "w")
     for ed in educationSteps
-      beginTime = Time.parse(ed["years"]["start"])
-      endTime = Time.parse(ed["years"]["end"])
-      endTimeToPrint = if endTime != Time.parse("01-01-0000") then "\\monthname[#{endTime.month}] #{endTime.year}" else translate("present", language).capitalize end
+      beginTime = ed["years"]["start"]
+      endTime = ed["years"]["end"]
+      endTimeToPrint = if endTime != nil then "\\monthname[#{endTime.month}] #{endTime.year}" else translate("present", language).capitalize end
       f.puts "\\cvevent{#{ed["title"][language]}}{#{ed["institute"][language]}}{\\monthname[#{beginTime.month}] #{beginTime.year} -- #{endTimeToPrint}}{#{ed["location"][language]}}"
       f.puts "#{ed["notes"][language].gsub(/<strong>(.*?)<\/strong>/, '\\textbf{\1}')}"
       f.puts("\n\\divider") unless ed.equal? educationSteps.last

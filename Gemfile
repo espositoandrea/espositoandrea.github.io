@@ -35,9 +35,14 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 
 gem "octokit", "~> 4.18"
-
 gem "nokogiri", "~> 1.10"
-
 gem "faraday-http-cache", "~> 2.2"
-
 gem "ogp", "~> 0.4.0"
+
+gem "htmlentities", "~> 4.3"
+
+gem "iso639", "~> 1.3"
+
+gem "bibtex-ruby", "~> 5.1"
+
+gem "i18n", "~> 1.8"

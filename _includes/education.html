@@ -2,7 +2,7 @@
 <ul>
     {% for edu in site.data.education %}
         {%- capture end_date -%}
-            {% if edu.years.end != '01-01-0000' %}
+            {% if edu.years.end != nil %}
                 {{ edu.years.end | date: "%b %Y" }}
             {% else %}
                 Present

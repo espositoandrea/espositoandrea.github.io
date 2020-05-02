@@ -1,0 +1,33 @@
+---
+it:
+  about: Su di me
+  about_intro: 'Sono <span>Andrea Esposito</span>, uno studente di Informatica. Sono
+    uno studente per la laurea triennale in Informatica. Le mie lingue: C++ e <span>L<sup>A</sup>T<sub>E</sub>X</span>.'
+  awards: Premi e certificazioni
+  books: Libri
+  contacts: Contatti
+  education: Istruzione
+  english: Inglese
+  italian: Italiano
+  languages: Lingue
+  life_philosophy: Filosofia di vita
+  life_philosophy_text: Se lo si può pensare, lo si può fare.
+  organization: Organizzazione
+  personal_info: Informazioni personali
+  posts: Post
+  posts_warning: Si noti che i vari post sono scritti in una sola lingua e <em>non</em>
+    saranno tradotti. Si può conoscere in che lingua il post è stato scritto guardando
+    vicino al suo titolo nella seguente lista.
+  present: Presente
+  projects: Progetti
+  projects_intro: 'È qui riportata una lista di progetti <em>open-source</em> a cui
+    ho lavorato. Sono elencati, in ordine, prima i progetti personali poi tutti i
+    progetti di terzi a cui ho preso parte. '
+  publications: Pubblicazioni
+  published: pubblicato il
+  skills: Abilità
+  skills_intro: Sono uno studente di Informatica e amo sfidarmi quotidianamente nell'apprendere
+    nuovi linguaggi di programmazione. Quindi, a volte, mi piace auto-valutare le
+    mie abilità.
+  toc: Indice
+  written_in: Scritto in
