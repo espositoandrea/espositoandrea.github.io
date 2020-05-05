@@ -113,6 +113,7 @@ GEM
     tzinfo-data (1.2020.1)
       tzinfo (>= 1.0.0)
     unicode-display_width (1.7.0)
+    wdm (0.1.1)
 
 PLATFORMS
   ruby
@@ -136,6 +137,7 @@ DEPENDENCIES
   octokit (~> 4.18)
   ogp (~> 0.4.0)
   tzinfo-data
+  wdm (~> 0.1.0)
 
 BUNDLED WITH
    2.1.4
