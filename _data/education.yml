@@ -11,8 +11,8 @@
     start: "25-09-2017"
     end: "01-01-0000"
   notes:
-    it: "Corso di Laurea: <strong>Informatica e Comunicazione Digitale</strong> presso la sede di Taranto dell'Università."
-    en: "Degree course: <strong>Computer Science and Digital Communication</strong> at the University's premises of Taranto."
+    it: "Corso di Laurea: <em>Informatica e Comunicazione Digitale</em> presso la sede di Taranto dell'Università."
+    en: "Degree course: <em>Computer Science and Digital Communication</em> at the University's premises of Taranto."
 - title: 
     it: "Diploma di Maturità Scientifica"
     en: "Scientific High School Diploma"
