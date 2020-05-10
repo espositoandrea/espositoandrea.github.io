@@ -86,7 +86,7 @@ def load_education
       endTime = ed["years"]["end"]
       endTimeToPrint = if endTime != nil then "\\monthname[#{endTime.month}] #{endTime.year}" else translate("present", language).capitalize end
       f.puts "\\cvevent{#{ed["title"][language]}}{#{ed["institute"][language]}}{\\monthname[#{beginTime.month}] #{beginTime.year} -- #{endTimeToPrint}}{#{ed["location"][language]}}"
-      f.puts "#{ed["notes"][language].gsub(/<strong>(.*?)<\/strong>/, '\\textbf{\1}')}"
+      f.puts "#{ed["notes"][language].gsub(/<em>(.*?)<\/em>/, '\\emph{\1}')}"
       f.puts("\n\\divider") unless ed.equal? educationSteps.last
       f.puts ""
     end

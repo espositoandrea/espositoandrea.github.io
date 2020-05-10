@@ -93,7 +93,7 @@
 \newcommand{\phone}[1]{\printinfo{\phonesymbol}{#1}}
 \newcommand{\homepage}[1]{\printinfo{\homepagesymbol}{\href{#1}{#1}}}
 \newcommand{\twitter}[1]{\printinfo{\twittersymbol}{\href{https://twitter.com/@#1}{@#1}}}
-\newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{\href{https://www.linkedin.com/in/#1}{linkedin.com/in/#1}}}
+\newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{\href{https://www.linkedin.com/in/#1}{#1}}}
 \newcommand{\github}[1]{\printinfo{\githubsymbol}{\href{https://github.com/#1}{#1}}}
 \newcommand{\orcid}[1]{\printinfo{\orcidsymbol}{#1}}
 \newcommand{\location}[1]{\printinfo{\locationsymbol}{#1}}
