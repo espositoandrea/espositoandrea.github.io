@@ -66,7 +66,7 @@ end
 def load_bib
   
   f = FULL_DATA['publications']
-  f.each do|e|
+  f.each do |e|
     e.transform_keys!(&:to_sym)
     e[:bibtex_type] = e[:type].to_sym
     e[:bibtex_key] = e[:key]

@@ -1,6 +1,6 @@
 <h2>Education</h2>
 <ul>
-    {% for edu in site.data.education %}
+    {% for edu in site.data.curriculum.education %}
         {%- capture end_date -%}
             {% if edu.years.end != nil %}
                 {{ edu.years.end | date: "%b %Y" }}
