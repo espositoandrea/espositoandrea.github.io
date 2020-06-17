@@ -1,5 +1,11 @@
 sex: M
 birthdate: 1999-08-18
+brief: |
+  Andrea Esposito is a Bachelor's Student of *Computer Science and Digital
+  Communication* at the University of Bari "Aldo Moro".
+  
+  His main interests are in Human-Computer Interaction and Artificial
+  Intelligence.
 education:
   - title:
       it: Studente per la Laurea Triennale in Informatica
