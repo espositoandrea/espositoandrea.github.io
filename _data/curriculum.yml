@@ -1,15 +1,17 @@
 sex: M
 birthdate: 1999-08-18
+title: Bachelor's Degree in Computer Science and Digital Communication
 brief: |
-  Andrea Esposito is a Bachelor's Student of *Computer Science and Digital
+  Andrea Esposito has a Bachelor's Degree in *Computer Science and Digital
   Communication* at the University of Bari "Aldo Moro".
   
   His main interests are in Human-Computer Interaction and Artificial
-  Intelligence.
+  Intelligence. His interests include eXplainable Artificial Intelligence and
+  Human-AI Interaction.
 education:
   - title:
-      it: Studente per la Laurea Triennale in Informatica
-      en: Bachelor's Student of Computer Science
+      it: Laurea in Informatica e Comunicazione Digitale
+      en: Bachelor's Degree in Computer Science and Digital Communication
     institute:
       it: Università degli Studi di Bari "Aldo Moro"
       en: University of Bari "A. Moro"
@@ -18,14 +20,17 @@ education:
       en: Taranto (TA), Italy
     years:
       start: 2017-09-25
-      end: null
+      end: 2020-07-16
     notes:
       it: >-
-        Corso di Laurea: <em>Informatica e Comunicazione Digitale</em>
-        presso la sede di Taranto dell'Università.
+        Laureato con 110/100 e lode con una tesi dal titolo "Rilevazione
+        automatica di UX smell attraverso l'analisi intelligente delle
+        interazioni degli utenti".
       en: >-
-        Degree course: <em>Computer Science and Digital
-        Communication</em> at the University's premises of Taranto.
+        Graduated summa cum laude with a thesis titled "Automatic Detection of
+        UX Smells Through the Intelligent Analysis of Users' Interaction"
+        ("Rilevazione automatica di UX smell attraverso l'analisi intelligente
+        delle interazioni degli utenti").
   - title:
       it: Diploma di Maturità Scientifica
       en: Scientific High School Diploma
@@ -50,34 +55,34 @@ contacts:
     value: esposito-andrea
     icon: fab fa-linkedin-in
     link: https://linkedin.com/in/esposito-andrea/
-publications:
-  - key: esposito:analisi
-    type: book
-    author: Andrea Esposito
-    location: Napoli, IT
-    publisher: Photocity Ed.
-    date: 2018
-    subtitle: Appunti per l'Informatica
-    title: Analisi Matematica
-    isbn: 9788866829201
-  - key: esposito:discreta
-    type: book
-    author: Andrea Esposito
-    location: Napoli, IT
-    publisher: Photocity Ed.
-    date: 2018
-    subtitle: Appunti per l'Informatica
-    title: Matematica Discreta
-    isbn: "9788866829317"
-  - key: esposito:statistica
-    type: book
-    author: Andrea Esposito
-    location: Napoli, IT
-    publisher: Photocity Ed.
-    date: 2019
-    subtitle: Appunti per l'Informatica
-    title: Statistica Matematica
-    isbn: 9788866829676
+publications: null
+  # - key: esposito:analisi
+  #   type: book
+  #   author: Andrea Esposito
+  #   location: Napoli, IT
+  #   publisher: Photocity Ed.
+  #   date: 2018
+  #   subtitle: Appunti per l'Informatica
+  #   title: Analisi Matematica
+  #   isbn: 9788866829201
+  # - key: esposito:discreta
+  #   type: book
+  #   author: Andrea Esposito
+  #   location: Napoli, IT
+  #   publisher: Photocity Ed.
+  #   date: 2018
+  #   subtitle: Appunti per l'Informatica
+  #   title: Matematica Discreta
+  #   isbn: "9788866829317"
+  # - key: esposito:statistica
+    # type: book
+    # author: Andrea Esposito
+    # location: Napoli, IT
+    # publisher: Photocity Ed.
+    # date: 2019
+    # subtitle: Appunti per l'Informatica
+    # title: Statistica Matematica
+    # isbn: 9788866829676
 skills:
   - name: "C/C++"
     level: 85
