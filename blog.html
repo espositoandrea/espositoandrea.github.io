@@ -12,29 +12,9 @@ pagination:
         <h1>{{ page.title | smartify }}</h1>
         <hr />
     </header>
-    <div>
+    <div class="card-columns">
         {% for post in paginator.posts %}
-            <article class="post">
-                <header class="text-center mb-3">
-                    <h2>
-                        <a href="{{ post.url | absolute_url }}">
-                            {{ post.title | smartify }}
-                        </a>
-                    </h2>
-                    <div>
-                        <span>{{ post.author }}</span>
-                        &bullet;
-                        <span>{{ post.date | date: "%B %e, %Y" }}</span>
-                    </div>
-                </header>
-                <div>
-                    {{ post.excerpt | markdownify }}
-                </div>
-                <footer class="text-center">
-                    <a href="{{ post.url | absolute_url }}">Read More</a>
-                </footer>
-            </article>
-            <hr class="w-50"/>
+            {%include post.html post=post %}
         {% endfor %}
     </div>
 

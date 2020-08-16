@@ -1,0 +1,25 @@
+<div class="post-card">
+    {% if post.image %}
+        <a href="{{ post.url | absolute_url }}">
+            <img src="{{ post.image | absolute_url }}" class="card-img-top" alt="" aria-hidden="true">
+        </a>
+    {% endif %}
+    <div class="card-body">
+        <h2 class="card-title">
+            <a href="{{ post.url | absolute_url }}">
+                {{ post.title | smartify }}
+            </a>
+        </h2>
+        <div class="card-text">
+            {{ post.excerpt | markdownify }}
+        </div>
+    </div>
+    <div class="author-data card-footer bg-transparent">
+        <img src="{{ "assets/images/profile.jpg" | absolute_url }}" class="author-thumb" alt="" aria-hidden="true">
+        <div>
+            <span>{{ post.author }}</span>
+            <br>
+            <span class="text-muted">{{ post.date | date: "%B %e, %Y" }}</span>
+        </div>
+    </div>
+</div>

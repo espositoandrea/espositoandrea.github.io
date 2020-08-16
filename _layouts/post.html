@@ -49,21 +49,32 @@ layout: default
 
 <main>
     <article class="container p-3 p-lg-5">
-        <header class="text-center">
-            <h1>{{ page.title | smartify }}</h1>
-            <div class="lead">
-                {{ page.author }}
-            </div>
-            <div class="lead">
-                {{ page.date | date: "%B %e, %Y" }}
-            </div>
-            <div class="my-2">
-                {% for category in page.categories %}
-                    <a href="{{ '/blog/posts/categories/' | absolute_url | append: category }}" class="badge badge-pill badge-primary mx-1">
-                        {{ category }}
-                    </a>
-                {% endfor %}
-            </div>
+        {% if page.image %}
+            <header class="p-5 text-center header-image has-overlay"
+                style="background-image: url({{ page.image | absolute_url }});">
+        {% else %}
+            <header class="text-center">
+        {% endif %}
+                <div>
+                    <h1>{{ page.title | smartify }}</h1>
+                    <div class="lead">
+                        {{ page.author }}
+                    </div>
+                    <div class="lead">
+                        {{ page.date | date: "%B %e, %Y" }}
+                    </div>
+                    <div class="my-2">
+                        {% for category in page.categories %}
+                        <a href="{{ '/blog/posts/categories/' | absolute_url | append: category }}"
+                            class="badge badge-pill badge-primary mx-1">
+                            {{ category }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </header>
+            <hr />
+
             <nav aria-label="breadcrumbs">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -76,32 +87,33 @@ layout: default
                         <a href="{{ '/blog/posts/' | absolute_url }}">Posts</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/">{{ page.date | date: '%Y'}}</a>
+                        <a
+                            href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/">{{ page.date | date: '%Y'}}</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/">{{ page.date | date: '%m'}}</a>
+                        <a
+                            href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/">{{ page.date | date: '%m'}}</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">{{ page.title | smartify }}</li>
                 </ol>
             </nav>
-            <hr/>
-        </header>
-        
-        <aside class="text-left rounded p-3 border bg-light mb-3">
-            <h2>Table of Contents</h2>
-            {% include toc.html html=content %}
-        </aside>
 
-        {{ content }}
-        
-        <footer>
-            <hr/>
-            <div class="text-muted">
-                Tags:
-                {% for tag in page.tags %}
-                    <a href="{{ '/blog/posts/tags/' | absolute_url | append: tag }}" class="text-muted mx-1">#{{ tag }}</a>
-                {% endfor %}
-            </div>
-        </footer>
+            <aside class="text-left rounded p-3 border bg-light mb-3">
+                <h2>Table of Contents</h2>
+                {% include toc.html html=content %}
+            </aside>
+
+            {{ content }}
+
+            <footer>
+                <hr />
+                <div class="text-muted">
+                    Tags:
+                    {% for tag in page.tags %}
+                    <a href="{{ '/blog/posts/tags/' | absolute_url | append: tag }}"
+                        class="text-muted mx-1">#{{ tag }}</a>
+                    {% endfor %}
+                </div>
+            </footer>
     </article>
 </main>

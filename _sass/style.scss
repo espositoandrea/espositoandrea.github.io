@@ -31,3 +31,52 @@ html {
 .katex-display {
   overflow-x: auto;
 }
+
+.post-card {
+  @extend .card;
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .card-text {
+    @extend .text-muted;
+  }
+}
+
+.author-data {
+  font-size: 0.8rem;
+  display: flex;
+  .author-thumb {
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+  }
+}
+
+.header-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.has-overlay {
+  position: relative;
+  z-index: 0;
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    padding: 100px 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(black, 0.5);
+  }
+  & > div {
+    z-index: 1;
+    position: relative;
+    color: white;
+  }
+}
