@@ -1,6 +1,6 @@
 sex: M
 birthdate: 1999-08-18
-title: Bachelor's Degree in Computer Science and Digital Communication
+title: B.Sc. in Computer Science
 brief: |
   Andrea Esposito has a Bachelor's Degree in *Computer Science and Digital
   Communication* at the University of Bari "Aldo Moro".
@@ -9,6 +9,25 @@ brief: |
   Intelligence. His interests include eXplainable Artificial Intelligence and
   Human-AI Interaction.
 education:
+  - title:
+      it: Studente magistrale in Computer Science
+      en: Master's student in Computer Science
+    institute:
+      it: Università degli Studi di Bari "Aldo Moro"
+      en: University of Bari "A. Moro"
+    location:
+      it: Bari (BA), Italy
+      en: Bari (BA), Italy
+    years:
+      start: 2020-09-28
+      end: null
+    notes:
+      it: >-
+        Studente del corso di Laurea Magistrale, offerto in inglese, in
+        "Computer Science" presso l'Università degli Studi di Bari "A. Moro".
+      en: >-
+        Student at the Master's Degree, in English, in "Computer Science" at the
+        University of Bari "A. Moro".
   - title:
       it: Laurea in Informatica e Comunicazione Digitale
       en: Bachelor's Degree in Computer Science and Digital Communication
