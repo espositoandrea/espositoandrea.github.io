@@ -8,6 +8,16 @@ brief: |
   His main interests are in Human-Computer Interaction and Artificial
   Intelligence. His interests include eXplainable Artificial Intelligence and
   Human-AI Interaction.
+experiences:
+  - title: Research assistant
+    institute: University of Bari "A. Moro"
+    location: Bari (BA), Italy
+    years:
+      start: 2020-12-01
+      end: null
+    notes: >-
+      Worked with Prof.ssa Rosa Lanzilotti and Prof. Giuseppe Desolda to
+      increase the stability of the ISO 25000 certified system _eGLU-Box_.
 education:
   - title:
       it: Studente magistrale in Computer Science

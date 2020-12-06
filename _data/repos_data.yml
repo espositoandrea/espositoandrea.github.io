@@ -7,6 +7,3 @@ organizations: # Third-party repositories
   F-S-C:
     - Emotionally
     - StrumentalMente
-  StrumentalMente: []
-  AsciiDoc-Publishing-Toolbox:
-    - asciidoc_publishing_toolbox
