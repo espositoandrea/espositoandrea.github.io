@@ -1,4 +1,4 @@
-<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center" itemscope="" itemtype="https://schema.org/Person">
     <div class="col col-md-3 mb-3 mb-md-0">
         <img alt="Andrea Esposito" class="img-thumbnail rounded-circle" src="{% profile_pic %}">
     </div>
@@ -25,7 +25,8 @@
         </p> -->
         <div class="social-icons">
             {% for contact in site.data.contacts %}
-                <a class="mr-2" href="{{ contact.link }}">
+                <a class="mr-2" href="{{ contact.link }}" rel="me noopener noreferrer"
+                   itemprop="sameAs" content="{{ contact.link }}">
                     <span class="sr-only">{{ contact.name }}</span>
                     <i class="fa-lg {{ contact.icon }}"></i>
                 </a>

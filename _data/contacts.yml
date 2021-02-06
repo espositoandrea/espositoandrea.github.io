@@ -6,3 +6,7 @@
   value: "esposito-andrea"
   icon: "fab fa-linkedin-in"
   link: "https://linkedin.com/in/esposito-andrea/"
+- name: "ORCID"
+  value: "0000-0002-9536-3087"
+  icon: "fab fa-orcid"
+  link: "https://orcid.org/0000-0002-9536-3087"
