@@ -7,16 +7,98 @@ title: "Andrea Esposito"
 
 <main class="container p-0">
     <section class="p-3 p-lg-5" id="about">
-        {% include introduction.html %}
+        <div class="row align-items-center justify-content-center" itemscope="" itemtype="https://schema.org/Person">
+            <div class="col col-md-3 mb-3 mb-md-0">
+                <img alt="Andrea Esposito" class="img-thumbnail rounded-circle" src="{% profile_pic %}">
+            </div>
+            <div class="col-auto mb-3 mb-md-0">
+                <div class="mb-4">
+                    <h1 class="mb-0 text-uppercase">
+                        <span>Andrea</span>
+                        <span>Esposito</span>
+                    </h1>
+                    {{ site.data.curriculum.title | smartify }}
+                </div>
+                <div class="mb-4">
+                    Student at the University of Bari &ldquo;A. Moro&rdquo;
+                <!-- 3542 Berry Street &centerdot; Taranto, IT 74122 &centerdot; XXX XXX XXXX &centerdot; -->
+                </div>
+                <div class="mb-4">
+                    <strong>Email:</strong>
+                    <a href="mailto:{{ site.author.mail }}">{{ site.author.mail }}</a>
+                </div>
+                <div class="social-icons">
+                    {% for contact in site.data.contacts %}
+                        <a class="mr-2" href="{{ contact.link }}" rel="me noopener noreferrer"
+                        itemprop="sameAs" content="{{ contact.link }}">
+                            <span class="sr-only">{{ contact.name }}</span>
+                            <i class="fa-lg {{ contact.icon }}"></i>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </section>
     <section class="p-3 p-lg-5" id="curriculum">
-        {% include curriculum.html %}
+        <h2>Curriculum</h2>
+
+        {{ site.data.curriculum.brief | markdownify }}
     </section>
     <section class="p-3 p-lg-5" id="experiences">
-        {% include experiences.html %}
+        <h2>Experiences</h2>
+        <ul>
+            {% for edu in site.data.curriculum.experiences %}
+                {%- capture end_date -%}
+                    {% if edu.years.end != nil %}
+                        {{ edu.years.end | date: "%b %Y" }}
+                    {% else %}
+                        Present
+                    {% endif %}
+                {%- endcapture -%}
+
+                <li>
+                    <strong>{{ edu.title | smartify }}</strong>
+                    ({{ edu.years.start | date: "%b %Y" }}
+                    &ndash;
+                    {{ end_date | strip }}),
+                    <em>{{ edu.institute | smartify }}
+                        ({{ edu.location | smartify }})</em>.
+                    <div>
+                        {% if edu.notes %}
+                            {{ edu.notes | markdownify }}
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </section>
     <section class="p-3 p-lg-5" id="education">
-        {% include education.html %}
+        <h2>Education</h2>
+        <ul>
+            {% for edu in site.data.curriculum.education %}
+                {%- capture end_date -%}
+                    {% if edu.years.end != nil %}
+                        {{ edu.years.end | date: "%b %Y" }}
+                    {% else %}
+                        Present
+                    {% endif %}
+                {%- endcapture -%}
+
+                <li>
+                    <strong>{{ edu.title[page.lang] | smartify }}</strong>
+                    ({{ edu.years.start | date: "%b %Y" }}
+                    &ndash;
+                    {{ end_date | strip }}),
+                    <em>{{ edu.institute[page.lang] | smartify }}
+                        ({{ edu.location[page.lang] | smartify }})</em>.
+                    <div>
+                        {% if edu.notes %}
+                            {{ edu.notes[page.lang] | smartify }}
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </section>
     {% comment %} {% include awards.html %} {% endcomment %}
     {% comment %} {% include skills.html %} {% endcomment %}
@@ -24,7 +106,14 @@ title: "Andrea Esposito"
         {% include publications.html %}
     </section>
     <section class="p-3 p-lg-5" id="projects">
-        {% include projects.html %}
+        <h2>Projects</h2>
+        <p>
+            Here is a list of some of the <em>open-source</em> projects on which I
+            worked. In the following list are presented both personal projects and
+            projects published under third-party organizations.
+        </p>
+
+        {% repositories site.data.repos_data %}
     </section>
     {% comment %} {% include posts.html %} {% endcomment %}
 </main>
