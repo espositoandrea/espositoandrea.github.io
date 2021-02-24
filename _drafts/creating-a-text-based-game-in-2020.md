@@ -1,6 +1,7 @@
 ---
 author: Andrea Esposito
 title: Creating a Text-Based Game in 2020
+fontfamily: T
 lang: en
 excerpt: >-
   During my Bachelor's studies, I rediscovered some very old games. I'm talking
@@ -33,11 +34,11 @@ text-based videogames.
 Now, I'm not by any means a writer, let alone a game designer, but I still want
 to work on this project. The solution is simple: I'll work on my "framework"
 and I'll try it out by recreating an existing game. More precisely, I've chosen
-to recreate the game ["L'Astronave
-Condannata"](http://www.erix.it/avventure.html) (note that the website and the
-original game are only available in Italian) by [Enrico
-Colombini](http://www.erix.it/index.html), who I emailed to ask permission to
-work on his project.
+to recreate the game
+["L'Astronave Condannata"](http://www.erix.it/avventure.html)
+(note that the website and the original game are only available in Italian) by
+[Enrico Colombini](http://www.erix.it/index.html),
+who I emailed to ask permission to work on his project.
 
 The original game was written in BASIC, an old programming language that dates
 back to the 60s, and was published in 1997.

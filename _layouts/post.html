@@ -56,7 +56,14 @@ layout: default
             <header class="text-center">
         {% endif %}
                 <div>
-                    <h1>{{ page.title | smartify }}</h1>
+                    <h1>
+                        {{ page.title | smartify }}
+                        <a class="ml-3 far fa-file-pdf fa-xs" aria-hidden="true"
+                           href="{{ page.url | replace: '.html', '.pdf' | absolute_url }}"
+                           target="_blank" rel="noopener noreferrer">
+                            <span class="sr-only">Download PDF</span>
+                        </a>
+                    </h1>
                     <div class="lead">
                         {{ page.author }}
                     </div>

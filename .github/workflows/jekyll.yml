@@ -5,7 +5,7 @@ on:
       - source
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,20 +21,37 @@ jobs:
         uses: actions/cache@v1
         with:
           path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          key: ${{ runner.os }}-gems-2-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-gems-
+            ${{ runner.os }}-gems-2-
 
       - name: Install dependencies
         run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
+          sudo apt install pandoc groff -y
 
       - name: Build
         run: bundle exec jekyll build
         env:
           JEKYLL_ENV: production
           JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build posts as PDF
+        run: |
+          [ -d _posts ] || exit
+          for f in _posts/*.md; do
+            filename=${f##_posts/}
+            filename=${filename%%.md}
+            year=`echo $filename | cut -d- -f1`
+            month=`echo $filename | cut -d- -f2`
+            day=`echo $filename | cut -d- -f3`
+            basename=`echo $filename | cut -d- -f4-`
+            sed 's/\(\[.*\](.*)\){.*}/\1/g;s/excerpt:/abstract:/;s/tags:/keywords:/' "$f" | \
+              sed 's/## /# /;s/### /## /;s/#### /### /;s/##### /#### /;s/###### /##### /' | \
+              pandoc - -f markdown -t ms -s | \
+              groff -Tpdf -mspdf > "_site/blog/posts/$year/$month/${basename%%.md}.pdf"
+          done
 
       - name: Commit changes
         run: |
