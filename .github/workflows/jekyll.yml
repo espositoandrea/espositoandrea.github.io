@@ -58,6 +58,7 @@ jobs:
           git clone https://espositoandrea:${{ secrets.GITHUB_TOKEN }}@github.com/espositoandrea/espositoandrea.github.io.git --branch master --single-branch master
           rm -fr master/*
           cp -r _site/* master/
+          cp -r .well-known master/ # for brave verification
           cd master
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"

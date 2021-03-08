@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: espositoandrea.github.io
+Token: 6d052d211dadfab6c1050a752d3ecc40fb24d23398c56147402474cb413daba0
