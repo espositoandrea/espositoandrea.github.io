@@ -4,10 +4,8 @@ me: # My personal repositories
   - Make-to-Batch
   - Turing-Machine-Executor
   - simpli
+  - Bachelor-Thesis
 organizations: # Third-party repositories
   F-S-C:
     - Emotionally
     - StrumentalMente
-  emotionally-fsc:
-    - server
-    - cli
