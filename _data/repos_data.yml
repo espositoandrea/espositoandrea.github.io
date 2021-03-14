@@ -3,7 +3,11 @@ me: # My personal repositories
   - APKBackdoor
   - Make-to-Batch
   - Turing-Machine-Executor
+  - simpli
 organizations: # Third-party repositories
   F-S-C:
     - Emotionally
     - StrumentalMente
+  emotionally-fsc:
+    - server
+    - cli
