@@ -80,3 +80,7 @@ html {
     color: white;
   }
 }
+
+p + ul {
+	margin-top: -1rem;
+}
