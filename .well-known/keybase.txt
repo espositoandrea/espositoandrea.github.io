@@ -1,0 +1,73 @@
+==================================================================
+https://keybase.io/espositoandrea
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://espositoandrea.github.io
+  * I am espositoandrea (https://keybase.io/espositoandrea) on keybase.
+  * I have a public key with fingerprint 61D2 174C D0EF 942A 42DA  5A8A 03F9 7C78 F13F 4F08
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01011cd6bae66b39c7e13188076d953fc543948f0403f2ba081583c6b219ae234fa80a",
+      "fingerprint": "61d2174cd0ef942a42da5a8a03f97c78f13f4f08",
+      "host": "keybase.io",
+      "key_id": "03f97c78f13f4f08",
+      "kid": "01011cd6bae66b39c7e13188076d953fc543948f0403f2ba081583c6b219ae234fa80a",
+      "uid": "9425b7d02db85c4992551cb403b5c119",
+      "username": "espositoandrea"
+    },
+    "service": {
+      "hostname": "espositoandrea.github.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1619823156,
+  "expire_in": 157680000,
+  "prev": "25ac251ae19cb1eaf75fdfa0c75288f177876c989002cd86b87287c1997e967c",
+  "seqno": 6,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtkm1QVFUYx3d5E5DAcEdMI+OaFC/BPff9Ii+DmQFiifFiiqz35dzliuzd9l42
+QGDWmTRFiAJSGtCZZooRRQYkJUcUAwcqpwSEiRxwmsap0TIIh4HNVrqr+ak+9unM
+Oef//z3/55nng6e8DYFGb1dF6R8pb/gbr93hDbtrqhP3IbwiliEJ+5Ai+OiAe0Wo
+auYiWUQSEBSgAAgixXOQonicFWgIcMAwKE2JLIlLAkngLMFIKIHiEsZzKANIBhco
+HgMsBzGckDgG5ZBYRJKtFmi32WWrpmMpIGKAJgQRhRJLYByBiRzJMZwOYWmBZiSA
+S4SEMrqxUFE9Dj0cz6kwTlb0N/1ifhzv3/r/OXfJI5yekeRpEcVEniEFgmUxkgQC
+r5t5UgCA9QhVaLdyxVBXQ9WmqLKmcFbRDjmkMhbR/xyyAD3j9fTzn7o4i6wVlvCP
+O7TZFU0RlL26qlDTbGqCh6KV2Ty2dyBv/gdo5mWrqE9WdzigXZUVK5IAdKWgyZ4K
+gAIsg+GApGIRWGqT7dAsexQkTTEougdFPYWgQ2diJCdgJOAgYAUeQE6iSUmUOFSg
+SYzRx0vTDE0JLMOiKCaIDMUzNMbQAmBZGrIULSCeHt+2KkiCXkrjLDpSlS1WTiux
+Q6Qy8LAX7mMwBhrCV0T4cKNhmcPTjdEbbu6ofrKNvl6eVTQEBix78pI3EOJecyhs
+wicmS+uIWXj6LP59i/N44PBpy6bs0Ac9s76mKz51cvmxP9WYvqW5Jx2lfruu3h/5
+GIHXu40zBV+cTOta/lvvlCnxftY924HODVVR3st9I6dX5Z1usJgd7umfQjv8unsb
+NjcT2uiH1FU7cSftAJoffIpe+OqH/prBc0tzu3vPuyb8Fd/K94IqMl6ZV0YsqaaR
+5iDTyrS2iqnkE+l3ttccIaZnuPxBv5Dw2Lms3JDySaHda08j8rpfW9D+T5hVPWdP
+HenLjBh8d92V5Oz1DRkD46PmAFBhqLXsz7SMd1/8ceF82ha39+rk4NfK+wNGQyvj
+PkPGbC5n2/hHTWe+gS9dtxV867yhNjkbexxbKyzp8WvHQty3jqVGWFZ0LUtPuVE9
+9nlO66Lp54wzhrmo1kXwl9eSkReAan/TP/JwfVJV+IO6c66mxtt+7Ne1ZFPnVmdV
+0dD7d+fCuuq5TzOYnEMX4o8zZVVacH12TXOx09AyP1ZfzEze7nKv2Xhz1/aGl3Na
+E8FMyraJ5JbVnZfmBlLnjL/2XJxah/W5o4aeL7sV/1w0qx7c/UvS+iVEEOGuqz0R
+cBT1f+vLZy65xpPcB7O7Hm4b2FgbGTfok5tnnO3fsXOiaOV3l4e8pgsu7Jwf7mhf
+vHz39y0BxaaiZ+G1o/nwxdmQyU3F0Q8rXRGZfeOb761tf3Xqbw==
+=oZGg
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/espositoandrea
+
+==================================================================
+
