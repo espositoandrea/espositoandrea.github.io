@@ -59,6 +59,7 @@ jobs:
           rm -fr master/*
           cp -r _site/* master/
           cp -r .well-known master/ # for brave verification
+          curl https://keybase.io/espositoandrea/pgp_keys.asc > master/pgp.asc
           cd master
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
