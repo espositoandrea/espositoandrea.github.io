@@ -20,6 +20,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate-v2
   - jekyll-archives
+  - jekyll-scholar
 
 jekyll-archives:
   enabled:
