@@ -22,6 +22,11 @@ plugins:
   - jekyll-archives
   - jekyll-scholar
 
+scholar:
+  style: apa
+  bibliography_template: "{{ reference | replace_first: 'Esposito, A.', '<strong>Esposito, A.</strong>' }}"
+
+
 jekyll-archives:
   enabled:
     - year
