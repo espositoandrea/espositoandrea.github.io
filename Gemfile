@@ -26,6 +26,7 @@ group :jekyll_plugins do
   gem "jekyll-paginate-v2"
   gem "jekyll-archives"
   gem 'jekyll-scholar'
+  gem "jekyll-regex-replace", "~> 1.1"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

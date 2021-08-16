@@ -21,10 +21,11 @@ plugins:
   - jekyll-paginate-v2
   - jekyll-archives
   - jekyll-scholar
+  - jekyll-regex-replace
 
 scholar:
   style: apa
-  bibliography_template: "{{ reference | replace_first: 'Esposito, A.', '<strong>Esposito, A.</strong>' }}"
+  bibliography_template: "{{ reference | replace_first: 'Esposito, A.', '<strong>Esposito, A.</strong>' | regex_replace: 'https?://doi.org/(.*?)$', 'DOI: <a href=\"https://doi.org/\\1\" target=\"_blank\">\\1</a>' }}"
 
 
 jekyll-archives:
