@@ -39,11 +39,8 @@ gem "octokit", "~> 4.18"
 gem "nokogiri", "~> 1.11"
 gem "faraday-http-cache", "~> 2.2"
 gem "ogp", "~> 0.4.0"
-
 gem "htmlentities", "~> 4.3"
-
 gem "iso639", "~> 1.3"
-
 gem "bibtex-ruby", "~> 5.1"
-
 gem "i18n", "~> 1.8"
+gem "webrick", "~> 1.7"
