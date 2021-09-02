@@ -25,7 +25,7 @@ plugins:
 
 scholar:
   style: apa
-  bibliography_template: "{{ reference | replace_first: 'Esposito, A.', '<strong>Esposito, A.</strong>' | regex_replace: 'https?://doi.org/(.*?)$', 'DOI: <a href=\"https://doi.org/\\1\" target=\"_blank\">\\1</a>' }}"
+  bibliography_template: "{{ reference | replace_first: 'Esposito, A.', '<strong>Esposito, A.</strong>' | regex_replace: 'https?://doi.org/(.*?)</span>$', 'DOI: <a href=\"https://doi.org/\\1\" target=\"_blank\">\\1</a></span>' }}"
 
 
 jekyll-archives:
