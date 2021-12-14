@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="84.100082mm"
+   height="84.41967mm"
+   viewBox="0 0 84.100082 84.419669"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="logo-black.svg"
+   inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1136"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.2326583"
+     inkscape:cx="145.21461"
+     inkscape:cy="172.79728"
+     inkscape:window-width="1312"
+     inkscape:window-height="788"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg5" />
+  <defs
+     id="defs2">
+    <style
+       id="style2">.cls-1{fill:#231f20;}</style>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter7103"
+       x="-0.050125402"
+       y="-0.050125197"
+       width="1.1002508"
+       height="1.1044275">
+      <feFlood
+         flood-opacity="0.65098"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood7093" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite7095" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="30"
+         result="blur"
+         id="feGaussianBlur7097" />
+      <feOffset
+         dx="1.38778e-16"
+         dy="6"
+         result="offset"
+         id="feOffset7099" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite7101" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter7445"
+       x="-0.041771168"
+       y="-0.041770998"
+       width="1.0835423"
+       height="1.0877191">
+      <feFlood
+         flood-opacity="0.65098"
+         flood-color="rgb(255,255,255)"
+         result="flood"
+         id="feFlood7435" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="out"
+         result="composite1"
+         id="feComposite7437" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="25"
+         result="blur"
+         id="feGaussianBlur7439" />
+      <feOffset
+         dx="1.38778e-16"
+         dy="6"
+         result="offset"
+         id="feOffset7441" />
+      <feComposite
+         in="offset"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite2"
+         id="feComposite7443" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter7745"
+       x="-0.097909478"
+       y="-0.099267821"
+       width="1.1958153"
+       height="1.2070806">
+      <feFlood
+         flood-opacity="0.501961"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood7735" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite7737" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="20"
+         result="blur"
+         id="feGaussianBlur7739" />
+      <feOffset
+         dx="1.38778e-16"
+         dy="6"
+         result="offset"
+         id="feOffset7741" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite7743" />
+    </filter>
+  </defs>
+  <g
+     id="layer1"
+     transform="matrix(1.9954397,0,0,1.9954397,-120.88381,-168.79068)">
+    <path
+       id="path885"
+       style="fill:none;stroke:#000000;stroke-width:43.406;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 664.36606,251.88207 367.72142,601.97174 664.36606,952.06149 M 367.72142,601.97174 H 1079.6341 L 774.28662,251.88207 v 702.17114"
+       transform="matrix(0.05321451,0,0,0.05321451,43.146068,73.573871)" />
+  </g>
+</svg>
