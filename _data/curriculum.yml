@@ -12,8 +12,7 @@ brief: |
   Intelligence. His interests include eXplainable Artificial Intelligence and
   Human-AI Interaction.
 experiences:
-  -
-    title: INTERACT 2021 Technical Support
+  - title: INTERACT 2021 Technical Support
     years:
       start: 2021.08.31
       end: 2021.09.03
@@ -29,9 +28,10 @@ experiences:
       start: 2020-12-01
       end: 2021-09-30
     notes: |-
-      Employed on the project "eGLU-Box": an ISO 25000-certified system to aid
-      the evaluation of websites' usability following the eGLU protocol (a
-      usability testing framework and standard). The major duties regarded:
+      Employed on the project [eGLU-Box](https://atc.mise.gov.it/index.php/tecnologie-delle-comunicazioni/ricerca/accessibilita-e-usabilita/eglu-box-pa):
+      an ISO 25000-certified system to aid the evaluation of websites'
+      usability following the eGLU protocol (a usability testing framework and
+      standard). The major duties regarded:
 
       * the design, implementation, and documentation of a "reverse proxy" to
         be used in eGLU-Box using Laravel (PHP);
