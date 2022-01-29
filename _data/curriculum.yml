@@ -12,6 +12,17 @@ brief: |
   Intelligence. His interests include eXplainable Artificial Intelligence and
   Human-AI Interaction.
 experiences:
+  -
+    title: INTERACT 2021 Technical Support
+    years:
+      start: 2021.08.31
+      end: 2021.09.03
+    institute: Consulta Umbria
+    location: INTERACT 2021 (Bari)
+    notes:
+      en: |-
+        Provided technical support and management of the audio-video systems
+        for the [INTERACT 2021 conference](https://www.interact2021.org).
   - title: Early Stage Researcher
     institute: University of Bari "A. Moro"
     location: Bari (BA), Italy
