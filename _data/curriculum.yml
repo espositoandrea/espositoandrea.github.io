@@ -20,7 +20,7 @@ experiences:
     location: INTERACT 2021 (Bari)
     notes:
       Provided technical support and managed the audio-video systems
-      at the [INTERACT 2021 conference](https://www.interact2021.org).
+      at the [INTERACT 2021 conference](https://www.interact2021.org){:target="_blank"}.
   - title: Early Stage Researcher
     institute: University of Bari "A. Moro"
     location: Bari (BA), Italy
@@ -28,17 +28,17 @@ experiences:
       start: 2020-12-01
       end: 2021-09-30
     notes: |-
-      Employed on the project [eGLU-Box](https://atc.mise.gov.it/index.php/tecnologie-delle-comunicazioni/ricerca/accessibilita-e-usabilita/eglu-box-pa):
+      Employed on the project [eGLU-Box](https://atc.mise.gov.it/index.php/tecnologie-delle-comunicazioni/ricerca/accessibilita-e-usabilita/eglu-box-pa){:target="_blank"}:
       an ISO 25000-certified system to aid the evaluation of websites'
-      usability following the eGLU protocol (a usability testing framework and
+      usability following the [eGLU protocol](https://docs.italia.it/italia/designers-italia/design-linee-guida-docs/it/stabile/doc/user-research/usabilita.html#protocollo-eglu-lg-per-la-realizzazione-di-test-di-usabilita){:target="_blank"} (a usability testing framework and
       standard). The major duties regarded:
 
       * the design, implementation, and documentation of a "reverse proxy" to
-        be used in eGLU-Box using Laravel (PHP);
+        be used in eGLU-Box using [Laravel](https://laravel.com){:target="_blank"} (PHP);
       * the evaluation (and refactoring) of various components of the system.
 
       During this period, multiple research activities (that are leading to
-      various publications) were started.
+      various publications: check the [publications' section](#publications)) were started.
 education:
   - title:
       it: Studente magistrale in Computer Science
