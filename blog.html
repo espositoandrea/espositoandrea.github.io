@@ -8,9 +8,13 @@ pagination:
 ---
 
 <main class="container p-3 flex-grow-1">
-    <header>
-        <h1>{{ page.title | smartify }}</h1>
-        <hr />
+    <header class="d-flex align-items-center" style="flex: 1;flex-wrap: wrap;">
+        <h1 class="flex-grow-1">{{ page.title | smartify }}</h1>
+	<a href="{{ '/feed.xml' | absolute_url }}" class="btn btn-link">
+    	    <span class="fas fa-rss" aria-hidden="true" title="Open RSS feed"></span>
+    	    <span class="sr-only">Open RSS feed</span>
+        </a>
+        <hr class="w-100 flex-grow-1">
     </header>
     <div class="card-columns">
         {% for post in paginator.posts %}
