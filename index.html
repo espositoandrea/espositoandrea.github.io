@@ -20,7 +20,24 @@ title: "Andrea Esposito"
                     {{ site.data.curriculum.title | smartify }}
                 </div>
                 <div class="mb-4">
-                    Student at the University of Bari &ldquo;A. Moro&rdquo;
+			<div>
+				{{ site.data.curriculum.affiliation.position | smartify }}
+			</div>
+			<div>
+				<a href="{{ site.data.curriculum.affiliation.laboratory.url | smartify }}" target="_blank">
+				{{ site.data.curriculum.affiliation.laboratory.name | smartify }}
+				</a>
+			</div>
+			<div>
+				<a href="{{ site.data.curriculum.affiliation.department.url | smartify }}" target="_blank">
+				{{ site.data.curriculum.affiliation.department.name | smartify }}
+				</a>
+			</div>
+			<div>
+				<a href="{{ site.data.curriculum.affiliation.institution.url | smartify }}" target="_blank">
+				{{ site.data.curriculum.affiliation.institution.name | smartify }}
+				</a>
+			</div>
                 <!-- 3542 Berry Street &centerdot; Taranto, IT 74122 &centerdot; XXX XXX XXXX &centerdot; -->
                 </div>
                 <div class="mb-4">
@@ -43,9 +60,15 @@ title: "Andrea Esposito"
         <h2>Curriculum</h2>
 
         {{ site.data.curriculum.brief | markdownify }}
+	He is a member of: 
+	{% for membership in site.data.curriculum.memberships %}
+	<a href="{{ membership.url }}" target="_blank">
+		{{ membership.short }}
+	</a> ({{ membership.institution }})
+	since {{ membership.since | date: "%B %Y" }}{% endfor %}.
     </section>
-    <section class="p-3 p-lg-5" id="experiences">
-        <h2>Experiences</h2>
+    <section class="p-3 p-lg-5" id="experience">
+        <h2>Experience</h2>
         <ul>
             {% for edu in site.data.curriculum.experiences %}
                 {%- capture end_date -%}
@@ -61,7 +84,12 @@ title: "Andrea Esposito"
                     ({{ edu.years.start | date: "%b %Y" }}
                     &ndash;
                     {{ end_date | strip }}),
-                    <em>{{ edu.institute | smartify }}
+                    <em>
+			    {% if edu.institute.url %}
+				    <a target="_blank" href="{{ edu.institute.url }}">{{ edu.institute.name | smartify }}</a>
+			    {% else %}
+				    {{ edu.institute | smartify }}
+			    {% endif %}
                         ({{ edu.location | smartify }})</em>.
                     <div>
                         {% if edu.notes %}
@@ -85,15 +113,20 @@ title: "Andrea Esposito"
                 {%- endcapture -%}
 
                 <li>
-                    <strong>{{ edu.title[page.lang] | smartify }}</strong>
+                    <strong>{{ edu.title | smartify }}</strong>
                     ({{ edu.years.start | date: "%b %Y" }}
                     &ndash;
                     {{ end_date | strip }}),
-                    <em>{{ edu.institute[page.lang] | smartify }}
-                        ({{ edu.location[page.lang] | smartify }})</em>.
+                    <em>
+			    {% if edu.institute.url %}
+				    <a target="_blank" href="{{ edu.institute.url }}">{{ edu.institute.name | smartify }}</a>
+			    {% else %}
+				    {{ edu.institute | smartify }}
+			    {% endif %}
+                        ({{ edu.location | smartify }})</em>.
                     <div>
                         {% if edu.notes %}
-                            {{ edu.notes[page.lang] | smartify }}
+                            {{ edu.notes | smartify }}
                         {% endif %}
                     </div>
                 </li>
