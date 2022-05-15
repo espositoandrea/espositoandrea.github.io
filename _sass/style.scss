@@ -6,7 +6,41 @@
 body {
   position: relative;
   min-height: 100vh;
-  padding-top: 50px !important;
+  // padding-top: 50px !important;
+  color: unset !important;
+  background-color: unset !important;
+}
+
+@media (prefers-color-scheme: dark){
+	$primary-darkmode: desaturate(lighten($primary, 15%), 25%);
+	a {
+		color: $primary-darkmode !important;
+	}
+	.btn-secondary {
+		color: white !important;
+	}
+	.btn-primary {
+		color: white !important;
+		background-color: $primary-darkmode;
+		border-color: $primary-darkmode;
+	}
+
+	.navbar-light .navbar-brand {
+		color: unset !important;
+	}
+	.navbar-light * {
+		color: unset !important;
+	}
+	.bg-light {
+		color: unset !important;
+		background-color: inherit !important;
+	}
+	.card {
+		background-color: rgba(255, 255, 255, 0.1) !important;
+	}
+	.text-muted {
+		color: lighten(#6c757d, 20%) !important;
+	}
 }
 
 html {
