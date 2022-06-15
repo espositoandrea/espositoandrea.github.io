@@ -126,7 +126,7 @@ title: "Andrea Esposito"
                         ({{ edu.location | smartify }})</em>.
                     <div>
                         {% if edu.notes %}
-                            {{ edu.notes | smartify }}
+                            {{ edu.notes | markdownify }}
                         {% endif %}
                     </div>
                 </li>
