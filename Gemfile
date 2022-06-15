@@ -36,7 +36,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 
-gem "octokit", "~> 4.18"
+gem "octokit", "~> 4.25"
 gem "nokogiri", "~> 1.12"
 gem "faraday-http-cache", "~> 2.2"
 gem "ogp", "~> 0.4.0"
