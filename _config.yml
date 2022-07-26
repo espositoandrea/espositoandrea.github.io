@@ -1,8 +1,7 @@
 title: Andrea Esposito
 description: >-
   Andrea Esposito's website and blog.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://espositoandrea.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog url: "https://espositoandrea.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 canonical_url: "https://espositoandrea.github.io/"
 repository: "espositoandrea/espositoandrea.github.io"
 github_username: espositoandrea
@@ -25,7 +24,7 @@ plugins:
 
 scholar:
   style: association-for-computing-machinery
-  bibliography_template: "{{ reference | replace_first: 'Esposito, A.', '<strong>Esposito, A.</strong>' | regex_replace: '>\\[\\d+?\\]', '>' | regex_replace: 'https?://doi.org/(.*?)</span>$', '<a href=\"https://doi.org/\\1\" target=\"_blank\">\\1</a></span>' | regex_replace: 'https?://ceur-ws.org/(.*?)</span>$', 'URL: <a href=\"https://ceur-ws.org/\\1\" target=\"_blank\">CEUR-WS.org/\\1</a></span>' }}"
+  bibliography_template: "{{ reference | replace_first: 'Andrea Esposito', '<strong>Andrea Esposito</strong>' | regex_replace: '>\\[\\d+?\\]', '>' | regex_replace: 'https?://doi.org/(.*?)</span>$', '<a href=\"https://doi.org/\\1\" target=\"_blank\">\\1</a></span>' | regex_replace: 'https?://ceur-ws.org/(.*?)</span>$', 'URL: <a href=\"https://ceur-ws.org/\\1\" target=\"_blank\">CEUR-WS.org/\\1</a></span>' }}"
 
 
 jekyll-archives:
