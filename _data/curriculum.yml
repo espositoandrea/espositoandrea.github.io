@@ -1,9 +1,9 @@
 sex: M
 birthdate: 1999-08-18
-title: M.Sc. in Computer Science
+title: Ph.D. Student
 affiliation:
   institution: 
-    name: University of Bari "Aldo Moro"
+    name: University of Bari Aldo Moro
     url: https://uniba.it
   department:
     name: Department of Computer Science
@@ -14,17 +14,19 @@ affiliation:
   address: Via Orabona, 4, 70125 Bari (BA), Italy
 brief: |
   Andrea Esposito has a Bachelor's Degree in *Computer Science and Digital
-  Communication* at the University of Bari "Aldo Moro".  He is a scholarship
-  researcher at the University of Bari, working on the ISO 25000-certified
-  project "[eGLU-Box
+  Communication* and a Master's Degree in *Computer Science (Artificial
+  Intelligence), both at the University of Bari Aldo Moro. Currently, he
+  started his Ph.D. in the same University. He was a scholarship researcher at
+  the University of Bari, working on the ISO 25000-certified project "[eGLU-Box
   PA](https://atc.mise.gov.it/index.php/tecnologie-delle-comunicazioni/ricerca/accessibilita-e-usabilita/eglu-box-pa){:target="_blank"}",
   on the Human-Centred AI project
   "[SERENE](https://uxsad.github.io){:target="_blank"}", as well as in other
   research activities. 
   
-  His main interests are in Human-Computer Interaction and Artificial
-  Intelligence. His interests include eXplainable Artificial Intelligence and
-  Human-AI Interaction.
+  The focus of his Ph.D. is in Human-Centred Artificial Intelligence. His main
+  interests are in Human-Computer Interaction and Artificial Intelligence. His
+  interests include eXplainable Artificial Intelligence and Human-AI
+  Interaction.
 memberships:
   - institution: Association for Computing Machinery
     short: ACM
@@ -77,6 +79,17 @@ experiences:
       During this period, multiple research activities (that are leading to
       various publications: check the [publications' section](#publications)) were started.
 education:
+  - title: Ph.D. in Computer Science
+    institute:
+      name: University of Bari "Aldo Moro"
+      url: https://uniba.it
+    location: Bari (BA), Italy
+    years:
+      start: 2022-10-01
+      end: null
+    notes: >-
+      Topic of the Ph.D.: "Human-Centred Artificial Intelligence Techniques for
+      Supporting End-Users Interaction with AI Systems".
   - title: Master's Degree in Computer Science - Artificial Intelligence
     institute:
       name: University of Bari "Aldo Moro"
