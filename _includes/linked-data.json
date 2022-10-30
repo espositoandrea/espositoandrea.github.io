@@ -5,7 +5,7 @@
     "honorificPrefix": "{{ site.author.honorificPrefix }}",
     "email": "{{ site.author.mail }}",
     "gender": "https://schema.org/Male",
-    "image": "{% profile_pic %}",
+    "image": "{{ "/assets/images/profile.png" | absolute_url }}",
     "jobTitle": "{{ site.author.jobTitle }}",
     "alumniOf": {
         "@type": "EducationalOrganization",
