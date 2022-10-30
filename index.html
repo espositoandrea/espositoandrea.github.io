@@ -60,12 +60,13 @@ title: "Andrea Esposito"
         <h2>Curriculum</h2>
 
         {{ site.data.curriculum.brief | markdownify }}
-	He is a member of: 
+	<p>He is a member of: 
 	{% for membership in site.data.curriculum.memberships %}
 	<a href="{{ membership.url }}" target="_blank">
 		{{ membership.short }}
 	</a> ({{ membership.institution }})
 	since {{ membership.since | date: "%B %Y" }}{% endfor %}.
+    </p>
     </section>
     <section class="p-3 p-lg-5" id="experience">
         <h2>Experience</h2>
