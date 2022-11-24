@@ -33,16 +33,30 @@ memberships:
     url: https://www.acm.org
     since: 2022-05-01
 experiences:
+  - title: Visiting Researcher
+    years:
+      start: 2022-06-08
+      end: 2022-07-08
+    institute:
+      name: Ludwig-Maximillian Universität
+      url: https://www.lmu.de/en/index.html
+    location: Munich, Bavaria, Germany
+    notes: |-
+      Collaborating as a visiting researcher to a project by the European
+      Network of Human-Centered Artificial Intelligence
+      "[Humane-AI](https://www.humane-ai.eu)" titled "[Making for Everyone:
+      Interactive, voice-based support for the design of 3D objects for digital
+      fabrication](https://www.humane-ai.eu/project/making-for-everyone-interactive-voice-based-support-for-the-design-of-3d-objects-for-digital-fabrication/)"
+      (WP3).
   - title: INTERACT 2021 Technical Support
     years:
       start: 2021-10-01
       end: 2021-11-30
-    institute: Consulta Umbria
     institute:
       name: Consulta Umbria
       url: https://www.consultaumbria.com
     location: INTERACT 2021 (Bari)
-    notes:
+    notes: |-
       Provided technical support for post-event activities for the [INTERACT
       2021 international
       conference](https://www.interact2021.org){:target="_blank"}.
@@ -50,12 +64,11 @@ experiences:
     years:
       start: 2021-08-31
       end: 2021-09-03
-    institute: Consulta Umbria
     institute:
       name: Consulta Umbria
       url: https://www.consultaumbria.com
     location: INTERACT 2021 (Bari)
-    notes:
+    notes: |-
       Provided technical support and managed the audio-video systems
       at the [INTERACT 2021 international conference](https://www.interact2021.org){:target="_blank"}.
   - title: Early Stage Researcher
