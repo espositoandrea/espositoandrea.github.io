@@ -75,7 +75,7 @@ experiences:
     institute:
       name: University of Bari "Aldo Moro"
       url: https://uniba.it
-    location: Bari (BA), Italy
+    location: Bari (BA), Apulia, Italy
     years:
       start: 2020-12-01
       end: 2021-09-30
@@ -96,7 +96,7 @@ education:
     institute:
       name: University of Bari "Aldo Moro"
       url: https://uniba.it
-    location: Bari (BA), Italy
+    location: Bari (BA), Apulia, Italy
     years:
       start: 2022-10-01
       end: null
@@ -107,7 +107,7 @@ education:
     institute:
       name: University of Bari "Aldo Moro"
       url: https://uniba.it
-    location: Bari (BA), Italy
+    location: Bari (BA), Apulia, Italy
     years:
       start: 2020-09-28
       end: 2022-07-19
@@ -127,7 +127,7 @@ education:
     institute:
       name: University of Bari "Aldo Moro"
       url: https://uniba.it
-    location: Taranto (TA), Italy
+    location: Taranto (TA), Apulia, Italy
     years:
       start: 2017-09-25
       end: 2020-07-16
