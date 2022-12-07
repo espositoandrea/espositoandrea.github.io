@@ -33,6 +33,18 @@ memberships:
     url: https://www.acm.org
     since: 2022-05-01
 experiences:
+  - title: Teaching Assistant
+    years:
+      start: 2022-12-01
+      end: null
+    institute:
+      name: University of Bari "Aldo Moro"
+      url: https://uniba.it
+    location: Bari, Apulia, Italy
+    notes: |-
+      Teaching assistant for the Bachelor’s Degree course in Human-Computer
+      Interaction. The activities revolved around the HCI design process
+      ["UCD Sprint"](https://ucdsprint.com).
   - title: Visiting Researcher
     years:
       start: 2022-06-08
