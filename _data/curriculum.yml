@@ -32,6 +32,10 @@ memberships:
     short: ACM
     url: https://www.acm.org
     since: 2022-05-01
+  - institution: Italian Research Staff Association
+    short: ItalianRSA
+    url: https://italianrsa.org
+    since: 2022-12-28
 experiences:
   - title: Teaching Assistant
     years:
