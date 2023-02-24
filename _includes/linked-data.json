@@ -6,10 +6,11 @@
     "email": "{{ site.author.mail }}",
     "gender": "https://schema.org/Male",
     "image": "{{ "/assets/images/profile.png" | absolute_url }}",
-    "jobTitle": "{{ site.author.jobTitle }}",
+    "jobTitle": "{{ site.data.curriculum.title }}",
+    "description": "{{ site.data.curriculum.brief | markdownify | strip_html }}",
     "alumniOf": {
         "@type": "EducationalOrganization",
-        "name": "Università degli Studi di Bari \"A. Moro\"",
+        "name": "{{ site.data.curriculum.affiliation.institution.name }}",
         "alternateName": "UniBa",
         "logo": "https://www.uniba.it/immagini/logo-uniba-a-colori"
     },

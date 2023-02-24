@@ -89,10 +89,10 @@ defaults:
 author:
   name: "Andrea Esposito"
   firstName: Andrea
-  twitter: espositoandrea_
   surname: Esposito
+  twitter: espositoandrea_
   honorificPrefix: Mr
-  jobTitle: Student
+  jobTitle: Ph.D. Student
   mail: "&#097;&#110;&#100;&#114;&#101;&#097;&#046;&#101;&#115;&#112;&#111;&#115;&#105;&#116;&#111;&#064;&#117;&#110;&#105;&#098;&#097;&#046;&#105;&#116;"
 
 # Exclude from processing.
