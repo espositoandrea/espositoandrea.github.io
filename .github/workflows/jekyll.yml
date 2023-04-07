@@ -24,21 +24,21 @@ jobs:
           JEKYLL_ENV: production
           JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build posts as PDF
-        run: |
-          [ ls _posts/*.md >/dev/null 2>&1 ] || exit 0
-          for f in _posts/*.md; do
-            filename=${f##_posts/}
-            filename=${filename%%.md}
-            year=`echo $filename | cut -d- -f1`
-            month=`echo $filename | cut -d- -f2`
-            day=`echo $filename | cut -d- -f3`
-            basename=`echo $filename | cut -d- -f4-`
-            sed 's/\(\[.*\](.*)\){.*}/\1/g;s/excerpt:/abstract:/;s/tags:/keywords:/' "$f" | \
-              sed 's/## /# /;s/### /## /;s/#### /### /;s/##### /#### /;s/###### /##### /' | \
-              pandoc - -f markdown -t ms -s | \
-              groff -Tpdf -mspdf > "_site/blog/posts/$year/$month/${basename%%.md}.pdf"
-          done
+      # - name: Build posts as PDF
+      #   run: |
+      #     if ! ls _posts/*.md >/dev/null 2>&1; then exit 0; fi
+      #     for f in _posts/*.md; do
+      #       filename=${f##_posts/}
+      #       filename=${filename%%.md}
+      #       year=`echo $filename | cut -d- -f1`
+      #       month=`echo $filename | cut -d- -f2`
+      #       day=`echo $filename | cut -d- -f3`
+      #       basename=`echo $filename | cut -d- -f4-`
+      #       sed 's/\(\[.*\](.*)\){.*}/\1/g;s/excerpt:/abstract:/;s/tags:/keywords:/' "$f" | \
+      #         sed 's/## /# /;s/### /## /;s/#### /### /;s/##### /#### /;s/###### /##### /' | \
+      #         pandoc - -f markdown -t ms -s | \
+      #         groff -Tpdf -mspdf > "_site/blog/posts/$year/$month/${basename%%.md}.pdf"
+      #     done
 
       - name: Commit changes
         run: |
