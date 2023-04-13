@@ -37,6 +37,20 @@ memberships:
     url: https://italianrsa.org
     since: 2022-12-28
 experiences:
+  - title: Researcher
+    years:
+      start: 2023-04-12
+      end: null
+    institute:
+      name: Eusoft S.r.l.
+      url: https://www.eusoft.it
+    location: Bari, Italy
+    notes:
+      Part of the requirements of the D.M. 352/22 that regulates grant for
+      the PhD scholarship, he performs part of his research in a non-academic
+      research laboratory. During his stay at Eusoft, he conducts research on
+      human-centered conversational interfaces for laboratory management
+      system (i.e., a LIMS - Laboratory Information Management System)
   - title: Teaching Assistant
     years:
       start: 2022-12-01
@@ -108,7 +122,7 @@ experiences:
       During this period, multiple research activities (that are leading to
       various publications: check the [publications' section](#publications)) were started.
 education:
-  - title: Ph.D. in Computer Science
+  - title: Ph.D. student in Computer Science
     institute:
       name: University of Bari "Aldo Moro"
       url: https://uniba.it
@@ -117,8 +131,12 @@ education:
       start: 2022-10-01
       end: null
     notes: >-
-      Topic of the Ph.D.: "Human-Centred Artificial Intelligence Techniques for
-      Supporting End-Users Interaction with AI Systems".
+        Winner of a Ph.D. fellowship within the framework of the Italian "D.M.
+        n. 352, April 9, 2022" - under the National Recovery and Resilience
+        Plan, Mission 4, Component 2, Investment 3.3 - Ph.D. Project
+        "Human-Centered Artificial Intelligence (HCAI) techniques for
+        supporting end users interacting with AI systems", co-supported by
+        "[Eusoft S.r.l.](https://www.eusoft.it)" (CUP H91I22000410007).
   - title: Master's Degree in Computer Science - Artificial Intelligence
     institute:
       name: University of Bari "Aldo Moro"
