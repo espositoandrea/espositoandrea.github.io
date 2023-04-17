@@ -23,8 +23,8 @@ plugins:
   - jekyll-regex-replace
 
 scholar:
-  style: association-for-computing-machinery
-  bibliography_template: "{{ reference | replace_first: 'Andrea Esposito', '<strong>Andrea Esposito</strong>' | regex_replace: '>\\[\\d+?\\]', '>' | regex_replace: 'https?://doi.org/(.*?)</span>$', '<a href=\"https://doi.org/\\1\" target=\"_blank\">\\1</a></span>' | regex_replace: 'https?://ceur-ws.org/(.*?)</span>$', 'URL: <a href=\"https://ceur-ws.org/\\1\" target=\"_blank\">CEUR-WS.org/\\1</a></span>' }}"
+  style: ./acm
+  bibliography_template: "{{ reference | replace_first: 'Andrea Esposito', '<strong>Andrea Esposito</strong>' | regex_replace: '>\\[\\d+?\\]', '>' | regex_replace: 'https?://doi.org/(.*?)(</span>|, Retrieved)', '<a href=\"https://doi.org/\\1\" target=\"_blank\">\\1</a>\\2' | regex_replace: 'https?://ceur-ws.org/(.*?)</span>$', 'URL: <a href=\"https://ceur-ws.org/\\1\" target=\"_blank\">CEUR-WS.org/\\1</a></span>' | regex_replace: ', Retrieved from (https://dl.acm.org/doi/.*?)</span>', ' <a title=\"Access full paper\" href=\"\\1\" target=\"_blank\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg\" width=16 style=\"vertical-align: text-bottom;\" alt=\"ACM Digital Library\"/></a></span>' | regex_replace: ', Retrieved from .*?</span>', '</span>' }}"
 
 
 jekyll-archives:
