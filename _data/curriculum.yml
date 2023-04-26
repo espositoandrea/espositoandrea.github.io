@@ -32,14 +32,14 @@ memberships:
     short: ACM
     url: https://www.acm.org
     since: 2022-05-01
-  - institution: Italian Chapter of the Special Interest Group on Computer-Human Interaction
-    short: SIGCHI Italy
-    url: https://sigchitaly.eu/
-    since: 2023-04-21
   - institution: Italian Research Staff Association
     short: ItalianRSA
     url: https://italianrsa.org
     since: 2022-12-28
+  - institution: Italian Chapter of the Special Interest Group on Computer-Human Interaction
+    short: SIGCHI Italy
+    url: https://sigchitaly.eu/
+    since: 2023-04-21
 experiences:
   - title: Researcher
     years:

@@ -62,10 +62,11 @@ title: "Andrea Esposito"
         {{ site.data.curriculum.brief | markdownify }}
 	<p>He is a member of: 
 	{% for membership in site.data.curriculum.memberships %}
+    {% if forloop.last %}and{% endif %}
 	<a href="{{ membership.url }}" target="_blank">
 		{{ membership.short }}
 	</a> ({{ membership.institution }})
-	since {{ membership.since | date: "%B %Y" }}{% endfor %}.
+	since {{ membership.since | date: "%B %Y" }}{% unless forloop.last %}, {% endunless %}{% endfor %}.
     </p>
     </section>
     <section class="p-3 p-lg-5" id="experience">
