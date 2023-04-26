@@ -46,7 +46,7 @@ title: "Andrea Esposito"
                 </div>
                 <div class="social-icons">
                     {% for contact in site.data.contacts %}
-                        <a class="mr-2" href="{{ contact.link }}" rel="me noopener noreferrer"
+                        <a class="mr-2" href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank"
                         itemprop="sameAs" content="{{ contact.link }}">
                             <span class="sr-only">{{ contact.name }}</span>
                             <i class="fa-lg {{ contact.icon }}"></i>
