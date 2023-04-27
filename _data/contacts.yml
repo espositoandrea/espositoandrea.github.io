@@ -1,3 +1,7 @@
+- name: Twitter
+  value: espositoandrea_
+  icon: fab fa-twitter
+  link: http://twitter.com/espositoandrea_
 - name: "GitHub"
   value: "espositoandrea"
   icon: "fab fa-github"
@@ -17,4 +21,4 @@
 - name: Google Scholar
   value: xDmY2lgAAAAJ
   icon: fab fa-google
-  link: https://scholar.google.com/citations?hl=it&view_op=list_works&authuser=3&gmla=AJsN-F4hzGLMMA8YwDRzndMZp75bHjJY2f_0qG9dt9DQ-pRf3EpYCGwS47CW7ApwkGPsNMRWmUywTRAtTb1_wdZgfPREKHd5kpR2J3_ZKnGqCvqkjyPksGQ&user=xDmY2lgAAAAJ
+  link: https://scholar.google.com/citations?user=xDmY2lgAAAAJ
