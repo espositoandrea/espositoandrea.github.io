@@ -40,6 +40,10 @@ memberships:
     short: SIGCHI Italy
     url: https://sigchitaly.eu/
     since: 2023-04-21
+  - institution: ACM Special Interest Group on Computer-Human Interaction
+    short: ACM SIGCHI
+    url: https://sigchi.org/
+    since: 2023-05-17
 experiences:
   - title: Researcher
     years:
