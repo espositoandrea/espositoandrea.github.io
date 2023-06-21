@@ -46,4 +46,4 @@
 {% capture bibliography %}
 {% bibliography %}
 {% endcapture %}
-{{ bibliography | edit_urls | remove_number | emphasize_author | acm_authorizer | open_access | preprint }}
+{{ bibliography | edit_urls | remove_number | emphasize_author | acm_authorizer | open_access | preprint | self_archived }}
