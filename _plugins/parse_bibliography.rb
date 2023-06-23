@@ -37,8 +37,8 @@ module Jekyll
     # @return String
     def acm_authorizer(input)
       input.split("\n").map { |line|
-        line.sub(%r{, Retrieved from (https://dl.acm.org/doi/.*?)</span>}, " <a title=\"Access full paper\" href=\"\1\" target=\"_blank\">#{@@acm_dl_icon}</a></span>")
-            .sub(%r{, Retrieved from (https://rdcu.be/.*?)</span>}, " <a title=\"Access full paper\" href=\"\1\" target=\"_blank\">#{@@springer_sharedit_icon}</a></span>")
+        line.sub(%r{, Retrieved from (https://dl.acm.org/doi/.*?)</span>}, " <a title=\"Access full paper\" href=\"\\1\" target=\"_blank\">#{@@acm_dl_icon}</a></span>")
+            .sub(%r{, Retrieved from (https://rdcu.be/.*?)</span>}, " <a title=\"Access full paper\" href=\"\\1\" target=\"_blank\">#{@@springer_sharedit_icon}</a></span>")
       }.join "\n"
     end
 
