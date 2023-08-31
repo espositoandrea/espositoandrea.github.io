@@ -24,6 +24,8 @@ plugins:
 
 scholar:
   style: ./acm
+  sort_by: year,month,day
+  order: descending
   bibliography_template: >-
     {{ reference }}
 
