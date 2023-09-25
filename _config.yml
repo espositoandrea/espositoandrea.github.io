@@ -28,6 +28,10 @@ scholar:
   order: descending
   bibliography_template: >-
     {{ reference }}
+  
+collections:
+  redirects:
+    output: true
 
 
 jekyll-archives:
