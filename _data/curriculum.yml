@@ -44,6 +44,10 @@ memberships:
     short: ACM SIGCHI
     url: https://sigchi.org/
     since: 2023-05-17
+  - institution: ACM Special Interest Group on Artificial Intelligence
+    short: ACM SIGAI
+    url: https://sigai.acm.org/
+    since: 2023-10-01
 experiences:
   - title: Researcher
     years:
