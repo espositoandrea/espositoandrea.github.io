@@ -49,13 +49,11 @@ layout: default
 
 <main>
     <article class="container p-3 p-lg-5">
-        {% if page.image %}
-            <header class="p-5 text-center header-image has-overlay"
-                style="background-image: url({{ page.image | absolute_url }});">
-        {% else %}
             <header class="text-center">
-        {% endif %}
                 <div>
+        {% if page.image %}
+          <img src="{{ page.image | absolute_url }}" alt="" class="img-fluid">
+        {% endif %}
                     <h1>
                         {{ page.title | smartify }}
                         <!-- <a class="ml-3 far fa-file-pdf fa-xs" aria-hidden="true"

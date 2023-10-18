@@ -16,7 +16,7 @@ pagination:
         </a>
         <hr class="w-100 flex-grow-1">
     </header>
-    <div class="card-columns">
+    <div class="card-rows">
         {% for post in paginator.posts %}
             {%include post.html post=post %}
         {% endfor %}

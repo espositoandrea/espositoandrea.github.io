@@ -1,25 +1,34 @@
-<div class="post-card">
-    {% if post.image %}
-        <a href="{{ post.url | absolute_url }}">
-            <img src="{{ post.image | absolute_url }}" class="card-img-top" alt="" aria-hidden="true">
-        </a>
-    {% endif %}
+<div class="post-card mb-3">
+	<div class="row g-0">
+		<div class="col-md-8">
     <div class="card-body">
         <h2 class="card-title">
             <a href="{{ post.url | absolute_url }}">
                 {{ post.title | smartify }}
             </a>
         </h2>
-        <div class="card-text">
+        <p class="card-text text-muted">
+            <span>{{ post.date | date: "%B %e, %Y" }}</span>
+        </p>
+        <p class="card-text">
             {{ post.excerpt | markdownify }}
-        </div>
+        </p>
     </div>
-    <div class="author-data card-footer bg-transparent">
+    </div>
+    <div class="col-md-4">
+    {% if post.image %}
+        <a href="{{ post.url | absolute_url }}">
+            <img src="{{ post.image | absolute_url }}" class="card-img-top" alt="" aria-hidden="true">
+        </a>
+    {% endif %}
+    </div>
+    <!--<div class="author-data card-footer bg-transparent">
         <img src="{{ "assets/images/profile.png" | absolute_url }}" class="author-thumb" alt="" aria-hidden="true">
         <div>
             <span>{{ post.author }}</span>
             <br>
             <span class="text-muted">{{ post.date | date: "%B %e, %Y" }}</span>
         </div>
-    </div>
+    </div>-->
+	</div>
 </div>
