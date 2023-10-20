@@ -16,7 +16,7 @@ Artificial Intelligence (AI) has been making significant strides in recent years
 
 However, after a very interesting lecture by Prof. Xiaowei Xu at the [9th International School of Deep Learning](http://deeplearn.irdta.eu/2023sp/), I have to admit I am becoming increasingly worried about the impact that these models have. With the rise of large-scale models and the discovery of their scaling capabilities, I fear that AI is becoming increasingly monopolized by the few who have the resources to build such models. In my view, this raises the question of whether it is time to introduce new parameters in AI research when selecting papers for publication.
 
-## Towards Green AI
+## Toward Green AI
 
 In a recent [Twitter thread](https://twitter.com/espositoandrea_/status/1644024136774164481?s=61&t=ST82pblAQ36ndIq3wvjTdg), I expressed my concern that only using accuracy as a measure of performance reduces competition to the few who have the resources to train huge models. This, in turn, _stifles innovation_ and locks out poor researchers who work in universities with limited funds. I suggested that we need to introduce formal metrics, such as "_accuracy per FLOP_," which averages performances over the model size. The idea behind this metric is that it would measure the accuracy of a model relative to the number of floating-point operations (FLOPs) it requires. This metric would be especially useful for smaller models that might not have the accuracy of larger models but are more efficient in terms of computational resources.  This would allow a fair comparison for smaller, weaker models too.
 
