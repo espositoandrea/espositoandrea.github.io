@@ -34,3 +34,8 @@ In conclusion, the development of large language models has brought many excitin
 {% bibliography -f posts --cited %}
 {% endcapture %}
 {{ bibliography | edit_urls | remove_number }}
+
+*[AI]: Artificial Intelligence
+*[FLOP]: Floating Point Operation
+*[FLOPs]: Floating Point Operations
+*[GPT-3]: Generative Pre-trained Transformer 3
