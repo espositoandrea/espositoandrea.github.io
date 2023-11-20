@@ -48,6 +48,10 @@ memberships:
     short: ACM SIGAI
     url: https://sigai.acm.org/
     since: 2023-10-01
+  - institution: ACM's Europe Technology Policy Committee
+    short: ACM ETPC
+    url: https://www.acm.org/public-policy/europe-tpc
+    since: 2023-11-20
 experiences:
   - title: Researcher
     years:
