@@ -22,6 +22,8 @@ plugins:
   - jekyll-scholar
   - jekyll-regex-replace
 
+include: [".well-known"]
+
 scholar:
   style: ./acm
   sort_by: year,month,day
