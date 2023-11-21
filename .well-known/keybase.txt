@@ -21,6 +21,16 @@ To do so, I am signing this object:
       "uid": "9425b7d02db85c4992551cb403b5c119",
       "username": "espositoandrea"
     },
+    "merkle_root": {
+      "ctime": 1700554667,
+      "hash_meta": "e2e6628d4a6b90c4d36d625f50c652f8e29e0df6501308cc47cc16ed1b4282db",
+      "seqno": 25165604
+    },
+    "revoke": {
+      "sig_ids": [
+        "d938ee46eebec20fddb45f4dac51863c9ba80e417d54a714ad6fe508ab06d6500f"
+      ]
+    },
     "service": {
       "hostname": "espositoandrea.github.io",
       "protocol": "https:"
@@ -28,10 +38,10 @@ To do so, I am signing this object:
     "type": "web_service_binding",
     "version": 1
   },
-  "ctime": 1619823156,
+  "ctime": 1700554715,
   "expire_in": 157680000,
-  "prev": "25ac251ae19cb1eaf75fdfa0c75288f177876c989002cd86b87287c1997e967c",
-  "seqno": 6,
+  "prev": "132df6fe2d6f2597990ce0f79721ff5ebaa1d6f008731073a4c4ef900550cb96",
+  "seqno": 11,
   "tag": "signature"
 }
 
@@ -39,29 +49,32 @@ which yields the signature:
 
 -----BEGIN PGP MESSAGE-----
 
-owGtkm1QVFUYx3d5E5DAcEdMI+OaFC/BPff9Ii+DmQFiifFiiqz35dzliuzd9l42
-QGDWmTRFiAJSGtCZZooRRQYkJUcUAwcqpwSEiRxwmsap0TIIh4HNVrqr+ak+9unM
-Oef//z3/55nng6e8DYFGb1dF6R8pb/gbr93hDbtrqhP3IbwiliEJ+5Ai+OiAe0Wo
-auYiWUQSEBSgAAgixXOQonicFWgIcMAwKE2JLIlLAkngLMFIKIHiEsZzKANIBhco
-HgMsBzGckDgG5ZBYRJKtFmi32WWrpmMpIGKAJgQRhRJLYByBiRzJMZwOYWmBZiSA
-S4SEMrqxUFE9Dj0cz6kwTlb0N/1ifhzv3/r/OXfJI5yekeRpEcVEniEFgmUxkgQC
-r5t5UgCA9QhVaLdyxVBXQ9WmqLKmcFbRDjmkMhbR/xyyAD3j9fTzn7o4i6wVlvCP
-O7TZFU0RlL26qlDTbGqCh6KV2Ty2dyBv/gdo5mWrqE9WdzigXZUVK5IAdKWgyZ4K
-gAIsg+GApGIRWGqT7dAsexQkTTEougdFPYWgQ2diJCdgJOAgYAUeQE6iSUmUOFSg
-SYzRx0vTDE0JLMOiKCaIDMUzNMbQAmBZGrIULSCeHt+2KkiCXkrjLDpSlS1WTiux
-Q6Qy8LAX7mMwBhrCV0T4cKNhmcPTjdEbbu6ofrKNvl6eVTQEBix78pI3EOJecyhs
-wicmS+uIWXj6LP59i/N44PBpy6bs0Ac9s76mKz51cvmxP9WYvqW5Jx2lfruu3h/5
-GIHXu40zBV+cTOta/lvvlCnxftY924HODVVR3st9I6dX5Z1usJgd7umfQjv8unsb
-NjcT2uiH1FU7cSftAJoffIpe+OqH/prBc0tzu3vPuyb8Fd/K94IqMl6ZV0YsqaaR
-5iDTyrS2iqnkE+l3ttccIaZnuPxBv5Dw2Lms3JDySaHda08j8rpfW9D+T5hVPWdP
-HenLjBh8d92V5Oz1DRkD46PmAFBhqLXsz7SMd1/8ceF82ha39+rk4NfK+wNGQyvj
-PkPGbC5n2/hHTWe+gS9dtxV867yhNjkbexxbKyzp8WvHQty3jqVGWFZ0LUtPuVE9
-9nlO66Lp54wzhrmo1kXwl9eSkReAan/TP/JwfVJV+IO6c66mxtt+7Ne1ZFPnVmdV
-0dD7d+fCuuq5TzOYnEMX4o8zZVVacH12TXOx09AyP1ZfzEze7nKv2Xhz1/aGl3Na
-E8FMyraJ5JbVnZfmBlLnjL/2XJxah/W5o4aeL7sV/1w0qx7c/UvS+iVEEOGuqz0R
-cBT1f+vLZy65xpPcB7O7Hm4b2FgbGTfok5tnnO3fsXOiaOV3l4e8pgsu7Jwf7mhf
-vHz39y0BxaaiZ+G1o/nwxdmQyU3F0Q8rXRGZfeOb761tf3Xqbw==
-=oZGg
+owGtk3tQFVUAxq9cdC63TExRJ0JzK1HHsXN29+zjDilCghmNjo0vlO7s2T172YC7
+l90FgSuDoAPKNImp1TAlab7CB4n2R+GMhYSk5qNsBrXQLB0lzREfqDNgZzWnaerP
+9p+dPft93/md75xTN9jr8Q3w3ltacmPqLN+AI1ewhywOnYsy2NRKmUCUySMPXyRf
+I7YTzDM0JsAACCBUNQErRBAwJ6sigRyUJCAKmow4XUU8J/OSDnjA6SxWgASRxKkC
+ZqGsEJbjdUUCCjOJ0Y1wiFgRywg7NFaAGgtFXtUA0WWeVXhWU5AiKTREFlVR0iGn
+8zqQqDHXtF0HhcOKTSYbJh2jH8FHeP/W/8/cRQ/jKCPCogZYDUtI5WWZRQiqmJox
+UiGUXaFNrLBSQKia2BHTNhxTCWsWUZjySUwBsfLySdAyTcetWHUMVwhFABDiBUGk
+y1Ts3GABcRTXz1JoVtJ4RcAyUHmNEzSBRToCqoBYXSKsTICmCwhADkiqyouqCgWi
+QcyzEkWkNDYpDJtMgEVQQALgKYJFis084s5uGyHans18VRtYxGgyJxHCC4RgorJA
+1zTMI53XFBVBSeBUGdMiCA9FDfGKCHlFE3SCgKRgQKEQADqTU+7OZxUb6sN4d8P+
+s4jJIcPJLcKPtjBimY6pmvlUles4ETvg1uSURlzbEoKDfwUGsRHW6NGhjmJi2YYZ
+prVR5T8bFCGaxJCSiGGRoOEqkChIgD7uPKSYRkKOpYXphKX4LJJFmfZKgC7KIgt1
+HRGsKJD+AkASOQhETuFVnh5NNx2oWBb+rhRCyqmEaCbtMaw4RRZhyv2rYrhYzwCf
+J2nE2Fjl+5FZJ66vm5h2Jrv28XUbGOPeNY8/Lv7xSP3teM+OlrN1+NjO+fPNuFnb
+fLWZgU0Hq3be9b/alHL3+Kxv1ndZb5xP39rQEc+c/S7vg91lK+N+WJ3Z+9aJ1n18
+dGFMTc96a8frlemFUw7pDeLWU/aCmnFDvZlPzdh48eWcxd7j3hlmfXXh6KN12xLz
+i1YNz2/+zL7RnO27PeaX/lFlxpV58OS89ulrs1snbn7up7Vc/aBBzT0TZpY1Vrcl
+Ll01eegFOXy+Y+jNT7vT7sd6y5Zsn7vvcjl/NG18peejgVdT9t9bvqnuWEXnHjZh
+7DM+HTW9PzrSrFaEkvqn16/rcs4kbe4+VthYUrXT/2y0Jbrn0nKuQ/xw9eaM/Acn
+tYT2MWk1N1NvVR2Z2x/X1ZMVSPhy2oW+0IaWw9EtB09fjG7oqrHfrZ6SFpn9ya3k
+2UMy9qZ+3BcX213q4Xf5u1MXLrna1Pb26SShd9nocZ3Xpq0I9VSf27gw59aGzhEn
+fbvb0KnnG1uH3Okr7e3T5xRkWq8cbveX4Es7kjr2zqme2rt7fXXlS9kr+QO/Tjhe
+3invaUjOGlK17/qd+S0LDj3xpNPfm7wsseO1uPvb/btmpif/fLpt5IjCxBeK44fl
+jT/z5uet3tzUzr4mpZZNycFV6WtenLerc1TMt5fb0+sXIPB043s/fq1vPfj7ouzm
+soSMMYcPrHgH37bxmkW//TGscnhF5fAtCXM84ytSfIO/WPvgmrF/4J8=
+=9a2E
 -----END PGP MESSAGE-----
 
 And finally, I am proving ownership of this host by posting or
