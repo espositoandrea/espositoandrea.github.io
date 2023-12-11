@@ -53,10 +53,22 @@ memberships:
     url: https://www.acm.org/public-policy/europe-tpc
     since: 2023-11-20
 experiences:
+  - title: Teaching Assistant
+    years:
+      start: 2023-11-23
+      end: 2024-02-22
+    institute:
+      name: University of Bari "Aldo Moro"
+      url: https://uniba.it
+    location: Bari, Apulia, Italy
+    notes: |-
+      Teaching assistant for the Bachelor’s Degree course in Human-Computer
+      Interaction. The activities revolved around the HCI design process
+      ["UCD Sprint"](https://ucdsprint.com).
   - title: Researcher
     years:
       start: 2023-04-12
-      end: null
+      end: 2023-10-11
     institute:
       name: Eusoft S.r.l.
       url: https://www.eusoft.it
