@@ -25,7 +25,7 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
   gem "jekyll-paginate-v2"
   gem "jekyll-archives"
-  gem 'jekyll-scholar'
+  gem 'jekyll-scholar', '~> 7.1'
   gem "jekyll-regex-replace", "~> 1.1"
 end
 
@@ -42,6 +42,7 @@ gem "faraday-http-cache", "~> 2.2"
 gem "ogp", "~> 0.4.0"
 gem "htmlentities", "~> 4.3"
 gem "iso639", "~> 1.3"
-gem "bibtex-ruby", "~> 5.1"
 gem "i18n", "~> 1.8"
 gem "webrick", "~> 1.7"
+
+gem "bootstrap", "~> 5.3"

@@ -104,6 +104,11 @@ author:
   jobTitle: Ph.D. Student
   mail: "&#097;&#110;&#100;&#114;&#101;&#097;&#046;&#101;&#115;&#112;&#111;&#115;&#105;&#116;&#111;&#064;&#117;&#110;&#105;&#098;&#097;&#046;&#105;&#116;"
 
+sass:
+  load_paths:
+    - _sass
+    - vendor/bundle/ruby/3.2.0/gems/
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
