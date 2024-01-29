@@ -52,6 +52,10 @@ memberships:
     short: ACM ETPC
     url: https://www.acm.org/public-policy/europe-tpc
     since: 2023-11-20
+  - institution: Institute for Systems and Technologies of Information, Control and Communication
+    short: INSTICC
+    url: https://portal.insticc.org
+    since: 2024-01-29
 experiences:
   - title: Teaching Assistant
     years:
