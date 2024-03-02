@@ -49,76 +49,96 @@ layout: default
 
 <main>
     <article class="container p-3 p-lg-5">
-            <header class="text-center">
-                <div>
-        {% if page.image %}
-          <img src="{{ page.image | absolute_url }}" alt="" class="img-fluid">
-        {% endif %}
-                    <h1>
-                        {{ page.title | smartify }}
-                        <!-- <a class="ml-3 far fa-file-pdf fa-xs" aria-hidden="true"
+        <header class="position-relative">
+            {% if page.image %}
+            <img alt="{{ page.title }}" class="z-n1 d-block position-absolute object-fit-cover w-100 h-100"
+                src="{{ page.image | absolute_url }}" style="object-position: center;">
+            <div src="" alt=""
+                class="z-n1 position-absolute top-0 bottom-0 start-0 end-0 bg-gradient-to-b from-transparent to-black opacity-75"
+                style="background-image: linear-gradient(to bottom, transparent, black);"></div>
+            {% endif %}
+            <div class="z-1 px-5 text-white" style="padding-top: 12rem; padding-bottom: 3rem;">
+                <div class="mb-2">
+                    {% for category in page.categories %}
+                    <a href="{{ '/blog/posts/categories/' | absolute_url | append: category }}"
+                        class="text-decoration-none text-reset">
+                        {{ category }}
+                    </a>
+                    {% unless forloop.last %}
+                    ,
+                    {% endunless %}
+                    {% endfor %}
+                </div>
+                <h1>
+                    {{ page.title | smartify }}
+                    <!-- <a class="ml-3 far fa-file-pdf fa-xs" aria-hidden="true"
                            href="{{ page.url | replace: '.html', '.pdf' | absolute_url }}"
                            target="_blank" rel="noopener noreferrer">
                             <span class="sr-only">Download PDF</span>
                         </a> -->
-                    </h1>
-                    <div class="lead">
-                        {{ page.author }}
-                    </div>
-                    <div class="lead">
-                        {{ page.date | date: "%B %e, %Y" }}
-                    </div>
-                    <div class="my-2">
-                        {% for category in page.categories %}
-                        <a href="{{ '/blog/posts/categories/' | absolute_url | append: category }}"
-                            class="badge badge-pill badge-primary mx-1">
-                            {{ category }}
-                        </a>
-                        {% endfor %}
+                </h1>
+                <div class="mb-3" style="opacity: 0.9;">
+                    {{ page.excerpt }}
+                </div>
+                <div class="mb-4" style="opacity: 0.8;">
+                    Published {{ page.date | date: "%B %e, %Y" }}
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                    {% if page.author == "Andrea Esposito" %}
+                    <img alt="Go to the profile of {{ page.author }}" class="rounded-circle"
+                        style="width: 3rem; height: 3rem; min-width: 3rem;"
+                        loading="lazy"
+                        src="{{ '/assets/images/profile.jpeg' | absolute_url }}">
+                    {% endif %}
+                    <div class="ms-3">
+                        <span class="d-block fw-semibold">{{ page.author }}</span>
+                        {% if page.author == "Andrea Esposito" %}
+                        <span class="d-block" style="opacity: 0.8;">{{ site.data.curriculum.title }}</span>
+                        {% endif %}
                     </div>
                 </div>
-            </header>
+            </div>
+        </header>
+        <hr />
+
+        <nav aria-label="breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ '/' | absolute_url }}">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ '/blog/' | absolute_url }}">Blog</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ '/blog/posts/' | absolute_url }}">Posts</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/">{{ page.date | date:
+                        '%Y'}}</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/">{{ page.date | date:
+                        '%m'}}</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page.title | smartify }}</li>
+            </ol>
+        </nav>
+
+        <aside class="text-left rounded p-3 border bg-light mb-3">
+            <h2>Table of Contents</h2>
+            {% include toc.html html=content %}
+        </aside>
+
+        {{ content }}
+
+        <footer>
             <hr />
-
-            <nav aria-label="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{{ '/' | absolute_url }}">Home</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ '/blog/' | absolute_url }}">Blog</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{{ '/blog/posts/' | absolute_url }}">Posts</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a
-                            href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/">{{ page.date | date: '%Y'}}</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a
-                            href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/">{{ page.date | date: '%m'}}</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ page.title | smartify }}</li>
-                </ol>
-            </nav>
-
-            <aside class="text-left rounded p-3 border bg-light mb-3">
-                <h2>Table of Contents</h2>
-                {% include toc.html html=content %}
-            </aside>
-
-            {{ content }}
-
-            <footer>
-                <hr />
-                <div class="text-muted">
-                    Tags:
-                    {% for tag in page.tags %}
-                    <a href="{{ '/blog/posts/tags/' | absolute_url | append: tag }}"
-                        class="text-muted mx-1">#{{ tag }}</a>
-                    {% endfor %}
-                </div>
-            </footer>
+            <div class="text-muted">
+                Tags:
+                {% for tag in page.tags %}
+                <a href="{{ '/blog/posts/tags/' | absolute_url | append: tag }}" class="text-muted mx-1">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </footer>
     </article>
 </main>
