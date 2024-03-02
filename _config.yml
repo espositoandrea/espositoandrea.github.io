@@ -13,7 +13,6 @@ kramdown:
   syntax_highlighter: rouge
 theme: minima
 plugins:
-  - jekyll-asciidoc
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
@@ -108,6 +107,7 @@ sass:
   load_paths:
     - _sass
     - vendor/bundle/ruby/3.2.0/gems/
+    - vendor/bundle/ruby/3.3.0/gems/
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
