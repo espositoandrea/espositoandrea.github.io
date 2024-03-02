@@ -4,8 +4,8 @@ author: Andrea Esposito
 title: My Thoughts on the Evolution of AI Research
 image: /assets/images/banners/ai-post-og.png
 lang: en
-categories: [thoughts, artificial intelligence]
-tags: [ai, thoughts, hcai]
+categories: [Thoughts]
+tags: [ai, hcai]
 excerpt: >-
     Artificial Intelligence (AI) has been making significant strides in recent years, thanks to the advent of Deep Learning algorithms and the rise of large-scale datasets. The powerful impact of such models is, to use a euphemism, extremely exciting for a young researcher like me. However, I have to admit I am becoming increasingly worried about the impact that these models have.
 ---
