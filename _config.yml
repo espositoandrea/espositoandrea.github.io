@@ -7,6 +7,10 @@ repository: "espositoandrea/espositoandrea.github.io"
 github_username: espositoandrea
 logo: https://github.com/espositoandrea.png
 
+twitter:
+  username: espositoandrea_
+  card: summary
+
 # Build settings
 # markdown: MyMarkdownProcessor
 kramdown:
@@ -68,6 +72,7 @@ webmaster_verifications:
   google: dhfKLjZs_wpaHCN7Xqfok6Pish0zIgaVjCMFsgEc__0
 
 social:
+  name: Andrea Esposito
   links:
     - https://github.com/espositoandrea/
     - https://twitter.com/espositoandrea_/
@@ -101,6 +106,7 @@ author:
   twitter: espositoandrea_
   honorificPrefix: Mr
   jobTitle: Ph.D. Student
+  url: https://espositoandrea.github.io
   mail: "&#097;&#110;&#100;&#114;&#101;&#097;&#046;&#101;&#115;&#112;&#111;&#115;&#105;&#116;&#111;&#064;&#117;&#110;&#105;&#098;&#097;&#046;&#105;&#116;"
 
 sass:
