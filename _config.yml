@@ -63,7 +63,7 @@ pagination:
   enabled: true
   permalink: /:num/
   sort_field: "date"
-  sort_reverse: false
+  sort_reverse: true
   trail:
     before: 2
     after: 2
