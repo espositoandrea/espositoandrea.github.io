@@ -14,7 +14,7 @@ module Jekyll
       input.split("\n").map { |line|
         line.gsub(%r{(https?://doi.org/.*?), Retrieved from \1</span>}, '\1</span>')
             .gsub(%r{https?://doi.org/(.*?)(</span>|, Retrieved)}, '<a href="https://doi.org/\1" target="_blank">\1</a>\2')
-            .sub(%r{https?://((?!rdcu.be|arxiv|ceur|doi|dl.acm.org|(?:www.)?dropbox.com|(?:www.)?scitepress.org).*?)</span>}, 'URL: <a href="https://\1" target="_blank">\1</a></span>')
+            .sub(%r{https?://((?!rdcu.be|arxiv|ceur|doi|dl.acm.org|link.springer.com|(?:www.)?dropbox.com|(?:www.)?scitepress.org).*?)</span>}, 'URL: <a href="https://\1" target="_blank">\1</a></span>')
         #.sub(%r{[,.] Retrieved from (.*?)</span>}, '</span>')
       }.join "\n"
     end
@@ -48,6 +48,7 @@ module Jekyll
       input.split("\n").map do |line|
         line.gsub(%r{https?://ceur-ws\.org/(.*?)</span>}, "URL: <a href=\"https://ceur-ws.org/\\1\" target=\"_blank\">CEUR-WS.org/\\1 #{@@openaccess_icon}</a></span>")
             .sub(%r{, Retrieved from (https://www.scitepress.org/.*?)</span>}, " <a title=\"Access full paper\" href=\"\\1\" target=\"_blank\">#{@@openaccess_icon}</a></span>")
+            .sub(%r{(<i>Scientific Reports</i>.*?), Retrieved from (.*?)</span>}, "\\1 <a title=\"Access full paper\" href=\"\\2\" target=\"_blank\">#{@@openaccess_icon}</a></span>")
             .gsub(%r{https?://(www\.)?dropbox\.com/(.*?)</span>}, "URL: <a href=\"https://\\1dropbox.com/\\2\" target=\"_blank\">\\1dropbox.com/\\2 #{@@openaccess_icon}</a></span>")
       end.join "\n"
     end
