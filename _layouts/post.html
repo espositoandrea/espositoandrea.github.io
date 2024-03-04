@@ -60,7 +60,7 @@ layout: default
             <div class="z-1 px-5 text-white" style="padding-top: 12rem; padding-bottom: 3rem;">
                 <div class="mb-2">
                     {% for category in page.categories %}
-                    <a href="{{ '/blog/posts/categories/' | absolute_url | append: category }}"
+                    <a href="{{ '/blog/posts/categories/' | append: category | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
                         class="text-decoration-none text-reset">
                         {{ category }}
                     </a>
@@ -86,8 +86,7 @@ layout: default
                 <div class="d-flex flex-row align-items-center">
                     {% if page.author == "Andrea Esposito" %}
                     <img alt="Go to the profile of {{ page.author }}" class="rounded-circle"
-                        style="width: 3rem; height: 3rem; min-width: 3rem;"
-                        loading="lazy"
+                        style="width: 3rem; height: 3rem; min-width: 3rem;" loading="lazy"
                         src="{{ '/assets/images/profile.jpeg' | absolute_url }}">
                     {% endif %}
                     <div class="ms-3">
@@ -136,7 +135,8 @@ layout: default
             <div class="text-muted">
                 Tags:
                 {% for tag in page.tags %}
-                <a href="{{ '/blog/posts/tags/' | absolute_url | append: tag }}" class="text-muted mx-1">#{{ tag }}</a>
+                <a href="{{ '/blog/posts/tags/' | append: tag | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
+                    class="text-muted mx-1">#{{ tag }}</a>
                 {% endfor %}
             </div>
         </footer>
