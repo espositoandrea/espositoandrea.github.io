@@ -3,6 +3,10 @@
 
 @import "code-highlight.scss";
 
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: $font-family-serif !important;
+}
+
 body {
   position: relative;
   min-height: 100vh;
