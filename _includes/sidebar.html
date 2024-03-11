@@ -1,0 +1,78 @@
+<div class="col sidebar align-items-center justify-content-center">
+    <div class="mb-md-4 text-md-center d-flex d-md-block align-items-center justify-content-between">
+        <div class="d-flex d-md-block align-items-center">
+            <img alt="Andrea Esposito" class="author-avatar" src="{{ '/assets/images/profile.jpeg' | absolute_url }}">
+            <div>
+                <h1 class="mb-0 h5 mt-2">
+                    <span>Andrea</span>
+                    <span>Esposito</span>
+                </h1>
+                {{ site.data.curriculum.title | smartify }}
+            </div>
+        </div>
+        <div class="dropdown d-block d-md-none">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Follow Me
+            </button>
+            <ul class="dropdown-menu">
+                {% for contact in site.data.contacts %}
+                <li><a class="dropdown-item" href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank"
+                        itemprop="sameAs" content="{{ contact.link }}">
+                        <i class="fa-lg {{ contact.icon }}"></i>
+                        {% if contact.value %}
+                        <span class="sr-only">{{ contact.name }}</span>
+                        {{ contact.value }}
+                        {% else %}
+                        {{ contact.name }}
+                        {% endif %}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <button aria-controls="more-info" aria-expanded="false" aria-label="Toggle informations"
+        class="dropdown-toggle btn btn-link text-decoration-none text-reset btn-small mx-auto d-block d-md-none"
+        data-bs-target="#more-info" data-bs-toggle="collapse" type="button">
+        More Information
+    </button>
+    <section class="collapse d-md-block list-group list-group-flush" id="more-info">
+        <a class="list-group-item list-group-item-action" href="{{ site.data.curriculum.affiliation.laboratory.url }}"
+            target="_blank">
+            <span class="fas fa-people-group"></span>
+            <span class="sr-only">Research Group:</span>
+            {{ site.data.curriculum.affiliation.laboratory.name | smartify }}
+        </a>
+        <a class="list-group-item list-group-item-action" href="{{ site.data.curriculum.affiliation.department.url }}"
+            target="_blank">
+            <span class="fas fa-building"></span>
+            <span class="sr-only">Department:</span>
+            {{ site.data.curriculum.affiliation.department.name | smartify }}
+        </a>
+        <a class="list-group-item list-group-item-action" href="{{ site.data.curriculum.affiliation.institution.url }}"
+            target="_blank">
+            <span class="fas fa-building-columns"></span>
+            <span class="sr-only">Institution:</span>
+            {{ site.data.curriculum.affiliation.institution.name | smartify }}
+        </a>
+        <a class="list-group-item list-group-item-action" href="mailto:{{ site.author.mail }}">
+            <span class="fas fa-envelope"></span>
+            <span class="sr-only">Email:</span>
+            {{ site.author.mail }}
+        </a>
+    </section>
+    <section class="d-none d-md-block list-group list-group-flush mt-4" id="social-links">
+        {% for contact in site.data.contacts %}
+        <a href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank" itemprop="sameAs"
+            content="{{ contact.link }}" class="list-group-item list-group-item-action">
+            <i class="fa-lg {{ contact.icon }}"></i>
+            {% if contact.value %}
+            <span class="sr-only">{{ contact.name }}</span>
+            {{ contact.value }}
+            {% else %}
+            {{ contact.name }}
+            {% endif %}
+        </a>
+        {% endfor %}
+    </section>
+</div>

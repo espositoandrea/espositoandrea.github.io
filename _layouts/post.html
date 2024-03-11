@@ -57,7 +57,7 @@ layout: default
                 class="z-n1 position-absolute top-0 bottom-0 start-0 end-0 bg-gradient-to-b from-transparent to-black opacity-75"
                 style="background-image: linear-gradient(to bottom, transparent, black);"></div>
             {% endif %}
-            <div class="z-1 px-5 text-white" style="padding-top: 12rem; padding-bottom: 3rem;">
+            <div class="z-1 {% if page.image %}px-5 text-white{% endif %}" {% if page.image %} style="padding-top: 12rem; padding-bottom: 3rem;" {% endif %} >
                 <div class="mb-2">
                     {% for category in page.categories %}
                     <a href="{{ '/blog/posts/categories/' | append: category | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
@@ -124,7 +124,7 @@ layout: default
         </nav>
 
         <aside class="text-left rounded p-3 border bg-light mb-3">
-            <h2>Table of Contents</h2>
+            <h2 class="mt-0">Table of Contents</h2>
             {% include toc.html html=content %}
         </aside>
 
@@ -132,13 +132,33 @@ layout: default
 
         <footer>
             <hr />
-            <div class="text-muted">
-                Tags:
+            {% if page.tags %}
+            <section class="mb-3 text-muted">
+                <span>Tags:</span>
                 {% for tag in page.tags %}
                 <a href="{{ '/blog/posts/tags/' | append: tag | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
                     class="text-muted mx-1">#{{ tag }}</a>
                 {% endfor %}
-            </div>
+            </section>
+            {% endif %}
+            <section class="mb-3 text-muted">
+                <span class="h4 d-block">Share on</span>
+                <a href="https://twitter.com/intent/tweet?text={{ page.url | absolute_url }}" class="btn btn-secondary"
+                    title="Share on Twitter">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"
+                    class="btn btn-secondary" title="Share on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ page.url | absolute_url }}"
+                    class="btn btn-secondary" title="Share on LinkedIn">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </section>
         </footer>
     </article>
 </main>
