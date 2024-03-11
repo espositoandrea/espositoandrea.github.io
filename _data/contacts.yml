@@ -1,5 +1,5 @@
 - name: Twitter
-  value: espositoandrea_
+  value: "@espositoandrea_"
   icon: fab fa-twitter
   link: http://twitter.com/espositoandrea_
 - name: "GitHub"
@@ -19,6 +19,5 @@
   icon: "fab fa-researchgate"
   link: "https://www.researchgate.net/profile/Andrea-Esposito-12"
 - name: Google Scholar
-  value: xDmY2lgAAAAJ
   icon: ai ai-google-scholar
   link: https://scholar.google.com/citations?user=xDmY2lgAAAAJ
