@@ -15,6 +15,22 @@ body {
   background-color: unset !important;
 }
 
+.sidebar {
+  @extend .sticky-md-top;
+  top: 56px;
+
+  .author-avatar {
+    @extend .img-thumbnail;
+    @extend .rounded-circle;
+    @extend .me-2;
+    @extend .me-md-0;
+    max-width: 64px;
+    @include media-breakpoint-up("md") {
+      max-width: 50%;
+    }
+  }
+}
+
 @media (prefers-color-scheme: dark){
 	$primary-darkmode: desaturate(lighten($primary, 15%), 25%);
 	a {
