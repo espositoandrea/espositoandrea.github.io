@@ -132,13 +132,15 @@ layout: default
 
         <footer>
             <hr />
-            <div class="text-muted">
-                Tags:
+            {% if page.tags %}
+            <section class="mb-3 text-muted">
+                <span>Tags:</span>
                 {% for tag in page.tags %}
                 <a href="{{ '/blog/posts/tags/' | append: tag | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
                     class="text-muted mx-1">#{{ tag }}</a>
                 {% endfor %}
-            </div>
+            </section>
+            {% endif %}
             <section class="mb-3 text-muted">
                 <span class="h4 d-block">Share on</span>
                 <a href="https://twitter.com/intent/tweet?text={{ page.url | absolute_url }}" class="btn btn-secondary"
