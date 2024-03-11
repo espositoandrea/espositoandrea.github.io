@@ -57,7 +57,7 @@ layout: default
                 class="z-n1 position-absolute top-0 bottom-0 start-0 end-0 bg-gradient-to-b from-transparent to-black opacity-75"
                 style="background-image: linear-gradient(to bottom, transparent, black);"></div>
             {% endif %}
-            <div class="z-1 px-5 text-white" style="padding-top: 12rem; padding-bottom: 3rem;">
+            <div class="z-1 {% if page.image %}px-5 text-white{% endif %}" {% if page.image %} style="padding-top: 12rem; padding-bottom: 3rem;" {% endif %} >
                 <div class="mb-2">
                     {% for category in page.categories %}
                     <a href="{{ '/blog/posts/categories/' | append: category | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
