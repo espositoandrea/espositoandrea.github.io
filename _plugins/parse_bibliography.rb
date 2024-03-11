@@ -2,10 +2,10 @@
 
 module Jekyll
   module BibliographyEditor
-    @@acm_dl_icon = '<img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Association_for_Computing_Machinery_%28ACM%29_logo.svg" height=20 style="vertical-align: text-bottom;" alt="ACM Digital Library"/>'
-    @@springer_sharedit_icon = '<img src="https://sustainabilitycommunity.springernature.com/theme/assets/touch-icon.png?cache_key=7bfc29ef095294ef138877ebd9634c02a4b7d4a6&theme=nature-sustainability" height=20 style="vertical-align: text-bottom;" alt="Springer Nature SharedIt"/>'
-    @@openaccess_icon = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Open_Access_logo_PLoS_transparent.svg/1024px-Open_Access_logo_PLoS_transparent.svg.png" height=20 style="vertical-align: text-bottom;" alt="Open Access"/>'
-    @@arxiv_icon = '<img src="https://public.boxcloud.com/api/2.0/files/804102562135/content?preview=true&version=860286523735&access_token=1!dH6BPJK0RJFxLTFN5RcZH6UDBAccQeHNa45p98NXxXXhmHcgZ_66BPCW2lJ4ZpKEm0xkwEflyLh2J5MrnXGcKOYi_mua624XUgotH8JOXv0Zd7atpGlePHgQOb27s41zcf_UABA3DOIWp3Cdj0iQtavRHQV7U2nh9bumaGVcbQp-d2lQBGH_g50yNOG4IO6Zk9B7sZKgUjfQt0g3nCd5zclLoElej2cBslNkDDBf6TKk7ugzUv_0oYD4aRUruSz9dLfg3VHEXLa3Dg1B1h7A5JCPQOmybBEeCLC_MxvTCd_leGm-sQtvK09UoEo7UhGdT4H36QyQEisLo0ANfaSU8GNXtL7BWNZxLRvjJE4bNhEYSftwzF-PLhWWCb-CUuCZ6ltGF6z_kujZ3QEiINgYzOR2LDmpce_vZue_SXXj5RkFyPtIVTfBjtlqfwpqjKpVdP_7rNiH9zWNP5RIo2premiWuNEQ4hMAaZrcW8UQa47FgXzn7jD33eZ6LS4H6Zv03cU0Vr2aKYVtTR4NvUjhEX5ZgAD-38r_KLYpxcqoAeIGqfhI_XUWCqb4gEwhTjE.&shared_link=https%3A%2F%2Fcornell.app.box.com%2Fv%2Farxiv-logomark-small-svg&box_client_name=box-content-preview&box_client_version=2.102.0" height=20 style="vertical-align: text-bottom;" alt="Preprint available on arXiv"/>'
+    @@acm_dl_icon = '<i class="ai ai-acm" aria-label="ACM Digital Library"></i>'
+    @@springer_sharedit_icon = '<i class="ai ai-springer" aria-label="Springer Nature SharedIt"></i>'
+    @@openaccess_icon = '<i class="ai ai-open-access" aria-label="Open Access icon"></i>'
+    @@arxiv_icon = '<i class="ai ai-arxiv" aria-label="Preprint available on arXiv"></i>'
     @@pdf_icon = '<i class="fas fa-file-pdf" aria-label="self-archived PDF"></i>'
 
     # @param [String] input
