@@ -3,13 +3,22 @@ layout: base
 ---
 {% include navigation.html %}
 
-{{ content }}
+<div class="container">
+    <div class="row relative">
+        <aside class="col-md-5 col-lg-4">
+            {%include sidebar.html %}
+        </aside>
+        <main class="col">
+            {{ content }}
+        </main>
+    </div>
+</div>
 
 <footer class="text-center bg-dark pt-5">
     <div class="text-light py-4" style="background-color: rgba(0, 0, 0, 0.25);">
         <small>
-			Last update: {{ site.time | date: "%a %b %d %Y %H:%M:%S GMT%z (%Z)"}}.
-			<a target="_blank" rel="noopener noreferrer" href="{{ 'pgp.asc' | absolute_url }}">Public GPG key</a>.
-		</small>
+            Last update: {{ site.time | date: "%a %b %d %Y %H:%M:%S GMT%z (%Z)"}}.
+            <a target="_blank" rel="noopener noreferrer" href="{{ 'pgp.asc' | absolute_url }}">Public GPG key</a>.
+        </small>
     </div>
 </footer>
