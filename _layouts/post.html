@@ -83,17 +83,18 @@ layout: default
                 <div class="mb-4" style="opacity: 0.8;">
                     Published {{ page.date | date: "%B %e, %Y" }}
                 </div>
+                {% if page.author %}
+                    {% assign author = site.data.authors[page.author] %}
+                {% elsif site.author %}
+                    {% assign author = site.author %}
+                {% endif %}
                 <div class="d-flex flex-row align-items-center">
-                    {% if page.author == "Andrea Esposito" %}
-                    <img alt="Go to the profile of {{ page.author }}" class="rounded-circle"
+                    <img alt="Go to the profile of {{ author.name }}" class="rounded-circle"
                         style="width: 3rem; height: 3rem; min-width: 3rem;" loading="lazy"
-                        src="{{ '/assets/images/profile.jpeg' | absolute_url }}">
-                    {% endif %}
+                        src="{{ author.picture | absolute_url }}">
                     <div class="ms-3">
-                        <span class="d-block fw-semibold">{{ page.author }}</span>
-                        {% if page.author == "Andrea Esposito" %}
-                        <span class="d-block" style="opacity: 0.8;">{{ site.data.curriculum.title }}</span>
-                        {% endif %}
+                        <span class="d-block fw-semibold">{{ author.name }}</span>
+                        <span class="d-block" style="opacity: 0.8;">{{ author.jobTitle }}</span>
                     </div>
                 </div>
             </div>
