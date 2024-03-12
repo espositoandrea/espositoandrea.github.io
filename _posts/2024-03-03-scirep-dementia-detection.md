@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Andrea Esposito
 title: "The Future of Alzheimer's Diagnosis: Unlocking Insights with Multi-modal Imaging Models"
 image: /assets/images/posts/scirep-dementia-detection/banner.jpg
 lang: en

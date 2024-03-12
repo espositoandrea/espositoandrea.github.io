@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Andrea Esposito
 title: My Thoughts on the Evolution of AI Research
 image: /assets/images/banners/ai-post-og.png
 lang: en
