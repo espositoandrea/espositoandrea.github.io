@@ -45,7 +45,7 @@ body {
     @extend .me-2;
     @extend .me-md-0;
     max-width: 64px;
-    @include media-breakpoint-up("md") {
+    @include media-breakpoint-up("lg") {
       max-width: 50%;
     }
   }

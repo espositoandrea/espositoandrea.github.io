@@ -1,6 +1,6 @@
 <div class="col sidebar align-items-center justify-content-center">
-    <div class="mb-md-4 text-md-center d-flex d-md-block align-items-center justify-content-between">
-        <div class="d-flex d-md-block align-items-center">
+    <div class="mb-lg-4 text-lg-center d-flex d-lg-block align-items-center justify-content-between">
+        <div class="d-flex d-lg-block align-items-center">
             <img alt="Andrea Esposito" class="author-avatar" src="{{ '/assets/images/profile.jpeg' | absolute_url }}">
             <div>
                 <h1 class="mb-0 h5 mt-2">
@@ -10,7 +10,7 @@
                 {{ site.data.curriculum.title | smartify }}
             </div>
         </div>
-        <div class="dropdown d-block d-md-none">
+        <div class="dropdown d-block d-lg-none">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Follow Me
@@ -32,11 +32,11 @@
         </div>
     </div>
     <button aria-controls="more-info" aria-expanded="false" aria-label="Toggle informations"
-        class="dropdown-toggle btn btn-link text-decoration-none text-reset btn-small mx-auto d-block d-md-none"
+        class="dropdown-toggle btn btn-link text-decoration-none text-reset btn-small mx-auto d-block d-lg-none"
         data-bs-target="#more-info" data-bs-toggle="collapse" type="button">
         More Information
     </button>
-    <section class="collapse d-md-block list-group list-group-flush" id="more-info">
+    <section class="collapse d-lg-block list-group list-group-flush" id="more-info">
         <a class="list-group-item list-group-item-action" href="{{ site.data.curriculum.affiliation.laboratory.url }}"
             target="_blank">
             <span class="fas fa-people-group"></span>
@@ -61,7 +61,7 @@
             {{ site.author.mail }}
         </a>
     </section>
-    <section class="d-none d-md-block list-group list-group-flush mt-4" id="social-links">
+    <section class="d-none d-lg-block list-group list-group-flush mt-4" id="social-links">
         {% for contact in site.data.contacts %}
         <a href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank" itemprop="sameAs"
             content="{{ contact.link }}" class="list-group-item list-group-item-action">
