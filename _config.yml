@@ -30,6 +30,7 @@ include: [".well-known"]
 scholar:
   style: ./acm
   sort_by: year,month,day
+  repository: assets/papers
   order: descending
   bibliography_template: >-
     {{ reference }}
