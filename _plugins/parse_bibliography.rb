@@ -2,11 +2,11 @@
 
 module Jekyll
   module BibliographyEditor
-    @@acm_dl_icon = '<i class="ai ai-acm" aria-label="ACM Digital Library"></i>'
-    @@springer_sharedit_icon = '<i class="ai ai-springer" aria-label="Springer Nature SharedIt"></i>'
-    @@openaccess_icon = '<i class="ai ai-open-access" aria-label="Open Access icon"></i>'
-    @@arxiv_icon = '<i class="ai ai-arxiv" aria-label="Preprint available on arXiv"></i>'
-    @@pdf_icon = '<i class="fas fa-file-pdf" aria-label="self-archived PDF"></i>'
+    @@acm_dl_icon = '<i class="fa-xl ai ai-acm" aria-label="ACM Digital Library"></i>'
+    @@springer_sharedit_icon = '<i class="fa-xl ai ai-springer" aria-label="Springer Nature SharedIt"></i>'
+    @@openaccess_icon = '<i class="fa-xl ai ai-open-access" aria-label="Open Access icon"></i>'
+    @@arxiv_icon = '<i class="fa-xl ai ai-arxiv" aria-label="Preprint available on arXiv"></i>'
+    @@pdf_icon = '<i class="fa-xl fas fa-file-pdf" aria-label="self-archived PDF"></i>'
 
     # @param [String] input
     # @return String
