@@ -33,7 +33,7 @@ scholar:
   repository: assets/papers
   order: descending
   bibliography_template: >-
-    {{ reference }}
+    {{ reference }}{% if links.pdf %}. Self-Archived PDF: <a target="_blank" href="{{links.pdf}}">{{links.pdf | split: '/' | last}} <i class="fa-xl fas fa-file-pdf" aria-label="self-archived PDF"></i></a>{%endif%}
   
 collections:
   redirects:
