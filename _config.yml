@@ -31,6 +31,7 @@ scholar:
   style: ./acm
   sort_by: year,month,day
   repository: assets/papers
+  details_layout: publication.html
   order: descending
   bibliography_template: bib
   

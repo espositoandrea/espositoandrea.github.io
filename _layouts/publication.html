@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<article>
+	<header class="text-center">
+		<h1>
+			{{ page.entry.title }}
+		</h1>
+		<address>
+			{% assign authors = page.entry.author | split: ' and ' %}
+			{% for author in page.entry.author_array %}
+				<a rel="author">
+					{{ author.first }} {{ author.last }}
+				</a>
+				{% unless forloop.last %},
+				{% endunless %}
+			{% endfor %}
+		</address>
+		{% if page.entry.doi %}
+			<section>
+				<a href="https://doi.org/{{ page.entry.doi }}" target="_blank">
+					<span class="ai ai-doi fa-lg"></span>
+					<span class="sr-only">DOI
+					</span>
+					{{ page.entry.doi }}
+				</a>
+			</section>
+		{% endif %}
+		<details open style="max-width: 80rch;" class="mx-auto mt-3">
+			<summary class="h4">Abstract
+			</summary>
+			<p style="text-align: justify;">
+				{{ page.entry.abstract }}
+			</p>
+		</details>
+	</header>
+</article>
