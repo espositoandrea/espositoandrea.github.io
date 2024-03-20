@@ -54,6 +54,7 @@ a[target="_blank"]:not(.no-blank-icon)::after
 ol.bibliography {
   @extend .list-group;
   @extend .list-group-numbered;
+  @extend .list-group-flush;
 
 	li {
     @extend .list-group-item;
