@@ -35,6 +35,7 @@ scholar:
   details_link: null
   order: descending
   bibliography_template: bib
+  group_by: type
   
 collections:
   redirects:

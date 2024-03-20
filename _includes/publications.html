@@ -42,5 +42,4 @@
 {% capture bibliography %}
 {% bibliography %}
 {% endcapture %}
-{{ bibliography | edit_urls | remove_number | emphasize_author
-}}
+{{ bibliography | edit_urls | remove_number | emphasize_author | replace: 'h2', 'h3' }}
