@@ -12,6 +12,7 @@ excerpt: >-
     incorporating eXplainable Artificial Intelligence for diagnostic
     transparency.
 canonical_url: 'https://communities.springernature.com/posts/the-future-of-alzheimer-s-diagnosis-unlocking-insights-with-multi-modal-imaging-models'
+paper: Castellano2024Automated
 ---
 
 Read the full paper on [Springer Link](https://link.springer.com/article/10.1038/s41598-024-56001-9){:target="_blank"}.  This post first appeared in [Springer Nature Research Communities](https://communities.springernature.com/posts/the-future-of-alzheimer-s-diagnosis-unlocking-insights-with-multi-modal-imaging-models){:target="_blank"}.

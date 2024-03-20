@@ -70,4 +70,13 @@ layout: default
 			{% endif %}
 		</section>
 	</header>
+	<section>
+		<h2>Related Blog Posts
+		</h2>
+		{% assign related_posts = site.posts
+			| where: 'paper', page.entry.key %}
+		{% for post in related_posts %}
+			{% include post.html post=post %}
+		{% endfor %}
+	</section>
 </article>
