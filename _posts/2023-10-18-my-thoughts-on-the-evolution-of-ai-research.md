@@ -19,7 +19,7 @@ However, after a very interesting lecture by Prof. Xiaowei Xu at the [9th Intern
 
 In a recent [Twitter thread](https://twitter.com/espositoandrea_/status/1644024136774164481?s=61&t=ST82pblAQ36ndIq3wvjTdg), I expressed my concern that only using accuracy as a measure of performance reduces competition to the few who have the resources to train huge models. This, in turn, _stifles innovation_ and locks out poor researchers who work in universities with limited funds. I suggested that we need to introduce formal metrics, such as "_accuracy per FLOP_," which averages performances over the model size. The idea behind this metric is that it would measure the accuracy of a model relative to the number of floating-point operations (FLOPs) it requires. This metric would be especially useful for smaller models that might not have the accuracy of larger models but are more efficient in terms of computational resources.  This would allow a fair comparison for smaller, weaker models too.
 
-I then discovered that the idea of using metrics such as "accuracy per FLOP" is not new: in the December 2020 issue of Communications of the ACM, Schwartz et al. coined the term "[Green AI](https://doi.org/10.1145/3381831)", which refers to research in AI that takes into account the computation cost {% cite Schwartz2020Green -f posts %}. However, to the extent of my knowledge, it has not gained enough traction in the AI community, especially in the business setting. Fortunately, the research interest in this seems to be increasing {% cite Verdecchia2023Systematic -f posts %}.
+I then discovered that the idea of using metrics such as "accuracy per FLOP" is not new: in the December 2020 issue of Communications of the ACM, Schwartz et al. coined the term "[Green AI](https://doi.org/10.1145/3381831)", which refers to research in AI that takes into account the computation cost [[2]](#Schwartz2020Green). However, to the extent of my knowledge, it has not gained enough traction in the AI community, especially in the business setting. Fortunately, the research interest in this seems to be increasing [[1]](#Verdecchia2023Systematic).
 
 Furthermore, I expressed concern that current research simply translates to _trying a bigger model_ without challenging the base ideas of the model. There is a need for AI researchers to explore new techniques and models that can yield better accuracy per FLOP (even at the cost of - temporarily - reducing accuracy). This approach would ensure that researchers are not just trying to build bigger models but are also exploring new ways to improve the efficiency of the models.
 
@@ -29,10 +29,9 @@ In conclusion, the development of large language models has brought many excitin
 
 ## References
 
-{% capture bibliography %}
-{% bibliography -f posts --cited %}
-{% endcapture %}
-{{ bibliography | edit_urls | remove_number }}
+{: .bibliography }
+1. {: #Verdecchia2023Systematic } Roberto Verdecchia, June Sallou, and Luís Cruz. 2023. A systematic review of Green AI. _WIREs Data Mining and Knowledge Discovery_ 13, 4 (2023), e1507. DOI:[10.1002/widm.1507](https://doi.org/10.1002/widm.1507){: target="_blank"}
+2. {: #Schwartz2020Green } Roy Schwartz, Jesse Dodge, Noah A. Smith, and Oren Etzioni. 2020.  Green AI. _Commun. ACM_ 63, 12 (November 2020), 54–63. DOI:[10.1145/3381831](https://doi.org/10.1145/3381831){: target="_blank"}
 
 *[AI]: Artificial Intelligence
 *[FLOP]: Floating Point Operation
