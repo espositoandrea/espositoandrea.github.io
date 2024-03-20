@@ -37,5 +37,37 @@ layout: default
 				{{ page.entry.abstract }}
 			</p>
 		</details>
+		<section>
+			{% if page.entry.url %}
+				<a class="btn btn-secondary" href="{{ page.entry.url }}" target="_blank">
+					{% if page.entry.url contains "dl.acm.org" %}
+						<span class="ai ai-acmdl fa-lg"></span>
+						<span>ACM Digital Library
+						</span>
+					{% elsif page.entry.url contains 'ieeexplore.ieee.org' %}
+						<span class="ai ai-ieee fa-lg"></span>
+						<span>IEEE eXplore
+						</span>
+					{% elsif page.entry.url
+						contains 'link.springernature.com'
+						or page.entry.url
+						contains 'rdcu.be'
+						or page.entry.url
+						contains 'nature.com' %}
+						<span class="ai ai-springer fa-lg"></span>
+						<span>Springer Nature
+						</span>
+					{% elsif page.entry.url contains 'ceur-ws' %}
+						<span class="ai ai-ceur fa-lg"></span>
+						<span>CEUR
+						</span>
+					{% else %}
+						<span class="fas fa-file-pdf fa-lg"></span>
+						<span>Paper
+						</span>
+					{% endif %}
+				</a>
+			{% endif %}
+		</section>
 	</header>
 </article>
