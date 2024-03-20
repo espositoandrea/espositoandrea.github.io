@@ -6,6 +6,9 @@ layout: default
 	<header class="text-center">
 		<h1>
 			{{ page.entry.title }}
+			{% if page.entry.copyright contains "CC" %}
+				<span class="ai ai-open-access fa-lg text-warning" title="Published in Open Access"></span>
+			{% endif %}
 		</h1>
 		<address>
 			{% assign authors = page.entry.author | split: ' and ' %}
