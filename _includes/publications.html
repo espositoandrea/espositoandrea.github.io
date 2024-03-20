@@ -7,8 +7,8 @@
      For all those paper that ACM allows me to share through the
      <a href="https://www.acm.org/publications/authors/acm-author-izer-service" target="_blank"
           rel="noopener noreferrer">Author-Izer</a>
-     service, you'll find a little ACM logo
-     <i class="ai ai-acm" aria-label="ACM Digital Library" title="Example of the icon to indicate free access to the paper"></i>
+     service, you'll find a little ACM DL logo
+     <i class="ai ai-acmdl" aria-label="ACM Digital Library" title="Example of the icon to indicate free access to the paper"></i>
      that links to a full version of the paper.
 
      For all those paper published by Springer Nature that the publisher allows me to share through the <a
@@ -42,5 +42,5 @@
 {% capture bibliography %}
 {% bibliography %}
 {% endcapture %}
-{{ bibliography | edit_urls | remove_number | emphasize_author | acm_authorizer | open_access | preprint | self_archived
+{{ bibliography | edit_urls | remove_number | emphasize_author
 }}

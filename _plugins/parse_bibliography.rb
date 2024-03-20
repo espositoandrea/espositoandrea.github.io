@@ -12,9 +12,9 @@ module Jekyll
     # @return String
     def edit_urls(input)
       input.split("\n").map { |line|
-        line.gsub(%r{(https?://doi.org/.*?), Retrieved from \1</span>}, '\1</span>')
+        line.gsub(%r{(https?://doi.org/.*?), Retrieved from .*?</span>}, '\1</span>')
             .gsub(%r{https?://doi.org/(.*?)(</span>|, Retrieved)}, '<a href="https://doi.org/\1" target="_blank">\1</a>\2')
-            .sub(%r{https?://((?!rdcu.be|arxiv|ceur|doi|dl.acm.org|link.springer.com|www.nature.com|(?:www.)?dropbox.com|(?:www.)?scitepress.org).*?)</span>}, 'URL: <a href="https://\1" target="_blank">\1</a></span>')
+            .sub(%r{Retrieved from https?://(.*?)</span>}, 'URL: <a href="https://\1" target="_blank">\1</a></span>')
         #.sub(%r{[,.] Retrieved from (.*?)</span>}, '</span>')
       }.join "\n"
     end

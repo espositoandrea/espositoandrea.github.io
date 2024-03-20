@@ -32,6 +32,7 @@ scholar:
   sort_by: year,month,day
   repository: assets/papers
   details_layout: publication.html
+  details_link: null
   order: descending
   bibliography_template: bib
   

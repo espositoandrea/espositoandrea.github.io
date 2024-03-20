@@ -1,11 +1,42 @@
 ---
 ---
 
-{{ reference }}
-{%- if links.pdf -%}
-	. Self-Archived PDF:
-	<a target="_blank" href="{{links.pdf}}">
-		{{ links.pdf | split: '/' | last }}
-		<i class="fas fa-file-pdf" aria-label="self-archived PDF"></i>
+<div class="ms-2 me-auto">
+	<div>
+		{{ reference }}
+	</div>
+
+	{%- capture more_details_link -%}{% details_link key %}{%- endcapture -%}
+	<a href="{{ more_details_link | absolute_url }}" class="small">See more details
+	</a>
+</div>
+
+{% assign link = empty %}
+{% assign icon = empty %}
+{% assign description = empty %}
+
+{% if entry.copyright contains "CC" %}
+	{% assign doi_link = entry.doi
+		| prepend: 'https://doi.org/' %}
+	{% assign link = entry.url | default: doi_link %}
+	{% assign icon = 'ai ai-open-access ai-2x' %}
+	{% assign description = 'Published in Open Access' %}
+{% elsif entry.url contains 'dl.acm.org' %}
+	{% assign link = entry.url %}
+	{% assign icon = 'ai ai-acmdl ai-2x' %}
+	{% assign description = 'Available through ACM Author-Izer' %}
+{% elsif entry.url contains 'rdcu.be' %}
+	{% assign link = entry.url %}
+	{% assign icon = 'ai ai-springer ai-2x' %}
+	{% assign description = 'Available through SpringerNature SharedIt' %}
+{% elsif links.pdf -%}
+	{% assign link = links.pdf | absolute_url %}
+	{% assign icon = 'fas fa-file-pdf fa-lg' %}
+	{% assign description = 'Self-archived PDF avilable' %}
+{% endif %}
+
+{% if link != empty %}
+	<a class="no-blank-icon d-block" href="{{ link }}" target="_blank">
+		<span class="{{ icon }} fa-fw" title="{{ description }}"></span>
 	</a>
 {% endif %}
