@@ -1,0 +1,11 @@
+---
+---
+
+{{ reference }}
+{%- if links.pdf -%}
+	. Self-Archived PDF:
+	<a target="_blank" href="{{links.pdf}}">
+		{{ links.pdf | split: '/' | last }}
+		<i class="fas fa-file-pdf" aria-label="self-archived PDF"></i>
+	</a>
+{% endif %}
