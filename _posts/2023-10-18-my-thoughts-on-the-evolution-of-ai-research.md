@@ -29,7 +29,6 @@ In conclusion, the development of large language models has brought many excitin
 
 ## References
 
-{: .bibliography }
 1. {: #Verdecchia2023Systematic } Roberto Verdecchia, June Sallou, and Luís Cruz. 2023. A systematic review of Green AI. _WIREs Data Mining and Knowledge Discovery_ 13, 4 (2023), e1507. DOI:[10.1002/widm.1507](https://doi.org/10.1002/widm.1507){: target="_blank"}
 2. {: #Schwartz2020Green } Roy Schwartz, Jesse Dodge, Noah A. Smith, and Oren Etzioni. 2020.  Green AI. _Commun. ACM_ 63, 12 (November 2020), 54–63. DOI:[10.1145/3381831](https://doi.org/10.1145/3381831){: target="_blank"}
 
