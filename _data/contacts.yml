@@ -2,6 +2,10 @@
   value: "@espositoandrea_"
   icon: fab fa-twitter
   link: http://twitter.com/espositoandrea_
+- name: Mastodon
+  value: "@espositoandrea@hci.social"
+  icon: fab fa-mastodon
+  link: https://hci.social/@espositoandrea
 - name: "GitHub"
   value: "espositoandrea"
   icon: "fab fa-github"
