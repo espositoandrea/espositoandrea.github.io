@@ -160,5 +160,10 @@ layout: default
                 <span>LinkedIn</span>
             </a>
         </section>
+        {% if page.comments %}
+        <section class="mb-3 text-muted">
+            {% include disqus.html %}
+        </section>
+        {% endif %}
     </footer>
 </article>

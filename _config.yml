@@ -1,7 +1,8 @@
 title: Andrea Esposito
 description: >-
   Andrea Esposito's website and blog.
-baseurl: "" # the subpath of your site, e.g. /blog url: "https://espositoandrea.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://espositoandrea.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 canonical_url: "https://espositoandrea.github.io/"
 repository: "espositoandrea/espositoandrea.github.io"
 github_username: espositoandrea
@@ -93,6 +94,7 @@ defaults:
       type: posts
     values:
       layout: post
+      comments: true
       math: false
       is_post: true
   # -
