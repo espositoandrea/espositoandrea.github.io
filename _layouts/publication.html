@@ -68,6 +68,12 @@ layout: default
 					{% endif %}
 				</a>
 			{% endif %}
+			{% if page.links.pdf %}
+				<a class="btn btn-secondary" href="{{ page.links.pdf }}" target="_blank">
+					<span class="fas fa-file-pdf fa-lg"></span>
+					<span>Free Self-Archived PDF</span>
+				</a>
+			{% endif %}
 		</section>
 	</header>
 	<section>
