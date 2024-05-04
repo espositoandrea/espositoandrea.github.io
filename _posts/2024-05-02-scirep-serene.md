@@ -67,6 +67,17 @@ It’s not a question of humans versus machines but rather a harmonious fusion o
 
 In essence, our research shows that we must embrace the symbiotic relationship between humanity and AI without forgetting the need for human-centered approaches that define the requirements and goals of the system—tipping the scale of automation and augmentation.
 
+## My Perspective
+
+<figure>
+  <blockquote class="blockquote">
+    <p>I loved conceiving, designing, conducting and analyzing this experiment! It was really interesting and it provided a ground to test the basic assumptions of Human-Centered Artificial Intelligence: wether or not AI should augment rather than automate humans. And that is what I believe is the main takeaway of the study. The empirical data clearly show that providing full control to users, or augmenting their capabilities, by default is not the right approach. In fact, a fully automated approach (i.e., replacing users - even if the negative connotation of the term should be dropped) may be beneficial in some cases, depending on users goals. This highlights the need for user study from the start when designing AI!</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    <cite title="Andrea Esposito">Andrea Esposito</cite>
+  </figcaption>
+</figure>
+
 <small>
 This post first appeared in <a href="https://communities.springernature.com/posts/to-automate-or-to-augment-humans-that-is-the-question-for-ai" target="_blank">Springer Nature Research Communities</a>.
 </small>
