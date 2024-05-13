@@ -13,10 +13,7 @@ layout: default
 		<address>
 			{% assign authors = page.entry.author | split: ' and ' %}
 			{% for author in page.entry.author_array %}
-				<a rel="author">
-					{{ author.first }} {{ author.last }}
-				</a>
-				{% unless forloop.last %},
+				<a rel="author">{{ author.first }} {{ author.last }}</a>{% unless forloop.last %},
 				{% endunless %}
 			{% endfor %}
 		</address>
@@ -30,6 +27,7 @@ layout: default
 				</a>
 			</section>
 		{% endif %}
+		{% include altmetric-badge.html entry=page.entry %}
 		<details open style="max-width: 80rch;" class="mx-auto mt-3">
 			<summary class="h4">Abstract
 			</summary>

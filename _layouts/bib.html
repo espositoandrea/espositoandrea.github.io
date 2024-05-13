@@ -6,9 +6,11 @@
 		{{ reference }}
 	</div>
 
-	{%- capture more_details_link -%}{% details_link key %}{%- endcapture -%}
-	<a href="{{ more_details_link | absolute_url }}" class="small">See more details
-	</a>
+	<div class="d-flex align-items-center gap-3">
+		{% include altmetric-badge.html entry=entry %}
+		{%- capture more_details_link -%}{% details_link key %}{%- endcapture -%}
+		<a href="{{ more_details_link | absolute_url }}" class="small">See more details</a>
+	</div>
 </div>
 
 {% assign link = empty %}
