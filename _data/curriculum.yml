@@ -13,24 +13,24 @@ affiliation:
     url: http://ivu.di.uniba.it
   address: Via Orabona, 4, 70125 Bari (BA), Italy
 brief: |
-  Andrea Esposito has a Bachelor's Degree in *Computer Science and Digital
-  Communication* and a Master's Degree in *Computer Science (Artificial
-  Intelligence)*, both at the University of Bari Aldo Moro. Currently, he
-  started his Ph.D. in the same University. He was a scholarship researcher at
-  the University of Bari, working on the ISO 25000-certified project "[eGLU-Box
-  PA](https://atc.mise.gov.it/index.php/tecnologie-delle-comunicazioni/ricerca/accessibilita-e-usabilita/eglu-box-pa){:target="_blank"}",
-  on the Human-Centred AI project
-  "[SERENE](https://uxsad.github.io){:target="_blank"}", as well as in other
-  research activities. 
-  
-  The focus of his Ph.D. is in Human-Centred Artificial Intelligence. His main
-  interests are in Human-Computer Interaction and Artificial Intelligence. His
-  interests include eXplainable Artificial Intelligence and Human-AI
-  Interaction. During his Ph.D., he has been a visiting researcher for 6 months
-  at the [Ludwig-Maximilians Universität (LMU) in
-  Munich](https://www.lmu.de/en/index.html) and for an additional 6 months in a
-  corporate research laboratory at [Eusoft
-  S.r.l.](https://www.eusoft.it/){:target="_blank"}.
+  Andrea Esposito is a Ph.D. student in the [Department of Computer Science]{:target="_blank"} at the [University of Bari Aldo Moro]{:target="_blank"}. He is an active member of the [Interaction, Visualization, Usability & UX (IVU) Laboratory][IVU Laboratory]{:target="_blank"}, where his research focuses on Human-Centred Artificial Intelligence. His interests lie in Human-Computer Interaction, eXplainable Artificial Intelligence, and Human-AI Interaction.
+
+  [IVU Laboratory]: https://ivu.di.uniba.it
+  [Department of Computer Science]: https://www.uniba.it/ricerca/dipartimenti/informatica
+  [University of Bari Aldo Moro]: https://www.uniba.it/
+
+  Andrea earned his Bachelor's Degree in Computer Science and Digital Communication, as well as his Master's Degree in Computer Science (Artificial Intelligence) from the University of Bari Aldo Moro. He has also worked as a scholarship researcher at the university, contributing to the ISO 25000-certified project "[eGLU-Box PA]{:target="_blank"}" and the Human-Centred AI project "[SERENE]{:target="_blank"}," among other research activities.
+
+  [eGLU-Box PA]: https://atc.mise.gov.it/index.php/tecnologie-delle-comunicazioni/ricerca/accessibilita-e-usabilita/eglu-box-pa
+  [SERENE]: https://ivu.di.uniba.it/projects/serene
+
+  As part of his Ph.D. studies, Andrea spent six months as a visiting researcher at [Ludwig-Maximilians Universität (LMU)]{:target="_blank"} in Munich and another six months at a corporate research laboratory with [Eusoft S.r.l.]{:target="_blank"}, gaining valuable international and industry experience. He also collaborates with the European Network of Human-Centered Artificial Intelligence "[Humane-AI]{:target="_blank"}," further expanding his research network and expertise.
+
+  [Humane-AI]: https://www.humane-ai.eu/
+  [Ludwig-Maximilians Universität (LMU)]: https://www.lmu.de/en/index.html
+  [Eusoft S.r.l.]: https://www.eusoft.it/
+
+  Andrea is committed to advancing the field of Human-Centred AI, working to improve the interaction between humans and AI systems.
 memberships:
   - institution: Association for Computing Machinery
     short: ACM
