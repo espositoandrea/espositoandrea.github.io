@@ -3,6 +3,7 @@ layout: default
 lang: en
 permalink: /index.html
 title: "Andrea Esposito"
+image: /assets/images/profile.jpeg
 ---
 
 ## Curriculum
