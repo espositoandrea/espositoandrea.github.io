@@ -129,9 +129,45 @@ layout: default
         {% include toc.html html=content %}
     </aside>
 
+    {% if page.paper %}
+    {% bib_variable -f references.bib %}
+    {% for entry in site.bibliography %}
+    {% if page.paper == entry.key %}
+    <div class="card mb-3">
+        <div class="row g-0 position-relative">
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title">{{ entry.data.title }}</h5>
+                    <p class="card-text">{{ entry.data.abstract | truncatewords: 30 }}</p>
+                    <p class="card-text"><small class="text-body-secondary"><a class="stretched-link no-blank-icon"
+                                href="https://doi.org/{{ entry.data.doi }}" target="_blank"
+                                rel="noopener noreferrer">doi.org/{{ entry.data.doi }}</a></small></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <img src="{{ entry.data.url | photo_from_url }}" class="img-fluid rounded-start w-100"
+                    aria-hidden="true" alt="">
+            </div>
+        </div>
+        <div class="card-footer text-body-secondary">
+            <a href="{{ entry.key | prepend: '/bibliography/' | absolute_url }}">See paper details</a>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
     {{ content }}
 
     <footer>
+        {% if page.canonical_url %}
+        <small>
+            This post first appeared in
+            <a href="{{ page.canonical_url }}" target="_blank" rel="noopener noreferrer">{{ page.canonical_site_name
+                }}</a>.
+        </small>
+        {% endif %}
+
         <hr />
         {% if page.tags %}
         <section class="mb-3 text-muted">

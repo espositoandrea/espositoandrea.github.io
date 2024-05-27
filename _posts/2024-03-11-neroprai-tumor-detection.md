@@ -15,6 +15,8 @@ excerpt: >-
     and achieved about 99% accuracy. We also emphasize the importance of
     explaining and being transparent about how the AI works to ensure human
     control and safety in the diagnostic process.
+canonical_url: https://link.growkudos.com/19qun40okxs
+canonical_site_name: GrowKudos.com
 ---
 
 {:style="text-align:center"}
@@ -64,7 +66,3 @@ diagnostic accuracy and efficiency, ultimately benefiting patient care. Moving
 forward, we remain committed to further exploration and refinement of
 AI-assisted diagnostics, with a focus on transparency, accountability, and
 patient-centered care.
-
-<small>
-Content taken from <a href="https://link.growkudos.com/19qun40okxs" target="_blank">GrowKudos.com</a>.
-</small>

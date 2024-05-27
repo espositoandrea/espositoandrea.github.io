@@ -8,6 +8,7 @@ tags: [ai, hcai, user experience, detection, user study, hci]
 excerpt: >-
     The growing influence of AI brings benefits and risks. Our research explores how human-centred AI balances automation and human control in website usability evaluation. It shows how AI streamlines the detection of critical usability issues while augmented approaches also uncover less severe issues.
 canonical_url: 'https://communities.springernature.com/posts/to-automate-or-to-augment-humans-that-is-the-question-for-ai'
+canonical_site_name: Springer Nature Research Communities
 paper: Esposito2024Fine
 date: 2024-05-02T16:00+0002
 ---
@@ -77,7 +78,3 @@ In essence, our research shows that we must embrace the symbiotic relationship b
     <cite title="Andrea Esposito">Andrea Esposito</cite>
   </figcaption>
 </figure>
-
-<small>
-This post first appeared in <a href="https://communities.springernature.com/posts/to-automate-or-to-augment-humans-that-is-the-question-for-ai" target="_blank">Springer Nature Research Communities</a>.
-</small>

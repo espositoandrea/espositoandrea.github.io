@@ -1,6 +1,42 @@
 # frozen_string_literals: true
 
 module Jekyll
+  class Scholar
+
+    class BibVariableTag < Liquid::Tag
+      include Scholar::Utilities
+
+      def initialize(tag_name, arguments, tokens)
+        super
+
+        @config = Scholar.defaults.dup
+
+        optparse(arguments)
+      end
+
+      def render(context)
+        set_context_to context
+
+        # Add bibtex files to dependency tree.
+        update_dependency_tree
+
+        items = cited_entries
+
+        context['site']['bibliography'] = items.map { |entry|
+          {
+            'data' => liquidify(entry),
+            'key' => entry.key,
+            'type' => entry.type.to_s
+          }
+        }
+
+        ""
+      end
+
+    end
+
+  end
+
   module BibliographyEditor
     @@acm_dl_icon = '<i class="fa-xl ai ai-acm" aria-label="ACM Digital Library"></i>'
     @@springer_sharedit_icon = '<i class="fa-xl ai ai-springer" aria-label="Springer Nature SharedIt"></i>'
@@ -72,3 +108,4 @@ module Jekyll
 end
 
 Liquid::Template.register_filter(Jekyll::BibliographyEditor)
+Liquid::Template.register_tag('bib_variable', Jekyll::Scholar::BibVariableTag)
