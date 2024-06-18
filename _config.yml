@@ -37,6 +37,9 @@ scholar:
   order: descending
   bibliography_template: bib
   group_by: type
+  type_names:
+    misc: Miscellaneous & Preprints
+  type_order: [article, inproceedings, incollection, misc]
   
 collections:
   redirects:
