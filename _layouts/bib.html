@@ -24,7 +24,7 @@
 	{% assign icon = 'ai ai-open-access ai-2x' %}
 	{% assign description = 'Published in Open Access' %}
 {% elsif entry.url contains 'dl.acm.org' %}
-	{% assign link = entry.url %}
+	{% assign link = entry.url | append: '?cid=99660287205' %}
 	{% assign icon = 'ai ai-acmdl ai-2x' %}
 	{% assign description = 'Available through ACM Author-Izer' %}
 {% elsif entry.url contains 'rdcu.be' %}
