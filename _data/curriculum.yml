@@ -36,6 +36,7 @@ memberships:
     short: ACM
     url: https://www.acm.org
     since: 2022-05-01
+    value: "5260059"
   - institution: Italian Research Staff Association
     short: ItalianRSA
     url: https://italianrsa.org
@@ -48,10 +49,12 @@ memberships:
     short: ACM SIGCHI
     url: https://sigchi.org/
     since: 2023-05-17
+    value: "5260059"
   - institution: ACM Special Interest Group on Artificial Intelligence
     short: ACM SIGAI
     url: https://sigai.acm.org/
     since: 2023-10-01
+    value: "5260059"
   - institution: ACM's Europe Technology Policy Committee
     short: ACM ETPC
     url: https://www.acm.org/public-policy/europe-tpc
@@ -60,6 +63,7 @@ memberships:
     short: INSTICC
     url: https://portal.insticc.org
     since: 2024-01-29
+    value: "22959"
 experiences:
   - title: Teaching Assistant
     years:
