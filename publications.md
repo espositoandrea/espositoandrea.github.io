@@ -1,0 +1,48 @@
+---
+title: Publications
+layout: page
+---
+
+In this section, you'll find a list of my publications. I always try to provide
+a freely accessible version of all of my papers, to ensure that everyone can
+read them. Depending on the publisher, though, the ways I can do that may vary.
+
+For all those paper that ACM allows me to share through the [ACM
+Author-Izer]{:target="_blank"} service, you'll find a little ACM DL logo <i
+class="ai ai-acmdl" aria-label="ACM Digital Library" title="Example of the icon
+to indicate free access to the paper"></i> that links to a full version of the
+paper.
+
+For all those paper published by Springer Nature that the publisher allows me to
+share through the [SharedIt]{:target="_blank"} service, you'll find a little
+Springer logo <i class="ai ai-springer" aria-label="Springer Nature SharedIt"
+title="Example of the icon to indicate free access to the paper"></i> that links
+to a full version of the paper.
+
+Similarly, if a paper is open access, you'll find an open access logo near the
+entry <i class="ai ai-open-access" aria-label="Open Access icon" title="Example of the icon to indicate open access"></i>.
+
+For all the papers that are neither open access nor available through other
+means, I always try to publish a pre-print version on [arXiv]{:target="_blank"}
+or [ResearchGate]{:target="_blank"}, or a self-archived PDF version that is
+freely available (in compliance to the publisher's license). In those cases,
+pre-prints are marked using the arXiv logomark
+<i class="ai ai-arxiv" aria-label="Preprint available on arXiv"
+     title="Example of the icon indicating that a preprint is available on arXiv"></i>
+or ResearchGate's icon
+<i class="fab fa-researchgate" title="Example of the icon indicating that a preprint is available on ResearchGate"
+     aria-label="Example of the icon indicating that a preprint is available on ResearchGate"></i>
+(depending on the platform)
+while self-archived PDFs are marked with a PDF icon
+<i class="fas fa-file-pdf" title="Example of icon indicating a self-archived PDF version"
+     aria-label="Example of icon indicating a self-archived PDF version"></i>.
+
+[ACM Author-Izer]: https://www.acm.org/publications/authors/acm-author-izer-service
+[SharedIt]: https://www.springernature.com/gp/researchers/sharedit
+[arXiv]: https://arxiv.org
+[ResearchGate]: https://www.researchgate.net
+
+{% capture bibliography %}
+{% bibliography %}
+{% endcapture %}
+{{ bibliography | edit_urls | remove_number | emphasize_author | replace: 'h2', 'h3' }}

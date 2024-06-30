@@ -84,7 +84,6 @@ He is a member of:
 {% comment %} {% include awards.html %} {% endcomment %}
 {% comment %} {% include skills.html %} {% endcomment %}
 
-{% include publications.html %}
 
 ## Projects
 
