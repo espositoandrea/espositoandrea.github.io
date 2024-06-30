@@ -51,6 +51,10 @@ a[target="_blank"]:not(.no-blank-icon)::after
   display: inline-block;
 }
 
+.no-blank-icon a[target="_blank"]::after {
+ display: none !important;
+}
+
 ol.bibliography {
   @extend .list-group;
   @extend .list-group-numbered;
