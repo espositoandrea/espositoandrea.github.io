@@ -7,33 +7,16 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  ms-auto">
-                <!-- <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/#about' | absolute_url }}">About</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/#curriculum' | absolute_url }}">Curriculum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/#experience' | absolute_url }}">Experience</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/#education' | absolute_url }}">Education</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{home | absolute_url}}#awards">Awards and Certifications</a>
-                </li> -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{home | absolute_url}}#skills">Skills</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/#publications' | absolute_url }}">Publications</a>
-                </li>
-                <li class="nav-item mr-auto">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/#projects' | absolute_url }}">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/blog' | absolute_url }}">Blog</a>
-                </li>
+                <li class="nav-item {% if page.url == '/' %} active {% endif %}"><a class="nav-link js-scroll-trigger" href="{{ '/' | absolute_url }}">{{ node.title }}</a></li>
+                {% for node in site.pages %}
+                    {% if node.layout == "page" %}
+                        {% if page.url == node.url %}
+                            <li class="nav-item active"><a class="nav-link js-scroll-trigger" href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>
