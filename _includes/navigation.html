@@ -6,17 +6,20 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ms-auto">
-                <li class="nav-item {% if page.url == '/' %} active {% endif %}"><a class="nav-link js-scroll-trigger" href="{{ '/' | absolute_url }}">{{ node.title }}</a></li>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link {% if page.url == '/index.html' %} active {% endif %} js-scroll-trigger" href="{{ '/' | absolute_url }}">About Me</a></li>
+
                 {% for node in site.pages %}
-                    {% if node.layout == "page" %}
+                    {% if node.layout == "page" and node.url != "/index.html" %}
                         {% if page.url == node.url %}
-                            <li class="nav-item active"><a class="nav-link js-scroll-trigger" href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
+                            <li class="nav-item"><a class="nav-link active js-scroll-trigger" href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
                         {% else %}
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{ node.url | absolute_url }}">{{ node.title }}</a></li>
                         {% endif %}
                     {% endif %}
                 {% endfor %}
+
+                <li class="nav-item"><a class="nav-link {% if page.url == '/blog.html' %} active {% endif %} js-scroll-trigger" href="{{ '/blog' | absolute_url }}">Blog</a></li>
             </ul>
         </div>
     </div>
