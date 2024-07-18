@@ -78,7 +78,7 @@ module ExternalPosts
       doc.data['external_source'] = source_name.downcase.strip == "medium.com" ? MetadataParser.get_medium_publication(url) : source_name
       doc.data['external_source_url'] = "#{URI.parse(url).scheme}://#{URI.parse(url).host}"
       doc.data['title'] = content[:title]
-      doc.data['feed_content'] = content[:content]
+      doc.content = content[:content]
       doc.data['excerpt'] = unless (content[:summary].nil? or content[:summary].empty?) then content[:summary] else MetadataParser.get_description(url) end
       doc.data['date'] = content[:published]
       doc.data['redirect'] = url
