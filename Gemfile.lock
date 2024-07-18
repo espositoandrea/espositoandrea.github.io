@@ -130,10 +130,6 @@ GEM
     mercenary (0.4.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
-    minima (2.5.1)
-      jekyll (>= 3.5, < 5.0)
-      jekyll-feed (~> 0.9)
-      jekyll-seo-tag (~> 2.1)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     namae (1.2.0)
@@ -251,7 +247,6 @@ DEPENDENCIES
   jekyll-scholar
   jekyll-seo-tag
   jekyll-sitemap
-  minima (~> 2.5)
   nokogiri (~> 1.16)
   octokit (~> 4.18)
   ogp (~> 0.5.0)
