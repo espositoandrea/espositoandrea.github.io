@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card-body">
                 <h2 class="card-title mt-0">
-                    <a class="no-blank-icon" href="{{ url }}" {% if post.external_source !=blank %} target="_blank" {%
+                    <a class="no-blank-icon" href="{{ url }}" {% if post.redirect !=blank %} target="_blank" {%
                        endif %}>
                         {{ post.title | smartify }}
                     </a>
