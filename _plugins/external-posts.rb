@@ -35,7 +35,7 @@ module ExternalPosts
     priority :high
 
     def generate(site)
-      if site.config['external_sources'] != nil
+      if site.config['external_sources'] != nil && ENV["JEKYLL_ENV"] == "production"
         site.config['external_sources'].each do |src|
           puts "Fetching external posts from #{src['name']}:"
           if src['rss_url']
