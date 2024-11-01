@@ -124,10 +124,12 @@ layout: default
         </ol>
     </nav>
 
+    {% unless page.toc == false %}
     <aside class="text-left rounded p-3 border bg-light mb-3">
         <h2 class="mt-0">Table of Contents</h2>
         {% include toc.html html=content %}
     </aside>
+    {% endunless %}
 
     {% if page.paper %}
     {% bib_variable -f references.bib %}

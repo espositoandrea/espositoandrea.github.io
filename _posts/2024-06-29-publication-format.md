@@ -1,9 +1,11 @@
 ---
+layout: post
 title: The need and format for publications is stifling innovation and science adoption
 external_source: Journal of Brief Ideas
 external_source_url: http://beta.briefideas.org/ideas/326de755c8bdb494b354e804fb09a74e
 canonical_url: https://beta.briefideas.org/ideas/326de755c8bdb494b354e804fb09a74e
 canonical_site_name: Journal of Brief Ideas
+toc: false
 doi: 10.5281/zenodo.13129574
 tags: [publications, science adoption, opinion]
 image: https://og.tailgraph.com/og?fontFamily=Roboto&title=Publication%20format%20is%20stifling%20innovation&titleTailwind=font-bold%20text-6xl%20text-white&text=A%20Brief%20Idea&textTailwind=text-2xl%20mt-4%20text-white&logoTailwind=h-8&bgTailwind=bg-black&footer=espositoandrea.github.io&footerTailwind=text-white

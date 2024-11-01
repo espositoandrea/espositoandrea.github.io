@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "'Accuracy per FLOP': A Green AI Metric for Fair and Efficient AI Development"
 external_source: Journal of Brief Ideas
 external_source_url: https://beta.briefideas.org/ideas/7ca347b740b1e3876e3987d1fc986df9
@@ -6,6 +7,7 @@ canonical_url: https://beta.briefideas.org/ideas/7ca347b740b1e3876e3987d1fc986df
 canonical_site_name: Journal of Brief Ideas
 doi: 10.5281/zenodo.12660216
 math: true
+toc: false
 image: https://og.tailgraph.com/og?fontFamily=Roboto&title=Accuracy%20per%20Flop&titleTailwind=font-bold%20text-6xl%20text-white&text=A%20Brief%20Idea&textTailwind=text-2xl%20mt-4%20text-white&logoTailwind=h-8&bgTailwind=bg-black&footer=espositoandrea.github.io&footerTailwind=text-white
 tags: [artificial intelligence, green ai, democratization, new metrics]
 category: Ideas
