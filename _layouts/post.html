@@ -164,7 +164,7 @@ layout: default
         <small>
             This post first appeared in
             <a href="{{ page.canonical_url }}" target="_blank" rel="noopener noreferrer">{{ page.canonical_site_name
-                }}</a>.
+                }}</a>{% if page.doi %}, <span>DOI: <a href="https://doi.org/{{page.doi}}" target="_blank">{{ page.doi }}</a></span>{% endif %}.
         </small>
         {% endif %}
 

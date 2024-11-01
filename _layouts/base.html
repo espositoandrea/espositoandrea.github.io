@@ -36,6 +36,10 @@
     {% seo %}
     {% feed_meta %}
 
+    {% if page.doi %}
+    <meta name="citation_doi" content="{{ page.doi }}">
+    {% endif %}
+
     <script type="application/ld+json">
         {% include linked-data.json %}
     </script>
