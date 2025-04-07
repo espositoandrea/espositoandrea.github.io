@@ -48,7 +48,7 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "octokit", "~> 4.18"
-gem "nokogiri", "~> 1.16"
+gem "nokogiri", "~> 1.18"
 gem "faraday-http-cache", "~> 2.5"
 gem "ogp", "~> 0.5.0"
 
