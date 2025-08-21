@@ -129,7 +129,7 @@ control.
 .P
 One of the earliest models of automation, and also one of the most
 frequently cited, defines a one-dimensional scale of task automation
-levels\*(Rf.
+levels (Figure \n[Fg])\*(Rf.
 This model, based on 10 levels, has two extremes: total human control (a
 level where the machine provides no support or automation for the
 specific task) and total automation (a level where the human has no role
@@ -149,7 +149,7 @@ Automation.\(rq \f[I]IEEE Transactions on Systems, Man, and Cybernetics
 .FG "New two-dimensional model of automation"
 .DE
 .P
-A more recent model, on the other hand, separates the degree of
+A more recent model (Figure \n[Fg]), on the other hand, separates the degree of
 automation from the level of human control, offering a two-dimensional
 view of the relationship between humans and AI (or, more generally,
 machines)\*(Rf.
