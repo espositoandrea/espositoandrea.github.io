@@ -27,9 +27,11 @@
                 <li class="nav-item">
                     <a class="nav-link {% if page.url == '/publications' %} active {% endif %} {{ page.url }} js-scroll-trigger" href="{{ '/publications' | absolute_url }}">Publications</a>
                 </li>
+				{% comment %}
                 <li class="nav-item mr-auto">
                     <a class="nav-link {% if page.url == '/projects' %} active {% endif %} {{ page.url }} js-scroll-trigger" href="{{ '/projects' | absolute_url }}">Projects</a>
                 </li>
+				{% endcomment %}
                 <li class="nav-item">
                     <a class="nav-link {% if page.url == '/blog/index.html' %} active {% endif %} js-scroll-trigger" href="{{ '/blog/' | absolute_url }}">Blog</a>
                 </li>
