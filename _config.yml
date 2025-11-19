@@ -8,9 +8,9 @@ repository: "espositoandrea/espositoandrea.github.io"
 github_username: espositoandrea
 logo: https://github.com/espositoandrea.png
 
-external_sources:
-  - name: medium.com
-    rss_url: https://espositoandrea.medium.com/feed
+# external_sources:
+#   - name: medium.com
+#     rss_url: https://espositoandrea.medium.com/feed
 
 twitter:
   username: espositoandrea_
