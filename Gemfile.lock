@@ -11,7 +11,7 @@ GEM
       logger (~> 1.7)
       racc (~> 1.7)
     bigdecimal (3.3.1)
-    bootstrap (5.3.5)
+    bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
     citeproc (1.1.0)
       date
