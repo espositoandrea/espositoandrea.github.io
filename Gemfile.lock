@@ -47,7 +47,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
-    faraday-http-cache (2.6.1)
+    faraday-http-cache (2.7.0)
       faraday (>= 0.8)
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
@@ -132,7 +132,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.19.2)
+    json (2.19.4)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     kramdown-parser-gfm (1.1.0)
@@ -244,7 +244,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 5.3)
-  faraday-http-cache (~> 2.5)
+  faraday-http-cache (~> 2.7)
   feedjira
   http_parser.rb (~> 0.6.0)
   httparty
