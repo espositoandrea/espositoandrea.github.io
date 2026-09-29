@@ -1,18 +1,21 @@
 sex: M
 birthdate: 1999-08-18
 title: PhD
-position: Research Fellow
+position: Postdoctoral Researcher
 affiliation:
   institution: 
-    name: University of Bari Aldo Moro
-    url: https://uniba.it
+    name: Inria
+    url: https://www.inria.fr/
   department:
-    name: Department of Computer Science
-    url: http://www.di.uniba.it
+    name: Centre Inria d'Université Côte d'Azur
+    url: https://www.inria.fr/fr/centre-inria-universite-cote-azur
   laboratory:
-    name: IVU Laboratory
-    url: http://ivu.di.uniba.it
-  address: Via Orabona, 4, 70125 Bari (BA), Italy
+    name: WIMMICS Team
+    url: https://team.inria.fr/wimmics/
+  address: >-
+    2004, route des Lucioles
+    BP 93
+    06902 Sophia Antipolis  Cedex
 brief: |
   Andrea Esposito is a Ph.D. student in the [Department of Computer Science]{:target="_blank"} at the [University of Bari Aldo Moro]{:target="_blank"}. He is an active member of the [Interaction, Visualization, Usability & UX (IVU) Laboratory][IVU Laboratory]{:target="_blank"}, where his research focuses on Human-Centred Artificial Intelligence. His interests lie in Human-Computer Interaction, eXplainable Artificial Intelligence, and Human-AI Interaction.
 
@@ -66,6 +69,55 @@ memberships:
     since: 2024-01-29
     value: "22959"
 experiences:
+  - title: Postdoctoral Researcher
+    years:
+      start: 2026-10-01
+      end: null
+    institute:
+      name: Centre Inria d'Université Côte d'Azur
+      url: https://www.inria.fr/fr/centre-inria-universite-cote-azur
+    location: Sophia Antipolis, France
+    notes: |-
+      Postdoctoral researcher for the project MetaboLinkAI.
+  - title: Research Fellow
+    years:
+      start: 2024-10-01
+      end: 2026-09-30
+    institute:
+      name: University of Bari "Aldo Moro"
+      url: https://uniba.it
+    notes: |-
+        Research Fellow working in Human-Centered Artificial Intelligence
+        (HCAI) and Symbiotic AI, investigating how AI systems can collaborate
+        effectively with humans through transparent, explainable, and
+        accessible interaction mechanisms.
+
+        His work focuses on the evaluation and improvement of conversational
+        agents for accessible web interaction, studying how conversational AI
+        can support inclusive access to digital services through
+        natural-language interfaces. The activities of this grant are part of
+        the PRIN PNRR 2022 project "PROTECT - imPROving ciTizEn inClusivity
+        Through Conversational AI", which explores how conversational agents
+        interacting with users can enhance web accessibility.
+
+        Within the PROTECT Project, he contributes to research on the
+        Conversational Web Browsing paradigm, aimed at enabling
+        users—particularly people with disabilities and other vulnerable
+        groups—to access and navigate web content through conversational
+        interaction. Digital inclusion is a primary right for all citizens and
+        represents a “must have” for granting access to knowledge, education,
+        and work. However, four out of ten people in Italy still do not use the
+        Internet regularly and more than half of the population lacks basic
+        digital skills. Despite advancements in assistive technologies, the EU
+        Directive 2019/882 acknowledges the ongoing challenge of web
+        accessibility, particularly for individuals with disabilities.
+
+        Activities include systematic literature reviews and knowledge
+        synthesis on explanation user interfaces, as well as the design and
+        evaluation of approaches to improve transparency, explainability, and
+        trust in conversational AI systems, following a human-centered design
+        perspective.
+    location: Bari, Apulia, Italy
   - title: Teaching Assistant
     years:
       start: 2023-11-23
@@ -163,14 +215,14 @@ experiences:
       During this period, multiple research activities (that are leading to
       various publications: check the [publications' section](#publications)) were started.
 education:
-  - title: Ph.D. student in Computer Science and Mathematics
+  - title: Ph.D. in Computer Science and Mathematics
     institute:
       name: University of Bari "Aldo Moro"
       url: https://uniba.it
     location: Bari (BA), Apulia, Italy
     years:
       start: 2022-10-01
-      end: null
+      end: 2026-02-25
     notes: >-
         Winner of a fully-funded Ph.D. fellowship within the framework of the Italian
         "[D.M. n. 352, April 9, 2022](https://www.mur.gov.it/it/atti-e-normativa/decreto-ministeriale-n352-del-09-04-2022)"

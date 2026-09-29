@@ -117,10 +117,10 @@ author:
   surname: Esposito
   twitter: espositoandrea_
   picture: /assets/images/profile.jpeg
-  honorificPrefix: Mr
-  jobTitle: Ph.D. Student
+  honorificPrefix: Dr
+  jobTitle: Postdoctoral Researcher
   url: https://espositoandrea.github.io
-  mail: "&#097;&#110;&#100;&#114;&#101;&#097;&#046;&#101;&#115;&#112;&#111;&#115;&#105;&#116;&#111;&#064;&#117;&#110;&#105;&#098;&#097;&#046;&#105;&#116;"
+  mail: "andrea.esposito [at] inria.fr"
 
 sass:
   load_paths:
