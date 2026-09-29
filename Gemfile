@@ -53,3 +53,5 @@ gem "faraday-http-cache", "~> 2.5"
 gem "ogp", "~> 0.5.0"
 
 gem "bootstrap", "~> 5.3"
+
+gem "ostruct", "~> 0.6.3"
