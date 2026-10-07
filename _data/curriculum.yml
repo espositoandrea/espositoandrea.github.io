@@ -17,22 +17,48 @@ affiliation:
     BP 93
     06902 Sophia Antipolis  Cedex
 brief: |
-  Andrea Esposito is a Ph.D. student in the [Department of Computer Science]{:target="_blank"} at the [University of Bari Aldo Moro]{:target="_blank"}. He is an active member of the [Interaction, Visualization, Usability & UX (IVU) Laboratory][IVU Laboratory]{:target="_blank"}, where his research focuses on Human-Centred Artificial Intelligence. His interests lie in Human-Computer Interaction, eXplainable Artificial Intelligence, and Human-AI Interaction.
+  Andrea Esposito is a postdoctoral researcher at [Inria]{:target="_blank"},
+  in the [Wimmics]{:target="_blank"} team at
+  [Université Côte d'Azur]{:target="_blank"},
+  working on Human-Centered AI and Symbiotic AI at the
+  intersection of Human-Computer Interaction and Artificial Intelligence.
+  
+  He holds a PhD (cum laude) in Computer Science and Mathematics from the
+  [University of Bari Aldo Moro]{:target="_blank"}. His doctoral research,
+  conducted as part of the [IVU Laboratory]{:target="_blank"} at the
+  [Department of Computer Science]{:target="_blank"} of the University of Bari,
+  focuses on human-AI interaction models built on
+  transparency, explainability, and trust, with applications in healthcare, 
+  accessibility, and cybersecurity.
+  His PhD thesis has been [published by Springer](https://link.springer.com/book/9783658526313){:target="_blank"}.
+  
+  At Inria, he works on the [MetaboLinkAI]{:target="_blank"} project, developing LLM-based
+  conversational assistants for exploring metabolomics knowledge graphs.
+  
+  He has been a visiting researcher at
+  [Ludwig-Maximilians Universität (LMU)]{:target="_blank"} in Munich
+  and [Eusoft S.r.l.]{:target="_blank"}, as well as a project secondee for the
+  [GenDAI]{:target="_blank"} project at [InConTec GmbH]{:target="_blank"}.
+  He serves as a reviewer and program committee member for major HCI and AI venues.
 
+  He is an active member of the [IFIP TC13 WG 13.11/12.14]{:target="_blank"}
+  joint working group on *Human-Centered Intelligent Interactive Systems*.
+
+  [Inria]: https://www.inria.fr/
+  [Université Côte d'Azur]: https://univ-cotedazur.fr/
+  [Wimmics]: https://team.inria.fr/wimmics/
+  [IFIP TC13 WG 13.11/12.14]: https://wg11.ifip-tc13.org
   [IVU Laboratory]: https://ivu.di.uniba.it
   [Department of Computer Science]: https://www.uniba.it/ricerca/dipartimenti/informatica
   [University of Bari Aldo Moro]: https://www.uniba.it/
-
-  Andrea earned his Bachelor's Degree in Computer Science and Digital Communication, as well as his Master's Degree in Computer Science (Artificial Intelligence) from the University of Bari Aldo Moro. He has also worked as a scholarship researcher at the university, contributing to the ISO 25000-certified project "[eGLU-Box PA]{:target="_blank"}" and the Human-Centred AI project "[SERENE]{:target="_blank"}," among other research activities.
-
   [eGLU-Box PA]: https://atc.mise.gov.it/index.php/tecnologie-delle-comunicazioni/ricerca/accessibilita-e-usabilita/eglu-box-pa
   [SERENE]: https://ivu.di.uniba.it/projects/serene
-
-  As part of his Ph.D. studies, Andrea spent six months as a visiting researcher at [Ludwig-Maximilians Universität (LMU)]{:target="_blank"} in Munich and another six months at a corporate research laboratory with [Eusoft S.r.l.]{:target="_blank"}, gaining valuable international and industry experience. He also collaborates with the European Network of Human-Centered Artificial Intelligence "[Humane-AI]{:target="_blank"}," further expanding his research network and expertise.
-
   [Humane-AI]: https://www.humane-ai.eu/
   [Ludwig-Maximilians Universität (LMU)]: https://www.lmu.de/en/index.html
   [Eusoft S.r.l.]: https://www.eusoft.it/
+  [GenDAI]: https://project-gendai.eu
+  [InConTec GmbH]: https://www.incontec.de
+  [MetaboLinkAI]: https://www.metabolinkai.net
 
   Andrea is committed to advancing the field of Human-Centred AI, working to improve the interaction between humans and AI systems.
 memberships:
