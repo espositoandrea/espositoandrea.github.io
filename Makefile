@@ -5,7 +5,7 @@ _bibliography/references.bib: $(BASE_BIB)
 		--expand --expand-xrefs \
 		-c 'author : "Esposito, Andrea" & ($$type <> "UNPUBLISHED" & $$type <> "MASTERSTHESIS" & $$type <> "misc" & !($$type : "PHDTHESIS" & type : "Bachelor Thesis")) & ! keywords : ".*cv/ignore.*"' \
 		"$<" \
-		| bibtool -- "preserve.key.case = on" -- "delete.field = { note }" \
+		| bibtool -- "preserve.key.case = on" -- "delete.field = { note }"  -- "delete.field = { file }" \
 		> "$@"
 
 define institution
