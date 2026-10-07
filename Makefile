@@ -1,4 +1,4 @@
-BASE_BIB = $(HOME)/Documents/Lavoro/Resources/Literature/Library.bib
+BASE_BIB = $(HOME)/Documents/Lavoro/NEW_WORK/70_Resources/literature/Library.bib
 
 _bibliography/references.bib: $(BASE_BIB)
 	bib2bib \
