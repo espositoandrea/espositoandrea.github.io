@@ -134,9 +134,9 @@ permalink: /talks
                                 {% if seminar.lecturer.url %}<a href="{{ seminar.lecturer.url }}" target="_blank" rel="noopener noreferrer">{{ seminar.lecturer.name | smartify }}</a>{% else %}{{ seminar.lecturer.name | smartify }}{% endif %}
                             </li>
                             {% endif %}
-                            {% if seminar.institution %}
-                            <li class="list-inline-item me-3">
-                                <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ seminar.institution | smartify }}
+                            {% if seminar.duration %}
+                            <li class="list-inline-item">
+                                <i class="fa-regular fa-clock fa-fw" aria-label="Duration" title="Duration"></i> {{ seminar.duration }}
                             </li>
                             {% endif %}
                             {% if seminar.location %}
@@ -144,9 +144,9 @@ permalink: /talks
                                 <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ seminar.location | smartify }}
                             </li>
                             {% endif %}
-                            {% if seminar.duration %}
-                            <li class="list-inline-item">
-                                <i class="fa-regular fa-clock fa-fw" aria-label="Duration" title="Duration"></i> {{ seminar.duration }}
+                            {% if seminar.institution %}
+                            <li class="list-inline-item me-3">
+                                <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ seminar.institution | smartify }}
                             </li>
                             {% endif %}
                             {% if seminar.degree %}
