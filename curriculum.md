@@ -10,74 +10,24 @@ description: >-
 
 {{ site.data.curriculum.brief | markdownify }}
 
-He is a member of:
-{% for membership in site.data.curriculum.memberships %}
-- [{{ membership.short }}]({{ membership.url }}){: target="_blank" } ({{ membership.institution }}) since {{ membership.since | date: "%B %Y" }}
-{% endfor %}
+## Memberships
+<div class="list-group mb-5">
+    {% for membership in site.data.curriculum.memberships %}
+    <div class="list-group-item py-2 d-flex justify-content-between align-items-baseline gap-3">
+        <div>
+            <a class="fw-semibold" href="{{ membership.url }}" target="_blank" rel="noopener noreferrer">{{ membership.short }}</a>
+            <span class="small text-body-secondary d-block">{{ membership.institution }}</span>
+        </div>
+        <span class="small text-body-secondary font-monospace text-nowrap">Since <time datetime="{{ membership.since | date: '%Y-%m' }}">{{ membership.since | date: "%b %Y" }}</time></span>
+    </div>
+    {% endfor %}
+</div>
 
 ## Experience
-<ul>
-    {% for edu in site.data.curriculum.experiences %}
-    {%- capture end_date -%}
-    {% if edu.years.end != nil %}
-    {{ edu.years.end | date: "%b %Y" }}
-    {% else %}
-    Present
-    {% endif %}
-    {%- endcapture -%}
-
-    <li>
-        <strong>{{ edu.title | smartify }}</strong>
-        ({{ edu.years.start | date: "%b %Y" }}
-        &ndash;
-        {{ end_date | strip }}),
-        <em>
-            {% if edu.institute.url %}
-            <a target="_blank" href="{{ edu.institute.url }}">{{ edu.institute.name | smartify }}</a>
-            {% else %}
-            {{ edu.institute | smartify }}
-            {% endif %}
-            ({{ edu.location | smartify }})</em>.
-        <div>
-            {% if edu.notes %}
-            {{ edu.notes | markdownify }}
-            {% endif %}
-        </div>
-    </li>
-    {% endfor %}
-</ul>
+{% include cv-entries.html entries=site.data.curriculum.experiences icon="briefcase" %}
 
 ## Education
-<ul>
-    {% for edu in site.data.curriculum.education %}
-    {%- capture end_date -%}
-    {% if edu.years.end != nil %}
-    {{ edu.years.end | date: "%b %Y" }}
-    {% else %}
-    Present
-    {% endif %}
-    {%- endcapture -%}
-
-    <li>
-        <strong>{{ edu.title | smartify }}</strong>
-        ({{ edu.years.start | date: "%b %Y" }}
-        &ndash;
-        {{ end_date | strip }}),
-        <em>
-            {% if edu.institute.url %}
-            <a target="_blank" href="{{ edu.institute.url }}">{{ edu.institute.name | smartify }}</a>
-            {% else %}
-            {{ edu.institute | smartify }}
-            {% endif %}
-            ({{ edu.location | smartify }})</em>.
-        <div>
-            {% if edu.notes %}
-            {{ edu.notes | markdownify }}
-            {% endif %}
-        </div>
-    </li>
-    {% endfor %}
-</ul>
+{% include cv-entries.html entries=site.data.curriculum.education icon="graduation-cap" %}
 
 {% comment %} {% include awards.html %} {% endcomment %}
 {% comment %} {% include skills.html %} {% endcomment %}

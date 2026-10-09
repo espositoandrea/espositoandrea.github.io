@@ -1,0 +1,46 @@
+{%- comment -%}
+  Renders a list of curriculum entries (experience or education), grouped as a list-group.
+  Parameters: entries (array), icon (Font Awesome icon name).
+{%- endcomment -%}
+<div class="list-group mb-5">
+    {% for entry in include.entries %}
+    {% assign current = false %}
+    {% unless entry.years.end %}{% assign current = true %}{% endunless %}
+    <article class="list-group-item py-3">
+        <div class="d-flex justify-content-between align-items-baseline gap-3 mb-1">
+            <h3 class="h6 mb-0">{{ entry.title | smartify }}</h3>
+            <div class="d-flex align-items-baseline gap-2 flex-shrink-0 text-nowrap">
+                {% if current %}<span class="badge bg-success-subtle text-success-emphasis border border-success-subtle fw-normal">Current</span>{% endif %}
+                <span class="small text-body-secondary font-monospace">
+                    <time datetime="{{ entry.years.start | date: '%Y-%m' }}">{{ entry.years.start | date: "%b %Y" }}</time>
+                    &ndash;
+                    {% if current %}Present{% else %}<time datetime="{{ entry.years.end | date: '%Y-%m' }}">{{ entry.years.end | date: "%b %Y" }}</time>{% endif %}
+                </span>
+            </div>
+        </div>
+
+        <ul class="list-inline small text-body-secondary mb-0">
+            <li class="list-inline-item me-3">
+                <i class="fa-solid fa-{{ include.icon }} fa-fw" aria-hidden="true"></i>
+                {% if entry.institute.url %}<a href="{{ entry.institute.url }}" target="_blank" rel="noopener noreferrer">{{ entry.institute.name | smartify }}</a>{% else %}{{ entry.institute.name | default: entry.institute | smartify }}{% endif %}
+            </li>
+            {% if entry.location %}
+            <li class="list-inline-item">
+                <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ entry.location | smartify }}
+            </li>
+            {% endif %}
+        </ul>
+
+        {% if entry.notes %}
+            {% if entry.notes.size > 500 %}
+            <details class="small mt-2">
+                <summary class="text-body-secondary">Details</summary>
+                <div class="mt-2">{{ entry.notes | markdownify }}</div>
+            </details>
+            {% else %}
+            <div class="small mt-2">{{ entry.notes | markdownify }}</div>
+            {% endif %}
+        {% endif %}
+    </article>
+    {% endfor %}
+</div>
