@@ -1,45 +1,17 @@
 ---
 ---
 
-{% assign link = empty %}
-{% assign icon = empty %}
-{% assign description = empty %}
-
-{% if entry.copyright contains "CC" %}
-	{% assign doi_link = entry.doi
-		| prepend: 'https://doi.org/' %}
-	{% assign link = entry.url | default: doi_link %}
-	{% assign icon = 'ai ai-open-access ai-lg' %}
-	{% assign label = 'Open access' %}
-	{% assign description = 'Published in Open Access' %}
-{% elsif entry.url contains 'dl.acm.org' %}
-	{% assign link = entry.url | append: '?cid=99660287205' %}
-	{% assign icon = 'ai ai-acmdl ai-lg' %}
-	{% assign label = 'ACM DL' %}
-	{% assign description = 'Available through ACM Author-Izer' %}
-{% elsif entry.url contains 'rdcu.be' %}
-	{% assign link = entry.url %}
-	{% assign icon = 'ai ai-springer ai-lg' %}
-	{% assign label = 'SharedIt' %}
-	{% assign description = 'Available through SpringerNature SharedIt' %}
-{% elsif links.pdf -%}
-	{% assign link = links.pdf | absolute_url %}
-	{% assign icon = 'fas fa-file-pdf fa-lg' %}
-	{% assign label = 'PDF' %}
-	{% assign description = 'Self-archived PDF avilable' %}
-{% endif %}
-
 <div>
 	<div>
 		{{ reference }}
 	</div>
 
 	<div class="bib-actions">
-		{% if link != empty %}
-			<a class="no-blank-icon d-inline-flex align-items-center gap-1 text-decoration-none" href="{{ link }}" target="_blank" rel="noopener noreferrer" title="{{ description }}">
-				<span class="{{ icon }}" aria-hidden="true"></span> {{ label }}
+		{% for item in access %}
+			<a class="no-blank-icon d-inline-flex align-items-center gap-1 text-decoration-none" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" title="{{ item.description }}">
+				<span class="{{ item.icon }}" aria-hidden="true"></span> {{ item.label }}
 			</a>
-		{% endif %}
+		{% endfor %}
 		{% include altmetric-badge.html entry=entry %}
 		{%- capture more_details_link -%}{% details_link key %}{%- endcapture -%}
 		<a href="{{ more_details_link | absolute_url }}" class="ms-auto"><i class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></i> Details</a>

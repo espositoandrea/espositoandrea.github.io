@@ -35,6 +35,70 @@ module Jekyll
 
     end
 
+    # Adds free-access information to the data Jekyll Scholar exposes to the
+    # bibliography (list) and details layouts, so that layouts do not need to
+    # inspect the BibTeX fields themselves.
+    #
+    # New variables:
+    # - +open_access+: whether the entry carries a Creative Commons license
+    #   (the +copyright+ field contains "CC" or "Creative Commons").
+    # - +access+: list of ways to freely read the paper, each a hash with
+    #   +url+, +icon+, +label+ and +description+.
+    module FreeAccess
+      OPEN_ACCESS = /\bCC\b|creative commons/i
+
+      def reference_data(entry, index = nil)
+        data = super
+        data['open_access'] = open_access?(entry)
+        data['access'] = access_links_for(entry, data['links'])
+        data
+      end
+
+      private
+
+      def open_access?(entry)
+        OPEN_ACCESS.match?(entry[:copyright].to_s)
+      end
+
+      def access_links_for(entry, repository_links)
+        url = entry[:url].to_s
+        host = begin
+          URI.parse(url).host.to_s.delete_prefix('www.')
+        rescue URI::InvalidURIError
+          ''
+        end
+        doi_url = entry[:doi] ? "https://doi.org/#{entry[:doi]}" : nil
+
+        links = []
+        if host == 'arxiv.org' && open_access?(entry)
+          links << access_link(url, 'ai ai-open-access', 'Open access (arXiv)', 'Open access, available on arXiv')
+        elsif host == 'arxiv.org'
+          links << access_link(url, 'ai ai-arxiv', 'arXiv', 'Preprint available on arXiv')
+        elsif open_access?(entry)
+          links << access_link(url.empty? ? doi_url : url, 'ai ai-open-access', 'Open access', 'Published in Open Access')
+        elsif host == 'dl.acm.org'
+          links << access_link("#{url}?cid=99660287205", 'ai ai-acmdl', 'ACM DL', 'Available through ACM Author-Izer')
+        elsif host == 'rdcu.be'
+          links << access_link(url, 'ai ai-springer', 'SharedIt', 'Available through Springer Nature SharedIt')
+        end
+
+        if (eprint = entry[:eprint]) && entry[:archiveprefix].to_s.casecmp?('arxiv')
+          arxiv = "https://arxiv.org/abs/#{eprint}"
+          links << access_link(arxiv, 'ai ai-arxiv', 'arXiv', 'Preprint available on arXiv') unless links.any? { |l| l['url'] == arxiv }
+        end
+
+        if (pdf = repository_links['pdf'])
+          links << access_link(pdf, 'fas fa-file-pdf', 'PDF', 'Self-archived PDF available')
+        end
+
+        links.reject { |l| l['url'].to_s.empty? }
+      end
+
+      def access_link(url, icon, label, description)
+        { 'url' => url, 'icon' => icon, 'label' => label, 'description' => description }
+      end
+    end
+
   end
 
   module BibliographyEditor
@@ -109,3 +173,5 @@ end
 
 Liquid::Template.register_filter(Jekyll::BibliographyEditor)
 Liquid::Template.register_tag('bib_variable', Jekyll::Scholar::BibVariableTag)
+
+Jekyll::Scholar::Utilities.prepend(Jekyll::Scholar::FreeAccess)

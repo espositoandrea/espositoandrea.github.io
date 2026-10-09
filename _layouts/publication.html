@@ -3,41 +3,37 @@ layout: default
 ---
 
 <article>
-	<header class="text-center">
-		<h1>
+	<header class="text-center mb-4">
+		<h1 class="mb-3">
 			{{ page.entry.title }}
 			{% if page.entry.copyright contains "CC" %}
 				<span class="ai ai-open-access fa-lg text-warning" title="Published in Open Access"></span>
 			{% endif %}
 		</h1>
-		<address>
-			{% assign authors = page.entry.author | split: ' and ' %}
+		<address class="lead mb-2">
 			{% for author in page.entry.author_array %}
-				<a rel="author">{{ author.first }} {{ author.last }}</a>{% unless forloop.last %},
-				{% endunless %}
+				<span rel="author">{{ author.first }} {{ author.last }}</span>{% unless forloop.last %}<span class="text-body-secondary">, </span>{% endunless %}
 			{% endfor %}
 		</address>
-		{% if page.entry.doi %}
-			<section>
-				<a href="https://doi.org/{{ page.entry.doi }}" target="_blank">
-					<span class="ai ai-doi fa-lg"></span>
-					<span class="sr-only">DOI
-					</span>
+		{% assign venue = page.entry.journal | default: page.entry.booktitle %}
+		{% if venue or page.entry.year %}
+			<p class="text-body-secondary mb-3">
+				{% if venue %}<em>{{ venue }}</em>{% endif %}{% if venue and page.entry.year %} &middot; {% endif %}{{ page.entry.year }}
+			</p>
+		{% endif %}
+		<div class="d-flex flex-wrap justify-content-center align-items-center gap-3">
+			{% if page.entry.doi %}
+				<a class="badge rounded-pill text-bg-light border text-decoration-none fw-normal fs-6" href="https://doi.org/{{ page.entry.doi }}" target="_blank" rel="noopener noreferrer">
+					<span class="ai ai-doi fa-lg align-middle" aria-hidden="true"></span>
+					<span class="visually-hidden">DOI</span>
 					{{ page.entry.doi }}
 				</a>
-			</section>
-		{% endif %}
-		{% include altmetric-badge.html entry=page.entry %}
-		<details open style="max-width: 80rch;" class="mx-auto mt-3">
-			<summary class="h4">Abstract
-			</summary>
-			<p style="text-align: justify;">
-				{{ page.entry.abstract }}
-			</p>
-		</details>
-		<section>
+			{% endif %}
+			{% include altmetric-badge.html entry=page.entry %}
+		</div>
+		<div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
 			{% if page.entry.url %}
-				<a class="btn btn-secondary" href="{{ page.entry.url }}" target="_blank">
+				<a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="{{ page.entry.url }}" target="_blank">
 					{% if page.entry.url contains "dl.acm.org" %}
 						<span class="ai ai-acmdl fa-lg"></span>
 						<span>ACM Digital Library
@@ -67,20 +63,29 @@ layout: default
 				</a>
 			{% endif %}
 			{% if page.links.pdf %}
-				<a class="btn btn-secondary" href="{{ page.links.pdf }}" target="_blank">
+				<a class="btn btn-outline-secondary d-inline-flex align-items-center gap-2" href="{{ page.links.pdf }}" target="_blank">
 					<span class="fas fa-file-pdf fa-lg"></span>
 					<span>Free Self-Archived PDF</span>
 				</a>
 			{% endif %}
-		</section>
+		</div>
 	</header>
-	<section>
-		<h2>Related Blog Posts
-		</h2>
-		{% assign related_posts = site.posts
-			| where: 'paper', page.entry.key %}
-		{% for post in related_posts %}
-			{% include post.html post=post %}
-		{% endfor %}
-	</section>
+	{% if page.entry.abstract %}
+		<section class="card mx-auto mb-5" style="max-width: 50rem;">
+			<div class="card-body">
+				<h2 class="h6 card-title text-uppercase text-body-secondary" style="letter-spacing: .05em;">Abstract</h2>
+				<p class="card-text mb-0" style="text-align: justify; hyphens: auto;">{{ page.entry.abstract }}</p>
+			</div>
+		</section>
+	{% endif %}
+	{% assign related_posts = site.posts
+		| where: 'paper', page.entry.key %}
+	{% if related_posts.size > 0 %}
+		<section>
+			<h2 class="h4 border-bottom pb-2 mb-3">Related Blog Posts</h2>
+			{% for post in related_posts %}
+				{% include post.html post=post %}
+			{% endfor %}
+		</section>
+	{% endif %}
 </article>
