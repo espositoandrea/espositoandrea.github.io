@@ -1,20 +1,116 @@
 # Talks and seminars, shown on /talks (see talks.html). Order does not matter:
 # entries are sorted by date and grouped by year.
 
-# Talks: presentations of my own work.
+# Talks: presentations of my own work, including invited talks.
 #
 # - title: Title of the talk
 #   date: 2025-06-10
-#   type: Conference talk          # optional badge (e.g. Keynote, Poster, Invited talk)
+#   type: Conference talk          # optional badge (e.g. Workshop talk, Poster presentation, Invited talk)
 #   event:                         # optional
 #     name: Name of the event
 #     url: https://example.org     # optional
-#   location: City, Country        # optional
+#   institution: Name of the host institution   # optional (e.g. for invited talks)
+#   inviter:                       # optional: who invited me
+#     name: Prof. Jane Doe
+#     url: https://example.org     # optional
+#   location: City, Country        # optional; can be a map by language instead
+#                                  # (en: ..., it: ...): the English one is shown
 #   paper: BibTeXKey               # optional: key in _bibliography/references.bib
 #   description: Short text.       # optional, Markdown
 #   slides: /assets/slides.pdf     # optional
 #   video: https://example.org     # optional
-talks: []
+talks:
+  - title: "Explanation-Driven Interventions for Artificial Intelligence Model Customization: Empowering End-Users to Tailor Black-Box AI in Rhinocytology"
+    date: 2025-06-17
+    type: Conference talk
+    event:
+      name: "10th International Symposium on End-User Development (IS-EUD 2025)"
+    location:
+      en: Munich (Germany)
+      it: Monaco di Baviera (Germania)
+    paper: Esposito2025ExplanationDriven
+  - title: "Toward a Metric for Evaluating Trust in Human-Centered Artificial Intelligence"
+    date: 2025-03-24
+    type: Workshop talk
+    event:
+      name: "Workshop on Adaptive eXplainable AI (AXAI), co-located with ACM IUI 2025"
+    location:
+      en: Cagliari (Italy)
+      it: Cagliari (Italia)
+    paper: Esposito2025Metric
+  - title: "Designing and Evaluating Human-Centred AI Systems: Best-Practices from a Multidisciplinary View"
+    date: 2025-03-24
+    type: Workshop talk
+    event:
+      name: "Workshop on BEst Practices and Guidelines for Human-Centric Design and EvAluation of ProactiVE AI Agents (BEHAVE AI), co-located with ACM IUI 2025"
+    location:
+      en: Cagliari (Italy)
+      it: Cagliari (Italia)
+    paper: Desolda2025Designing
+  - title: "Poster: Improving Customer Service Through Rapid Prototyping of Data Exploration Chatbots"
+    date: 2023-09-22
+    type: Poster presentation
+    event:
+      name: "15th Biannual Conference of the Italian SIGCHI Chapter (CHItaly 2023)"
+    location:
+      en: Turin (Piedmont, Italy)
+      it: Torino (Piemonte, Italia)
+    paper: Esposito2023Poster
+  - title: "Digital Modeling for Everyone: Exploring How Novices Approach Voice-Based 3D Modeling"
+    date: 2023-08-31
+    type: Conference talk
+    event:
+      name: "19th IFIP TC 13 International Conference on Human-Computer Interaction (INTERACT 2023)"
+    location:
+      en: York (UK)
+      it: York (UK)
+    paper: Desolda2023Digital
+  - title: "End-User Development for Artificial Intelligence: A Systematic Literature Review"
+    date: 2023-06-07
+    type: Conference talk
+    event:
+      name: "9th International Symposium on End-User Development (IS-EUD 2023)"
+    location:
+      en: Cagliari (Sardinia, Italy)
+      it: Cagliari (Sardegna, Italia)
+    paper: Esposito2023EndUser
+  - title: "MATERIALIST: A Web Platform for Guiding Privacy Design Pattern Selection in Software Development"
+    date: 2023-06-06
+    type: Workshop talk
+    event:
+      name: "1st International Workshop on Cyber Security Education for Industry and Academia (CSE4IA 2023)"
+    location:
+      en: Cagliari (Sardinia, Italy)
+      it: Cagliari (Sardegna, Italia)
+    paper: Desolda2023MATERIALIST
+  - title: "Detection of Dementia Through 3D Convolutional Neural Networks Based on Amyloid PET"
+    date: 2021-12-07
+    type: Conference talk
+    event:
+      name: "IEEE Symposium Series on Computational Intelligence (SSCI 2021)"
+    location:
+      en: Orlando, Florida (virtually due to COVID-19)
+      it: Orlando, Florida (in modalità virtuale, a causa della pandemia da COVID-19)
+    paper: Castellano2021Detection
+  - title: "Detecting Emotions Through Machine Learning for Automatic UX Evaluation"
+    date: 2021-09-02
+    type: Conference talk
+    event:
+      name: "18th IFIP TC 13 International Conference on Human-Computer Interaction (INTERACT 2021)"
+    location:
+      en: Bari (Apulia, Italy)
+      it: Bari (Puglia, Italia)
+    paper: Desolda2021Detecting
+  - title: Human-Centered Artificial Intelligence Techniques for Supporting AI Systems End Users
+    date: 2024-07-11
+    type: Invited talk
+    institution: Ludwig-Maximilians-Universität München, Institut für Informatik
+    inviter:
+      name: Prof. Sebastian Feger
+      url: https://sebastian-feger.com
+    location:
+      en: Munich (Bavaria, Germany)
+      it: Monaco di Baviera (Baviera, Germania)
 
 # Seminars: lectures given as a guest in a course or event.
 #
@@ -39,7 +135,7 @@ talks: []
 #   degreeLevel: Corso di Laurea Triennale  # optional: shown before the degree name
 #   degreeLevelTranslation: Bachelor's degree   # optional: shown if the course language is not en
 #   institution: University of Bari Aldo Moro   # optional
-#   location: City, Country        # optional
+#   location: City, Country        # optional (or a map by language, see talks)
 #   description: Short text.       # optional, Markdown
 #   descriptionLanguage: en        # optional: defaults to `language`
 #   slides: /assets/slides.pdf     # optional
