@@ -5,93 +5,89 @@ permalink: /publications
 title: Publications
 ---
 
-<p>
-     In this section, you'll find a list of my publications. I always try to provide a freely accessible version of all
-     of my papers, to ensure that everyone can read them. Depending on the publisher, though, the ways I can do that may
-     vary.
-
-     For all those paper that ACM allows me to share through the
-     <a href="https://www.acm.org/publications/authors/acm-author-izer-service" target="_blank"
-          rel="noopener noreferrer">Author-Izer</a>
-     service, you'll find a little ACM DL logo
-     <i class="ai ai-acmdl" aria-label="ACM Digital Library" title="Example of the icon to indicate free access to the paper"></i>
-     that links to a full version of the paper.
-
-     For all those paper published by Springer Nature that the publisher allows me to share through the <a
-          href="https://www.springernature.com/gp/researchers/sharedit" target="_blank"
-          rel="noopener noreferrer">SharedIt</a>
-     service, you'll find a little Springer logo
-     <i class="ai ai-springer" aria-label="Springer Nature SharedIt" title="Example of the icon to indicate free access to the paper"></i>
-     that links to a full version of the paper.
-
-     Similarly, if a paper is open access, you'll find an open access logo near the entry
-     <i class="ai ai-open-access" aria-label="Open Access icon" title="Example of the icon to indicate open access"></i>.
-
-     For all the papers that are neither open access nor available through other means, I always try to publish a
-     pre-print version on
-     <a href="https://arxiv.org" target="_blank" rel="noopener noreferrer">arXiv</a>
-     or
-     <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">ResearchGate</a>,
-     or a self-archived PDF version that is freely available (in compliance to the publisher's license). In those cases,
-     pre-prints are marked using the arXiv logomark
-     <i class="ai ai-arxiv" aria-label="Preprint available on arXiv"
-          title="Example of the icon indicating that a preprint is available on arXiv"></i>
-     or ResearchGate's icon
-     <i class="fab fa-researchgate" title="Example of the icon indicating that a preprint is available on ResearchGate"
-          aria-label="Example of the icon indicating that a preprint is available on ResearchGate"></i>
-     (depending on the platform)
-     while self-archived PDFs are marked with a PDF icon
-     <i class="fas fa-file-pdf" title="Example of icon indicating a self-archived PDF version"
-          aria-label="Example of icon indicating a self-archived PDF version"></i>.
-</p>
-
-<h3 class="bibliography">Journal Articles</h3>
-{% capture section %}{% bibliography --group_by none --query @article %}{% endcapture %}
-{{ section | edit_urls | remove_number | emphasize_author }}
-
-<h3 class="bibliography">Conference Papers</h3>
-{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/international] %}{% endcapture %}
-{% assign section = section | strip %}
-{% if section contains "<li" %}
-<h4 class="bibliography">International</h4>
-{{ section | edit_urls | remove_number | emphasize_author }}
-{% endif %}
-
-{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/national] %}{% endcapture %}
-{% assign section = section | strip %}
-{% if section contains "<li" %}
-<h4 class="bibliography">National</h4>
-{{ section | edit_urls | remove_number | emphasize_author }}
-{% endif %}
-
-<h3 class="bibliography">Workshop Papers</h3>
-{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/international] %}{% endcapture %}
-{% assign section = section | strip %}
-{% if section contains "<li" %}
-<h4 class="bibliography">International</h4>
-{{ section | edit_urls | remove_number | emphasize_author }}
-{% endif %}
-
-{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/national] %}{% endcapture %}
-{% assign section = section | strip %}
-{% if section contains "<li" %}
-<h4 class="bibliography">National</h4>
-{{ section | edit_urls | remove_number | emphasize_author }}
-{% endif %}
-
-{% capture section %}
+{% comment %} Render every list first, so that counts are known for the navigation. {% endcomment %}
+{% capture journal %}{% bibliography --group_by none --query @article %}{% endcapture %}
+{% assign journal_count = journal | split: "<li" | size | minus: 1 %}
+{% assign journal = journal | edit_urls | remove_number | emphasize_author %}
+{% capture conf_int %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/international] %}{% endcapture %}
+{% assign conf_int_count = conf_int | split: "<li" | size | minus: 1 %}
+{% assign conf_int = conf_int | edit_urls | remove_number | emphasize_author %}
+{% capture conf_nat %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/national] %}{% endcapture %}
+{% assign conf_nat_count = conf_nat | split: "<li" | size | minus: 1 %}
+{% assign conf_nat = conf_nat | edit_urls | remove_number | emphasize_author %}
+{% capture work_int %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/international] %}{% endcapture %}
+{% assign work_int_count = work_int | split: "<li" | size | minus: 1 %}
+{% assign work_int = work_int | edit_urls | remove_number | emphasize_author %}
+{% capture work_nat %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/national] %}{% endcapture %}
+{% assign work_nat_count = work_nat | split: "<li" | size | minus: 1 %}
+{% assign work_nat = work_nat | edit_urls | remove_number | emphasize_author %}
+{% capture chapters %}{% bibliography --group_by none --query @incollection[keywords !~ type/] %}{% endcapture %}
+{% assign chapters_count = chapters | split: "<li" | size | minus: 1 %}
+{% assign chapters = chapters | edit_urls | remove_number | emphasize_author %}
+{% capture theses %}{% bibliography --group_by none --query @phdthesis %}{% endcapture %}
+{% assign theses_count = theses | split: "<li" | size | minus: 1 %}
+{% assign theses = theses | edit_urls | remove_number | emphasize_author %}
+{% capture unclassified %}
 {% bibliography --group_by none --query @inproceedings[keywords !~ type/(conference|workshop) || keywords !~ reach/(international|national)] %}
 {% bibliography --group_by none --query @incollection[keywords ~= type/ && keywords !~ reach/(international|national)] %}
 {% endcapture %}
-{% if section contains "<li" %}
-<h3 class="bibliography">Unclassified Proceedings (missing or invalid type/reach keyword)</h3>
-{{ section | edit_urls | remove_number | emphasize_author }}
+{% assign unclassified_count = unclassified | split: "<li" | size | minus: 1 %}
+{% assign unclassified = unclassified | edit_urls | remove_number | emphasize_author %}
+{% assign conf_count = conf_int_count | plus: conf_nat_count %}
+{% assign work_count = work_int_count | plus: work_nat_count %}
+
+<p class="lead">In this section, you'll find a list of my publications. I always try to provide a freely accessible version of all of my papers, to ensure that everyone can read them. Depending on the publisher, though, the ways I can do that may vary.</p>
+
+<details class="mb-4">
+    <summary class="text-body-secondary">How to read the icons next to each paper</summary>
+    <p class="small mt-2 mb-0">For all those paper that ACM allows me to share through the <a href="https://www.acm.org/publications/authors/acm-author-izer-service" target="_blank" rel="noopener noreferrer">Author-Izer</a> service, you'll find a little ACM DL logo <i class="ai ai-acmdl" aria-label="ACM Digital Library" title="Example of the icon to indicate free access to the paper"></i> that links to a full version of the paper.</p>
+    <p class="small mt-2 mb-0">For all those paper published by Springer Nature that the publisher allows me to share through the <a href="https://www.springernature.com/gp/researchers/sharedit" target="_blank" rel="noopener noreferrer">SharedIt</a> service, you'll find a little Springer logo <i class="ai ai-springer" aria-label="Springer Nature SharedIt" title="Example of the icon to indicate free access to the paper"></i> that links to a full version of the paper.</p>
+    <p class="small mt-2 mb-0">Similarly, if a paper is open access, you'll find an open access logo near the entry <i class="ai ai-open-access" aria-label="Open Access icon" title="Example of the icon to indicate open access"></i>.</p>
+    <p class="small mt-2 mb-0">For all the papers that are neither open access nor available through other means, I always try to publish a pre-print version on <a href="https://arxiv.org" target="_blank" rel="noopener noreferrer">arXiv</a> or <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">ResearchGate</a>, or a self-archived PDF version that is freely available (in compliance to the publisher's license). In those cases, pre-prints are marked using the arXiv logomark <i class="ai ai-arxiv" aria-label="Preprint available on arXiv" title="Example of the icon indicating that a preprint is available on arXiv"></i> or ResearchGate's icon <i class="fab fa-researchgate" title="Example of the icon indicating that a preprint is available on ResearchGate" aria-label="Example of the icon indicating that a preprint is available on ResearchGate"></i> (depending on the platform) while self-archived PDFs are marked with a PDF icon <i class="fas fa-file-pdf" title="Example of icon indicating a self-archived PDF version" aria-label="Example of icon indicating a self-archived PDF version"></i>.</p>
+</details>
+
+<nav class="pub-nav d-flex flex-wrap gap-2 mb-4" aria-label="Publication categories">
+    {% if journal_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#journal-articles">Journal Articles <span class="opacity-75">{{ journal_count }}</span></a>{% endif %}
+    {% if conf_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#conference-papers">Conference Papers <span class="opacity-75">{{ conf_count }}</span></a>{% endif %}
+    {% if work_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#workshop-papers">Workshop Papers <span class="opacity-75">{{ work_count }}</span></a>{% endif %}
+    {% if unclassified_count > 0 %}<a class="btn btn-sm rounded-pill border border-danger text-danger" href="#unclassified">Unclassified <span class="opacity-75">{{ unclassified_count }}</span></a>{% endif %}
+    {% if chapters_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#book-chapters">Book Chapters <span class="opacity-75">{{ chapters_count }}</span></a>{% endif %}
+    {% if theses_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#theses">Theses <span class="opacity-75">{{ theses_count }}</span></a>{% endif %}
+</nav>
+
+<section class="mb-5">
+{% include bib-list.html id="journal-articles" title="Journal Articles" html=journal count=journal_count level=2 %}
+</section>
+
+{% if conf_count > 0 %}
+<section class="mb-5">
+    <h2 id="conference-papers" class="h4 d-flex align-items-baseline gap-2">Conference Papers <span class="badge rounded-pill text-bg-secondary fw-normal">{{ conf_count }}</span></h2>
+    {% include bib-list.html id="conference-international" title="International" html=conf_int count=conf_int_count level=3 %}
+    {% include bib-list.html id="conference-national" title="National" html=conf_nat count=conf_nat_count level=3 %}
+</section>
 {% endif %}
 
-<h3 class="bibliography">Book Chapters</h3>
-{% capture section %}{% bibliography --group_by none --query @incollection[keywords !~ type/] %}{% endcapture %}
-{{ section | edit_urls | remove_number | emphasize_author }}
+{% if work_count > 0 %}
+<section class="mb-5">
+    <h2 id="workshop-papers" class="h4 d-flex align-items-baseline gap-2">Workshop Papers <span class="badge rounded-pill text-bg-secondary fw-normal">{{ work_count }}</span></h2>
+    {% include bib-list.html id="workshop-international" title="International" html=work_int count=work_int_count level=3 %}
+    {% include bib-list.html id="workshop-national" title="National" html=work_nat count=work_nat_count level=3 %}
+</section>
+{% endif %}
 
-<h3 class="bibliography">Theses</h3>
-{% capture section %}{% bibliography --group_by none --query @phdthesis %}{% endcapture %}
-{{ section | edit_urls | remove_number | emphasize_author }}
+{% if unclassified_count > 0 %}
+<section class="mb-5">
+    <div class="alert alert-danger" role="alert">
+        These proceedings papers have a missing or invalid <code>type/</code> or <code>reach/</code> keyword in the bibliography.
+    </div>
+    {% include bib-list.html id="unclassified" title="Unclassified Proceedings" html=unclassified count=unclassified_count level=2 %}
+</section>
+{% endif %}
+
+<section class="mb-5">
+{% include bib-list.html id="book-chapters" title="Book Chapters" html=chapters count=chapters_count level=2 %}
+</section>
+
+<section class="mb-5">
+{% include bib-list.html id="theses" title="Theses" html=theses count=theses_count level=2 %}
+</section>
