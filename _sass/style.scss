@@ -57,22 +57,25 @@ a[target="_blank"]:not(.no-blank-icon)::after
 }
 
 ol.bibliography {
-  @extend .list-group;
-  @extend .list-group-flush;
-  @extend .border;
-  @extend .rounded;
-  overflow: hidden;
+  @extend .list-unstyled;
+  @extend .vstack;
+  @extend .gap-3;
 
-  > li {
-    @extend .list-group-item;
-    @extend .py-3;
-    transition: background-color 0.15s;
+  // The stretched "Details" link makes the whole card clickable; interactive content stays above it.
+  .card {
+    transition: border-color 0.15s, box-shadow 0.15s;
     &:hover {
-      background-color: var(--bs-tertiary-bg);
+      border-color: var(--bs-primary);
+      box-shadow: var(--bs-box-shadow-sm);
     }
-    &>div {
-      width: 100%;
+    a:not(.stretched-link), summary {
+      position: relative;
+      z-index: 2;
     }
+  }
+
+  .card-footer details > summary {
+    width: fit-content;
   }
 
   .bib-actions {

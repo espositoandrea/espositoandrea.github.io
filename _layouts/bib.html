@@ -16,8 +16,8 @@
 {%- if keywords contains "reach/international" -%}{%- assign reach = "International" -%}
 {%- elsif keywords contains "reach/national" -%}{%- assign reach = "National" -%}
 {%- else -%}{%- assign reach = "" -%}{%- endif -%}
-<article data-year="{{ entry.year }}" data-month="{{ entry.month }}" data-category="{{ category }}" data-color="{{ color }}">
-	<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-baseline gap-1 gap-md-3 mb-1">
+<article class="card position-relative" data-year="{{ entry.year }}" data-month="{{ entry.month }}" data-category="{{ category }}" data-color="{{ color }}">
+	<div class="card-header d-flex flex-column flex-md-row justify-content-between align-items-md-baseline gap-1 gap-md-3">
 		<h4 class="h6 mb-0"><a href="{{ more_details_link | absolute_url }}" class="text-reset text-decoration-none">{{ entry.title }}</a></h4>
 		<div class="d-flex flex-wrap align-items-baseline gap-2 flex-md-shrink-0">
 		<span class="badge bg-{{ color }}-subtle text-{{ color }}-emphasis border border-{{ color }}-subtle fw-normal">{{ category }}</span>
@@ -28,39 +28,43 @@
 		</div>
 	</div>
 
-	<ul class="list-inline small text-body-secondary mb-0">
-		{% if entry.author_array %}
-			<li class="list-inline-item me-3">
-				<i class="fa-solid fa-users fa-fw" aria-label="Authors" title="Authors"></i>
-				{% for author in entry.author_array %}{{ author.first }} {{ author.last }}{% unless forloop.last %}, {% endunless %}{% endfor %}
-			</li>
-		{% endif %}
-		{% if venue %}
-			<li class="list-inline-item me-3">
-				<i class="fa-solid fa-book-open fa-fw" aria-label="Published in" title="Published in"></i>
-				<em>{{ venue }}</em>
-			</li>
-		{% endif %}
-		{% if entry.doi %}
-			<li class="list-inline-item me-3">
-				<i class="ai ai-doi fa-fw" aria-label="DOI" title="DOI"></i>
-				<a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer">{{ entry.doi }}</a>
-			</li>
-		{% endif %}
-	</ul>
+	<div class="card-body">
+		<ul class="list-inline small text-body-secondary mb-0">
+			{% if entry.author_array %}
+				<li class="list-inline-item me-3">
+					<i class="fa-solid fa-users fa-fw" aria-label="Authors" title="Authors"></i>
+					{% for author in entry.author_array %}{{ author.first }} {{ author.last }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+				</li>
+			{% endif %}
+			{% if venue %}
+				<li class="list-inline-item me-3">
+					<i class="fa-solid fa-book-open fa-fw" aria-label="Published in" title="Published in"></i>
+					<em>{{ venue }}</em>
+				</li>
+			{% endif %}
+			{% if entry.doi %}
+				<li class="list-inline-item me-3">
+					<i class="ai ai-doi fa-fw" aria-label="DOI" title="DOI"></i>
+					<a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer">{{ entry.doi }}</a>
+				</li>
+			{% endif %}
+		</ul>
 
-	<div class="bib-actions">
-		{% for item in access %}
-			<a class="no-blank-icon d-inline-flex align-items-center gap-1 text-decoration-none" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" title="{{ item.description }}">
-				<span class="{{ item.icon }}" aria-hidden="true"></span> {{ item.label }}
-			</a>
-		{% endfor %}
-		{% include altmetric-badge.html entry=entry %}
-		<a href="{{ more_details_link | absolute_url }}" class="ms-auto"><i class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></i> Details</a>
+		<div class="bib-actions">
+			{% for item in access %}
+				<a class="no-blank-icon d-inline-flex align-items-center gap-1 text-decoration-none" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" title="{{ item.description }}">
+					<span class="{{ item.icon }}" aria-hidden="true"></span> {{ item.label }}
+				</a>
+			{% endfor %}
+			{% include altmetric-badge.html entry=entry %}
+		</div>
 	</div>
 
-	<details class="small mt-2 border-start border-3 ps-3">
-		<summary class="text-body-secondary"><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Full citation</summary>
-		<div class="mt-1">{{ reference }}</div>
-	</details>
+	<div class="card-footer small d-flex flex-wrap align-items-baseline gap-2">
+		<details>
+			<summary class="text-body-secondary"><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Full citation</summary>
+			<div class="mt-1">{{ reference }}</div>
+		</details>
+		<a href="{{ more_details_link | absolute_url }}" class="ms-auto stretched-link"><i class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></i> Details</a>
+	</div>
 </article>
