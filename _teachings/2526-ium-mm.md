@@ -7,7 +7,8 @@ degree: Informatica e Comunicazione Digitale (Marina Militare)
 degreeTranslation: Computer Science and Digital Communication (Italian Navy)
 degreeYear: 3rd
 semester: 1st
-level: Bachelor's degree
+level: Corso di Laurea Triennale
+levelTranslation: Bachelor's degree
 institution:
   name: University of Bari Aldo Moro
   department: Department of Computer Science

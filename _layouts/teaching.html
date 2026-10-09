@@ -18,7 +18,7 @@ layout: default
         {% if translated %}"alternateName": {{ page.titleTranslation | jsonify }},{% endif %}
         "inLanguage": {{ page.language | jsonify }},
         "url": "{{ page.url | absolute_url }}",
-        "educationalLevel": {{ page.level | jsonify }},
+        "educationalLevel": {{ page.levelTranslation | default: page.level | jsonify }},
         "provider": {
             "@type": "CollegeOrUniversity",
             "name": {{ page.institution.name | jsonify }}
@@ -32,7 +32,7 @@ layout: default
             <li class="breadcrumb-item"><a href="{{ '/' | absolute_url }}">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ '/teachings' | absolute_url }}">Teaching</a></li>
             <li class="breadcrumb-item"><a href="{{ '/teachings' | absolute_url }}#ay-{{ page.academicYear | slugify }}">A.Y. {{ page.academicYear }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page" lang="{{ page.language }}">{{ page.title | smartify }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}</li>
         </ol>
     </nav>
 
@@ -42,12 +42,11 @@ layout: default
             <span class="badge bg-secondary-subtle text-secondary-emphasis border border-secondary-subtle fw-normal">A.Y. {{ page.academicYear }}</span>
             {% if page.language %}<span class="badge text-bg-light border" title="Course language">{{ page.language | upcase }}</span>{% endif %}
         </div>
-        <h1 class="mb-1" lang="{{ page.language }}">{{ page.title | smartify }}</h1>
-        {% if translated %}
-            <p class="lead text-body-secondary mb-0" lang="en">{{ page.titleTranslation | smartify }}</p>
-        {% endif %}
+        <h1 class="mb-1">{% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}</h1>
         <hr/>
     </header>
+
+    {% if translated %}{% include i18n-toggle.html %}{% endif %}
 
     <section aria-labelledby="course-info" class="mb-5">
         <h2 id="course-info" class="visually-hidden">Course information</h2>
@@ -56,8 +55,7 @@ layout: default
                 <i class="fa-solid fa-graduation-cap fa-fw" aria-hidden="true"></i> Degree
             </dt>
             <dd class="col-sm-9">
-                {{ page.level }} in <em lang="{{ page.language }}">{{ page.degree }}</em>
-                {% if translated and page.degreeTranslation %}<br><span class="text-body-secondary" lang="en">{{ page.degreeTranslation }}</span>{% endif %}
+                {% include degree-line.html level=page.level levelTranslation=page.levelTranslation degree=page.degree degreeTranslation=page.degreeTranslation lang=page.language %}
             </dd>
 
             <dt class="col-sm-3 text-body-secondary fw-normal">
