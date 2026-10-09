@@ -9,6 +9,12 @@ permalink: /talks
 {% assign talks = site.data.talks.talks | default: none | sort: 'date' | reverse %}
 {% assign seminars = site.data.talks.seminars | default: none | sort: 'date' | reverse %}
 
+{% comment %} Talk types, each with a colour (Bootstrap theme colours, assigned in alphabetical order). {% endcomment %}
+{% assign palette = "primary,success,warning,info,danger,secondary" | split: "," %}
+{% assign types = talks | map: "type" | compact | uniq | sort %}
+{% assign untyped = talks | where_exp: "item", "item.type == nil" %}
+{% if untyped.size > 0 %}{% assign types = types | push: "Other" %}{% endif %}
+
 <main class="container p-3 flex-grow-1">
     <header>
         <h1>{{ page.title | smartify }}</h1>
@@ -31,22 +37,47 @@ permalink: /talks
     <section class="mb-5" aria-labelledby="talks">
         <h2 id="talks" class="h4 d-flex align-items-baseline gap-2">
             Talks
-            <span class="badge rounded-pill text-bg-secondary fw-normal">{{ talks.size }}</span>
+            <span class="badge rounded-pill text-bg-secondary fw-normal" id="talks-count" data-total="{{ talks.size }}">{{ talks.size }}</span>
         </h2>
+
+        {% if types.size > 1 %}
+        <div class="d-flex flex-wrap align-items-center gap-2 mb-3 small" id="talk-types" role="group" aria-label="Filter talks by type" hidden>
+            <span class="text-body-secondary">Filter by type:</span>
+            {% for type in types %}
+                {% assign idx = forloop.index0 | modulo: palette.size %}
+                {% assign color = palette[idx] %}
+                {% assign type_count = 0 %}
+                {% for talk in talks %}
+                    {% assign talk_type = talk.type | default: "Other" %}
+                    {% if talk_type == type %}{% assign type_count = type_count | plus: 1 %}{% endif %}
+                {% endfor %}
+                <button type="button" class="btn btn-sm rounded-pill border bg-{{ color }}-subtle text-{{ color }}-emphasis border-{{ color }}-subtle" data-type="{{ type }}" aria-pressed="true">
+                    {{ type }} <span class="opacity-75">{{ type_count }}</span>
+                </button>
+            {% endfor %}
+        </div>
+        <p class="text-body-secondary" id="talks-empty" hidden>No talks match the selected types.</p>
+        {% endif %}
 
         {% if talks.size == 0 %}
             <p class="text-body-secondary">No talks to show yet.</p>
         {% else %}
             {% assign groups = talks | group_by_exp: 'item', 'item.date | date: "%Y"' %}
             {% for group in groups %}
+                <div class="talk-year">
                 <h3 class="h5 mt-4 text-body-secondary">{{ group.name }}</h3>
                 <div class="list-group">
                 {% for talk in group.items %}
-                    <article class="list-group-item py-3">
+                    {% assign talk_type = talk.type | default: "Other" %}
+                    {% assign color = "secondary" %}
+                    {% for type in types %}
+                        {% if type == talk_type %}{% assign idx = forloop.index0 | modulo: palette.size %}{% assign color = palette[idx] %}{% endif %}
+                    {% endfor %}
+                    <article class="list-group-item py-3" data-type="{{ talk_type }}">
                         <div class="d-flex justify-content-between align-items-baseline gap-3 mb-1">
                             <h4 class="h6 mb-0">{{ talk.title | smartify }}</h4>
                             <div class="d-flex align-items-baseline gap-2 flex-shrink-0 text-nowrap">
-                                {% if talk.type %}<span class="badge bg-secondary-subtle text-secondary-emphasis border border-secondary-subtle fw-normal">{{ talk.type }}</span>{% endif %}
+                                {% if talk.type %}<span class="badge bg-{{ color }}-subtle text-{{ color }}-emphasis border border-{{ color }}-subtle fw-normal">{{ talk.type }}</span>{% endif %}
                                 <time class="small text-body-secondary font-monospace" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
                             </div>
                         </div>
@@ -97,6 +128,7 @@ permalink: /talks
                         {% endif %}
                     </article>
                 {% endfor %}
+                </div>
                 </div>
             {% endfor %}
         {% endif %}
@@ -184,3 +216,46 @@ permalink: /talks
         {% endif %}
     </section>
 </main>
+
+<script>
+    (function () {
+        var legend = document.getElementById("talk-types");
+        if (!legend) { return; }
+
+        var buttons = legend.querySelectorAll("button");
+        var articles = document.querySelectorAll("article[data-type]");
+        var years = document.querySelectorAll(".talk-year");
+        var count = document.getElementById("talks-count");
+        var empty = document.getElementById("talks-empty");
+        var active = {};
+        buttons.forEach(function (button) { active[button.dataset.type] = true; });
+
+        function update() {
+            var visible = 0;
+            articles.forEach(function (article) {
+                var show = active[article.dataset.type] !== false;
+                article.hidden = !show;
+                if (show) { visible++; }
+            });
+            years.forEach(function (year) {
+                year.hidden = !year.querySelector("article:not([hidden])");
+            });
+            buttons.forEach(function (button) {
+                var on = active[button.dataset.type];
+                button.setAttribute("aria-pressed", on);
+                button.classList.toggle("opacity-50", !on);
+            });
+            var total = count.dataset.total;
+            count.textContent = visible === +total ? total : visible + " / " + total;
+            empty.hidden = visible > 0;
+        }
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                active[button.dataset.type] = !active[button.dataset.type];
+                update();
+            });
+        });
+        legend.hidden = false;
+    })();
+</script>
