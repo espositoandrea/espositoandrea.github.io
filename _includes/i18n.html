@@ -1,0 +1,9 @@
+{%- comment -%}
+  Renders `orig` (in language `lang`) and, if present and `lang` is not English, its English `trans`.
+  Which of the two is visible is controlled by i18n-toggle.html.
+{%- endcomment -%}
+{%- if include.trans and include.lang and include.lang != "en" -%}
+<span class="i18n-orig" lang="{{ include.lang }}">{{ include.orig | smartify }}</span><span class="i18n-en" lang="en">{{ include.trans | smartify }}</span>
+{%- else -%}
+<span{% if include.lang %} lang="{{ include.lang }}"{% endif %}>{{ include.orig | smartify }}</span>
+{%- endif -%}

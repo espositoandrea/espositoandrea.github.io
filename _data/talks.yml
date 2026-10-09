@@ -1,0 +1,122 @@
+# Talks and seminars, shown on /talks (see talks.html). Order does not matter:
+# entries are sorted by date and grouped by year.
+
+# Talks: presentations of my own work.
+#
+# - title: Title of the talk
+#   date: 2025-06-10
+#   type: Conference talk          # optional badge (e.g. Keynote, Poster, Invited talk)
+#   event:                         # optional
+#     name: Name of the event
+#     url: https://example.org     # optional
+#   location: City, Country        # optional
+#   paper: BibTeXKey               # optional: key in _bibliography/references.bib
+#   description: Short text.       # optional, Markdown
+#   slides: /assets/slides.pdf     # optional
+#   video: https://example.org     # optional
+talks: []
+
+# Seminars: lectures given as a guest in a course or event.
+#
+# - title: Title of the seminar
+#   titleTranslation: English title # optional: shown if `language` is not en
+#   language: en                   # optional: language of the seminar (e.g. en, it)
+#   date: 2025-03-02
+#   duration: 2 hours              # optional, free text
+#   course:                        # optional: use `course` or `event`
+#     name: Name of the course
+#     nameTranslation: English name  # optional: shown if `language` is not en
+#     language: it                 # optional: language of the course (default: the seminar's)
+#     url: https://example.org     # optional
+#   event:
+#     name: Name of the event
+#     url: https://example.org     # optional
+#   lecturer:                      # optional: who holds the course / organises the event
+#     name: Prof. Jane Doe
+#     url: https://example.org     # optional
+#   degree: Informatica            # optional: degree the course belongs to, in the course's language
+#   degreeTranslation: Computer Science   # optional: shown if the course language is not en
+#   degreeLevel: Corso di Laurea Triennale  # optional: shown before the degree name
+#   degreeLevelTranslation: Bachelor's degree   # optional: shown if the course language is not en
+#   institution: University of Bari Aldo Moro   # optional
+#   location: City, Country        # optional
+#   description: Short text.       # optional, Markdown
+#   descriptionLanguage: en        # optional: defaults to `language`
+#   slides: /assets/slides.pdf     # optional
+#   video: https://example.org     # optional
+seminars:
+- title: Introduzione a Figma
+  titleTranslation: Introduction to Figma
+  language: it
+  date: 2023-11-27
+  duration: 4 hours
+  course:
+    name: Interazione Uomo-Macchina
+    nameTranslation: Human-Computer Interaction
+    language: it
+  lecturer:
+    name: Prof. Rosa Lanzilotti
+    url: https://ivu.di.uniba.it/people/lanzilotti
+  degree: Informatica e Comunicazione Digitale
+  degreeTranslation: Computer Science and Digital Communication
+  degreeLevel: Corso di Laurea Triennale
+  degreeLevelTranslation: Bachelor's degree
+  institution: University of Bari Aldo Moro, Department of Computer Science
+  location: Bari, Italy
+
+- title: Docker e Container - Con un Focus su Laravel
+  titleTranslation: Docker and Containers - With a Focus on Laravel
+  language: it
+  date: 2023-11-10
+  duration: 4 hours
+  course:
+    name: Interazione Uomo-Macchina
+    nameTranslation: Human-Computer Interaction
+    language: it
+  lecturer:
+    name: Prof. Giuseppe Desolda
+    url: https://ivu.di.uniba.it/people/desolda
+  degree: Informatica e Comunicazione Digitale
+  degreeTranslation: Computer Science and Digital Communication
+  degreeLevel: Corso di Laurea Triennale
+  degreeLevelTranslation: Bachelor's degree
+  institution: University of Bari Aldo Moro, Department of Computer Science
+  location: Bari, Italy
+
+- title: Docker e Container - Con un Focus su Laravel
+  titleTranslation: Docker and Containers - With a Focus on Laravel
+  language: it
+  date: 2022-12-21
+  duration: 2 hours
+  course:
+    name: Interazione Uomo-Macchina
+    nameTranslation: Human-Computer Interaction
+    language: it
+  lecturer:
+    name: Prof. Giuseppe Desolda
+    url: https://ivu.di.uniba.it/people/desolda
+  degree: Informatica e Comunicazione Digitale
+  degreeTranslation: Computer Science and Digital Communication
+  degreeLevel: Corso di Laurea Triennale
+  degreeLevelTranslation: Bachelor's degree
+  institution: University of Bari Aldo Moro, Department of Computer Science
+  location: Bari, Italy
+
+- title: Introduzione a Figma
+  titleTranslation: Introduction to Figma
+  language: it
+  date: 2022-11-28
+  duration: 4 hours
+  course:
+    name: Interazione Uomo-Macchina
+    nameTranslation: Human-Computer Interaction
+    language: it
+  lecturer:
+    name: Prof. Rosa Lanzilotti
+    url: https://ivu.di.uniba.it/people/lanzilotti
+  degree: Informatica e Comunicazione Digitale
+  degreeTranslation: Computer Science and Digital Communication
+  degreeLevel: Corso di Laurea Triennale
+  degreeLevelTranslation: Bachelor's degree
+  institution: University of Bari Aldo Moro, Department of Computer Science
+  location: Bari, Italy

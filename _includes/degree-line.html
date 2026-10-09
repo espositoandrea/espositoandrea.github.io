@@ -1,0 +1,9 @@
+{%- comment -%}
+  Renders "<level> in <degree>" in the original language and, when available, in English
+  (see i18n.html).
+{%- endcomment -%}
+{%- if include.degreeTranslation and include.lang and include.lang != "en" -%}
+<span class="i18n-orig" lang="{{ include.lang }}">{% if include.level %}{{ include.level }} in {% endif %}<em>{{ include.degree | smartify }}</em></span><span class="i18n-en" lang="en">{% if include.levelTranslation %}{{ include.levelTranslation }} in {% endif %}<em>{{ include.degreeTranslation | smartify }}</em></span>
+{%- else -%}
+<span{% if include.lang %} lang="{{ include.lang }}"{% endif %}>{% if include.level %}{{ include.level }} in {% endif %}<em>{{ include.degree | smartify }}</em></span>
+{%- endif -%}

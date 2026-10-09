@@ -1,0 +1,177 @@
+---
+layout: default
+lang: en
+title: Talks and Seminars
+permalink: /talks
+---
+
+{% assign none = "" | split: "" %}
+{% assign talks = site.data.talks.talks | default: none | sort: 'date' | reverse %}
+{% assign seminars = site.data.talks.seminars | default: none | sort: 'date' | reverse %}
+
+<main class="container p-3 flex-grow-1">
+    <header>
+        <h1>{{ page.title | smartify }}</h1>
+        <hr/>
+    </header>
+
+    <p>
+        This page lists the talks I gave to present my research (typically associated with a publication) and the
+        seminars I gave as a guest in courses or events. For my regular teaching activities, see the
+        <a href="{{ '/teachings' | relative_url }}">teaching page</a>.
+    </p>
+
+    {% assign has_translation = false %}
+    {% for seminar in seminars %}
+        {% if seminar.language != "en" and seminar.titleTranslation %}{% assign has_translation = true %}{% endif %}
+        {% if seminar.course.nameTranslation or seminar.degreeTranslation %}{% assign has_translation = true %}{% endif %}
+    {% endfor %}
+    {% if has_translation %}{% include i18n-toggle.html %}{% endif %}
+
+    <section class="mb-5" aria-labelledby="talks">
+        <h2 id="talks" class="h4 d-flex align-items-baseline gap-2">
+            Talks
+            <span class="badge rounded-pill text-bg-secondary fw-normal">{{ talks.size }}</span>
+        </h2>
+
+        {% if talks.size == 0 %}
+            <p class="text-body-secondary">No talks to show yet.</p>
+        {% else %}
+            {% assign groups = talks | group_by_exp: 'item', 'item.date | date: "%Y"' %}
+            {% for group in groups %}
+                <h3 class="h5 mt-4 text-body-secondary">{{ group.name }}</h3>
+                <div class="list-group">
+                {% for talk in group.items %}
+                    <article class="list-group-item py-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2 mb-1">
+                            <h4 class="h6 mb-0">{{ talk.title | smartify }}</h4>
+                            <time class="small text-body-secondary font-monospace" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
+                        </div>
+
+                        <ul class="list-inline small text-body-secondary mb-0">
+                            {% if talk.event %}
+                            <li class="list-inline-item me-3">
+                                <i class="fa-solid fa-microphone fa-fw" aria-hidden="true"></i>
+                                {% if talk.event.url %}<a href="{{ talk.event.url }}" target="_blank" rel="noopener noreferrer">{{ talk.event.name | smartify }}</a>{% else %}{{ talk.event.name | smartify }}{% endif %}
+                            </li>
+                            {% endif %}
+                            {% if talk.location %}
+                            <li class="list-inline-item me-3">
+                                <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ talk.location | smartify }}
+                            </li>
+                            {% endif %}
+                            {% if talk.type %}
+                            <li class="list-inline-item">
+                                <span class="badge bg-secondary-subtle text-secondary-emphasis border border-secondary-subtle fw-normal">{{ talk.type }}</span>
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                        {% if talk.description %}
+                            <div class="small mt-2">{{ talk.description | markdownify }}</div>
+                        {% endif %}
+
+                        {% if talk.paper %}
+                            <div class="small mt-2 border-start border-3 ps-3">
+                                <div class="text-body-secondary mb-1">Associated paper</div>
+                                {% capture paper_reference %}{% reference {{talk.paper}} %}{% endcapture %}
+                                <div>{{ paper_reference | emphasize_author }}</div>
+                                <a href="{% details_link {{talk.paper}} %}">See paper details</a>
+                            </div>
+                        {% endif %}
+
+                        {% if talk.slides or talk.video %}
+                            <div class="small mt-2 d-flex gap-3">
+                                {% if talk.slides %}<a href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                {% if talk.video %}<a href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+
+    <section class="mb-5" aria-labelledby="seminars">
+        <h2 id="seminars" class="h4 d-flex align-items-baseline gap-2">
+            Seminars
+            <span class="badge rounded-pill text-bg-secondary fw-normal">{{ seminars.size }}</span>
+        </h2>
+
+        {% if seminars.size == 0 %}
+            <p class="text-body-secondary">No seminars to show yet.</p>
+        {% else %}
+            {% assign groups = seminars | group_by_exp: 'item', 'item.date | date: "%Y"' %}
+            {% for group in groups %}
+                <h3 class="h5 mt-4 text-body-secondary">{{ group.name }}</h3>
+                <div class="list-group">
+                {% for seminar in group.items %}
+                    {% assign context = seminar.course | default: seminar.event %}
+                    <article class="list-group-item py-3">
+                        <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2 mb-1">
+                            <div>
+                                <h4 class="h6 mb-0">{% include i18n.html orig=seminar.title trans=seminar.titleTranslation lang=seminar.language %}</h4>
+                            </div>
+                            <div class="d-flex align-items-baseline gap-2">
+                                {% if seminar.language %}<span class="badge text-bg-light border" title="Seminar language">{{ seminar.language | upcase }}</span>{% endif %}
+                                <time class="small text-body-secondary font-monospace" datetime="{{ seminar.date | date: '%Y-%m-%d' }}">{{ seminar.date | date: "%b %-d, %Y" }}</time>
+                            </div>
+                        </div>
+
+                        <ul class="list-inline small text-body-secondary mb-0">
+                            {% if context %}
+                            {% assign context_lang = context.language | default: seminar.language | default: "en" %}
+                            <li class="list-inline-item me-3">
+                                {% if seminar.course %}<i class="fa-solid fa-graduation-cap fa-fw" aria-label="Course" title="Course"></i>{% else %}<i class="fa-regular fa-calendar fa-fw" aria-label="Event" title="Event"></i>{% endif %}
+                                {% capture context_name %}{% include i18n.html orig=context.name trans=context.nameTranslation lang=context_lang %}{% endcapture %}
+                                {% if context.url %}<a href="{{ context.url }}" target="_blank" rel="noopener noreferrer">{{ context_name }}</a>{% else %}{{ context_name }}{% endif %}
+                            </li>
+                            {% endif %}
+                            {% if seminar.lecturer %}
+                            <li class="list-inline-item me-3">
+                                <i class="fa-solid fa-user-tie fa-fw" aria-label="Lecturer" title="Lecturer"></i>
+                                {% if seminar.lecturer.url %}<a href="{{ seminar.lecturer.url }}" target="_blank" rel="noopener noreferrer">{{ seminar.lecturer.name | smartify }}</a>{% else %}{{ seminar.lecturer.name | smartify }}{% endif %}
+                            </li>
+                            {% endif %}
+                            {% if seminar.institution %}
+                            <li class="list-inline-item me-3">
+                                <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ seminar.institution | smartify }}
+                            </li>
+                            {% endif %}
+                            {% if seminar.location %}
+                            <li class="list-inline-item me-3">
+                                <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ seminar.location | smartify }}
+                            </li>
+                            {% endif %}
+                            {% if seminar.duration %}
+                            <li class="list-inline-item">
+                                <i class="fa-regular fa-clock fa-fw" aria-label="Duration" title="Duration"></i> {{ seminar.duration }}
+                            </li>
+                            {% endif %}
+                            {% if seminar.degree %}
+                            {% assign degree_lang = seminar.course.language | default: seminar.language | default: "en" %}
+                            <li class="list-inline-item d-block">
+                                <i class="fa-solid fa-award fa-fw" aria-label="Degree" title="Degree"></i>
+                                {% include degree-line.html level=seminar.degreeLevel levelTranslation=seminar.degreeLevelTranslation degree=seminar.degree degreeTranslation=seminar.degreeTranslation lang=degree_lang %}
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                        {% if seminar.description %}
+                            <div class="small mt-2" lang="{{ seminar.descriptionLanguage | default: seminar.language | default: 'en' }}">{{ seminar.description | markdownify }}</div>
+                        {% endif %}
+
+                        {% if seminar.slides or seminar.video %}
+                            <div class="small mt-2 d-flex gap-3">
+                                {% if seminar.slides %}<a href="{{ seminar.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                {% if seminar.video %}<a href="{{ seminar.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+</main>
