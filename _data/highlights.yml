@@ -1,0 +1,7 @@
+# Publication highlights shown on the home page, in the order listed here.
+# The section is hidden while the list is empty.
+#
+# - paper: BibTeXKey        # key in _bibliography/references.bib
+#   text: >-                # Markdown; the main results and why the paper matters,
+#     In plain language.    # in general, accessible language
+highlights: []
