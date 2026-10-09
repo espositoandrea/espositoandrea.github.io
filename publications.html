@@ -46,6 +46,12 @@ title: Publications
     <p class="small mt-2 mb-0">For all the papers that are neither open access nor available through other means, I always try to publish a pre-print version on <a href="https://arxiv.org" target="_blank" rel="noopener noreferrer">arXiv</a> or <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">ResearchGate</a>, or a self-archived PDF version that is freely available (in compliance to the publisher's license). In those cases, pre-prints are marked using the arXiv logomark <i class="ai ai-arxiv" aria-label="Preprint available on arXiv" title="Example of the icon indicating that a preprint is available on arXiv"></i> or ResearchGate's icon <i class="fab fa-researchgate" title="Example of the icon indicating that a preprint is available on ResearchGate" aria-label="Example of the icon indicating that a preprint is available on ResearchGate"></i> (depending on the platform) while self-archived PDFs are marked with a PDF icon <i class="fas fa-file-pdf" title="Example of icon indicating a self-archived PDF version" aria-label="Example of icon indicating a self-archived PDF version"></i>.</p>
 </details>
 
+<div class="mb-4">
+    <label for="pub-search" class="visually-hidden">Search publications</label>
+    <input type="search" id="pub-search" class="form-control" placeholder="Search publications by title, author, venue, year…" autocomplete="off">
+    <div id="pub-search-status" class="small text-body-secondary mt-2" role="status" aria-live="polite"></div>
+</div>
+
 <nav class="pub-nav d-flex flex-wrap gap-2 mb-4" aria-label="Publication categories">
     {% if journal_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#journal-articles">Journal Articles <span class="opacity-75">{{ journal_count }}</span></a>{% endif %}
     {% if conf_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#conference-papers">Conference Papers <span class="opacity-75">{{ conf_count }}</span></a>{% endif %}
@@ -91,3 +97,53 @@ title: Publications
 <section class="mb-5">
 {% include bib-list.html id="theses" title="Theses" html=theses count=theses_count level=2 %}
 </section>
+
+<p id="pub-no-results" class="text-body-secondary" hidden>No publications match your search.</p>
+
+<script>
+(function () {
+    var input = document.getElementById('pub-search');
+    var status = document.getElementById('pub-search-status');
+    var empty = document.getElementById('pub-no-results');
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main section.mb-5, section.mb-5'));
+    var items = Array.prototype.slice.call(document.querySelectorAll('section.mb-5 li'));
+    var total = items.length;
+    var texts = items.map(function (li) { return normalize(li.textContent); });
+    var blocks = [];
+
+    // A block is a heading followed by its list.
+    document.querySelectorAll('section.mb-5 :is(h2, h3)[id]').forEach(function (h) {
+        var list = h.nextElementSibling;
+        while (list && !/^(OL|UL)$/.test(list.tagName)) list = list.nextElementSibling;
+        var badge = h.querySelector('.badge');
+        if (list && badge) blocks.push({ heading: h, list: list, badge: badge, total: badge.textContent.trim() });
+    });
+
+    function normalize(str) {
+        return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ');
+    }
+
+    function filter() {
+        var terms = normalize(input.value).split(' ').filter(Boolean);
+        var shown = 0;
+        items.forEach(function (li, i) {
+            var match = terms.every(function (t) { return texts[i].indexOf(t) !== -1; });
+            li.hidden = !match;
+            if (match) shown++;
+        });
+        blocks.forEach(function (b) {
+            var visible = b.list.querySelectorAll('li:not([hidden])').length;
+            b.heading.hidden = b.list.hidden = visible === 0;
+            b.badge.textContent = terms.length ? visible + ' / ' + b.total : b.total;
+        });
+        sections.forEach(function (s) {
+            s.hidden = !s.querySelector('li:not([hidden])') && terms.length > 0;
+        });
+        document.querySelectorAll('.pub-nav').forEach(function (n) { n.hidden = terms.length > 0; });
+        empty.hidden = shown > 0;
+        status.textContent = terms.length ? shown + ' of ' + total + ' publications match' : '';
+    }
+
+    input.addEventListener('input', filter);
+})();
+</script>
