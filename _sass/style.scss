@@ -63,7 +63,7 @@ ol.bibliography {
   @extend .rounded;
   overflow: hidden;
 
-  li {
+  > li {
     @extend .list-group-item;
     @extend .py-3;
     transition: background-color 0.15s;
@@ -90,9 +90,6 @@ h2[id], h3[id] {
   scroll-margin-top: 72px;
 }
 
-.pub-nav a {
-  text-decoration: none;
-}
 
 .sidebar {
   @extend .sticky-md-top;

@@ -78,6 +78,12 @@ layout: default
 			</div>
 		</section>
 	{% endif %}
+	{% if page.reference %}
+		<section class="mx-auto mb-5" style="max-width: 50rem;">
+			<h2 class="h6 text-uppercase text-body-secondary" style="letter-spacing: .05em;">Full citation</h2>
+			<p class="mb-0">{{ page.reference | edit_urls | remove_number | emphasize_author }}</p>
+		</section>
+	{% endif %}
 	{% assign related_posts = site.posts
 		| where: 'paper', page.entry.key %}
 	{% if related_posts.size > 0 %}

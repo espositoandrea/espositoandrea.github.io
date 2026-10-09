@@ -7,31 +7,31 @@ title: Publications
 
 {% comment %} Render every list first, so that counts are known for the navigation. {% endcomment %}
 {% capture journal %}{% bibliography --group_by none --query @article %}{% endcapture %}
-{% assign journal_count = journal | split: "<li" | size | minus: 1 %}
+{% assign journal_count = journal | split: "<article" | size | minus: 1 %}
 {% assign journal = journal | edit_urls | remove_number | emphasize_author %}
 {% capture conf_int %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/international] %}{% endcapture %}
-{% assign conf_int_count = conf_int | split: "<li" | size | minus: 1 %}
+{% assign conf_int_count = conf_int | split: "<article" | size | minus: 1 %}
 {% assign conf_int = conf_int | edit_urls | remove_number | emphasize_author %}
 {% capture conf_nat %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/national] %}{% endcapture %}
-{% assign conf_nat_count = conf_nat | split: "<li" | size | minus: 1 %}
+{% assign conf_nat_count = conf_nat | split: "<article" | size | minus: 1 %}
 {% assign conf_nat = conf_nat | edit_urls | remove_number | emphasize_author %}
 {% capture work_int %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/international] %}{% endcapture %}
-{% assign work_int_count = work_int | split: "<li" | size | minus: 1 %}
+{% assign work_int_count = work_int | split: "<article" | size | minus: 1 %}
 {% assign work_int = work_int | edit_urls | remove_number | emphasize_author %}
 {% capture work_nat %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/national] %}{% endcapture %}
-{% assign work_nat_count = work_nat | split: "<li" | size | minus: 1 %}
+{% assign work_nat_count = work_nat | split: "<article" | size | minus: 1 %}
 {% assign work_nat = work_nat | edit_urls | remove_number | emphasize_author %}
 {% capture chapters %}{% bibliography --group_by none --query @incollection[keywords !~ type/] %}{% endcapture %}
-{% assign chapters_count = chapters | split: "<li" | size | minus: 1 %}
+{% assign chapters_count = chapters | split: "<article" | size | minus: 1 %}
 {% assign chapters = chapters | edit_urls | remove_number | emphasize_author %}
 {% capture theses %}{% bibliography --group_by none --query @phdthesis %}{% endcapture %}
-{% assign theses_count = theses | split: "<li" | size | minus: 1 %}
+{% assign theses_count = theses | split: "<article" | size | minus: 1 %}
 {% assign theses = theses | edit_urls | remove_number | emphasize_author %}
 {% capture unclassified %}
 {% bibliography --group_by none --query @inproceedings[keywords !~ type/(conference|workshop) || keywords !~ reach/(international|national)] %}
 {% bibliography --group_by none --query @incollection[keywords ~= type/ && keywords !~ reach/(international|national)] %}
 {% endcapture %}
-{% assign unclassified_count = unclassified | split: "<li" | size | minus: 1 %}
+{% assign unclassified_count = unclassified | split: "<article" | size | minus: 1 %}
 {% assign unclassified = unclassified | edit_urls | remove_number | emphasize_author %}
 {% assign conf_count = conf_int_count | plus: conf_nat_count %}
 {% assign work_count = work_int_count | plus: work_nat_count %}
@@ -46,20 +46,51 @@ title: Publications
     <p class="small mt-2 mb-0">For all the papers that are neither open access nor available through other means, I always try to publish a pre-print version on <a href="https://arxiv.org" target="_blank" rel="noopener noreferrer">arXiv</a> or <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">ResearchGate</a>, or a self-archived PDF version that is freely available (in compliance to the publisher's license). In those cases, pre-prints are marked using the arXiv logomark <i class="ai ai-arxiv" aria-label="Preprint available on arXiv" title="Example of the icon indicating that a preprint is available on arXiv"></i> or ResearchGate's icon <i class="fab fa-researchgate" title="Example of the icon indicating that a preprint is available on ResearchGate" aria-label="Example of the icon indicating that a preprint is available on ResearchGate"></i> (depending on the platform) while self-archived PDFs are marked with a PDF icon <i class="fas fa-file-pdf" title="Example of icon indicating a self-archived PDF version" aria-label="Example of icon indicating a self-archived PDF version"></i>.</p>
 </details>
 
-<div class="mb-4">
-    <label for="pub-search" class="visually-hidden">Search publications</label>
-    <input type="search" id="pub-search" class="form-control" placeholder="Search publications by title, author, venue, year…" autocomplete="off">
-    <div id="pub-search-status" class="small text-body-secondary mt-2" role="status" aria-live="polite"></div>
-</div>
+<details class="card mb-4" id="pub-controls" open>
+    <summary class="card-header d-flex flex-wrap justify-content-between align-items-baseline gap-2">
+        <span class="fw-semibold"><i class="fa-solid fa-sliders fa-fw" aria-hidden="true"></i> Search, filter and view options</span>
+        <span class="d-flex align-items-baseline gap-3">
+            <span class="small text-body-secondary" id="pub-search-status" role="status" aria-live="polite"></span>
+            <i class="fa-solid fa-chevron-down pub-chevron" aria-hidden="true" title="Click to collapse or expand"></i>
+        </span>
+    </summary>
+    <div class="card-body vstack gap-3">
+        <div>
+            <label for="pub-search" class="form-label small text-body-secondary mb-1">Search</label>
+            <input type="search" id="pub-search" class="form-control" placeholder="Title, author, venue, year…" autocomplete="off">
+        </div>
 
-<nav class="pub-nav d-flex flex-wrap gap-2 mb-4" aria-label="Publication categories">
-    {% if journal_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#journal-articles">Journal Articles <span class="opacity-75">{{ journal_count }}</span></a>{% endif %}
-    {% if conf_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#conference-papers">Conference Papers <span class="opacity-75">{{ conf_count }}</span></a>{% endif %}
-    {% if work_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#workshop-papers">Workshop Papers <span class="opacity-75">{{ work_count }}</span></a>{% endif %}
-    {% if unclassified_count > 0 %}<a class="btn btn-sm rounded-pill border border-danger text-danger" href="#unclassified">Unclassified <span class="opacity-75">{{ unclassified_count }}</span></a>{% endif %}
-    {% if chapters_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#book-chapters">Book Chapters <span class="opacity-75">{{ chapters_count }}</span></a>{% endif %}
-    {% if theses_count > 0 %}<a class="btn btn-sm rounded-pill border" href="#theses">Theses <span class="opacity-75">{{ theses_count }}</span></a>{% endif %}
-</nav>
+        <div class="d-flex flex-wrap align-items-center gap-2 small" id="pub-types" role="group" aria-label="Filter publications by type" hidden>
+            <span class="text-body-secondary">Type:</span>
+        </div>
+
+        <div class="d-flex flex-wrap align-items-center gap-2 small" role="group" aria-label="Filter publications by year">
+            <span class="text-body-secondary">Years:</span>
+            <label for="pub-year-from" class="visually-hidden">From year</label>
+            <input type="number" id="pub-year-from" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
+            <div class="pub-range" id="pub-range">
+                <div class="pub-range-track"><div class="pub-range-fill" id="pub-range-fill"></div></div>
+                <input type="range" id="pub-range-from" aria-label="From year (slider)">
+                <input type="range" id="pub-range-to" aria-label="To year (slider)">
+            </div>
+            <label for="pub-year-to" class="visually-hidden">To year</label>
+            <input type="number" id="pub-year-to" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
+        </div>
+
+        <div class="d-flex flex-wrap align-items-center gap-2 small" role="group" aria-label="Group publications by">
+            <span class="text-body-secondary">Group by:</span>
+            <div class="btn-group btn-group-sm" id="pub-group">
+                <input type="radio" class="btn-check" name="pub-group" id="pub-group-category" value="category" autocomplete="off" checked>
+                <label class="btn btn-outline-secondary" for="pub-group-category">Type</label>
+                <input type="radio" class="btn-check" name="pub-group" id="pub-group-year" value="year" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="pub-group-year">Year</label>
+                <input type="radio" class="btn-check" name="pub-group" id="pub-group-none" value="none" autocomplete="off">
+                <label class="btn btn-outline-secondary" for="pub-group-none">No grouping</label>
+            </div>
+        </div>
+        <div><button type="button" class="btn btn-sm btn-outline-secondary" id="pub-reset">Reset all</button></div>
+    </div>
+</details>
 
 <section class="mb-5">
 {% include bib-list.html id="journal-articles" title="Journal Articles" html=journal count=journal_count level=2 %}
@@ -98,6 +129,8 @@ title: Publications
 {% include bib-list.html id="theses" title="Theses" html=theses count=theses_count level=2 %}
 </section>
 
+<div id="pub-grouped" hidden></div>
+
 <p id="pub-no-results" class="text-body-secondary" hidden>No publications match your search.</p>
 
 <script>
@@ -105,45 +138,204 @@ title: Publications
     var input = document.getElementById('pub-search');
     var status = document.getElementById('pub-search-status');
     var empty = document.getElementById('pub-no-results');
-    var sections = Array.prototype.slice.call(document.querySelectorAll('main section.mb-5, section.mb-5'));
-    var items = Array.prototype.slice.call(document.querySelectorAll('section.mb-5 li'));
-    var total = items.length;
-    var texts = items.map(function (li) { return normalize(li.textContent); });
-    var blocks = [];
-
-    // A block is a heading followed by its list.
-    document.querySelectorAll('section.mb-5 :is(h2, h3)[id]').forEach(function (h) {
-        var list = h.nextElementSibling;
-        while (list && !/^(OL|UL)$/.test(list.tagName)) list = list.nextElementSibling;
-        var badge = h.querySelector('.badge');
-        if (list && badge) blocks.push({ heading: h, list: list, badge: badge, total: badge.textContent.trim() });
+    var grouped = document.getElementById('pub-grouped');
+    var yearFrom = document.getElementById('pub-year-from');
+    var yearTo = document.getElementById('pub-year-to');
+    var sliderFrom = document.getElementById('pub-range-from');
+    var sliderTo = document.getElementById('pub-range-to');
+    var fill = document.getElementById('pub-range-fill');
+    var range = { from: 0, to: 0 };
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section.mb-5'));
+    // Every entry with the list it belongs to in the "by type" layout, in document order.
+    var items = Array.prototype.slice.call(document.querySelectorAll('section.mb-5 li')).filter(function (li) {
+        return li.querySelector(':scope > article');
+    }).map(function (li) {
+        return { li: li, home: li.parentElement, article: li.querySelector(':scope > article'), text: normalize(li.textContent) };
     });
+    var total = items.length;
+    var months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+    var mode = 'category';
+    var active = {};
 
     function normalize(str) {
         return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ');
     }
 
+    function sortKey(item) {
+        var m = months.indexOf((item.article.dataset.month || '').slice(0, 3).toLowerCase());
+        return (parseInt(item.article.dataset.year, 10) || 0) * 13 + (m + 1);
+    }
+
+    // Moves every entry back into its original list.
+    function restore() {
+        items.forEach(function (it) { it.home.appendChild(it.li); });
+    }
+
+    function makeList(its) {
+        var ol = document.createElement('ol');
+        ol.className = 'bibliography';
+        its.forEach(function (it) { ol.appendChild(it.li); });
+        return ol;
+    }
+
+    function makeHeading(id, label, count) {
+        var h = document.createElement('h2');
+        h.id = id;
+        h.className = 'h4 mt-4 d-flex align-items-baseline gap-2';
+        h.appendChild(document.createTextNode(label + ' '));
+        var b = document.createElement('span');
+        b.className = 'badge rounded-pill text-bg-secondary fw-normal';
+        b.textContent = count;
+        h.appendChild(b);
+        return h;
+    }
+
+    // Type chips: always visible, they toggle the entries of each type in every layout.
+    (function () {
+        var box = document.getElementById('pub-types');
+        var types = [];
+        items.forEach(function (it) {
+            var c = it.article.dataset.category;
+            var t = types.filter(function (x) { return x.name === c; })[0];
+            if (!t) types.push(t = { name: c, color: it.article.dataset.color, count: 0 });
+            t.count++;
+        });
+        types.forEach(function (t) {
+            active[t.name] = true;
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'btn btn-sm rounded-pill border bg-' + t.color + '-subtle text-' + t.color + '-emphasis border-' + t.color + '-subtle';
+            b.setAttribute('aria-pressed', 'true');
+            b.appendChild(document.createTextNode(t.name + ' '));
+            var n = document.createElement('span');
+            n.className = 'opacity-75';
+            n.textContent = t.count;
+            b.appendChild(n);
+            b.addEventListener('click', function () {
+                active[t.name] = !active[t.name];
+                b.setAttribute('aria-pressed', active[t.name]);
+                b.classList.toggle('opacity-50', !active[t.name]);
+                filter();
+            });
+            box.appendChild(b);
+        });
+        box.hidden = false;
+    })();
+
+    // Year range: selects spanning the years that have publications.
+    var allYears = items.map(function (it) { return parseInt(it.article.dataset.year, 10) || 0; })
+        .filter(function (y, i, a) { return y && a.indexOf(y) === i; })
+        .sort(function (a, b) { return b - a; });
+    var minYear = allYears[allYears.length - 1], maxYear = allYears[0];
+
+    // Keeps both ends inside the available years and in order; `moved` is the end the user changed.
+    function setRange(from, to, moved) {
+        from = isNaN(from) ? range.from : Math.min(Math.max(from, minYear), maxYear);
+        to = isNaN(to) ? range.to : Math.min(Math.max(to, minYear), maxYear);
+        if (from > to) { if (moved === 'to') to = from; else from = to; }
+        range.from = from;
+        range.to = to;
+        [yearFrom, sliderFrom].forEach(function (e) { e.value = from; });
+        [yearTo, sliderTo].forEach(function (e) { e.value = to; });
+        var span = Math.max(maxYear - minYear, 1);
+        fill.style.left = ((from - minYear) / span * 100) + '%';
+        fill.style.right = ((maxYear - to) / span * 100) + '%';
+        filter();
+    }
+
+    [yearFrom, yearTo, sliderFrom, sliderTo].forEach(function (e) {
+        e.min = minYear;
+        e.max = maxYear;
+    });
+    yearFrom.addEventListener('change', function () { setRange(parseInt(yearFrom.value, 10), range.to, 'from'); });
+    yearTo.addEventListener('change', function () { setRange(range.from, parseInt(yearTo.value, 10), 'to'); });
+    sliderFrom.addEventListener('input', function () { setRange(+sliderFrom.value, range.to, 'from'); });
+    sliderTo.addEventListener('input', function () { setRange(range.from, +sliderTo.value, 'to'); });
+
+    document.getElementById('pub-reset').addEventListener('click', function () {
+        input.value = '';
+        document.querySelectorAll('#pub-types button[aria-pressed="false"]').forEach(function (b) { b.click(); });
+        setRange(minYear, maxYear);
+    });
+
+    function regroup() {
+        restore();
+        grouped.textContent = '';
+        var byType = mode === 'category';
+        sections.forEach(function (s) { s.classList.toggle('pub-original-hidden', !byType); });
+        grouped.hidden = byType;
+        if (!byType) {
+            var sorted = items.slice().sort(function (a, b) { return sortKey(b) - sortKey(a); });
+            if (mode === 'none') {
+                grouped.appendChild(makeList(sorted));
+            } else {
+                var years = [];
+                sorted.forEach(function (it) {
+                    var y = it.article.dataset.year || 'Undated';
+                    if (!years.length || years[years.length - 1].year !== y) years.push({ year: y, items: [] });
+                    years[years.length - 1].items.push(it);
+                });
+                years.forEach(function (g) {
+                    grouped.appendChild(makeHeading('year-' + g.year, g.year, g.items.length));
+                    grouped.appendChild(makeList(g.items));
+                });
+            }
+        }
+        filter();
+    }
+
     function filter() {
         var terms = normalize(input.value).split(' ').filter(Boolean);
         var shown = 0;
-        items.forEach(function (li, i) {
-            var match = terms.every(function (t) { return texts[i].indexOf(t) !== -1; });
-            li.hidden = !match;
+        var typesOff = Object.keys(active).some(function (k) { return !active[k]; });
+        var from = range.from, to = range.to;
+        var yearsOff = from > minYear || to < maxYear;
+        var filtering = terms.length > 0 || typesOff || yearsOff;
+        items.forEach(function (it) {
+            var year = parseInt(it.article.dataset.year, 10) || 0;
+            var match = active[it.article.dataset.category] !== false &&
+                year >= from && year <= to &&
+                terms.every(function (t) { return it.text.indexOf(t) !== -1; });
+            it.li.hidden = !match;
             if (match) shown++;
         });
-        blocks.forEach(function (b) {
-            var visible = b.list.querySelectorAll('li:not([hidden])').length;
-            b.heading.hidden = b.list.hidden = visible === 0;
-            b.badge.textContent = terms.length ? visible + ' / ' + b.total : b.total;
+        // A block is a heading followed by its list.
+        document.querySelectorAll('section.mb-5 :is(h2, h3)[id], #pub-grouped > h2[id]').forEach(function (h) {
+            var list = h.nextElementSibling;
+            while (list && !/^(OL|UL)$/.test(list.tagName)) list = list.nextElementSibling;
+            var badge = h.querySelector('.badge');
+            if (!list || !badge) return;
+            if (!badge.dataset.total) badge.dataset.total = badge.textContent.trim();
+            var visible = list.querySelectorAll(':scope > li:not([hidden])').length;
+            h.hidden = list.hidden = visible === 0;
+            badge.textContent = filtering ? visible + ' / ' + badge.dataset.total : badge.dataset.total;
         });
         sections.forEach(function (s) {
-            s.hidden = !s.querySelector('li:not([hidden])') && terms.length > 0;
+            s.hidden = !s.querySelector('ol > li:not([hidden])') && filtering;
         });
-        document.querySelectorAll('.pub-nav').forEach(function (n) { n.hidden = terms.length > 0; });
         empty.hidden = shown > 0;
-        status.textContent = terms.length ? shown + ' of ' + total + ' publications match' : '';
+        status.textContent = 'Showing ' + shown + ' of ' + total + ' publications';
     }
 
+    setRange(minYear, maxYear);
     input.addEventListener('input', filter);
+    document.querySelectorAll('input[name="pub-group"]').forEach(function (r) {
+        r.addEventListener('change', function () { mode = r.value; regroup(); });
+    });
 })();
 </script>
+<style>
+    #pub-controls > summary { cursor: pointer; }
+    .pub-range { position: relative; height: 1.5rem; flex: 1 1 12rem; max-width: 28rem; margin: 0 .5rem; }
+    .pub-chevron { transition: transform .15s; }
+    #pub-controls[open] .pub-chevron { transform: rotate(180deg); }
+    @media (max-width: 575.98px) { .pub-range { order: 1; flex-basis: 100%; max-width: none; margin: 0 .5rem; } }
+    .pub-range-track { position: absolute; top: 50%; left: 0; right: 0; height: .25rem; margin-top: -.125rem; border-radius: .125rem; background: var(--bs-secondary-bg); }
+    .pub-range-fill { position: absolute; top: 0; bottom: 0; border-radius: .125rem; background: var(--bs-primary); }
+    .pub-range input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; background: none; pointer-events: none; -webkit-appearance: none; appearance: none; }
+    .pub-range input[type=range]::-webkit-slider-runnable-track { background: none; }
+    .pub-range input[type=range]::-moz-range-track { background: none; }
+    .pub-range input[type=range]::-webkit-slider-thumb { pointer-events: auto; -webkit-appearance: none; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--bs-primary); background: var(--bs-body-bg); cursor: pointer; }
+    .pub-range input[type=range]::-moz-range-thumb { pointer-events: auto; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--bs-primary); background: var(--bs-body-bg); cursor: pointer; }
+    .pub-original-hidden { display: none !important; }
+</style>
