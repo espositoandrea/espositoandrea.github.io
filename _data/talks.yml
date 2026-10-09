@@ -20,6 +20,30 @@
 #   slides: /assets/slides.pdf     # optional
 #   video: https://example.org     # optional
 talks:
+  - title: Explanation-Driven Visual Interventions in Genomics
+    date: 2026-06-08
+    type: Workshop talk
+    event:
+      name: Workshop on Trustable, Reproducible, and Intelligent Information Visualization Systems (TRI-IVIS 2026) co-located with the 18th International Conference on Advanced Visual Interfaces (AVI 2026)
+      url: https://triivis26.di.uniba.it
+    location: Venice (Italy)
+    paper: Esposito2026ExplanationDriven
+    video: https://youtu.be/MnNFXxQhU4M
+  - date: 2026-04-14
+    title: "Beyond Automation: Embracing Symbiotic AI for Meaningful Human Agency and Skill Preservation"
+    type: Workshop talk
+    event:
+      name: "AutomationXP26 Workshop at CHI'26: Agentic Automation Experiences---Rethinking the Interaction of Humans and AI Agents"
+      url: https://matthiasbaldauf.com/automationxp26/
+    location: Barcelona (Spain)
+    paper: Desolda2026Automation
+  - date: 2026-02-25
+    title: "PhD Viva---A Human--AI Interaction Model: Leveraging Human-Centred Design for Symbiotic AI"
+    type: PhD Viva
+    event:
+      name: "PhD Viva at the University of Bari Aldo Moro"
+    location: Bari (Italy)
+    paper: Esposito2026Human
   - title: "Explanation-Driven Interventions for Artificial Intelligence Model Customization: Empowering End-Users to Tailor Black-Box AI in Rhinocytology"
     date: 2025-06-17
     type: Conference talk
@@ -92,6 +116,7 @@ talks:
       en: Orlando, Florida (virtually due to COVID-19)
       it: Orlando, Florida (in modalità virtuale, a causa della pandemia da COVID-19)
     paper: Castellano2021Detection
+    video: https://youtu.be/fMfmKj6paqk
   - title: "Detecting Emotions Through Machine Learning for Automatic UX Evaluation"
     date: 2021-09-02
     type: Conference talk
@@ -101,6 +126,7 @@ talks:
       en: Bari (Apulia, Italy)
       it: Bari (Puglia, Italia)
     paper: Desolda2021Detecting
+    video: https://youtu.be/MKSLloQuEa0
   - title: Human-Centered Artificial Intelligence Techniques for Supporting AI Systems End Users
     date: 2024-07-11
     type: Invited talk
