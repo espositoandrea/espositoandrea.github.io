@@ -13,7 +13,7 @@ description: >-
 ## Memberships
 <div class="list-group mb-5">
     {% for membership in site.data.curriculum.memberships %}
-    <div class="list-group-item py-2 d-flex justify-content-between align-items-baseline gap-3">
+    <div class="list-group-item py-2 d-flex flex-column flex-sm-row justify-content-between align-items-sm-baseline gap-1 gap-sm-3">
         <div>
             <a class="fw-semibold" href="{{ membership.url }}" target="_blank" rel="noopener noreferrer">{{ membership.short }}</a>
             <span class="small text-body-secondary d-block">{{ membership.institution }}</span>
