@@ -62,7 +62,7 @@ seminars:
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
-  location: Bari, Italy
+  location: Taranto, Italy
 
 - title: Docker e Container - Con un Focus su Laravel
   titleTranslation: Docker and Containers - With a Focus on Laravel
@@ -81,7 +81,7 @@ seminars:
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
-  location: Bari, Italy
+  location: Taranto, Italy
 
 - title: Docker e Container - Con un Focus su Laravel
   titleTranslation: Docker and Containers - With a Focus on Laravel
@@ -100,7 +100,7 @@ seminars:
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
-  location: Bari, Italy
+  location: Taranto, Italy
 
 - title: Introduzione a Figma
   titleTranslation: Introduction to Figma
@@ -119,4 +119,4 @@ seminars:
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
-  location: Bari, Italy
+  location: Taranto, Italy
