@@ -18,12 +18,19 @@ seo:
         </a>
         <hr class="w-100 flex-grow-1">
     </header>
-    <div class="card-rows">
-        {% for post in paginator.posts %}
-            {%include post.html post=post %}
+    {% if paginator.posts.size > 0 %}
+    {% assign offset = 0 %}
+    {% if paginator.page == 1 %}
+        {% assign offset = 1 %}
+        {% assign featured_post = paginator.posts[0] %}
+        {% include post-tile.html post=featured_post featured=true %}
+    {% endif %}
+    <div class="post-grid">
+        {% for post in paginator.posts offset: offset %}
+            {% include post-tile.html post=post %}
         {% endfor %}
     </div>
-
+    {% endif %}
 </main>
 
 <!-- pagination -->

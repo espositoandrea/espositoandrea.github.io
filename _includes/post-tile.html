@@ -1,0 +1,30 @@
+{% comment %}
+  Magazine-style post tile. Params: post, featured (optional boolean).
+{% endcomment %}
+{% assign post = include.post %}
+{% assign url = post.redirect | default: post.url | absolute_url %}
+{% assign ext = false %}
+{% if post.redirect != blank %}{% assign ext = true %}{% endif %}
+
+<article class="post-tile{% if include.featured %} post-tile-featured{% endif %}{% unless post.image %} post-tile-noimage{% endunless %}">
+    {% if post.image %}
+    <a class="post-tile-media no-blank-icon" href="{{ url }}" {% if ext %}target="_blank"{% endif %} tabindex="-1" aria-hidden="true">
+        <img src="{{ post.image | absolute_url }}" alt="" onerror="var t=this.closest('.post-tile');t.classList.add('post-tile-noimage');this.parentNode.remove();" loading="{% if include.featured %}eager{% else %}lazy{% endif %}">
+    </a>
+    {% endif %}
+    <div class="post-tile-body">
+        <p class="post-tile-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
+            {% if post.external_source != blank %}
+            &middot; <a href="{{ post.external_source_url }}" target="_blank">{{ post.external_source }}</a>
+            {% endif %}
+        </p>
+        <h2 class="post-tile-title">
+            <a class="no-blank-icon" href="{{ url }}" {% if ext %}target="_blank"{% endif %}>{{ post.title | smartify }}</a>
+        </h2>
+        <p class="post-tile-excerpt">
+            {% assign text = post.excerpt | markdownify | strip_html | newline_to_br | replace: "<br />", " " | strip_newlines %}
+            {% if include.featured %}{{ text | truncatewords: 60 }}{% else %}{{ text | truncatewords: 28 }}{% endif %}
+        </p>
+    </div>
+</article>
