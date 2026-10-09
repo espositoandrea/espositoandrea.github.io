@@ -48,6 +48,9 @@ scholar:
 collections:
   redirects:
     output: true
+  teachings:
+    output: true
+    permalink: /teachings/:slug.html
 
 
 jekyll-archives:
@@ -104,6 +107,11 @@ defaults:
       comments: true
       math: false
       is_post: true
+  - scope:
+      path: ""
+      type: teachings
+    values:
+      layout: teaching
   # -
   #   scope:
   #     path: ""
