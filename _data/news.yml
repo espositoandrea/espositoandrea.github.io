@@ -1,0 +1,13 @@
+# Short, headline-style news shown on the home page (newest first, by date).
+# Order does not matter: entries are sorted by date.
+#
+# - date: 2026-10-01
+#   title: Headline
+#   description: Optional brief content, in Markdown.
+#   url: https://example.org   # optional: makes the headline a link
+
+- date: 2026-10-01
+  title: I joined the Wimmics team at Centre Inria d'Université Côte d'Azur
+  description: >-
+    As a result, my email address has changed, and I may be slower to respond
+    while I relocate and settle in.
