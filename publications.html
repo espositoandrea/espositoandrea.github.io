@@ -45,7 +45,53 @@ title: Publications
           aria-label="Example of icon indicating a self-archived PDF version"></i>.
 </p>
 
-{% capture bibliography %}
-{% bibliography %}
+<h3 class="bibliography">Journal Articles</h3>
+{% capture section %}{% bibliography --group_by none --query @article %}{% endcapture %}
+{{ section | edit_urls | remove_number | emphasize_author }}
+
+<h3 class="bibliography">Conference Papers</h3>
+{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/international] %}{% endcapture %}
+{% assign section = section | strip %}
+{% if section contains "<li" %}
+<h4 class="bibliography">International</h4>
+{{ section | edit_urls | remove_number | emphasize_author }}
+{% endif %}
+
+{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/conference && keywords ~= reach/national] %}{% endcapture %}
+{% assign section = section | strip %}
+{% if section contains "<li" %}
+<h4 class="bibliography">National</h4>
+{{ section | edit_urls | remove_number | emphasize_author }}
+{% endif %}
+
+<h3 class="bibliography">Workshop Papers</h3>
+{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/international] %}{% endcapture %}
+{% assign section = section | strip %}
+{% if section contains "<li" %}
+<h4 class="bibliography">International</h4>
+{{ section | edit_urls | remove_number | emphasize_author }}
+{% endif %}
+
+{% capture section %}{% bibliography --group_by none --query @*[keywords ~= type/workshop && keywords ~= reach/national] %}{% endcapture %}
+{% assign section = section | strip %}
+{% if section contains "<li" %}
+<h4 class="bibliography">National</h4>
+{{ section | edit_urls | remove_number | emphasize_author }}
+{% endif %}
+
+{% capture section %}
+{% bibliography --group_by none --query @inproceedings[keywords !~ type/(conference|workshop) || keywords !~ reach/(international|national)] %}
+{% bibliography --group_by none --query @incollection[keywords ~= type/ && keywords !~ reach/(international|national)] %}
 {% endcapture %}
-{{ bibliography | edit_urls | remove_number | emphasize_author | replace: 'h2', 'h3' }}
+{% if section contains "<li" %}
+<h3 class="bibliography">Unclassified Proceedings (missing or invalid type/reach keyword)</h3>
+{{ section | edit_urls | remove_number | emphasize_author }}
+{% endif %}
+
+<h3 class="bibliography">Book Chapters</h3>
+{% capture section %}{% bibliography --group_by none --query @incollection[keywords !~ type/] %}{% endcapture %}
+{{ section | edit_urls | remove_number | emphasize_author }}
+
+<h3 class="bibliography">Theses</h3>
+{% capture section %}{% bibliography --group_by none --query @phdthesis %}{% endcapture %}
+{{ section | edit_urls | remove_number | emphasize_author }}
