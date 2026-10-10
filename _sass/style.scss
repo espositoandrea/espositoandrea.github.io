@@ -88,11 +88,6 @@ ol.bibliography {
   }
 }
 
-// Keep anchored headings clear of the fixed navbar (56px, see .sidebar).
-h2[id], h3[id] {
-  scroll-margin-top: 72px;
-}
-
 
 .sidebar {
   @extend .sticky-md-top;
@@ -143,6 +138,8 @@ h2[id], h3[id] {
 }
 
 html {
+  // Keep any anchor target (headings, footnotes, ...) clear of the fixed navbar (56px, see .sidebar).
+  scroll-padding-top: 72px;
   scroll-behavior: smooth;
 }
 
