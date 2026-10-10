@@ -4,12 +4,12 @@
 {% endcomment %}
 {% if include.count > 0 %}
     {% if include.level == 2 %}
-    <h2 id="{{ include.id }}" class="h4 d-flex align-items-baseline gap-2">
+    <h2 id="{{ include.id }}" class="h4 d-flex align-items-baseline gap-3">
     {% else %}
-    <h3 id="{{ include.id }}" class="h5 mt-4 d-flex align-items-baseline gap-2 text-body-secondary">
+    <h3 id="{{ include.id }}" class="h5 mt-7 d-flex align-items-baseline gap-3 fg-secondary">
     {% endif %}
         {{ include.title }}
-        <span class="badge rounded-pill text-bg-secondary fw-normal">{{ include.count }}</span>
+        <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal">{{ include.count }}</span>
     {% if include.level == 2 %}</h2>{% else %}</h3>{% endif %}
     {{ include.html }}
 {% endif %}

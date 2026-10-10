@@ -5,7 +5,7 @@ layout: base
 
 <div class="container flex-grow-1">
     <div class="row relative">
-        <aside class="col-lg-3">
+        <aside class="lg:col-3">
             {%include sidebar.html %}
         </aside>
         <main class="col">
@@ -14,8 +14,8 @@ layout: base
     </div>
 </div>
 
-<footer class="text-center bg-dark pt-5 mt-5">
-    <div class="text-light py-4" style="background-color: rgba(0, 0, 0, 0.25);">
+<footer class="text-center bg-inverse pt-12 mt-12">
+    <div class="fg-white py-7" style="background-color: rgba(0, 0, 0, 0.25);">
         <small>
             Last update: {{ site.time | date: "%a %b %d %Y %H:%M:%S GMT%z (%Z)"}}.
             <a target="_blank" rel="noopener noreferrer" href="{{ 'pgp.asc' | absolute_url }}">Public GPG key</a>.

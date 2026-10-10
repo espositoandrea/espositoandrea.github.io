@@ -2,16 +2,16 @@
   Renders a list of curriculum entries (experience or education), grouped as a list-group.
   Parameters: entries (array), icon (Font Awesome icon name).
 {%- endcomment -%}
-<div class="list-group mb-5">
+<div class="list-group mb-12">
     {% for entry in include.entries %}
     {% assign current = false %}
     {% unless entry.years.end %}{% assign current = true %}{% endunless %}
-    <article class="list-group-item py-3">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-baseline gap-1 gap-md-3 mb-1">
+    <article class="list-group-item py-5">
+        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
             <h3 class="h6 mb-0">{{ entry.title | smartify }}</h3>
-            <div class="d-flex flex-wrap align-items-baseline gap-2 flex-md-shrink-0">
-                {% if current %}<span class="badge bg-success-subtle text-success-emphasis border border-success-subtle fw-normal">Current</span>{% endif %}
-                <span class="small text-body-secondary font-monospace text-nowrap">
+            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
+                {% if current %}<span class="badge bg-subtle-success fg-emphasis-success border border-subtle-success fw-normal">Current</span>{% endif %}
+                <span class="small fg-secondary font-monospace text-nowrap">
                     <time datetime="{{ entry.years.start | date: '%Y-%m' }}">{{ entry.years.start | date: "%b %Y" }}</time>
                     &ndash;
                     {% if current %}Present{% else %}<time datetime="{{ entry.years.end | date: '%Y-%m' }}">{{ entry.years.end | date: "%b %Y" }}</time>{% endif %}
@@ -19,8 +19,8 @@
             </div>
         </div>
 
-        <ul class="list-inline small text-body-secondary mb-0">
-            <li class="list-inline-item me-3">
+        <ul class="list-inline small fg-secondary mb-0">
+            <li class="list-inline-item me-5">
                 <i class="fa-solid fa-{{ include.icon }} fa-fw" aria-hidden="true"></i>
                 {% if entry.institute.url %}<a href="{{ entry.institute.url }}" target="_blank" rel="noopener noreferrer">{{ entry.institute.name | smartify }}</a>{% else %}{{ entry.institute.name | default: entry.institute | smartify }}{% endif %}
             </li>
@@ -33,12 +33,12 @@
 
         {% if entry.notes %}
             {% if entry.notes.size > 500 %}
-            <details class="small mt-2">
-                <summary class="text-body-secondary">Details</summary>
-                <div class="mt-2">{{ entry.notes | markdownify }}</div>
+            <details class="small mt-3">
+                <summary class="fg-secondary">Details</summary>
+                <div class="mt-3">{{ entry.notes | markdownify }}</div>
             </details>
             {% else %}
-            <div class="small mt-2">{{ entry.notes | markdownify }}</div>
+            <div class="small mt-3">{{ entry.notes | markdownify }}</div>
             {% endif %}
         {% endif %}
     </article>

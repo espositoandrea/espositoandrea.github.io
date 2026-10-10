@@ -34,6 +34,16 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
 
+      # Bootstrap is compiled from source by Jekyll (sass load path: node_modules)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install npm dependencies
+        run: npm ci
+
       # Post PDFs (see the Makefile). Cached so that they are built once: the Makefile compares content
       # hashes (stored in _build/hash), so only posts whose source changed are rebuilt.
       - name: Restore cached post PDFs

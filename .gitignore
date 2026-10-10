@@ -170,3 +170,6 @@ fabric.properties
 ### PDF build ###
 _build/
 assets/posts/pdfs/
+
+# Node modules
+node_modules/

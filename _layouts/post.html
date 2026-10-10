@@ -77,10 +77,10 @@ layout: default
         </ol>
     </nav>
 
-    <header class="post-header mb-4">
+    <header class="post-header mb-7">
         {% assign cats = page.categories | join: ',' %}
         {% if page.categories.size > 0 %}
-        <p class="post-kicker mb-2">
+        <p class="post-kicker mb-3">
             {% for category in page.categories %}
             <a href="{{ '/blog/posts/categories/' | append: category | downcase | replace: ' ', '-' | append: '.html' | absolute_url }}"
                 class="text-decoration-none">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
@@ -88,7 +88,7 @@ layout: default
         </p>
         {% endif %}
 
-        <h1 class="mt-0 mb-3">{{ page.title | smartify }}</h1>
+        <h1 class="mt-0 mb-5">{{ page.title | smartify }}</h1>
 
         {% comment %} Show the excerpt as a lede only if it is not just the post's opening paragraph. {% endcomment %}
         {% assign lede = page.excerpt | markdownify | strip_html | strip %}
@@ -98,18 +98,18 @@ layout: default
         {% if lede == blank %}{% assign show_lede = false %}{% endif %}
         {% if body_text contains lede_probe %}{% assign show_lede = false %}{% endif %}
         {% if show_lede %}
-        <p class="lead text-muted mb-3">{{ lede }}</p>
+        <p class="fs-lg fg-secondary mb-5">{{ lede }}</p>
         {% endif %}
 
         <div class="post-byline d-flex align-items-center">
             {% if author.picture %}
-            <img alt="" aria-hidden="true" class="rounded-circle me-3" loading="lazy"
+            <img alt="" aria-hidden="true" class="rounded-circle me-5" loading="lazy"
                 style="width: 3rem; height: 3rem; min-width: 3rem; object-fit: cover;"
                 src="{{ author.picture | absolute_url }}">
             {% endif %}
             <div class="small">
                 <span class="d-block fw-semibold">{{ author.name }}</span>
-                <span class="d-block text-muted">
+                <span class="d-block fg-secondary">
                     <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %e, %Y" }}</time>
                     &middot; {{ reading_time }} min read
                 </span>
@@ -121,15 +121,15 @@ layout: default
         {% assign pdf_path = '/assets/posts/pdfs/' | append: post_slug | append: '.pdf' %}
         {% assign pdf_file = site.static_files | where: 'path', pdf_path | first %}
         {% if pdf_file %}
-        <aside class="post-pdf mt-4" aria-label="PDF version">
-            <i class="fas fa-file-pdf me-2" aria-hidden="true"></i>
+        <aside class="post-pdf mt-7" aria-label="PDF version">
+            <i class="fas fa-file-pdf me-3" aria-hidden="true"></i>
             <span>You can also read this post <a href="{{ pdf_file.path | relative_url }}">in PDF format</a>.</span>
         </aside>
         {% endif %}
 
         {% if page.canonical_url %}
-        <aside class="post-crosspost mt-4" aria-label="Cross-post details">
-            <i class="fas fa-share-square me-2" aria-hidden="true"></i>
+        <aside class="post-crosspost mt-7" aria-label="Cross-post details">
+            <i class="fas fa-share-square me-3" aria-hidden="true"></i>
             <span>
                 This post was originally published
                 {% if page.canonical_site_name %}on <strong>{{ page.canonical_site_name }}</strong>{% endif %}.
@@ -141,18 +141,18 @@ layout: default
     </header>
 
     {% if page.image %}
-    <figure class="post-cover mb-4">
+    <figure class="post-cover mb-7">
         <img src="{{ page.image | absolute_url }}"
             {% if page.image_alt != blank %}alt="{{ page.image_alt | strip_newlines | escape }}"{% else %}alt="" aria-hidden="true"{% endif %}
             onerror="this.closest('figure').remove();">
         {% if page.image_caption != blank %}
-        <figcaption class="figure-caption mt-2">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>
+        <figcaption class="figure-caption mt-3">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>
         {% endif %}
     </figure>
     {% endif %}
 
     {% unless page.toc == false %}
-    <aside class="text-left rounded p-3 border bg-light mb-3">
+    <aside class="text-start rounded p-5 border bg-2 mb-5">
         <h2 class="mt-0">Table of Contents</h2>
         {% include toc.html html=content %}
     </aside>
@@ -162,23 +162,23 @@ layout: default
     {% bib_variable -f references.bib %}
     {% for entry in site.bibliography %}
     {% if page.paper == entry.key %}
-    <div class="card mb-3">
+    <div class="card mb-5">
         <div class="row g-0 position-relative">
-            <div class="col-md-9">
+            <div class="md:col-9">
                 <div class="card-body">
                     <h5 class="card-title">{{ entry.data.title }}</h5>
                     <p class="card-text">{{ entry.data.abstract | truncatewords: 30 }}</p>
-                    <p class="card-text"><small class="text-body-secondary"><a class="stretched-link no-blank-icon"
+                    <p class="card-text"><small class="fg-secondary"><a class="stretched-link no-blank-icon"
                                 href="https://doi.org/{{ entry.data.doi }}" target="_blank"
                                 rel="noopener noreferrer">doi.org/{{ entry.data.doi }}</a></small></p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="md:col-3">
                 <img src="{{ entry.data.url | photo_from_url }}" class="img-fluid rounded-start w-100"
                     aria-hidden="true" alt="">
             </div>
         </div>
-        <div class="card-footer text-body-secondary">
+        <div class="card-footer fg-secondary">
             <a href="{{ entry.key | prepend: '/bibliography/' | absolute_url }}">See paper details</a>
         </div>
     </div>
@@ -191,34 +191,34 @@ layout: default
     <footer>
         <hr />
         {% if page.tags %}
-        <section class="mb-3 text-muted">
+        <section class="mb-5 fg-secondary">
             <span>Tags:</span>
             {% for tag in page.tags %}
             <a href="{{ '/blog/posts/tags/' | append: tag | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
-                class="text-muted mx-1">#{{ tag }}</a>
+                class="fg-secondary mx-1">#{{ tag }}</a>
             {% endfor %}
         </section>
         {% endif %}
-        <section class="mb-3 text-muted">
+        <section class="mb-5 fg-secondary">
             <span class="h4 d-block">Share on</span>
-            <a href="https://twitter.com/intent/tweet?text={{ page.url | absolute_url }}" class="btn btn-secondary"
+            <a href="https://twitter.com/intent/tweet?text={{ page.url | absolute_url }}" class="btn-solid theme-secondary"
                 title="Share on Twitter">
                 <i class="fab fa-twitter" aria-hidden="true"></i>
                 <span>Twitter</span>
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"
-                class="btn btn-secondary" title="Share on Facebook">
+                class="btn-solid theme-secondary" title="Share on Facebook">
                 <i class="fab fa-facebook" aria-hidden="true"></i>
                 <span>Facebook</span>
             </a>
             <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ page.url | absolute_url }}"
-                class="btn btn-secondary" title="Share on LinkedIn">
+                class="btn-solid theme-secondary" title="Share on LinkedIn">
                 <i class="fab fa-linkedin" aria-hidden="true"></i>
                 <span>LinkedIn</span>
             </a>
         </section>
         {% if page.comments %}
-        <section class="mb-3 text-muted">
+        <section class="mb-5 fg-secondary">
             {% include disqus.html %}
         </section>
         {% endif %}

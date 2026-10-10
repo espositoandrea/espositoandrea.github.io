@@ -1,20 +1,35 @@
-@import "_variables.scss";
-@import "bootstrap/scss/bootstrap";
+@use "bootstrap/scss/bootstrap" with (
+  $theme-colors: (
+    // Brand red, with a lighter, less saturated variant in dark mode
+    "primary": (
+      "base": #BB0B0B,
+      "fg": light-dark(#BB0B0B, #D26F6F),
+      "fg-emphasis": light-dark(#7A0707, #E8A5A5),
+      "bg": #BB0B0B,
+      "bg-subtle": light-dark(#FBE7E7, #3A1010),
+      "bg-muted": light-dark(#F5CCCC, #571818),
+      "border": light-dark(#E79E9E, #8A2A2A),
+      "focus-ring": light-dark(color-mix(in oklch, #BB0B0B 50%, var(--bg-body)), color-mix(in oklch, #D26F6F 75%, var(--bg-body))),
+      "contrast": #fff
+    )
+  )
+);
 
-@import "code-highlight.scss";
+@use "code-highlight.scss";
+
+$font-family-serif: -apple-system-ui-serif, ui-serif, 'Georgia', serif;
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {
   font-family: $font-family-serif !important;
 }
 
 h2 {
-  @extend .mt-5;
+  @extend .mt-12;
 }
 
 figure {
   @extend .figure;
   img {
-    @extend .figure-img;
     @extend .img-fluid;
   }
   figcaption {
@@ -32,8 +47,6 @@ body {
   position: relative;
   min-height: 100vh;
   // padding-top: 50px !important;
-  color: unset !important;
-  background-color: unset !important;
 }
 
 a[target="_blank"]:not(.no-blank-icon)::after
@@ -43,7 +56,7 @@ a[target="_blank"]:not(.no-blank-icon)::after
   height: 8px;
   margin-left: 1px;
   margin-bottom: 5px;
-  background-color: var(--bs-body-color);
+  background-color: var(--fg-body);
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3C!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--%3E%3Cpath d='M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z'/%3E%3C/svg%3E");
   // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3C!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--%3E%3Cpath d='M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6V32c0-17.7-14.3-32-32-32H352zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z'/%3E%3C/svg%3E");
   background-position: center;
@@ -59,14 +72,14 @@ a[target="_blank"]:not(.no-blank-icon)::after
 ol.bibliography {
   @extend .list-unstyled;
   @extend .vstack;
-  @extend .gap-3;
+  @extend .gap-5;
 
   // The stretched "Details" link makes the whole card clickable; interactive content stays above it.
   .card {
     transition: border-color 0.15s, box-shadow 0.15s;
     &:hover {
-      border-color: var(--bs-primary);
-      box-shadow: var(--bs-box-shadow-sm);
+      border-color: var(--primary-base);
+      box-shadow: var(--box-shadow-sm);
     }
     a:not(.stretched-link), summary {
       position: relative;
@@ -82,59 +95,32 @@ ol.bibliography {
     @extend .d-flex;
     @extend .flex-wrap;
     @extend .align-items-center;
-    @extend .gap-3;
-    @extend .mt-2;
+    @extend .gap-5;
+    @extend .mt-3;
     @extend .small;
   }
 }
 
 
 .sidebar {
-  @extend .sticky-md-top;
+  @media (min-width: 768px) {
+    position: sticky;
+    z-index: 1020;
+  }
   top: 56px;
 
   .author-avatar {
     @extend .img-thumbnail;
     @extend .rounded-circle;
-    @extend .me-2;
-    @extend .me-md-0;
+    margin-right: 0.5rem;
     max-width: 64px;
-    @include media-breakpoint-up("lg") {
+    @media (min-width: 768px) {
+      margin-right: 0;
+    }
+    @media (min-width: 992px) {
       max-width: 50%;
     }
   }
-}
-
-@media (prefers-color-scheme: dark){
-	$primary-darkmode: desaturate(lighten($primary, 15%), 25%);
-	a {
-		color: $primary-darkmode !important;
-	}
-	.btn-secondary {
-		color: white !important;
-	}
-	.btn-primary {
-		color: white !important;
-		background-color: $primary-darkmode;
-		border-color: $primary-darkmode;
-	}
-
-	.navbar-light .navbar-brand {
-		color: unset !important;
-	}
-	.navbar-light * {
-		color: unset !important;
-	}
-	.bg-light {
-		color: unset !important;
-		background-color: inherit !important;
-	}
-	.card {
-		background-color: rgba(255, 255, 255, 0.1) !important;
-	}
-	.text-muted {
-		color: lighten(#6c757d, 20%) !important;
-	}
 }
 
 html {
@@ -169,7 +155,7 @@ html {
     font-weight: 700;
   }
   .card-text {
-    @extend .text-muted;
+    color: var(--fg-secondary);
   }
 }
 
@@ -220,9 +206,9 @@ p + ul {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--bs-border-color, #dee2e6);
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
-  background-color: var(--bs-body-bg, #fff);
+  background-color: var(--bg-body);
   transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 
   &:hover,
@@ -256,7 +242,7 @@ p + ul {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--bs-secondary-color, #6c757d);
+    color: var(--fg-secondary);
   }
 
   .post-tile-title {
@@ -273,7 +259,7 @@ p + ul {
 
   .post-tile-excerpt {
     margin: 0;
-    color: var(--bs-secondary-color, #6c757d);
+    color: var(--fg-secondary);
   }
 }
 
@@ -311,7 +297,7 @@ p + ul {
 
 // Posts without a cover image: text-only tile with an accent bar
 .post-tile-noimage {
-  border-top: 4px solid var(--bs-primary, #0d6efd);
+  border-top: 4px solid var(--primary-base);
 
   &.post-tile-featured .post-tile-body {
     padding: 2rem;
@@ -330,9 +316,9 @@ p + ul {
   .post-crosspost {
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
-    border-left: 4px solid $primary;
+    border-left: 4px solid var(--primary-base);
     border-radius: 0.25rem;
-    background-color: var(--bs-tertiary-bg, #f8f9fa);
+    background-color: var(--bg-2);
   }
 
   .post-cover {

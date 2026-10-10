@@ -15,7 +15,7 @@ permalink: /talks
 {% assign untyped = talks | where_exp: "item", "item.type == nil" %}
 {% if untyped.size > 0 %}{% assign types = types | push: "Other" %}{% endif %}
 
-<main class="container p-3 flex-grow-1">
+<main class="container p-5 flex-grow-1">
     <header>
         <h1>{{ page.title | smartify }}</h1>
         <hr/>
@@ -34,15 +34,15 @@ permalink: /talks
     {% endfor %}
     {% if has_translation %}{% include i18n-toggle.html %}{% endif %}
 
-    <section class="mb-5" aria-labelledby="talks">
-        <h2 id="talks" class="h4 d-flex align-items-baseline gap-2">
+    <section class="mb-12" aria-labelledby="talks">
+        <h2 id="talks" class="h4 d-flex align-items-baseline gap-3">
             Talks
-            <span class="badge rounded-pill text-bg-secondary fw-normal" id="talks-count" data-total="{{ talks.size }}">{{ talks.size }}</span>
+            <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal" id="talks-count" data-total="{{ talks.size }}">{{ talks.size }}</span>
         </h2>
 
         {% if types.size > 1 %}
-        <div class="d-flex flex-wrap align-items-center gap-2 mb-3 small" id="talk-types" role="group" aria-label="Filter talks by type" hidden>
-            <span class="text-body-secondary">Filter by type:</span>
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-5 small" id="talk-types" role="group" aria-label="Filter talks by type" hidden>
+            <span class="fg-secondary">Filter by type:</span>
             {% for type in types %}
                 {% assign idx = forloop.index0 | modulo: palette.size %}
                 {% assign color = palette[idx] %}
@@ -51,21 +51,21 @@ permalink: /talks
                     {% assign talk_type = talk.type | default: "Other" %}
                     {% if talk_type == type %}{% assign type_count = type_count | plus: 1 %}{% endif %}
                 {% endfor %}
-                <button type="button" class="btn btn-sm rounded-pill border bg-{{ color }}-subtle text-{{ color }}-emphasis border-{{ color }}-subtle" data-type="{{ type }}" aria-pressed="true">
+                <button type="button" class="btn btn-sm rounded-pill border bg-subtle-{{ color }} fg-emphasis-{{ color }} border-subtle-{{ color }}" data-type="{{ type }}" aria-pressed="true">
                     {{ type }} <span class="opacity-75">{{ type_count }}</span>
                 </button>
             {% endfor %}
         </div>
-        <p class="text-body-secondary" id="talks-empty" hidden>No talks match the selected types.</p>
+        <p class="fg-secondary" id="talks-empty" hidden>No talks match the selected types.</p>
         {% endif %}
 
         {% if talks.size == 0 %}
-            <p class="text-body-secondary">No talks to show yet.</p>
+            <p class="fg-secondary">No talks to show yet.</p>
         {% else %}
             {% assign groups = talks | group_by_exp: 'item', 'item.date | date: "%Y"' %}
             {% for group in groups %}
                 <div class="talk-year">
-                <h3 class="h5 mt-4 text-body-secondary">{{ group.name }}</h3>
+                <h3 class="h5 mt-7 fg-secondary">{{ group.name }}</h3>
                 <div class="list-group">
                 {% for talk in group.items %}
                     {% assign talk_type = talk.type | default: "Other" %}
@@ -73,47 +73,47 @@ permalink: /talks
                     {% for type in types %}
                         {% if type == talk_type %}{% assign idx = forloop.index0 | modulo: palette.size %}{% assign color = palette[idx] %}{% endif %}
                     {% endfor %}
-                    <article class="list-group-item py-3" data-type="{{ talk_type }}">
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-baseline gap-1 gap-md-3 mb-1">
+                    <article class="list-group-item py-5" data-type="{{ talk_type }}">
+                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
                             <h4 class="h6 mb-0">{{ talk.title | smartify }}</h4>
-                            <div class="d-flex flex-wrap align-items-baseline gap-2 flex-md-shrink-0">
-                                {% if talk.type %}<span class="badge bg-{{ color }}-subtle text-{{ color }}-emphasis border border-{{ color }}-subtle fw-normal">{{ talk.type }}</span>{% endif %}
-                                <time class="small text-body-secondary font-monospace text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
+                            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
+                                {% if talk.type %}<span class="badge bg-subtle-{{ color }} fg-emphasis-{{ color }} border border-subtle-{{ color }} fw-normal">{{ talk.type }}</span>{% endif %}
+                                <time class="small fg-secondary font-monospace text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
                             </div>
                         </div>
 
-                        <ul class="list-inline small text-body-secondary mb-0">
+                        <ul class="list-inline small fg-secondary mb-0">
                             {% if talk.event %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 <i class="fa-solid fa-microphone fa-fw" aria-hidden="true"></i>
                                 {% if talk.event.url %}<a href="{{ talk.event.url }}" target="_blank" rel="noopener noreferrer">{{ talk.event.name | smartify }}</a>{% else %}{{ talk.event.name | smartify }}{% endif %}
                             </li>
                             {% endif %}
                             {% if talk.institution %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ talk.institution | smartify }}
                             </li>
                             {% endif %}
                             {% if talk.inviter %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 <i class="fa-solid fa-user-tie fa-fw" aria-label="Invited by" title="Invited by"></i>
                                 {% if talk.inviter.url %}<a href="{{ talk.inviter.url }}" target="_blank" rel="noopener noreferrer">{{ talk.inviter.name | smartify }}</a>{% else %}{{ talk.inviter.name | smartify }}{% endif %}
                             </li>
                             {% endif %}
                             {% if talk.location %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ talk.location.en | default: talk.location | smartify }}
                             </li>
                             {% endif %}
                         </ul>
 
                         {% if talk.description %}
-                            <div class="small mt-2">{{ talk.description | markdownify }}</div>
+                            <div class="small mt-3">{{ talk.description | markdownify }}</div>
                         {% endif %}
 
                         {% if talk.paper %}
-                            <div class="small mt-2 border-start border-3 ps-3">
-                                <div class="text-body-secondary mb-1">Associated paper</div>
+                            <div class="small mt-3 border-start border-3 ps-5">
+                                <div class="fg-secondary mb-1">Associated paper</div>
                                 {% capture paper_reference %}{% reference {{talk.paper}} %}{% endcapture %}
                                 <div>{{ paper_reference | emphasize_author }}</div>
                                 <a href="{% details_link {{talk.paper}} %}">See paper details</a>
@@ -121,7 +121,7 @@ permalink: /talks
                         {% endif %}
 
                         {% if talk.slides or talk.video %}
-                            <div class="small mt-2 d-flex gap-3">
+                            <div class="small mt-3 d-flex gap-5">
                                 {% if talk.slides %}<a href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
                                 {% if talk.video %}<a href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
                             </div>
@@ -134,43 +134,43 @@ permalink: /talks
         {% endif %}
     </section>
 
-    <section class="mb-5" aria-labelledby="seminars">
-        <h2 id="seminars" class="h4 d-flex align-items-baseline gap-2">
+    <section class="mb-12" aria-labelledby="seminars">
+        <h2 id="seminars" class="h4 d-flex align-items-baseline gap-3">
             Seminars
-            <span class="badge rounded-pill text-bg-secondary fw-normal">{{ seminars.size }}</span>
+            <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal">{{ seminars.size }}</span>
         </h2>
 
         {% if seminars.size == 0 %}
-            <p class="text-body-secondary">No seminars to show yet.</p>
+            <p class="fg-secondary">No seminars to show yet.</p>
         {% else %}
             {% assign groups = seminars | group_by_exp: 'item', 'item.date | date: "%Y"' %}
             {% for group in groups %}
-                <h3 class="h5 mt-4 text-body-secondary">{{ group.name }}</h3>
+                <h3 class="h5 mt-7 fg-secondary">{{ group.name }}</h3>
                 <div class="list-group">
                 {% for seminar in group.items %}
                     {% assign context = seminar.course | default: seminar.event %}
-                    <article class="list-group-item py-3">
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-baseline gap-1 gap-md-3 mb-1">
+                    <article class="list-group-item py-5">
+                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
                             <div>
                                 <h4 class="h6 mb-0">{% include i18n.html orig=seminar.title trans=seminar.titleTranslation lang=seminar.language %}</h4>
                             </div>
-                            <div class="d-flex flex-wrap align-items-baseline gap-2 flex-md-shrink-0">
-                                {% if seminar.language %}<span class="badge text-bg-light border" title="Seminar language">{{ seminar.language | upcase }}</span>{% endif %}
-                                <time class="small text-body-secondary font-monospace text-nowrap" datetime="{{ seminar.date | date: '%Y-%m-%d' }}">{{ seminar.date | date: "%b %-d, %Y" }}</time>
+                            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
+                                {% if seminar.language %}<span class="badge bg-subtle-secondary fg-emphasis-secondary border" title="Seminar language">{{ seminar.language | upcase }}</span>{% endif %}
+                                <time class="small fg-secondary font-monospace text-nowrap" datetime="{{ seminar.date | date: '%Y-%m-%d' }}">{{ seminar.date | date: "%b %-d, %Y" }}</time>
                             </div>
                         </div>
 
-                        <ul class="list-inline small text-body-secondary mb-0">
+                        <ul class="list-inline small fg-secondary mb-0">
                             {% if context %}
                             {% assign context_lang = context.language | default: seminar.language | default: "en" %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 {% if seminar.course %}<i class="fa-solid fa-graduation-cap fa-fw" aria-label="Course" title="Course"></i>{% else %}<i class="fa-regular fa-calendar fa-fw" aria-label="Event" title="Event"></i>{% endif %}
                                 {% capture context_name %}{% include i18n.html orig=context.name trans=context.nameTranslation lang=context_lang %}{% endcapture %}
                                 {% if context.url %}<a href="{{ context.url }}" target="_blank" rel="noopener noreferrer">{{ context_name }}</a>{% else %}{{ context_name }}{% endif %}
                             </li>
                             {% endif %}
                             {% if seminar.lecturer %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 <i class="fa-solid fa-user-tie fa-fw" aria-label="Lecturer" title="Lecturer"></i>
                                 {% if seminar.lecturer.url %}<a href="{{ seminar.lecturer.url }}" target="_blank" rel="noopener noreferrer">{{ seminar.lecturer.name | smartify }}</a>{% else %}{{ seminar.lecturer.name | smartify }}{% endif %}
                             </li>
@@ -181,12 +181,12 @@ permalink: /talks
                             </li>
                             {% endif %}
                             {% if seminar.location %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ seminar.location.en | default: seminar.location | smartify }}
                             </li>
                             {% endif %}
                             {% if seminar.institution %}
-                            <li class="list-inline-item me-3">
+                            <li class="list-inline-item me-5">
                                 <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ seminar.institution | smartify }}
                             </li>
                             {% endif %}
@@ -200,11 +200,11 @@ permalink: /talks
                         </ul>
 
                         {% if seminar.description %}
-                            <div class="small mt-2" lang="{{ seminar.descriptionLanguage | default: seminar.language | default: 'en' }}">{{ seminar.description | markdownify }}</div>
+                            <div class="small mt-3" lang="{{ seminar.descriptionLanguage | default: seminar.language | default: 'en' }}">{{ seminar.description | markdownify }}</div>
                         {% endif %}
 
                         {% if seminar.slides or seminar.video %}
-                            <div class="small mt-2 d-flex gap-3">
+                            <div class="small mt-3 d-flex gap-5">
                                 {% if seminar.slides %}<a href="{{ seminar.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
                                 {% if seminar.video %}<a href="{{ seminar.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
                             </div>

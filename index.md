@@ -16,8 +16,8 @@ description: >-
 
 <ul class="list-unstyled news">
 {% for item in news limit: 5 %}
-  <li class="mb-2">
-    <span class="text-muted">{{ item.date | date: "%b %-d, %Y" }}</span> &middot;
+  <li class="mb-3">
+    <span class="fg-secondary">{{ item.date | date: "%b %-d, %Y" }}</span> &middot;
     <strong>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</strong>
     {% if item.description %}<div>{{ item.description | markdownify | remove: '<p>' | remove: '</p>' }}</div>{% endif %}
   </li>
@@ -32,7 +32,7 @@ description: >-
 <div class="highlights">
 {% for item in highlights %}
   {% capture paper_html %}{% bibliography --group_by none --query @*[key={{item.paper}}] %}{% endcapture %}
-  {% capture card_body %}<div class="card-body"><div class="mb-3">{{ item.text | markdownify }}</div>{% endcapture %}
+  {% capture card_body %}<div class="card-body"><div class="mb-5">{{ item.text | markdownify }}</div>{% endcapture %}
   {{ paper_html | replace: '<div class="card-body">', card_body | edit_urls | remove_number | emphasize_author }}
 {% endfor %}
 </div>

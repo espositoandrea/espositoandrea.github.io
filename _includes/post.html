@@ -1,8 +1,8 @@
 {% assign url = post.redirect | default: post.url | absolute_url %}
 
-<div class="post-card mb-3">
+<div class="post-card mb-5">
     <div class="row g-0">
-        <div class="col-md-8">
+        <div class="md:col-8">
             <div class="card-body">
                 <h2 class="card-title mt-0">
                     <a class="no-blank-icon" href="{{ url }}" {% if post.redirect !=blank %} target="_blank" {%
@@ -10,7 +10,7 @@
                         {{ post.title | smartify }}
                     </a>
                 </h2>
-                <p class="card-text text-muted">
+                <p class="card-text fg-secondary">
                     <span>{{ post.date | date: "%B %e, %Y" }}</span>
                     {% if post.external_source != blank %}
                     &nbsp;&centerdot;&nbsp;
@@ -26,7 +26,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="md:col-4">
             {% if post.image %}
             <a class="no-blank-icon" href="{{ url }}" {% if post.external_source !=blank %} target="_blank" {% endif %}>
                 <img src="{{ post.image | absolute_url }}" class="card-img rounded-end" alt="" aria-hidden="true">
@@ -38,7 +38,7 @@
             <div>
                 <span>{{ post.author }}</span>
                 <br>
-                <span class="text-muted">{{ post.date | date: "%B %e, %Y" }}</span>
+                <span class="fg-secondary">{{ post.date | date: "%B %e, %Y" }}</span>
             </div>
         </div>-->
     </div>

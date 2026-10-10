@@ -9,12 +9,12 @@ seo:
   type: ProfilePage
 ---
 
-<main class="container p-3 flex-grow-1">
+<main class="container p-5 flex-grow-1">
     <header class="d-flex align-items-center" style="flex: 1;flex-wrap: wrap;">
         <h1 class="flex-grow-1">{{ page.title | smartify }}</h1>
 	<a href="{{ '/feed.xml' | absolute_url }}" class="btn btn-link">
     	    <span class="fas fa-rss" aria-hidden="true" title="Open RSS feed"></span>
-    	    <span class="sr-only">Open RSS feed</span>
+    	    <span class="visually-hidden">Open RSS feed</span>
         </a>
         <hr class="w-100 flex-grow-1">
     </header>
@@ -34,27 +34,27 @@ seo:
 </main>
 
 <!-- pagination -->
-<div class="text-center my-3">
+<div class="text-center my-5">
     {% if paginator.total_pages > 1 %}
-    <div class="btn-group " role="group" aria-label="Blog pagination" >
+    <div class="btn-group" role="group" aria-label="Blog pagination" >
         {% if paginator.previous_page %}
-        <a class="btn btn-secondary" href="{{ paginator.previous_page_path | absolute_url }}">&laquo; Prev</a>
+        <a class="btn-solid theme-secondary" href="{{ paginator.previous_page_path | absolute_url }}">&laquo; Prev</a>
         {% else %}
-        <a class="btn btn-secondary disabled">&laquo; Prev</a>
+        <a class="btn-solid theme-secondary disabled">&laquo; Prev</a>
         {% endif %}
         
         {% for trail in paginator.page_trail %}
         {% if page.url == trail.path %}
-        <a class="btn btn-secondary active">{{ trail.num }}</a>
+        <a class="btn-solid theme-secondary active">{{ trail.num }}</a>
         {% else %}
-        <a class="btn btn-secondary" href="{{ trail.path | absolute_url }}">{{ trail.num }}</a>
+        <a class="btn-solid theme-secondary" href="{{ trail.path | absolute_url }}">{{ trail.num }}</a>
         {% endif %}
         {% endfor %}
         
         {% if paginator.next_page %}
-        <a class="btn btn-secondary" href="{{ paginator.next_page_path | absolute_url }}">Next &raquo;</a>
+        <a class="btn-solid theme-secondary" href="{{ paginator.next_page_path | absolute_url }}">Next &raquo;</a>
         {% else %}
-        <a class="btn btn-secondary disabled">Next &raquo;</a>
+        <a class="btn-solid theme-secondary disabled">Next &raquo;</a>
         {% endif %}
     </div>
     {% endif %}

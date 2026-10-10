@@ -11,14 +11,14 @@ description: >-
 {{ site.data.curriculum.brief | markdownify }}
 
 ## Memberships
-<div class="list-group mb-5">
+<div class="list-group mb-12">
     {% for membership in site.data.curriculum.memberships %}
-    <div class="list-group-item py-2 d-flex flex-column flex-sm-row justify-content-between align-items-sm-baseline gap-1 gap-sm-3">
+    <div class="list-group-item py-3 d-flex flex-column sm:flex-row justify-content-between sm:align-items-baseline gap-1 sm:gap-5">
         <div>
             <a class="fw-semibold" href="{{ membership.url }}" target="_blank" rel="noopener noreferrer">{{ membership.short }}</a>
-            <span class="small text-body-secondary d-block">{{ membership.institution }}</span>
+            <span class="small fg-secondary d-block">{{ membership.institution }}</span>
         </div>
-        <span class="small text-body-secondary font-monospace text-nowrap">Since <time datetime="{{ membership.since | date: '%Y-%m' }}">{{ membership.since | date: "%b %Y" }}</time></span>
+        <span class="small fg-secondary font-monospace text-nowrap">Since <time datetime="{{ membership.since | date: '%Y-%m' }}">{{ membership.since | date: "%b %Y" }}</time></span>
     </div>
     {% endfor %}
 </div>

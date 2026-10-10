@@ -1,12 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-body position-sticky fixed-top" id="main-navigation">
+<nav class="navbar lg:navbar-expand bg-body position-sticky fixed-top" id="main-navigation">
     <div class="container">
         <a class="navbar-brand" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">Andrea Esposito</a>
-        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="drawer" type="button">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ms-auto">
+        <dialog class="drawer drawer-end" id="navbarSupportedContent" aria-labelledby="navbarDrawerTitle">
+            <div class="drawer-header">
+                <h5 class="drawer-title" id="navbarDrawerTitle">Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+            </div>
+            <div class="drawer-body">
+            <ul class="navbar-nav lg:ms-auto">
                 <!-- <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="{{ '/#about' | absolute_url }}">About</a>
                 </li> -->
@@ -32,7 +37,7 @@
                     <a class="nav-link {% if page.url == '/publications' %} active {% endif %} {{ page.url }} js-scroll-trigger" href="{{ '/publications' | absolute_url }}">Publications</a>
                 </li>
 				{% comment %}
-                <li class="nav-item mr-auto">
+                <li class="nav-item me-auto">
                     <a class="nav-link {% if page.url == '/projects' %} active {% endif %} {{ page.url }} js-scroll-trigger" href="{{ '/projects' | absolute_url }}">Projects</a>
                 </li>
 				{% endcomment %}
@@ -40,6 +45,7 @@
                     <a class="nav-link {% if page.url == '/blog/index.html' %} active {% endif %} js-scroll-trigger" href="{{ '/blog/' | absolute_url }}">Blog</a>
                 </li>
             </ul>
-        </div>
+            </div>
+        </dialog>
     </div>
 </nav>
