@@ -1,6 +1,6 @@
-# PDFs are built for posts with a roff source, plus those with a dedicated rule below
+# Posts that get a PDF version; each has a dedicated rule below
 POST_PDFS = \
-	$(patsubst assets/posts/roff/%/main.mm,assets/posts/pdfs/%.pdf,$(wildcard assets/posts/roff/*/main.mm)) \
+	assets/posts/pdfs/2024-11-26-beyond-automation.pdf \
 	assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf
 
 all: _bibliography/references.bib $(POST_PDFS)
@@ -26,9 +26,6 @@ export institution
 post_date = $(shell printf '%s' '$(1)' | cut -c1-10)
 
 
-assets/posts/pdfs/%.pdf: assets/posts/roff/%/main.mm
-	cd $(dir $<) && groff -U -Tpdf -mm -kKutf8 -tep < $(notdir $<) > ../../../../$@
-
 assets/posts/pdfs/%.pdf: _posts/%.md
 	pandoc \
 		-V institution="$$institution" \
@@ -42,3 +39,10 @@ assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf: _posts/2026-09
 	pandoc -f markdown -t letter.lua \
 		-M date="$(call post_date,$(basename $(notdir $@)))" \
 		$< | groff -k -Tpdf -mm > $@
+
+# Article-style post: custom pandoc writer (article.lua) emitting a two-column groff MM article.
+# The Jekyll-only "{:...}" attribute lists are stripped; raw HTML figures are kept verbatim.
+assets/posts/pdfs/2024-11-26-beyond-automation.pdf: _posts/2024-11-26-beyond-automation.md article.lua $(wildcard assets/posts/roff/2024-11-26-beyond-automation/*.pdf)
+	sed 's/{:[^}]*}//g' $< | pandoc -f markdown-markdown_in_html_blocks -t article.lua \
+		-M date="$(call post_date,$(basename $(notdir $@)))" \
+		| groff -U -k -Tpdf -mm -mpdfpic > $@
