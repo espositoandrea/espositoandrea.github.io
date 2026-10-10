@@ -4,19 +4,14 @@
 -- Body conventions:
 --   * "## Heading" becomes a level-1 heading (and a PDF bookmark).
 --   * The blocks after the last horizontal rule (the cross-post notice) go in a box at the end.
---   * <figure><img src=URL><figcaption>..</figcaption></figure> becomes a floating figure. Remote images
---     are printed from _build/images/<name>.pdf, which the Makefile downloads and converts.
+--   * <figure><img src=URL><figcaption>..</figcaption></figure> becomes a floating figure (see common.lua).
 
 local stringify = pandoc.utils.stringify
 
-local function esc(s)
-  s = s:gsub('\\', '\\e'):gsub('\u{00A0}', '\\~')
-  -- a leading "." or "'" would be read as a roff request
-  if s:match("^[.']") then s = '\\&' .. s end
-  return s
-end
-
-local function q(s) return '"' .. s:gsub('"', '""') .. '"' end
+-- shared helpers live next to this script
+package.path = PANDOC_SCRIPT_FILE:match('^(.*)/[^/]*$') .. '/?.lua;' .. package.path
+local common = require('common')
+local esc, q = common.esc, common.q
 
 local inlines, blocks
 
@@ -89,23 +84,6 @@ local function long_date(s)
   return (os.date('%b %d, %Y', os.time{year = tonumber(y), month = tonumber(m), day = tonumber(d), hour = 12}):gsub(' 0', ' '))
 end
 
--- Must match the naming used by the Makefile (img_name): last URL segment, sanitised, no extension
-local function print_image(src)
-  if not src:match('^https?://') then return (src:gsub('^/', '')) end
-  local name = src:match('([^/]*)$'):gsub('[^%w._-]', '_'):gsub('%.[^.]*$', '')
-  return '_build/images/' .. name .. '.pdf'
-end
-
-local function figure(el)
-  local img
-  el:walk{Image = function(i) img = img or i end}
-  if not img then return '' end
-  local src = print_image(img.src)
-  local caption = el.t == 'Figure' and stringify(el.caption.long) or nil
-  return '.DF\n.PDFPIC -C ' .. q(src) .. '\n' ..
-         (caption and ('.FG ' .. q(caption) .. '\n') or '') .. '.DE\n'
-end
-
 local block
 
 local function list_items(items)
@@ -128,12 +106,8 @@ function block(el)
   elseif t == 'BulletList' then return '.BL\n' .. list_items(el.content) .. '.LE\n'
   elseif t == 'BlockQuote' then return '.DS I\n' .. blocks(el.content) .. '.DE\n'
   elseif t == 'RawBlock' and el.format == 'html' then
-    local out = {}
-    for _, b in ipairs(pandoc.read(el.text, 'html').blocks) do
-      out[#out + 1] = b.t == 'Figure' and figure(b) or block(b)
-    end
-    return table.concat(out)
-  elseif t == 'Figure' then return figure(el)
+    return common.html_block(el, block)
+  elseif t == 'Figure' then return common.figure(el)
   elseif t == 'HorizontalRule' then return ''
   else return '.P\n' .. esc(stringify(el)) .. '\n' end
 end

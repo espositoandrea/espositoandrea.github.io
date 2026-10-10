@@ -1,17 +1,14 @@
 -- Pandoc custom writer: Markdown letter -> GNU groff MM (blocked letter, ".LT BL")
 -- Front matter: author, opening, to (one address line per line), signature, date.
 -- The last paragraph of the body is used as the complimentary close.
+-- Figures (<figure> or ![caption](url)) are floating images (see common.lua).
 
 local stringify = pandoc.utils.stringify
 
-local function esc(s)
-  s = s:gsub('\\', '\\e'):gsub('\u{00A0}', '\\~')
-  -- a leading "." or "'" would be read as a roff request
-  if s:match("^[.']") then s = '\\&' .. s end
-  return s
-end
-
-local function q(s) return '"' .. s:gsub('"', '""') .. '"' end
+-- shared helpers live next to this script
+package.path = PANDOC_SCRIPT_FILE:match('^(.*)/[^/]*$') .. '/?.lua;' .. package.path
+local common = require('common')
+local esc, q = common.esc, common.q
 
 local inlines, blocks
 
@@ -44,10 +41,13 @@ function inlines(list)
   return table.concat(out)
 end
 
-local function block(el)
+local block
+function block(el)
   local t = el.t
   if t == 'Para' or t == 'Plain' then return '.P\n' .. inlines(el.content) .. '\n'
   elseif t == 'BlockQuote' then return '.DS I\n' .. blocks(el.content) .. '.DE\n'
+  elseif t == 'Figure' then return common.figure(el)
+  elseif t == 'RawBlock' and el.format == 'html' then return common.html_block(el, block)
   else return '.P\n' .. esc(stringify(el)) .. '\n' end
 end
 

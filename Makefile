@@ -41,7 +41,7 @@ $(foreach url,$(sort $(foreach post,$(ARTICLES) $(LETTERS),$(call post_image_url
 # The Jekyll-only "{:...}" attribute lists are stripped; raw HTML figures are kept verbatim.
 # $(1) = post name, $(2) = layout (article or letter)
 define pdf_rule
-assets/posts/pdfs/$(1).pdf: _posts/$(1).md _pandoc/$(2).lua $(call post_images,_posts/$(1).md)
+assets/posts/pdfs/$(1).pdf: _posts/$(1).md _pandoc/$(2).lua _pandoc/common.lua $(call post_images,_posts/$(1).md)
 	sed 's/{:[^}]*}//g' $$< | pandoc -f markdown-markdown_in_html_blocks -t _pandoc/$(2).lua \
 		-M date="$(call post_date,$(1))" \
 		| groff -U -k -Tpdf -mm -mpdfpic > $$@
