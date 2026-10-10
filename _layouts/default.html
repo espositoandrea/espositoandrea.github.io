@@ -14,11 +14,9 @@ layout: base
     </div>
 </div>
 
-<footer class="text-center bg-inverse pt-12 mt-12">
-    <div class="fg-white py-7" style="background-color: rgba(0, 0, 0, 0.25);">
-        <small>
-            Last update: {{ site.time | date: "%a %b %d %Y %H:%M:%S GMT%z (%Z)"}}.
-            <a target="_blank" rel="noopener noreferrer" href="{{ 'pgp.asc' | absolute_url }}">Public GPG key</a>.
-        </small>
-    </div>
+<footer class="text-center bg-2 py-3 mt-12 fg-2">
+    <small>
+        Last update: {{ site.time | date: "%a %b %d %Y %H:%M:%S GMT%z (%Z)"}}.
+        <a target="_blank" rel="noopener noreferrer" href="{{ 'pgp.asc' | absolute_url }}">Public GPG key</a>.
+    </small>
 </footer>
