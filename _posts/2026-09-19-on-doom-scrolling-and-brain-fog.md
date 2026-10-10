@@ -25,6 +25,13 @@ letteroption:
 fontfamily: newtxtext
 ---
 
+<aside class="text-center">
+<small>
+You can now read this letter in PDF format
+<a href="{% link assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf %}">here</a>.
+</small>
+</aside>
+
 Sometimes you have to admit that you have lost. Everyone sometimes loses a battle, even the best generals of the past did. It happens. It's not important. What counts is that you do not lose the war. To that end, one must analyze the lost battle closely, to understand the reasons for their loss, identify mistakes, and recognize patterns—this will leave you prepared for the next battle, so that you have more chances of winning.
 
 In the last days, I've lost the battle against _doom-scrolling_ (or, more generally, against a slight dopamine addiction). In this brief column, I try to process what happened so that I may be stronger next time.

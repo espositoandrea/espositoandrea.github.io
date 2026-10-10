@@ -25,3 +25,8 @@ assets/posts/pdfs/%.pdf: _posts/%.md
 		-f markdown -t ms --template=template.ms \
 		-so - \
 		$< | groff -eTpdf -ms -mpdfmark > $@
+
+assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf: _posts/2026-09-19-on-doom-scrolling-and-brain-fog.md
+	sed -e '$$ d' $< | \
+		pandoc -f markdown -o $@ --template=scrlttr2 \
+		-V "closing=$$(sed -ne '$$ p' $< | tr -d '\n')"
