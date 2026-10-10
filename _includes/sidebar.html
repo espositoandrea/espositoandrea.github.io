@@ -1,5 +1,5 @@
 <div class="col sidebar align-items-center justify-content-center z-0">
-    <div class="lg:mb-7 lg:text-center d-flex lg:d-block align-items-center justify-content-between">
+    <div class="md:mb-7 mb-3 md:text-center d-flex lg:d-block align-items-center justify-content-between">
         <div class="d-flex lg:d-block align-items-center">
             <img alt="Andrea Esposito" class="author-avatar" src="{{ '/assets/images/profile.jpeg' | absolute_url }}">
             <div>
@@ -11,7 +11,7 @@
                 {{ site.data.curriculum.position | smartify }}
             </div>
         </div>
-        <div class="d-block lg:d-none">
+        <div class="d-block md:d-none no-blank-icon">
             <button class="btn-outline theme-secondary" type="button" data-bs-toggle="menu" aria-expanded="false">
                 Follow Me <i class="fa-solid fa-chevron-down fa-xs" aria-hidden="true"></i>
             </button>
@@ -31,41 +31,85 @@
             </div>
         </div>
     </div>
-    <button aria-controls="more-info" aria-expanded="false" aria-label="Toggle informations"
-        class="btn-link text-decoration-none fg-reset btn-sm mx-auto d-block lg:d-none"
-        data-bs-target="#more-info" data-bs-toggle="collapse" type="button">
-        More Information <i class="fa-solid fa-chevron-down fa-xs" aria-hidden="true"></i>
-    </button>
-    <section class="collapse lg:show lg:d-block list-group list-group-flush" id="more-info">
-        <a class="list-group-item list-group-item-action" href="{{ site.data.curriculum.affiliation.laboratory.url }}"
-            target="_blank">
-            <span class="fas fa-people-group"></span>
-            <span class="visually-hidden">Research Group:</span>
-            {{ site.data.curriculum.affiliation.laboratory.name | smartify }}
-        </a>
-        <a class="list-group-item list-group-item-action" href="{{ site.data.curriculum.affiliation.department.url }}"
-            target="_blank">
-            <span class="fas fa-building"></span>
-            <span class="visually-hidden">Department:</span>
-            {{ site.data.curriculum.affiliation.department.name | smartify }}
-        </a>
-        <a class="list-group-item list-group-item-action" href="{{ site.data.curriculum.affiliation.institution.url }}"
-            target="_blank">
-            <span class="fas fa-building-columns"></span>
-            <span class="visually-hidden">Institution:</span>
-            {{ site.data.curriculum.affiliation.institution.name | smartify }}
-        </a>
-        <a class="list-group-item list-group-item-action" href="mailto:{{ site.author.mail }}">
-            <span class="fas fa-envelope"></span>
-            <span class="visually-hidden">Email:</span>
-            {{ site.author.mail }}
-        </a>
-    </section>
-    <section class="d-none lg:d-block list-group list-group-flush mt-7" id="social-links">
-        {% for contact in site.data.contacts %}
-        <a href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank" itemprop="sameAs"
-            content="{{ contact.link }}" class="list-group-item list-group-item-action">
-            <i class="fa-lg {{ contact.icon }}"></i>
+
+    <div class="accordion accordion-sm accordion-gap small no-blank-icon">
+        <details class="accordion-item d-none md:d-block" open>
+            <summary class="accordion-header">
+                Affiliation and contacts
+                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+
+            <div class="list-group list-group-flush" id="more-info">
+                <a class="list-group-item list-group-item-action icon-link"
+                    href="{{ site.data.curriculum.affiliation.laboratory.url }}" target="_blank">
+                    <span class="fas fa-people-group"></span>
+                    <span class="visually-hidden">Research Group:</span>
+                    {{ site.data.curriculum.affiliation.laboratory.name | smartify }}
+                </a>
+                <a class="list-group-item list-group-item-action icon-link"
+                    href="{{ site.data.curriculum.affiliation.department.url }}" target="_blank">
+                    <span class="fas fa-building"></span>
+                    <span class="visually-hidden">Department:</span>
+                    {{ site.data.curriculum.affiliation.department.name | smartify }}
+                </a>
+                <a class="list-group-item list-group-item-action icon-link"
+                    href="{{ site.data.curriculum.affiliation.institution.url }}" target="_blank">
+                    <span class="fas fa-building-columns"></span>
+                    <span class="visually-hidden">Institution:</span>
+                    {{ site.data.curriculum.affiliation.institution.name | smartify }}
+                </a>
+                <a class="list-group-item list-group-item-action icon-link" href="mailto:{{ site.author.mail }}">
+                    <span class="fas fa-envelope"></span>
+                    <span class="visually-hidden">Email:</span>
+                    {{ site.author.mail }}
+                </a>
+            </div>
+        </details>
+        <details class="accordion-item md:d-none">
+            <summary class="accordion-header">
+                Affiliation and contacts
+                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+
+            <div class="list-group list-group-flush" id="more-info">
+                <a class="list-group-item list-group-item-action icon-link"
+                    href="{{ site.data.curriculum.affiliation.laboratory.url }}" target="_blank">
+                    <span class="fas fa-people-group"></span>
+                    <span class="visually-hidden">Research Group:</span>
+                    {{ site.data.curriculum.affiliation.laboratory.name | smartify }}
+                </a>
+                <a class="list-group-item list-group-item-action icon-link"
+                    href="{{ site.data.curriculum.affiliation.department.url }}" target="_blank">
+                    <span class="fas fa-building"></span>
+                    <span class="visually-hidden">Department:</span>
+                    {{ site.data.curriculum.affiliation.department.name | smartify }}
+                </a>
+                <a class="list-group-item list-group-item-action icon-link"
+                    href="{{ site.data.curriculum.affiliation.institution.url }}" target="_blank">
+                    <span class="fas fa-building-columns"></span>
+                    <span class="visually-hidden">Institution:</span>
+                    {{ site.data.curriculum.affiliation.institution.name | smartify }}
+                </a>
+                <a class="list-group-item list-group-item-action icon-link" href="mailto:{{ site.author.mail }}">
+                    <span class="fas fa-envelope"></span>
+                    <span class="visually-hidden">Email:</span>
+                    {{ site.author.mail }}
+                </a>
+            </div>
+        </details>
+
+
+
+    <details class="accordion-item d-none md:d-block" open>
+        <summary class="accordion-header">
+            Social links
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+        </summary>
+        <div class="list-group list-group-flush" id="social-links">
+            {% for contact in site.data.contacts %}
+            <a href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank" itemprop="sameAs"
+                content="{{ contact.link }}" class="list-group-item list-group-item-action icon-link">
+                <i class="fa-lg {{ contact.icon }}"></i>
             {% if contact.value %}
             <span class="visually-hidden">{{ contact.name }}</span>
             {{ contact.value }}
@@ -74,5 +118,7 @@
             {% endif %}
         </a>
         {% endfor %}
-    </section>
+        </div>
+    </details>
+    </div>
 </div>
