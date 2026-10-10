@@ -37,12 +37,12 @@ layout: default
     </nav>
 
     <header class="mb-7">
+        <h1 class="mb-1">{% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}</h1>
         <div class="d-flex flex-wrap gap-1 mb-3">
             <span class="badge bg-subtle-secondary fg-emphasis-secondary border border-subtle-secondary fw-normal">{{ role }}</span>
             <span class="badge bg-subtle-secondary fg-emphasis-secondary border border-subtle-secondary fw-normal">A.Y. {{ page.academicYear }}</span>
             {% if page.language %}<span class="badge bg-subtle-secondary fg-emphasis-secondary border" title="Course language">{{ page.language | upcase }}</span>{% endif %}
         </div>
-        <h1 class="mb-1">{% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}</h1>
         <hr/>
     </header>
 
