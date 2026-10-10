@@ -4,7 +4,7 @@ title: I recently got a typewriter in an attempt to regain my focus
 author: Andrea Esposito
 canonical_site_name: Research in Ink
 canonical_url: https://www.researchinink.com/2025/08/30/i-recently-got-a-typewriter-in-an-attempt-to-regain-my-focus/
-image: /assets/images/typewriter.heic
+image: /assets/images/typewriter.jpg
 toc: false
 ---
 
@@ -47,7 +47,7 @@ away, I got an idea: why not try using it to reach my goal of distraction-free
 in-the-zone writing?
 
 <figure>
-<img src="{% link assets/images/typewriter.heic %}" class="img-fluid">
+<img src="{% link assets/images/typewriter.jpg %}" class="img-fluid">
 <figcaption>The typewriter</figcaption>
 </figure>
 
