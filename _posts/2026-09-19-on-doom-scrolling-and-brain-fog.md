@@ -13,7 +13,6 @@ excerpt: >-
 category: Personal Columns
 
 
-date: 2026-09-19
 opening: Dear readers,
 to: |
    Substack Readers
