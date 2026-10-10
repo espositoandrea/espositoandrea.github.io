@@ -15,13 +15,17 @@ Via E. Orabona 4, 70125 Bari, Italy
 endef
 export institution
 
+# Jekyll convention: posts are named YYYY-MM-DD-title, so the date is the first 10 characters
+post_date = $(shell printf '%s' '$(1)' | cut -c1-10)
+
 
 assets/posts/pdfs/%.pdf: assets/posts/roff/%/main.mm
-	cd $(dir $<) && groff -U -Tpdf -mm -mpdfmark -kKutf8 -tep < $(notdir $<) > ../../../../$@
+	cd $(dir $<) && groff -U -Tpdf -mm -kKutf8 -tep < $(notdir $<) > ../../../../$@
 
 assets/posts/pdfs/%.pdf: _posts/%.md
 	pandoc \
 		-V institution="$$institution" \
+-M date="$(call post_date,$(basename $(notdir $@)))" \
 		-f markdown -t ms --template=template.ms \
 		-so - \
 		$< | groff -eTpdf -ms -mpdfmark > $@
