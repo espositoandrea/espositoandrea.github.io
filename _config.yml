@@ -148,3 +148,5 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - CurriculumVitae/
+  - _pandoc/
+  - _build/

@@ -34,14 +34,14 @@ assets/posts/pdfs/%.pdf: _posts/%.md
 		-so - \
 		$< | groff -eTpdf -ms -mpdfmark > $@
 
-# Letter-style post: custom pandoc writer (letter.lua) emitting a blocked letter in groff MM
-assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf: _posts/2026-09-19-on-doom-scrolling-and-brain-fog.md letter.lua
-	pandoc -f markdown -t letter.lua \
+# Letter-style post: custom pandoc writer (_pandoc/letter.lua) emitting a blocked letter in groff MM
+assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf: _posts/2026-09-19-on-doom-scrolling-and-brain-fog.md _pandoc/letter.lua
+	pandoc -f markdown -t _pandoc/letter.lua \
 		-M date="$(call post_date,$(basename $(notdir $@)))" \
 		$< | groff -k -Tpdf -mm > $@
 
 # Print version of the images used in a post: remote <img src> URLs are downloaded once and converted to PDF
-# (the name must match print_image in article.lua)
+# (the name must match print_image in _pandoc/article.lua)
 IMG_DIR = _build/images
 img_name = $(shell printf '%s' '$(1)' | sed 's|.*/||; s|[^A-Za-z0-9._-]|_|g; s|\.[^.]*$$||')
 post_image_urls = $(shell grep -o 'src="https\{0,1\}://[^"]*"' $(1) | sed 's/^src="//; s/"$$//')
@@ -56,9 +56,9 @@ $(IMG_DIR)/$(call img_name,$(1)).pdf:
 endef
 $(foreach url,$(call post_image_urls,_posts/2024-11-26-beyond-automation.md),$(eval $(call image_rule,$(url))))
 
-# Article-style post: custom pandoc writer (article.lua) emitting a two-column groff MM article.
+# Article-style post: custom pandoc writer (_pandoc/article.lua) emitting a two-column groff MM article.
 # The Jekyll-only "{:...}" attribute lists are stripped; raw HTML figures are kept verbatim.
-assets/posts/pdfs/2024-11-26-beyond-automation.pdf: _posts/2024-11-26-beyond-automation.md article.lua $(call post_images,_posts/2024-11-26-beyond-automation.md)
-	sed 's/{:[^}]*}//g' $< | pandoc -f markdown-markdown_in_html_blocks -t article.lua \
+assets/posts/pdfs/2024-11-26-beyond-automation.pdf: _posts/2024-11-26-beyond-automation.md _pandoc/article.lua $(call post_images,_posts/2024-11-26-beyond-automation.md)
+	sed 's/{:[^}]*}//g' $< | pandoc -f markdown-markdown_in_html_blocks -t _pandoc/article.lua \
 		-M date="$(call post_date,$(basename $(notdir $@)))" \
 		| groff -U -k -Tpdf -mm -mpdfpic > $@
