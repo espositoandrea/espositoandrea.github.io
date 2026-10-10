@@ -1,17 +1,11 @@
 ---
-layout: default
+layout: page
 lang: en
 title: Teaching Activities
 permalink: /teachings
 ---
 
 {% assign groups = site.teachings | group_by: 'academicYear' | sort: 'name' | reverse %}
-
-<main class="container p-5 flex-grow-1">
-    <header>
-        <h1>{{ page.title | smartify }}</h1>
-        <hr/>
-    </header>
 
     <p>
         Seminars and guest lectures are not listed here: you can find them on the
@@ -72,5 +66,3 @@ permalink: /teachings
             </div>
         </section>
     {% endfor %}
-
-</main>

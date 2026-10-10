@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 lang: en
 title: Talks and Seminars
 permalink: /talks
@@ -14,12 +14,6 @@ permalink: /talks
 {% assign types = talks | map: "type" | compact | uniq | sort %}
 {% assign untyped = talks | where_exp: "item", "item.type == nil" %}
 {% if untyped.size > 0 %}{% assign types = types | push: "Other" %}{% endif %}
-
-<main class="container p-5 flex-grow-1">
-    <header>
-        <h1>{{ page.title | smartify }}</h1>
-        <hr/>
-    </header>
 
     <p>
         This page lists the talks I gave to present my research (typically associated with a publication) and the
@@ -226,7 +220,6 @@ permalink: /talks
             {% endfor %}
         {% endif %}
     </section>
-</main>
 
 <script>
     (function () {

@@ -2,13 +2,31 @@
 layout: default
 ---
 
-<main class="container p-5 flex-grow-1">
-    <header class="d-flex align-items-center" style="flex: 1;flex-wrap: wrap;">
-        <h1 class="flex-grow-1">{{ page.title | smartify }}</h1>
-        <hr class="w-100 flex-grow-1">
-    </header>
-    <div class="card-rows">
-        {{ content }}
-    </div>
+<article class="container p-5 flex-grow-1">
+    <h1 class="mb-1">{{ page.title | smartify }}</h1>
+    <header class="mb-7">
+        {% if page.breadcrumbs %}
+            <nav aria-label="breadcrumbs" class="small">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ '/' | absolute_url }}">Home</a></li>
+                    <li class="breadcrumb-divider"></li>
+                    {% for crumb in page.breadcrumbs %}
+                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ crumb.url | absolute_url }}">{{ crumb.title }}</a></li>
+                        <li class="breadcrumb-divider"></li>
+                    {% endfor %}
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a href="#" class="breadcrumb-link active">
+                            {% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+        {% endif %}
 
-</main>
+        <hr>
+    </header>
+    <main>
+        {{ content }}
+    </main>
+
+</article>

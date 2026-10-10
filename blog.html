@@ -10,13 +10,16 @@ seo:
 ---
 
 <main class="container p-5 flex-grow-1">
-    <header class="d-flex align-items-center" style="flex: 1;flex-wrap: wrap;">
-        <h1 class="flex-grow-1">{{ page.title | smartify }}</h1>
-	<a href="{{ '/feed.xml' | absolute_url }}" class="btn btn-link">
-    	    <span class="fas fa-rss" aria-hidden="true" title="Open RSS feed"></span>
-    	    <span class="visually-hidden">Open RSS feed</span>
-        </a>
-        <hr class="w-100 flex-grow-1">
+    <header>
+        <div class="d-flex flex-row flex-wrap align-items-center">
+            <h1 class="flex-grow-1 mb-0">{{ page.title | smartify }}</h1>
+            <a href="{{ '/feed.xml' | absolute_url }}" class="theme-primary btn-text btn-lg">
+                <span class="fas fa-rss" aria-hidden="true" title="Open RSS feed"></span>
+                <span class="visually-hidden">Open RSS feed</span>
+            </a>
+
+        </div>
+        <hr>
     </header>
     {% if paginator.posts.size > 0 %}
     {% assign offset = 0 %}
