@@ -1,3 +1,10 @@
+# PDFs are built for posts with a roff source, plus those with a dedicated rule below
+POST_PDFS = \
+	$(patsubst assets/posts/roff/%/main.mm,assets/posts/pdfs/%.pdf,$(wildcard assets/posts/roff/*/main.mm)) \
+	assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf
+
+all: _bibliography/references.bib $(POST_PDFS)
+
 BASE_BIB = $(HOME)/Documents/Lavoro/NEW_WORK/70_Resources/literature/Library.bib
 
 _bibliography/references.bib: $(BASE_BIB)
