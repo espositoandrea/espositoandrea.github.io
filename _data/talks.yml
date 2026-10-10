@@ -49,6 +49,7 @@ talks:
     type: Conference talk
     event:
       name: "10th International Symposium on End-User Development (IS-EUD 2025)"
+      url: https://iseud.net/2025/
     location:
       en: Munich (Germany)
       it: Monaco di Baviera (Germania)
@@ -58,6 +59,7 @@ talks:
     type: Workshop talk
     event:
       name: "Workshop on Adaptive eXplainable AI (AXAI), co-located with ACM IUI 2025"
+      url: https://tango-horizon.eu/2024/12/12/call-for-papers-adaptive-explainable-ai-workshop-2025/
     location:
       en: Cagliari (Italy)
       it: Cagliari (Italia)
@@ -67,6 +69,7 @@ talks:
     type: Workshop talk
     event:
       name: "Workshop on BEst Practices and Guidelines for Human-Centric Design and EvAluation of ProactiVE AI Agents (BEHAVE AI), co-located with ACM IUI 2025"
+      url: https://www.hcai.eu/behave-ai/
     location:
       en: Cagliari (Italy)
       it: Cagliari (Italia)
@@ -76,6 +79,7 @@ talks:
     type: Poster presentation
     event:
       name: "15th Biannual Conference of the Italian SIGCHI Chapter (CHItaly 2023)"
+      url: https://sigchitaly.eu/chitaly-2023/
     location:
       en: Turin (Piedmont, Italy)
       it: Torino (Piemonte, Italia)
@@ -85,6 +89,7 @@ talks:
     type: Conference talk
     event:
       name: "19th IFIP TC 13 International Conference on Human-Computer Interaction (INTERACT 2023)"
+      url: https://interact.ifip-tc13.org/editions/2023/index.html
     location:
       en: York (UK)
       it: York (UK)
@@ -94,6 +99,7 @@ talks:
     type: Conference talk
     event:
       name: "9th International Symposium on End-User Development (IS-EUD 2023)"
+      url: https://iseud.net/2023/
     location:
       en: Cagliari (Sardinia, Italy)
       it: Cagliari (Sardegna, Italia)
@@ -103,6 +109,7 @@ talks:
     type: Workshop talk
     event:
       name: "1st International Workshop on Cyber Security Education for Industry and Academia (CSE4IA 2023)"
+      url: https://sites.google.com/view/cse4ia-23/home
     location:
       en: Cagliari (Sardinia, Italy)
       it: Cagliari (Sardegna, Italia)
@@ -112,6 +119,7 @@ talks:
     type: Conference talk
     event:
       name: "IEEE Symposium Series on Computational Intelligence (SSCI 2021)"
+      url: https://attend.ieee.org/ssci-2021/
     location:
       en: Orlando, Florida (virtually due to COVID-19)
       it: Orlando, Florida (in modalità virtuale, a causa della pandemia da COVID-19)
@@ -122,6 +130,7 @@ talks:
     type: Conference talk
     event:
       name: "18th IFIP TC 13 International Conference on Human-Computer Interaction (INTERACT 2021)"
+      url: https://interact.ifip-tc13.org/editions/2021/www.interact2021.org/index.html
     location:
       en: Bari (Apulia, Italy)
       it: Bari (Puglia, Italia)
