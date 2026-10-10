@@ -27,12 +27,19 @@ layout: default
 </script>
 
 <article class="container p-5 flex-grow-1">
-    <nav aria-label="breadcrumbs" class="small">
+    <nav aria-label="breadcrumbs" class="small mb-5">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ '/' | absolute_url }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ '/teachings' | absolute_url }}">Teaching</a></li>
-            <li class="breadcrumb-item"><a href="{{ '/teachings' | absolute_url }}#ay-{{ page.academicYear | slugify }}">A.Y. {{ page.academicYear }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}</li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ '/' | absolute_url }}">Home</a></li>
+            <li class="breadcrumb-divider"></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ '/teachings' | absolute_url }}">Teaching</a></li>
+            <li class="breadcrumb-divider"></li>
+            <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ '/teachings' | absolute_url }}#ay-{{ page.academicYear | slugify }}">A.Y. {{ page.academicYear }}</a></li>
+            <li class="breadcrumb-divider"></li>
+            <li class="breadcrumb-item" aria-current="page">
+                <a href="#" class="breadcrumb-link active">
+                    {% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}
+                </a>
+            </li>
         </ol>
     </nav>
 
