@@ -1,0 +1,16 @@
+# This data file holds the navigation structure for the website.
+# It is used to generate the navigation menu (navbar).
+- title: About
+  url: '/'
+- title: Curriculum
+  url: '/curriculum'
+- title: Teaching
+  url: '/teachings'
+- title: Talks
+  url: '/talks'
+- title: Publications
+  url: '/publications'
+# - title: Projects
+#   url: '/projects'
+- title: Blog
+  url: /blog

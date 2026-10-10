@@ -1,50 +1,42 @@
-<nav class="navbar lg:navbar-expand bg-body position-sticky fixed-top" id="main-navigation">
+<nav class="navbar md:navbar-expand sticky-top" id="main-navigation">
     <div class="container">
-        <a class="navbar-brand" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">Andrea Esposito</a>
-        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="drawer" type="button">
-            <span class="navbar-toggler-icon"></span>
+        <a class="navbar-brand" href="{% if page.url == '/index.html' %}#{% else %}/index.html{% endif %}">{{ site.title }}</a>
+        <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer"
+            aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
         </button>
-
-        <dialog class="drawer drawer-end" id="navbarSupportedContent" aria-labelledby="navbarDrawerTitle">
+        <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
             <div class="drawer-header">
-                <h5 class="drawer-title" id="navbarDrawerTitle">Menu</h5>
+                <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
             </div>
-            <div class="drawer-body">
-            <ul class="navbar-nav lg:ms-auto">
-                <!-- <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{ '/#about' | absolute_url }}">About</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link {% if page.url == '/' %} active {% endif %} js-scroll-trigger" href="{{ '/' | absolute_url }}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if page.url == '/curriculum' %} active {% endif %} js-scroll-trigger" href="{{ '/curriculum' | absolute_url }}">Curriculum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if page.url == '/teachings' %} active {% endif %} js-scroll-trigger" href="{{ '/teachings' | absolute_url }}">Teaching</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if page.url == '/talks' %} active {% endif %} js-scroll-trigger" href="{{ '/talks' | absolute_url }}">Talks</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{home | absolute_url}}#awards">Awards and Certifications</a>
-                </li> -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="{{home | absolute_url}}#skills">Skills</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link {% if page.url == '/publications' %} active {% endif %} {{ page.url }} js-scroll-trigger" href="{{ '/publications' | absolute_url }}">Publications</a>
-                </li>
-				{% comment %}
-                <li class="nav-item me-auto">
-                    <a class="nav-link {% if page.url == '/projects' %} active {% endif %} {{ page.url }} js-scroll-trigger" href="{{ '/projects' | absolute_url }}">Projects</a>
-                </li>
-				{% endcomment %}
-                <li class="nav-item">
-                    <a class="nav-link {% if page.url == '/blog/index.html' %} active {% endif %} js-scroll-trigger" href="{{ '/blog/' | absolute_url }}">Blog</a>
-                </li>
-            </ul>
+            <div class="drawer-body mb-2 md:mb-0">
+                <ul class="nav navbar-nav me-auto md:ms-auto md:me-0">
+                    {% for item in site.data.navigation %}
+                        {% unless item.children %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if page.url == item.url %} active {% endif %} {% if item.disabled %} disabled {% endif %}"
+                               href="{{ item.url | absolute_url }}"
+                               {% if page.url == item.url %} aria-current="page" {% endif %}
+                               {% if item.external %} target="_blank" rel="noopener noreferrer" {% endif %}
+                               {% if item.disabled %} aria-disabled="true" {% endif %}>
+                                {{ item.title }}
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
+                                {{ item.title }}
+                            </button>
+                            <div class="menu">
+                                {% for child in item.children %}
+                                <a class="menu-item" href="{{ child.url | absolute_url }}">{{ child.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% endunless %}
+                    {% endfor %}
+                </ul>
             </div>
         </dialog>
     </div>
