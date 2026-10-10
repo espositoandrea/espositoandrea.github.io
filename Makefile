@@ -2,7 +2,7 @@
 #   ARTICLES: two-column article (_pandoc/article.lua)
 #   LETTERS:  blocked letter (_pandoc/letter.lua)
 ARTICLES = 2024-11-26-beyond-automation
-LETTERS = 2026-09-19-on-doom-scrolling-and-brain-fog 2025-09-07-my-struggle-with-boredom-in-an-uninteresting-city
+LETTERS = 2026-09-19-on-doom-scrolling-and-brain-fog 2025-09-07-my-struggle-with-boredom-in-an-uninteresting-city 2025-08-30-typewriter
 
 POST_PDFS = $(patsubst %,assets/posts/pdfs/%.pdf,$(ARTICLES) $(LETTERS))
 

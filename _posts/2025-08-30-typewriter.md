@@ -6,6 +6,11 @@ canonical_site_name: Research in Ink
 canonical_url: https://www.researchinink.com/2025/08/30/i-recently-got-a-typewriter-in-an-attempt-to-regain-my-focus/
 image: /assets/images/typewriter.jpg
 toc: false
+
+opening: Dear readers,
+to: |
+  Research in Ink Readers
+  https://www.researchinink.com/
 ---
 
 My mind and general interests are currently in a very hard spot. I am a
@@ -70,9 +75,4 @@ test.
 
 [See the original draft here!]({% link assets/pdfs/typewriter-draft.pdf %}){:target="_blank"}
 
-   Until later!
-
-
-
-
-   Andrea
+Until later!
