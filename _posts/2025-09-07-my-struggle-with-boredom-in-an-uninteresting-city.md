@@ -6,6 +6,13 @@ toc: false
 canonical_site_name: Research in Ink
 canonical_url: https://www.researchinink.com/2025/09/07/my-struggle-with-boredom-in-an-uninteresting-city/
 image: https://www.researchinink.com/wp-content/uploads/2025/09/0iT2UVjDo_7g7AFUQ.webp
+
+category: Personal Columns
+
+opening: Dear readers,
+to: |
+  Research in Ink Readers
+  https://www.researchinink.com/
 ---
 
 This post resembles a rant more than an actual blog post; thus, I doubt that you
@@ -41,7 +48,7 @@ control.
 And this is the reason for this post: _I am bored_. As such, I turn
 to something I like that allows me to deal with my boredom and helps in the
 search for a solution, while also exorcising these bad
-feelings: __writing_.
+feelings: _writing_.
 
 However, this blog post also serves another purpose: to justify a little bit of
 additional exploration in the way this blog is organized. I would like to
@@ -57,8 +64,4 @@ uninspiring environment.
 So... How do _you_ deal with boredom in an uninteresting
 city?
 
-{:style="text-align:right;"}
 Until next time!
-
-{:style="text-align:right;"}
-Andrea
