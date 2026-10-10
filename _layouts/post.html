@@ -116,6 +116,17 @@ layout: default
             </div>
         </div>
 
+        {% comment %} Link the PDF version (built by the Makefile) when one exists for this post. {% endcomment %}
+        {% assign post_slug = page.path | split: '/' | last | remove: '.md' | remove: '.markdown' %}
+        {% assign pdf_path = '/assets/posts/pdfs/' | append: post_slug | append: '.pdf' %}
+        {% assign pdf_file = site.static_files | where: 'path', pdf_path | first %}
+        {% if pdf_file %}
+        <aside class="post-pdf mt-4" aria-label="PDF version">
+            <i class="fas fa-file-pdf me-2" aria-hidden="true"></i>
+            <span>You can also read this post <a href="{{ pdf_file.path | relative_url }}">in PDF format</a>.</span>
+        </aside>
+        {% endif %}
+
         {% if page.canonical_url %}
         <aside class="post-crosspost mt-4" aria-label="Cross-post details">
             <i class="fas fa-share-square me-2" aria-hidden="true"></i>

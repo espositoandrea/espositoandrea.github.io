@@ -13,13 +13,6 @@ excerpt: >-
   We are now living in an era where artificial intelligence (commonly known as AI) is no longer a distant concept confined to research laboratories or science fiction books. Instead, it has become a reality that intertwines with our daily lives (albeit, at times, not without issues¹). We interact with AI systems daily, often without even realizing it: from voice assistants that respond to our requests to recommendations from our favorite streaming platforms about which TV series to watch when we’re bored on the couch. And here lies the first warning sign: AI is no longer just an observer learning from our behaviors but is starting to influence them.
 ---
 
-<aside class="text-center">
-<small>
-You can now read this article in PDF format
-<a href="{% link assets/posts/pdfs/2024-11-26-beyond-automation.pdf %}">here</a>.
-</small>
-</aside>
-
 ## Introduction: Human-AI Interaction
 
 We are now living in an era where artificial intelligence (commonly known as AI) is no longer a distant concept confined to research laboratories or science fiction books. Instead, it has become a reality that intertwines with our daily lives (albeit, at times, not without issues¹). We interact with AI systems daily, often without even realizing it: from voice assistants that respond to our requests to recommendations from our favorite streaming platforms about which TV series to watch when we’re bored on the couch. And here lies the first warning sign: AI is no longer just an observer learning from our behaviors but is starting to influence them.
