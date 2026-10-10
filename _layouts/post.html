@@ -131,8 +131,12 @@ layout: default
 
     {% if page.image %}
     <figure class="post-cover mb-4">
-        <img src="{{ page.image | absolute_url }}" alt="" aria-hidden="true"
+        <img src="{{ page.image | absolute_url }}"
+            {% if page.image_alt != blank %}alt="{{ page.image_alt | strip_newlines | escape }}"{% else %}alt="" aria-hidden="true"{% endif %}
             onerror="this.closest('figure').remove();">
+        {% if page.image_caption != blank %}
+        <figcaption class="figure-caption mt-2">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>
+        {% endif %}
     </figure>
     {% endif %}
 
