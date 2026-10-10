@@ -43,14 +43,7 @@ figure {
   object-fit: cover;
 }
 
-body {
-  position: relative;
-  min-height: 100vh;
-  // padding-top: 50px !important;
-}
-
-a[target="_blank"]:not(.no-blank-icon)::after
-{
+a[target="_blank"]::after {
   content: "";
   width: 8px;
   height: 8px;
@@ -63,11 +56,11 @@ a[target="_blank"]:not(.no-blank-icon)::after
   background-repeat: no-repeat;
   background-size: contain;
   display: inline-block;
+  .no-blank-icon & {
+   display: none !important;
+  }
 }
 
-.no-blank-icon a[target="_blank"]::after {
- display: none !important;
-}
 
 ol.bibliography {
   @extend .list-unstyled;
@@ -109,8 +102,7 @@ ol.bibliography {
   top: 56px;
 
   .author-avatar {
-    @extend .img-thumbnail;
-    @extend .rounded-circle;
+    @extend .avatar-img;
     margin-right: 0.5rem;
     max-width: 64px;
     @media (min-width: 768px) {
