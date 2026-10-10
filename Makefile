@@ -6,7 +6,13 @@ LETTERS = 2026-09-19-on-doom-scrolling-and-brain-fog 2025-09-07-my-struggle-with
 
 POST_PDFS = $(patsubst %,assets/posts/pdfs/%.pdf,$(ARTICLES) $(LETTERS))
 
-all: _bibliography/references.bib $(POST_PDFS)
+all: _bibliography/references.bib pdfs
+
+# Only the post PDFs (what the deploy workflow builds)
+pdfs: $(POST_PDFS)
+
+.PHONY: all pdfs FORCE
+FORCE:
 
 BASE_BIB = $(HOME)/Documents/Lavoro/NEW_WORK/70_Resources/literature/Library.bib
 
@@ -39,14 +45,14 @@ define remote_image_rule
 $(IMG_DIR)/$(call img_name,$(1)).pdf:
 	mkdir -p $$(@D)
 	curl -fsSL '$(1)' -o '$$@.download'
-	sips -s format pdf '$$@.download' --out '$$@' > /dev/null
+	_pandoc/image-to-pdf.sh '$$@.download' '$$@'
 	rm -f '$$@.download'
 endef
 
 define local_image_rule
 $(IMG_DIR)/$(call img_name,$(1)).pdf: $(patsubst /%,%,$(1))
 	mkdir -p $$(@D)
-	sips -s format pdf '$$<' --out '$$@' > /dev/null
+	_pandoc/image-to-pdf.sh '$$<' '$$@'
 endef
 
 $(foreach src,$(sort $(foreach post,$(ARTICLES) $(LETTERS),$(call post_image_srcs,_posts/$(post).md))),\
@@ -55,10 +61,19 @@ $(foreach src,$(sort $(foreach post,$(ARTICLES) $(LETTERS),$(call post_image_src
 
 # PDF of a post through the custom pandoc writer for its layout, then groff MM.
 # Raw HTML figures are kept verbatim; site-relative links are made absolute with SITE_URL.
+# A PDF is rebuilt only when the content of its post or of its writer changes (not on timestamps, which
+# are meaningless after a git checkout): _build/hash/<post>.sha always re-checks the content hash but is
+# only rewritten when it changes. Images are order-only prerequisites: fetched when missing, never a trigger.
 # $(1) = post name, $(2) = layout (article or letter)
 define pdf_rule
-assets/posts/pdfs/$(1).pdf: _posts/$(1).md _pandoc/$(2).lua _pandoc/common.lua _pandoc/preprocess.sed $(call post_images,_posts/$(1).md)
-	$(PREPROCESS) $$< | pandoc -f markdown-markdown_in_html_blocks -t _pandoc/$(2).lua \
+_build/hash/$(1).sha: FORCE
+	@mkdir -p $$(@D)
+	@new=$$$$(cat _posts/$(1).md _pandoc/$(2).lua _pandoc/common.lua _pandoc/preprocess.sed | shasum -a 256 | cut -d' ' -f1); \
+	[ "$$$$(cat $$@ 2>/dev/null)" = "$$$$new" ] || echo "$$$$new" > $$@
+
+assets/posts/pdfs/$(1).pdf: _build/hash/$(1).sha | $(call post_images,_posts/$(1).md)
+	@mkdir -p $$(@D)
+	$(PREPROCESS) _posts/$(1).md | pandoc -f markdown-markdown_in_html_blocks -t _pandoc/$(2).lua \
 		-M date="$(call post_date,$(1))" -M site_url="$(SITE_URL)" \
 		| groff -U -k -Tpdf -mm -mpdfpic > $$@
 endef

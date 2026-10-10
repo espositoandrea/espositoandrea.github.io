@@ -34,6 +34,29 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
 
+      # Post PDFs (see the Makefile). Cached so that they are built once: the Makefile compares content
+      # hashes (stored in _build/hash), so only posts whose source changed are rebuilt.
+      - name: Restore cached post PDFs
+        uses: actions/cache@v4
+        with:
+          path: |
+            assets/posts/pdfs
+            _build
+          key: post-pdfs-${{ hashFiles('_posts/*.md', '_pandoc/**', 'Makefile') }}
+          restore-keys: |
+            post-pdfs-
+
+      - name: Install PDF tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends groff poppler-utils python3-pil
+          # the packaged pandoc is too old for the custom writers
+          curl -fsSL -o pandoc.deb https://github.com/jgm/pandoc/releases/download/3.8/pandoc-3.8-1-amd64.deb
+          sudo dpkg -i pandoc.deb
+
+      - name: Build post PDFs
+        run: make pdfs
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5.0.0
@@ -48,22 +71,6 @@ jobs:
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3.0.1
 
-      # - name: Build posts as PDF
-      #   run: |
-      #     if ! ls _posts/*.md >/dev/null 2>&1; then exit 0; fi
-      #     for f in _posts/*.md; do
-      #       filename=${f##_posts/}
-      #       filename=${filename%%.md}
-      #       year=`echo $filename | cut -d- -f1`
-      #       month=`echo $filename | cut -d- -f2`
-      #       day=`echo $filename | cut -d- -f3`
-      #       basename=`echo $filename | cut -d- -f4-`
-      #       sed 's/\(\[.*\](.*)\){.*}/\1/g;s/excerpt:/abstract:/;s/tags:/keywords:/' "$f" | \
-      #         sed 's/## /# /;s/### /## /;s/#### /### /;s/##### /#### /;s/###### /##### /' | \
-      #         pandoc - -f markdown -t ms -s | \
-      #         groff -Tpdf -mspdf > "_site/blog/posts/$year/$month/${basename%%.md}.pdf"
-      #     done
-      
   # Deployment job
   deploy:
     environment:
