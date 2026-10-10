@@ -6,25 +6,25 @@
 {% assign ext = false %}
 {% if post.redirect != blank %}{% assign ext = true %}{% endif %}
 
-<article class="post-tile{% if include.featured %} post-tile-featured{% endif %}{% unless post.image %} post-tile-noimage{% endunless %}">
+<article class="card {% if include.featured %} card-row {% else %} h-100 {% endif %} hover-lift">
     {% if post.image %}
-    <a class="post-tile-media no-blank-icon" href="{{ url }}" {% if ext %}target="_blank"{% endif %} tabindex="-1" aria-hidden="true">
-        <img src="{{ post.image | absolute_url }}" alt="" onerror="var t=this.closest('.post-tile');t.classList.add('post-tile-noimage');this.parentNode.remove();" loading="{% if include.featured %}eager{% else %}lazy{% endif %}">
-    </a>
+        <img class="object-fit-cover ratio-21x9 {% if include.featured %} w-50 card-img-start {% else %} card-img-top {% endif %}" src="{{ post.image | absolute_url }}" alt="" onerror="this.remove();" loading="{% if include.featured %}eager{% else %}lazy{% endif %}">
     {% endif %}
-    <div class="post-tile-body">
-        <p class="post-tile-meta">
+    <div class="card-body">
+        <small class="fg-3">
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
             {% if post.external_source != blank %}
             &middot; <a href="{{ post.external_source_url }}" target="_blank">{{ post.external_source }}</a>
             {% endif %}
-        </p>
-        <h2 class="post-tile-title">
-            <a class="no-blank-icon" href="{{ url }}" {% if ext %}target="_blank"{% endif %}>{{ post.title | smartify }}</a>
+        </small>
+        <h2 class="card-title mt-0 h4">
+            <a href="{{ url }}">{{ post.title | smartify }}</a>
         </h2>
-        <p class="post-tile-excerpt">
+        <p class="card-text">
             {% assign text = post.excerpt | markdownify | strip_html | newline_to_br | replace: "<br />", " " | strip_newlines %}
             {% if include.featured %}{{ text | truncatewords: 60 }}{% else %}{{ text | truncatewords: 28 }}{% endif %}
         </p>
+
+        <a href="{{ url }}">Read more</a>
     </div>
 </article>

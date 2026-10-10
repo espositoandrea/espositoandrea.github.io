@@ -22,19 +22,17 @@ seo:
         <hr>
     </header>
     {% if paginator.posts.size > 0 %}
-    {% assign offset = 0 %}
-    {% if paginator.page == 1 %}
-        {% assign offset = 1 %}
-        {% assign featured_post = paginator.posts[0] %}
-        {% include post-tile.html post=featured_post featured=true %}
-    {% endif %}
-    <div class="post-grid">
-        {% for post in paginator.posts offset: offset %}
+    <div class="row row-cols-1 md:row-cols-3 g-3" data-masonry='{"percentPosition": true, "horizontalOrder": true }'>
+        {% for post in paginator.posts %}
+        <div class="col">
             {% include post-tile.html post=post %}
+            </div>
         {% endfor %}
     </div>
     {% endif %}
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
 
 <!-- pagination -->
 <div class="text-center my-5">
