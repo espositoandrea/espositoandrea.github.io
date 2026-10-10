@@ -73,15 +73,15 @@ permalink: /talks
                     {% for type in types %}
                         {% if type == talk_type %}{% assign idx = forloop.index0 | modulo: palette.size %}{% assign color = palette[idx] %}{% endif %}
                     {% endfor %}
-                    <article class="list-group-item py-5" data-type="{{ talk_type }}">
-                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
-                            <h4 class="h6 mb-0">{{ talk.title | smartify }}</h4>
+                    <article class="card mt-3" data-type="{{ talk_type }}">
+                        <div class="card-body">
+                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5">
+                            <h4 class="card-title h6 mb-0">{{ talk.title | smartify }}</h4>
                             <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
                                 {% if talk.type %}<span class="badge bg-subtle-{{ color }} fg-emphasis-{{ color }} border border-subtle-{{ color }} fw-normal">{{ talk.type }}</span>{% endif %}
                                 <time class="small fg-secondary font-monospace text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
                             </div>
                         </div>
-
                         <ul class="list-inline small fg-secondary mb-0">
                             {% if talk.event %}
                             <li class="list-inline-item me-5">
@@ -108,27 +108,34 @@ permalink: /talks
                         </ul>
 
                         {% if talk.description %}
-                            <div class="small mt-3">{{ talk.description | markdownify }}</div>
+                            <small class="small">{{ talk.description | markdownify |  remove: '<p>' | remove: '</p>' }}</small>
+                        {% endif %}    
+                        
+                    </div>
+                    
+                    <div class="list-group list-group-flush">
+                        {% if talk.slides or talk.video %}
+                            <div class="list-group-item d-flex gap-5">
+                                {% if talk.slides %}<a class="theme-primary btn-text btn-sm" href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                {% if talk.video %}<a class="theme-primary btn-text btn-sm" href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                            </div>
                         {% endif %}
+                    </div>
+
 
                         {% if talk.paper %}
-                            <div class="small mt-3 border-start border-3 ps-5">
-                                <div class="fg-secondary mb-1">Associated paper</div>
+                        <div class="card-footer small d-flex flex-wrap align-items-baseline gap-3">
+                            <details>
+                                <summary class="fg-secondary"><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Associated paper</summary>
                                 {% capture paper_reference %}{% reference {{talk.paper}} %}{% endcapture %}
-                                <div>{{ paper_reference | emphasize_author }}</div>
-                                <a href="{% details_link {{talk.paper}} %}">See paper details</a>
-                            </div>
+                                <div class="mt-1">{{ paper_reference | emphasize_author }}</div>
+                            </details>
+                            <a href="{% details_link {{talk.paper}} %}" class="ms-auto"><i class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></i> See paper details</a>
+                        </div>
                         {% endif %}
-
-                        {% if talk.slides or talk.video %}
-                            <div class="small mt-3 d-flex gap-5">
-                                {% if talk.slides %}<a href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
-                                {% if talk.video %}<a href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
-                            </div>
-                        {% endif %}
-                    </article>
+                        </article>
                 {% endfor %}
-                </div>
+                    </div>
                 </div>
             {% endfor %}
         {% endif %}
@@ -149,10 +156,11 @@ permalink: /talks
                 <div class="list-group">
                 {% for seminar in group.items %}
                     {% assign context = seminar.course | default: seminar.event %}
-                    <article class="list-group-item py-5">
+                    <article class="card mt-3">
+                        <div class="card-body">
                         <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
                             <div>
-                                <h4 class="h6 mb-0">{% include i18n.html orig=seminar.title trans=seminar.titleTranslation lang=seminar.language %}</h4>
+                                <h4 class="h6 mb-0 card-title">{% include i18n.html orig=seminar.title trans=seminar.titleTranslation lang=seminar.language %}</h4>
                             </div>
                             <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
                                 {% if seminar.language %}<span class="badge bg-subtle-secondary fg-emphasis-secondary border" title="Seminar language">{{ seminar.language | upcase }}</span>{% endif %}
@@ -200,15 +208,18 @@ permalink: /talks
                         </ul>
 
                         {% if seminar.description %}
-                            <div class="small mt-3" lang="{{ seminar.descriptionLanguage | default: seminar.language | default: 'en' }}">{{ seminar.description | markdownify }}</div>
+                            <div class="small" lang="{{ seminar.descriptionLanguage | default: seminar.language | default: 'en' }}">{{ seminar.description | markdownify }}</div>
                         {% endif %}
 
-                        {% if seminar.slides or seminar.video %}
-                            <div class="small mt-3 d-flex gap-5">
-                                {% if seminar.slides %}<a href="{{ seminar.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
-                                {% if seminar.video %}<a href="{{ seminar.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                            <div class="list-group list-group-flush">
+                                {% if seminar.slides or seminar.video %}
+                                    <div class="list-group-item d-flex gap-5">
+                                        {% if seminar.slides %}<a class="theme-primary btn-text btn-sm" href="{{ seminar.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                        {% if seminar.video %}<a class="theme-primary btn-text btn-sm" href="{{ seminar.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                                    </div>
+                                {% endif %}
                             </div>
-                        {% endif %}
+                        </div>
                     </article>
                 {% endfor %}
                 </div>
