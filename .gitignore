@@ -169,3 +169,4 @@ fabric.properties
 
 ### PDF build ###
 _build/
+assets/posts/pdfs/
