@@ -1,7 +1,6 @@
 <div class="badges no-blank-icon d-flex flex-row gap-3 align-items-center">
 	<span
 		class="altmetric-embed"
-		data-hide-less-than="1"
 		{% if include.entry.doi %}
 			data-doi="{{ include.entry.doi }}"
 		{% elsif include.entry.url %}
@@ -9,7 +8,5 @@
 		{% endif %}
 		data-badge-popover="bottom"></span>
 
-
-	<span class="__dimensions_badge_embed__" data-doi="{{ include.entry.doi }}" data-style="small_rectangle"></span>
-	<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+	<span class="__dimensions_badge_embed__" data-doi="{{ include.entry.doi | default: 'nodoi' }}" data-style="small_rectangle"></span>
 </div>

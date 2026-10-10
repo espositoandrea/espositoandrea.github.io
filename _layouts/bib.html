@@ -50,14 +50,18 @@
 			{% endif %}
 		</ul>
 
+		{% unless access == blank %}
 		<div class="bib-actions">
 			{% for item in access %}
-				<a class="no-blank-icon d-inline-flex align-items-center gap-1 text-decoration-none" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" title="{{ item.description }}">
+				<a class="no-blank-icon d-inline-flex align-items-center gap-1 text-decoration-none icon-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" title="{{ item.description }}">
 					<span class="{{ item.icon }}" aria-hidden="true"></span> {{ item.label }}
 				</a>
 			{% endfor %}
-			{% include altmetric-badge.html entry=entry %}
+			{% comment %}
+				{% include altmetric-badge.html entry=entry %}
+			{% endcomment %}
 		</div>
+		{% endunless %}
 	</div>
 
 	<div class="card-footer small d-flex flex-wrap align-items-baseline gap-3">
