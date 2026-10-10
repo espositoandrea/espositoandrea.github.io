@@ -106,6 +106,7 @@ function Writer(doc, opts)
   -- must follow the letter header macros, or the header is pushed after the body
   add('.pdfinfo /Title ' .. q(stringify(meta.title or '')) .. '\n')
   add('.pdfinfo /Author ' .. q(from) .. '\n')
+  add(common.pdf_dates(meta.date and stringify(meta.date)))
   add(blocks(body))
   add('.FC ' .. q(closing) .. '\n')
   add('.SG\n')

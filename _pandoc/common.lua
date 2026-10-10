@@ -31,6 +31,14 @@ function M.print_image(src)
   return '_build/images/' .. name .. '.pdf'
 end
 
+-- .pdfinfo lines setting CreationDate and ModDate to the post's publishing date (YYYY-MM-DD, midnight UTC)
+function M.pdf_dates(date)
+  local y, m, d = tostring(date or ''):match('^(%d%d%d%d)-(%d%d)-(%d%d)')
+  if not y then return '' end
+  local stamp = M.q('D:' .. y .. m .. d .. '000000Z')
+  return '.pdfinfo /CreationDate ' .. stamp .. '\n.pdfinfo /ModDate ' .. stamp .. '\n'
+end
+
 -- A floating figure (.DF) from a Figure block or a parsed <figure> element
 function M.figure(el)
   local img

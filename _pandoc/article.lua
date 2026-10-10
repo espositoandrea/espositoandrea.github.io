@@ -150,6 +150,7 @@ function Writer(doc, opts)
   add('.ds PDFHREF.COLOUR 0.35 0.00 0.60\n.ds PDFHREF.BORDER 0 0 0\n')
   add('.nr PDFOUTLINE.FOLDLEVEL 3\n.pdfview /PageMode /UseOutlines\n')
   add('.pdfinfo /Title ' .. q(title) .. '\n.pdfinfo /Author ' .. q(author) .. '\n')
+  add(common.pdf_dates(meta.date and stringify(meta.date)))
   add('.TL\n' .. esc(title) .. '\n')
   if meta.institution then
     local inst = lines(meta.institution)
