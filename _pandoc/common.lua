@@ -12,10 +12,21 @@ end
 
 function M.q(s) return '"' .. s:gsub('"', '""') .. '"' end
 
--- Must match the naming used by the Makefile (img_name): last URL segment, sanitised, no extension.
--- Remote images are printed from _build/images/<name>.pdf, which the Makefile downloads and converts.
+-- Site root used to turn site-relative links into absolute URLs (set by the writers from `site_url`)
+M.site_url = ''
+
+-- Links in a PDF must be absolute: site-relative targets ("/assets/x.pdf", "assets/x.pdf") get the site URL
+function M.link_target(target)
+  if target:match('^[%a][%w+.-]*:') or target:match('^#') or M.site_url == '' then return target end
+  return M.site_url:gsub('/$', '') .. '/' .. target:gsub('^/', '')
+end
+
+-- File printed for an image: remote and local raster images go through _build/images/<name>.pdf, which
+-- the Makefile creates (download + conversion); a local PDF is used as it is.
+-- Must match the naming used by the Makefile (img_name): last path segment, sanitised, no extension.
 function M.print_image(src)
-  if not src:match('^https?://') then return (src:gsub('^/', '')) end
+  local remote = src:match('^https?://')
+  if not remote and src:match('%.[pP][dD][fF]$') then return (src:gsub('^/', '')) end
   local name = src:match('([^/]*)$'):gsub('[^%w._-]', '_'):gsub('%.[^.]*$', '')
   return '_build/images/' .. name .. '.pdf'
 end

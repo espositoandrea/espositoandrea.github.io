@@ -26,7 +26,7 @@ local function inline(el)
     if el.quotetype == 'SingleQuote' then l, r = '\u{2018}', '\u{2019}' end
     return l .. inlines(el.content) .. r
   elseif t == 'Link' then
-    return '\\c\n.pdfhref W -D ' .. q(el.target) .. ' -- ' .. q(stringify(el.content)) .. '\n'
+    return '\\c\n.pdfhref W -D ' .. q(common.link_target(el.target)) .. ' -- ' .. q(stringify(el.content)) .. '\n'
   elseif t == 'Note' then
     local paras = {}
     for _, b in ipairs(el.content) do paras[#paras + 1] = inlines(b.content or pandoc.Inlines{pandoc.Str(stringify(b))}) end
@@ -77,6 +77,7 @@ end
 
 function Writer(doc, opts)
   local meta = doc.meta
+  common.site_url = meta.site_url and stringify(meta.site_url) or ''
   local body = pandoc.List(doc.blocks)
   local closing = ''
   if #body > 0 and body[#body].t == 'Para' then

@@ -21,29 +21,45 @@ _bibliography/references.bib: $(BASE_BIB)
 # Jekyll convention: posts are named YYYY-MM-DD-title, so the date is the first 10 characters
 post_date = $(shell printf '%s' '$(1)' | cut -c1-10)
 
-# Print version of the images used in the posts: remote <img src> URLs are downloaded once and converted to PDF
-# (the name must match print_image in _pandoc/article.lua)
+# Jekyll-only syntax ({% link %}, {:...} attributes, ...) is rewritten before pandoc reads a post
+PREPROCESS = sed -E -f _pandoc/preprocess.sed
+SITE_URL = $(shell awk -F'"' '/^url:/ {print $$2}' _config.yml)
+
+# Print version of the images used in the posts: remote and local images are converted to PDF (remote ones
+# are downloaded once first), local PDFs are used as they are. Names must match print_image in _pandoc/common.lua
 IMG_DIR = _build/images
 img_name = $(shell printf '%s' '$(1)' | sed 's|.*/||; s|[^A-Za-z0-9._-]|_|g; s|\.[^.]*$$||')
-post_image_urls = $(shell grep -o 'src="https\{0,1\}://[^"]*"' $(1) | sed 's/^src="//; s/"$$//')
-post_images = $(foreach url,$(call post_image_urls,$(1)),$(IMG_DIR)/$(call img_name,$(url)).pdf)
+is_remote = $(findstring ://,$(1))
+is_pdf = $(filter %.pdf,$(1))
+post_image_srcs = $(shell $(PREPROCESS) $(1) | _pandoc/image-srcs.sh)
+img_pdf = $(if $(or $(call is_remote,$(1)),$(if $(call is_pdf,$(1)),,x)),$(IMG_DIR)/$(call img_name,$(1)).pdf,$(patsubst /%,%,$(1)))
+post_images = $(foreach src,$(call post_image_srcs,$(1)),$(call img_pdf,$(src)))
 
-define image_rule
+define remote_image_rule
 $(IMG_DIR)/$(call img_name,$(1)).pdf:
 	mkdir -p $$(@D)
 	curl -fsSL '$(1)' -o '$$@.download'
 	sips -s format pdf '$$@.download' --out '$$@' > /dev/null
 	rm -f '$$@.download'
 endef
-$(foreach url,$(sort $(foreach post,$(ARTICLES) $(LETTERS),$(call post_image_urls,_posts/$(post).md))),$(eval $(call image_rule,$(url))))
+
+define local_image_rule
+$(IMG_DIR)/$(call img_name,$(1)).pdf: $(patsubst /%,%,$(1))
+	mkdir -p $$(@D)
+	sips -s format pdf '$$<' --out '$$@' > /dev/null
+endef
+
+$(foreach src,$(sort $(foreach post,$(ARTICLES) $(LETTERS),$(call post_image_srcs,_posts/$(post).md))),\
+	$(if $(call is_remote,$(src)),$(eval $(call remote_image_rule,$(src))),\
+	$(if $(call is_pdf,$(src)),,$(eval $(call local_image_rule,$(src))))))
 
 # PDF of a post through the custom pandoc writer for its layout, then groff MM.
-# The Jekyll-only "{:...}" attribute lists are stripped; raw HTML figures are kept verbatim.
+# Raw HTML figures are kept verbatim; site-relative links are made absolute with SITE_URL.
 # $(1) = post name, $(2) = layout (article or letter)
 define pdf_rule
-assets/posts/pdfs/$(1).pdf: _posts/$(1).md _pandoc/$(2).lua _pandoc/common.lua $(call post_images,_posts/$(1).md)
-	sed 's/{:[^}]*}//g' $$< | pandoc -f markdown-markdown_in_html_blocks -t _pandoc/$(2).lua \
-		-M date="$(call post_date,$(1))" \
+assets/posts/pdfs/$(1).pdf: _posts/$(1).md _pandoc/$(2).lua _pandoc/common.lua _pandoc/preprocess.sed $(call post_images,_posts/$(1).md)
+	$(PREPROCESS) $$< | pandoc -f markdown-markdown_in_html_blocks -t _pandoc/$(2).lua \
+		-M date="$(call post_date,$(1))" -M site_url="$(SITE_URL)" \
 		| groff -U -k -Tpdf -mm -mpdfpic > $$@
 endef
 $(foreach post,$(ARTICLES),$(eval $(call pdf_rule,$(post),article)))

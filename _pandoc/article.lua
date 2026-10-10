@@ -50,7 +50,7 @@ function inlines(list)
     elseif t == 'Link' then
       local after = trailing_punct(nxt)
       local glue = (prev and prev.t ~= 'Space' and prev.t ~= 'SoftBreak') and '\\c' or ''
-      s = glue .. '\n.pdfhref W -D ' .. q(el.target) .. (after and (' -A ' .. q(after)) or '') ..
+      s = glue .. '\n.pdfhref W -D ' .. q(common.link_target(el.target)) .. (after and (' -A ' .. q(after)) or '') ..
           ' -- ' .. q(stringify(el.content)) .. '\n'
     elseif t == 'Note' then
       local paras = {}
@@ -120,6 +120,7 @@ end
 
 function Writer(doc, opts)
   local meta = doc.meta
+  common.site_url = meta.site_url and stringify(meta.site_url) or ''
   local body = pandoc.List(doc.blocks)
 
   -- the blocks after the last horizontal rule are the cross-post notice
