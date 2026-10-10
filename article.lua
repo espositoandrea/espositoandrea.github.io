@@ -4,8 +4,8 @@
 -- Body conventions:
 --   * "## Heading" becomes a level-1 heading (and a PDF bookmark).
 --   * The blocks after the last horizontal rule (the cross-post notice) go in a box at the end.
---   * <figure><img data-print-src="path.pdf"><figcaption>..</figcaption></figure> becomes a floating
---     figure; the image printed is the local PDF named by data-print-src.
+--   * <figure><img src=URL><figcaption>..</figcaption></figure> becomes a floating figure. Remote images
+--     are printed from _build/images/<name>.pdf, which the Makefile downloads and converts.
 
 local stringify = pandoc.utils.stringify
 
@@ -89,15 +89,18 @@ local function long_date(s)
   return (os.date('%b %d, %Y', os.time{year = tonumber(y), month = tonumber(m), day = tonumber(d), hour = 12}):gsub(' 0', ' '))
 end
 
+-- Must match the naming used by the Makefile (img_name): last URL segment, sanitised, no extension
+local function print_image(src)
+  if not src:match('^https?://') then return (src:gsub('^/', '')) end
+  local name = src:match('([^/]*)$'):gsub('[^%w._-]', '_'):gsub('%.[^.]*$', '')
+  return '_build/images/' .. name .. '.pdf'
+end
+
 local function figure(el)
   local img
   el:walk{Image = function(i) img = img or i end}
   if not img then return '' end
-  local src = img.attributes['data-print-src'] or img.attributes['print-src']
-  if not src then
-    io.stderr:write('article.lua: figure without data-print-src: ' .. img.src .. '\n')
-    return ''
-  end
+  local src = print_image(img.src)
   local caption = el.t == 'Figure' and stringify(el.caption.long) or nil
   return '.DF\n.PDFPIC -C ' .. q(src) .. '\n' ..
          (caption and ('.FG ' .. q(caption) .. '\n') or '') .. '.DE\n'

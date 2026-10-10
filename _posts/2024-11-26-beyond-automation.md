@@ -34,14 +34,14 @@ Undoubtedly, the most successful mode of interaction with AI in this particular 
 To better understand the different modes of interaction between humans and AI, it is useful to consider some theoretical models that analyze levels of automation. These models provide an interesting perspective on how technology can automate various tasks while varying the degree of human involvement and control.
 
 <figure>
-<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*5GEGeRzU74tokTKt.png" class="img-fluid" data-print-src="assets/posts/roff/2024-11-26-beyond-automation/one-dim.pdf">
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*5GEGeRzU74tokTKt.png" class="img-fluid">
 <figcaption>One-dimensional model of automation</figcaption>
 </figure>
 
 One of the earliest models of automation, and also one of the most frequently cited, defines a one-dimensional scale of task automation levels[^3]. This model, based on 10 levels, has two extremes: total human control (a level where the machine provides no support or automation for the specific task) and total automation (a level where the human has no role in performing the task, not even as a supervisor).
 
 <figure>
-<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*f8Tekhw7NhrNnxky.png" class="img-fluid" data-print-src="assets/posts/roff/2024-11-26-beyond-automation/2dim.pdf">
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*f8Tekhw7NhrNnxky.png" class="img-fluid">
 <figcaption>New two-dimensional model of automation</figcaption>
 </figure>
 
@@ -71,7 +71,7 @@ This finding suggests that, while automation excels at identifying more obvious 
 AI is becoming increasingly present in our lives, promising numerous improvements but also exposing us to various risks. Throughout this article, we explored different levels of interaction between humans and AI, highlighting how the integration of human expertise and AI capabilities enables more comprehensive and precise outcomes, even capturing subtle details. The discovery of the potential of this "_symbiosis_" between humans and AI points to a promising model for the future: not automation that replaces humans, but AI that _collaborates_ with us, _amplifying_ our potential.
 
 <figure>
-<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*SaIJsq6-ZqL5hM6o.png" class="img-fluid" data-print-src="assets/posts/roff/2024-11-26-beyond-automation/future.pdf">
+<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*SaIJsq6-ZqL5hM6o.png" class="img-fluid">
 <figcaption>Image generated using AI (GPT-4o)</figcaption>
 </figure>
 

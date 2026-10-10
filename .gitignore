@@ -166,3 +166,6 @@ fabric.properties
 .history
 
 # End of https://www.gitignore.io/api/visualstudiocode,rubymine,jekyll,ruby
+
+### PDF build ###
+_build/
