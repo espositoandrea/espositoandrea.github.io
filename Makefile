@@ -32,12 +32,13 @@ assets/posts/pdfs/%.pdf: assets/posts/roff/%/main.mm
 assets/posts/pdfs/%.pdf: _posts/%.md
 	pandoc \
 		-V institution="$$institution" \
--M date="$(call post_date,$(basename $(notdir $@)))" \
+		-M date="$(call post_date,$(basename $(notdir $@)))" \
 		-f markdown -t ms --template=template.ms \
 		-so - \
 		$< | groff -eTpdf -ms -mpdfmark > $@
 
-assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf: _posts/2026-09-19-on-doom-scrolling-and-brain-fog.md
-	sed -e '$$ d' $< | \
-		pandoc -f markdown -o $@ --template=scrlttr2 \
-		-V "closing=$$(sed -ne '$$ p' $< | tr -d '\n')"
+# Letter-style post: custom pandoc writer (letter.lua) emitting a blocked letter in groff MM
+assets/posts/pdfs/2026-09-19-on-doom-scrolling-and-brain-fog.pdf: _posts/2026-09-19-on-doom-scrolling-and-brain-fog.md letter.lua
+	pandoc -f markdown -t letter.lua \
+		-M date="$(call post_date,$(basename $(notdir $@)))" \
+		$< | groff -k -Tpdf -mm > $@

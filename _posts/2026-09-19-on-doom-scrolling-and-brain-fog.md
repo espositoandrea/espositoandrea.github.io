@@ -14,15 +14,10 @@ category: Personal Columns
 
 
 date: 2026-09-19
-fromname: Andrea Esposito
 opening: Dear readers,
 to: |
    Substack Readers
    https://espositoandrea.substack.com/
-signature: Andrea Esposito
-letteroption: 
-- DINmtext
-fontfamily: newtxtext
 ---
 
 Sometimes you have to admit that you have lost. Everyone sometimes loses a battle, even the best generals of the past did. It happens. It's not important. What counts is that you do not lose the war. To that end, one must analyze the lost battle closely, to understand the reasons for their loss, identify mistakes, and recognize patterns—this will leave you prepared for the next battle, so that you have more chances of winning.
