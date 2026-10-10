@@ -11,8 +11,6 @@ GEM
       logger (~> 1.7)
       racc (~> 1.7)
     bigdecimal (4.1.3)
-    bootstrap (5.3.8)
-      popper_js (>= 2.11.8, < 3)
     citeproc (1.1.0)
       date
       forwardable
@@ -187,7 +185,6 @@ GEM
     ostruct (0.6.3)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    popper_js (2.11.8)
     public_suffix (7.0.5)
     racc (1.8.1)
     rake (13.4.2)
@@ -244,7 +241,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  bootstrap (~> 5.3)
   faraday-http-cache (~> 2.5)
   feedjira
   http_parser.rb (~> 0.6.0)
