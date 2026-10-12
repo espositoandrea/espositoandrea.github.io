@@ -18,8 +18,17 @@
 #   paper: BibTeXKey               # optional: key in _bibliography/references.bib
 #   description: Short text.       # optional, Markdown
 #   slides: /assets/slides.pdf     # optional
+#   poster: /assets/poster.pdf     # optional: the poster itself (not the related paper)
 #   video: https://example.org     # optional
 talks:
+  - title: "Automation vs Augmentation: The Need for Human-Centered Design for Symbiotic AI"
+    date: 2025-04-07
+    type: Poster presentation
+    event:
+      name: FAIR Spoke 6 Workshop 2025 --- WP 6.1
+      url: https://www.uniba.it/it/eventi-alluniversita/anno-2025/fair-spoke-workshop-2025
+    location: Bari (Italy)
+    poster: https://doi.org/10.54985/peeref.2504p5507567
   - title: Explanation-Driven Visual Interventions in Genomics
     date: 2026-06-08
     type: Workshop talk
@@ -84,6 +93,7 @@ talks:
       en: Turin (Piedmont, Italy)
       it: Torino (Piemonte, Italia)
     paper: Esposito2023Poster
+    poster: https://osf.io/75gvt/files/cjvyu
   - title: "Digital Modeling for Everyone: Exploring How Novices Approach Voice-Based 3D Modeling"
     date: 2023-08-31
     type: Conference talk

@@ -108,9 +108,10 @@ permalink: /talks
                     </div>
                     
                     <div class="list-group list-group-flush">
-                        {% if talk.slides or talk.video %}
+                        {% if talk.slides or talk.poster or talk.video %}
                             <div class="list-group-item d-flex gap-5">
                                 {% if talk.slides %}<a class="theme-primary btn-text btn-sm" href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                {% if talk.poster %}<a class="theme-primary btn-text btn-sm" href="{{ talk.poster | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-image fa-fw" aria-hidden="true"></i> Poster</a>{% endif %}
                                 {% if talk.video %}<a class="theme-primary btn-text btn-sm" href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
                             </div>
                         {% endif %}
