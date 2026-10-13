@@ -44,6 +44,10 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      # Open Graph images of the posts and the default one (see scripts/og-images.mjs)
+      - name: Generate Open Graph images
+        run: npm run og-images
+
       # Post PDFs (see the Makefile). Cached so that they are built once: the Makefile compares content
       # hashes (stored in _build/hash), so only posts whose source changed are rebuilt.
       - name: Restore cached post PDFs

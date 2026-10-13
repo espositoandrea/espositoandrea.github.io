@@ -151,4 +151,5 @@ exclude:
   - vendor/ruby/
   - CurriculumVitae/
   - _pandoc/
+  - scripts/
   - _build/
