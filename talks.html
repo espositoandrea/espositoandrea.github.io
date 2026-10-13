@@ -69,7 +69,8 @@ description: >-
                     {% for type in types %}
                         {% if type == talk_type %}{% assign idx = forloop.index0 | modulo: palette.size %}{% assign color = palette[idx] %}{% endif %}
                     {% endfor %}
-                    <article class="card mt-3" data-type="{{ talk_type }}">
+                    <article class="card mt-3" data-type="{{ talk_type }}" itemscope itemtype="https://schema.org/Event">
+                        {% include talk-meta.html talk=talk context=talk.event %}
                         <div class="card-body">
                         <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5">
                             <h4 class="card-title h6 mb-0">{{ talk.title | smartify }}</h4>
@@ -153,7 +154,8 @@ description: >-
                 <div class="list-group">
                 {% for seminar in group.items %}
                     {% assign context = seminar.course | default: seminar.event %}
-                    <article class="card mt-3">
+                    <article class="card mt-3" itemscope itemtype="https://schema.org/{% if seminar.course %}EducationEvent{% else %}Event{% endif %}">
+                        {% include talk-meta.html talk=seminar context=context %}
                         <div class="card-body">
                         <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
                             <div>

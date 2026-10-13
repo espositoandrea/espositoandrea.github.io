@@ -1,0 +1,48 @@
+{%- comment -%}
+  Microdata properties of a talk or seminar (inside an element of type schema.org Event):
+  date, speaker (the site's author), location, hosting event, and recordings.
+  Parameters: talk (entry of _data/talks.yml), context (event or course it was part of).
+{%- endcomment -%}
+{%- assign talk = include.talk -%}
+{%- assign talk_context = include.context -%}
+{%- assign talk_location = talk.location.en | default: talk.location -%}
+<meta itemprop="name" content="{{ talk.title | smartify | escape }}">
+<meta itemprop="startDate" content="{{ talk.date | date: '%Y-%m-%d' }}">
+<meta itemprop="eventStatus" content="https://schema.org/EventScheduled">
+<meta itemprop="eventAttendanceMode" content="https://schema.org/OfflineEventAttendanceMode">
+{%- if talk.language %}
+<meta itemprop="inLanguage" content="{{ talk.language }}">
+{%- endif %}
+<span hidden itemprop="performer" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
+    <meta itemprop="name" content="{{ site.author.name }}">
+    <link itemprop="url" href="{{ '/' | absolute_url }}">
+</span>
+{%- if talk_location or talk.institution %}
+<span hidden itemprop="location" itemscope itemtype="https://schema.org/Place">
+    <meta itemprop="name" content="{{ talk.institution | default: talk_location | escape }}">
+    <meta itemprop="address" content="{{ talk_location | default: talk.institution | escape }}">
+</span>
+{%- endif %}
+{%- if talk_context.name %}
+<span hidden itemprop="superEvent" itemscope itemtype="https://schema.org/{% if talk.course %}EducationEvent{% else %}Event{% endif %}">
+    <meta itemprop="name" content="{{ talk_context.nameTranslation | default: talk_context.name | smartify | escape }}">
+    {%- if talk_context.url %}
+    <link itemprop="url" href="{{ talk_context.url }}">
+    {%- endif %}
+</span>
+{%- endif %}
+{%- if talk.inviter or talk.lecturer %}
+{%- assign talk_organizer = talk.inviter | default: talk.lecturer %}
+<span hidden itemprop="organizer" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="name" content="{{ talk_organizer.name | escape }}">
+    {%- if talk_organizer.url %}
+    <link itemprop="url" href="{{ talk_organizer.url }}">
+    {%- endif %}
+</span>
+{%- endif %}
+{%- if talk.video %}
+<link itemprop="recordedIn" href="{{ talk.video }}">
+{%- endif %}
+{%- if talk.description %}
+<meta itemprop="description" content="{{ talk.description | markdownify | strip_html | normalize_whitespace | escape }}">
+{%- endif %}
