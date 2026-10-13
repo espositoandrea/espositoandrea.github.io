@@ -1,14 +1,29 @@
-<div class="col sidebar align-items-center justify-content-center z-0">
+{%- comment -%}
+  Author card. It carries the microdata of the author (schema.org Person, identified by
+  `<site url>/#person`). On profile pages the Person item is opened by the default layout
+  around both the sidebar and the content, so that the content can add properties to it.
+{%- endcomment -%}
+<div class="col sidebar align-items-center justify-content-center z-0"
+    {%- unless page.schema_type == "ProfilePage" %} itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}"{% endunless %}>
+    <link itemprop="url" href="{{ '/' | absolute_url }}">
+    <meta itemprop="name" content="{{ site.author.name }}">
+    <meta itemprop="honorificPrefix" content="{{ site.author.honorificPrefix }}">
+    {%- for topic in site.data.curriculum.interests %}
+    <meta itemprop="knowsAbout" content="{{ topic }}">
+    {%- endfor %}
+    {%- for language in site.data.languages %}
+    <meta itemprop="knowsLanguage" content="{{ language[0] }}">
+    {%- endfor %}
     <div class="md:mb-7 mb-3 md:text-center d-flex lg:d-block align-items-center justify-content-between">
         <div class="d-flex lg:d-block align-items-center">
-            <img alt="Andrea Esposito" class="author-avatar" src="{{ '/assets/images/profile.jpeg' | absolute_url }}">
+            <img alt="Andrea Esposito" class="author-avatar" src="{{ site.author.picture | absolute_url }}" itemprop="image">
             <div>
                 <p class="sidebar-name mb-0 h5 mt-3">
-                    <span>Andrea</span>
-                    <span>Esposito</span>,
-                    <span>{{ site.data.curriculum.title }}</span>
+                    <span itemprop="givenName">{{ site.author.firstName }}</span>
+                    <span itemprop="familyName">{{ site.author.surname }}</span>,
+                    <span itemprop="honorificSuffix">{{ site.data.curriculum.title }}</span>
                 </p>
-                {{ site.data.curriculum.position | smartify }}
+                <span itemprop="jobTitle">{{ site.data.curriculum.position | smartify }}</span>
             </div>
         </div>
         <div class="d-block md:d-none no-blank-icon">
@@ -17,8 +32,7 @@
             </button>
             <div class="menu">
                 {% for contact in site.data.contacts %}
-                <a class="menu-item" href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank"
-                    itemprop="sameAs" content="{{ contact.link }}">
+                <a class="menu-item" href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank">
                     <i class="fa-lg {{ contact.icon }}"></i>
                     {% if contact.value %}
                     <span class="visually-hidden">{{ contact.name }}</span>
@@ -41,22 +55,28 @@
 
             <div class="list-group list-group-flush" id="more-info">
                 <a class="list-group-item list-group-item-action icon-link"
-                    href="{{ site.data.curriculum.affiliation.laboratory.url }}" target="_blank">
+                    href="{{ site.data.curriculum.affiliation.laboratory.url }}" target="_blank"
+                    itemprop="affiliation" itemscope itemtype="https://schema.org/ResearchOrganization">
+                    <link itemprop="url" href="{{ site.data.curriculum.affiliation.laboratory.url }}">
                     <span class="fas fa-people-group"></span>
                     <span class="visually-hidden">Research Group:</span>
-                    {{ site.data.curriculum.affiliation.laboratory.name | smartify }}
+                    <span itemprop="name">{{ site.data.curriculum.affiliation.laboratory.name | smartify }}</span>
                 </a>
                 <a class="list-group-item list-group-item-action icon-link"
-                    href="{{ site.data.curriculum.affiliation.department.url }}" target="_blank">
+                    href="{{ site.data.curriculum.affiliation.department.url }}" target="_blank"
+                    itemprop="affiliation" itemscope itemtype="https://schema.org/ResearchOrganization">
+                    <link itemprop="url" href="{{ site.data.curriculum.affiliation.department.url }}">
                     <span class="fas fa-building"></span>
                     <span class="visually-hidden">Department:</span>
-                    {{ site.data.curriculum.affiliation.department.name | smartify }}
+                    <span itemprop="name">{{ site.data.curriculum.affiliation.department.name | smartify }}</span>
                 </a>
                 <a class="list-group-item list-group-item-action icon-link"
-                    href="{{ site.data.curriculum.affiliation.institution.url }}" target="_blank">
+                    href="{{ site.data.curriculum.affiliation.institution.url }}" target="_blank"
+                    itemprop="worksFor" itemscope itemtype="https://schema.org/ResearchOrganization">
+                    <link itemprop="url" href="{{ site.data.curriculum.affiliation.institution.url }}">
                     <span class="fas fa-building-columns"></span>
                     <span class="visually-hidden">Institution:</span>
-                    {{ site.data.curriculum.affiliation.institution.name | smartify }}
+                    <span itemprop="name">{{ site.data.curriculum.affiliation.institution.name | smartify }}</span>
                 </a>
                 <a class="list-group-item list-group-item-action icon-link" href="mailto:{{ site.author.mail }}">
                     <span class="fas fa-envelope"></span>
@@ -71,7 +91,7 @@
                 <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
             </summary>
 
-            <div class="list-group list-group-flush" id="more-info">
+            <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action icon-link"
                     href="{{ site.data.curriculum.affiliation.laboratory.url }}" target="_blank">
                     <span class="fas fa-people-group"></span>
@@ -108,7 +128,7 @@
         <div class="list-group list-group-flush" id="social-links">
             {% for contact in site.data.contacts %}
             <a href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank" itemprop="sameAs"
-                content="{{ contact.link }}" class="list-group-item list-group-item-action icon-link">
+                class="list-group-item list-group-item-action icon-link">
                 <i class="fa-lg {{ contact.icon }}"></i>
             {% if contact.value %}
             <span class="visually-hidden">{{ contact.name }}</span>

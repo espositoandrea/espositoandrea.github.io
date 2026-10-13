@@ -3,8 +3,30 @@ layout: base
 ---
 {% include navigation.html %}
 
-<div class="container flex-grow-1">
-    <div class="row relative">
+{%- comment -%}
+  The container is the schema.org item of the page itself (`schema_type` in the front matter,
+  WebPage by default; archives are CollectionPages). On profile pages its main entity, the
+  author (Person), spans both the sidebar and the content.
+{%- endcomment -%}
+{%- if page.posts and page.type -%}
+    {%- assign schema_type = "CollectionPage" -%}
+{%- else -%}
+    {%- assign schema_type = page.schema_type | default: "WebPage" -%}
+{%- endif -%}
+<div class="container flex-grow-1" itemscope itemtype="https://schema.org/{{ schema_type }}">
+    <link itemprop="url" href="{{ page.url | absolute_url | replace: '/index.html', '/' }}">
+    <meta itemprop="name" content="{{ page.title | default: site.title | smartify | strip_html | escape }}">
+    {%- if page.description %}
+    <meta itemprop="description" content="{{ page.description | normalize_whitespace | escape }}">
+    {%- endif %}
+    <meta itemprop="inLanguage" content="{{ page.lang | default: 'en' }}">
+    <div hidden itemprop="isPartOf" itemscope itemtype="https://schema.org/WebSite" itemid="{{ '/#website' | absolute_url }}">
+        <link itemprop="url" href="{{ '/' | absolute_url }}">
+        <meta itemprop="name" content="{{ site.title }}">
+        <link itemprop="author" href="{{ '/#person' | absolute_url }}">
+    </div>
+    <div class="row relative"
+        {%- if schema_type == "ProfilePage" %} itemprop="mainEntity" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}"{% endif %}>
         <aside class="lg:col-3">
             {%include sidebar.html %}
         </aside>

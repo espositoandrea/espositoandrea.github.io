@@ -16,6 +16,14 @@ affiliation:
     2004, route des Lucioles
     BP 93
     06902 Sophia Antipolis  Cedex
+# Research topics (schema.org knowsAbout of the author)
+interests:
+  - Human-Computer Interaction
+  - Human-Centred Artificial Intelligence
+  - Symbiotic Artificial Intelligence
+  - Human-AI Interaction
+  - Explainable Artificial Intelligence
+  - Conversational Agents
 brief: |
   Andrea Esposito is a postdoctoral researcher at [Inria]{:target="_blank"},
   in the [Wimmics]{:target="_blank"} team at

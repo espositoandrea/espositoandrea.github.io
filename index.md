@@ -1,4 +1,5 @@
 ---
+schema_type: ProfilePage
 layout: page
 lang: en
 permalink: /
@@ -14,6 +15,8 @@ in the [Wimmics](https://team.inria.fr/wimmics/){:target="_blank"} team at
 I study how people and AI systems can work *together*: I'm interested in AI
 that augments human abilities rather than replacing them, and that people
 can understand, question, and trust.
+{: itemprop="description"}
+
 
 Before moving to France, I earned my PhD in Computer Science and Mathematics at
 the [University of Bari Aldo Moro](https://www.uniba.it/){:target="_blank"}.
