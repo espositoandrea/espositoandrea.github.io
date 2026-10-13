@@ -42,9 +42,6 @@
 {%- if scholarly_container and work_venue %}
 <span hidden itemprop="isPartOf" itemscope itemtype="https://schema.org/{{ scholarly_container }}">
     <meta itemprop="name" content="{{ work_venue | strip_html | normalize_whitespace | escape }}">
-    {%- if work.volume and scholarly_container == "Periodical" %}
-    <meta itemprop="volumeNumber" content="{{ work.volume }}">
-    {%- endif %}
 </span>
 {%- endif %}
 {%- if work.pages %}
