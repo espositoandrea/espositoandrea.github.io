@@ -1,0 +1,33 @@
+# Categories of /talks (see talks.html), in the order they are shown.
+#
+# - name:     heading of the group
+#   color:    Bootstrap theme colour of the chip and badges
+#   types:    values of `type` in talks.yml that belong here
+#   seminars: true to collect every entry of the `seminars` list
+#   fallback: true to collect every talk whose type is missing or listed nowhere else
+#
+# Categories with no entries are not shown.
+
+- name: Invited Speeches
+  color: primary
+  types: [Invited talk]
+
+- name: TED Talks
+  color: danger
+  types: [TED talk]
+
+- name: Paper Presentations
+  color: success
+  types: [Conference talk, Workshop talk]
+
+- name: Posters
+  color: warning
+  types: [Poster presentation]
+
+- name: Seminars
+  color: info
+  seminars: true
+
+- name: Others
+  color: secondary
+  fallback: true

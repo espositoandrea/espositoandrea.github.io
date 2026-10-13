@@ -1,0 +1,18 @@
+{% comment %}
+  Collects in `cat_items` the entries of a category of _data/talk_categories.yml.
+  Parameters: cat (the category), talks, seminars, known (every type listed by a category).
+{% endcomment %}
+{% assign cat_items = "" | split: "" %}
+{% if include.cat.seminars %}
+    {% assign cat_items = include.seminars %}
+{% else %}
+    {% for t in include.talks %}
+        {% assign hit = false %}
+        {% if include.cat.fallback %}
+            {% unless include.known contains t.type %}{% assign hit = true %}{% endunless %}
+        {% elsif include.cat.types contains t.type %}
+            {% assign hit = true %}
+        {% endif %}
+        {% if hit %}{% assign cat_items = cat_items | push: t %}{% endif %}
+    {% endfor %}
+{% endif %}

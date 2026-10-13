@@ -11,11 +11,10 @@ description: >-
 {% assign talks = site.data.talks.talks | default: none | sort: 'date' | reverse %}
 {% assign seminars = site.data.talks.seminars | default: none | sort: 'date' | reverse %}
 
-{% comment %} Talk types, each with a colour (Bootstrap theme colours, assigned in alphabetical order). {% endcomment %}
-{% assign palette = "primary,success,warning,info,danger,secondary" | split: "," %}
-{% assign types = talks | map: "type" | compact | uniq | sort %}
-{% assign untyped = talks | where_exp: "item", "item.type == nil" %}
-{% if untyped.size > 0 %}{% assign types = types | push: "Other" %}{% endif %}
+{% comment %} Categories (see _data/talk_categories.yml). {% endcomment %}
+{% assign categories = site.data.talk_categories %}
+{% assign known = "" | split: "" %}
+{% for cat in categories %}{% if cat.types %}{% assign known = known | concat: cat.types %}{% endif %}{% endfor %}
 
     <p>
         This page lists the talks I gave to present my research (typically associated with a publication) and the
@@ -30,131 +29,80 @@ description: >-
     {% endfor %}
     {% if has_translation %}{% include i18n-toggle.html %}{% endif %}
 
-    <section class="mb-12" aria-labelledby="talks">
-        <h2 id="talks" class="h4 d-flex align-items-baseline gap-3">
-            Talks
-            <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal" id="talks-count" data-total="{{ talks.size }}">{{ talks.size }}</span>
-        </h2>
+    <details class="card mb-7" id="talk-controls" open hidden>
+        <summary class="card-header d-flex flex-column md:flex-row flex-wrap justify-content-between align-items-baseline gap-3">
+            <span class="fw-semibold"><i class="fa-solid fa-sliders fa-fw" aria-hidden="true"></i> Search, filter and view options</span>
+            <span class="d-flex align-items-baseline gap-5">
+                <span class="small fg-secondary" id="talk-status" role="status" aria-live="polite"></span>
+                <i class="fa-solid fa-chevron-down talk-chevron" aria-hidden="true" title="Click to collapse or expand"></i>
+            </span>
+        </summary>
+        <div class="card-body vstack gap-5">
+            <div>
+                <label for="talk-search" class="form-label small fg-secondary mb-1">Search</label>
+                <input type="search" id="talk-search" class="form-control" placeholder="Title, event, institution, year…" autocomplete="off">
+            </div>
 
-        {% if types.size > 1 %}
-        <div class="d-flex flex-wrap align-items-center gap-3 mb-5 small" id="talk-types" role="group" aria-label="Filter talks by type" hidden>
-            <span class="fg-secondary">Filter by type:</span>
-            {% for type in types %}
-                {% assign idx = forloop.index0 | modulo: palette.size %}
-                {% assign color = palette[idx] %}
-                {% assign type_count = 0 %}
-                {% for talk in talks %}
-                    {% assign talk_type = talk.type | default: "Other" %}
-                    {% if talk_type == type %}{% assign type_count = type_count | plus: 1 %}{% endif %}
+            <div class="d-flex flex-wrap align-items-center gap-3 small" id="talk-types" role="group" aria-label="Filter by category">
+                <span class="fg-secondary">Category:</span>
+                {% for cat in categories %}
+                    {% include talk-items.html cat=cat talks=talks seminars=seminars known=known %}
+                    {% if cat_items.size > 0 %}
+                    <button type="button" class="btn btn-sm rounded-pill border bg-subtle-{{ cat.color }} fg-emphasis-{{ cat.color }} border-subtle-{{ cat.color }}" data-category="{{ cat.name }}" aria-pressed="true">
+                        {{ cat.name }} <span class="opacity-75">{{ cat_items.size }}</span>
+                    </button>
+                    {% endif %}
                 {% endfor %}
-                <button type="button" class="btn btn-sm rounded-pill border bg-subtle-{{ color }} fg-emphasis-{{ color }} border-subtle-{{ color }}" data-type="{{ type }}" aria-pressed="true">
-                    {{ type }} <span class="opacity-75">{{ type_count }}</span>
-                </button>
-            {% endfor %}
-        </div>
-        <p class="fg-secondary" id="talks-empty" hidden>No talks match the selected types.</p>
-        {% endif %}
+            </div>
 
-        {% if talks.size == 0 %}
-            <p class="fg-secondary">No talks to show yet.</p>
-        {% else %}
-            {% assign groups = talks | group_by_exp: 'item', 'item.date | date: "%Y"' %}
-            {% for group in groups %}
-                <div class="talk-year">
-                <h3 class="h5 mt-7 fg-secondary">{{ group.name }}</h3>
-                <div class="list-group">
-                {% for talk in group.items %}
-                    {% assign talk_type = talk.type | default: "Other" %}
-                    {% assign color = "secondary" %}
-                    {% for type in types %}
-                        {% if type == talk_type %}{% assign idx = forloop.index0 | modulo: palette.size %}{% assign color = palette[idx] %}{% endif %}
-                    {% endfor %}
-                    <article class="card mt-3" data-type="{{ talk_type }}" itemscope itemtype="https://schema.org/Event">
-                        {% include talk-meta.html talk=talk context=talk.event %}
-                        <div class="card-body">
-                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5">
-                            <h4 class="card-title h6 mb-0">{{ talk.title | smartify }}</h4>
-                            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
-                                {% if talk.type %}<span class="badge bg-subtle-{{ color }} fg-emphasis-{{ color }} border border-subtle-{{ color }} fw-normal">{{ talk.type }}</span>{% endif %}
-                                <time class="small fg-secondary font-monospace text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
-                            </div>
-                        </div>
-                        <ul class="list-inline small fg-secondary mb-0">
-                            {% if talk.event %}
-                            <li class="list-inline-item me-5">
-                                <i class="fa-solid fa-microphone fa-fw" aria-hidden="true"></i>
-                                {% if talk.event.url %}<a href="{{ talk.event.url }}" target="_blank" rel="noopener noreferrer">{{ talk.event.name | smartify }}</a>{% else %}{{ talk.event.name | smartify }}{% endif %}
-                            </li>
-                            {% endif %}
-                            {% if talk.institution %}
-                            <li class="list-inline-item me-5">
-                                <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ talk.institution | smartify }}
-                            </li>
-                            {% endif %}
-                            {% if talk.inviter %}
-                            <li class="list-inline-item me-5">
-                                <i class="fa-solid fa-user-tie fa-fw" aria-label="Invited by" title="Invited by"></i>
-                                {% if talk.inviter.url %}<a href="{{ talk.inviter.url }}" target="_blank" rel="noopener noreferrer">{{ talk.inviter.name | smartify }}</a>{% else %}{{ talk.inviter.name | smartify }}{% endif %}
-                            </li>
-                            {% endif %}
-                            {% if talk.location %}
-                            <li class="list-inline-item me-5">
-                                <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ talk.location.en | default: talk.location | smartify }}
-                            </li>
-                            {% endif %}
-                        </ul>
-
-                        {% if talk.description %}
-                            <small class="small">{{ talk.description | markdownify |  remove: '<p>' | remove: '</p>' }}</small>
-                        {% endif %}    
-                        
-                    </div>
-                    
-                    <div class="list-group list-group-flush">
-                        {% if talk.slides or talk.poster or talk.video %}
-                            <div class="list-group-item d-flex gap-5">
-                                {% if talk.slides %}<a class="theme-primary btn-text btn-sm" href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
-                                {% if talk.poster %}<a class="theme-primary btn-text btn-sm" href="{{ talk.poster | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-image fa-fw" aria-hidden="true"></i> Poster</a>{% endif %}
-                                {% if talk.video %}<a class="theme-primary btn-text btn-sm" href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
-                            </div>
-                        {% endif %}
-                    </div>
-
-
-                        {% if talk.paper %}
-                        <div class="card-footer small d-flex flex-wrap align-items-baseline gap-3">
-                            <details>
-                                <summary class="fg-secondary"><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Associated paper</summary>
-                                {% capture paper_reference %}{% reference {{talk.paper}} %}{% endcapture %}
-                                <div class="mt-1">{{ paper_reference | emphasize_author }}</div>
-                            </details>
-                            <a href="{% details_link {{talk.paper}} %}" class="ms-auto"><i class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></i> See paper details</a>
-                        </div>
-                        {% endif %}
-                        </article>
-                {% endfor %}
-                    </div>
+            <div class="d-flex flex-wrap align-items-center gap-3 small" role="group" aria-label="Filter by year">
+                <span class="fg-secondary">Years:</span>
+                <label for="talk-year-from" class="visually-hidden">From year</label>
+                <input type="number" id="talk-year-from" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
+                <div class="talk-range">
+                    <div class="talk-range-track"><div class="talk-range-fill" id="talk-range-fill"></div></div>
+                    <input type="range" id="talk-range-from" aria-label="From year (slider)">
+                    <input type="range" id="talk-range-to" aria-label="To year (slider)">
                 </div>
-            {% endfor %}
-        {% endif %}
-    </section>
+                <label for="talk-year-to" class="visually-hidden">To year</label>
+                <input type="number" id="talk-year-to" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
+            </div>
 
-    <section class="mb-12" aria-labelledby="seminars">
-        <h2 id="seminars" class="h4 d-flex align-items-baseline gap-3">
-            Seminars
-            <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal">{{ seminars.size }}</span>
+            <div class="d-flex flex-wrap align-items-center gap-3 small" role="group" aria-label="Group by">
+                <span class="fg-secondary">Group by:</span>
+                <div class="btn-group btn-group-sm" id="talk-group">
+                    <label class="btn-check btn-outline theme-secondary">
+                        <input type="radio" name="talk-group" value="category" autocomplete="off" checked>
+                        Category
+                    </label>
+                    <label class="btn-check btn-outline theme-secondary">
+                        <input type="radio" name="talk-group" value="year" autocomplete="off">
+                        Year
+                    </label>
+                </div>
+            </div>
+            <div><button type="button" class="btn-sm btn-outline theme-secondary" id="talk-reset">Reset all</button></div>
+        </div>
+    </details>
+
+    {% for cat in categories %}
+    {% include talk-items.html cat=cat talks=talks seminars=seminars known=known %}
+    {% if cat_items.size > 0 %}
+    <section class="mb-12" aria-labelledby="{{ cat.name | slugify }}" data-category="{{ cat.name }}">
+        <h2 id="{{ cat.name | slugify }}" class="h4 d-flex align-items-baseline gap-3">
+            {{ cat.name }}
+            <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal" data-total="{{ cat_items.size }}">{{ cat_items.size }}</span>
         </h2>
 
-        {% if seminars.size == 0 %}
-            <p class="fg-secondary">No seminars to show yet.</p>
-        {% else %}
-            {% assign groups = seminars | group_by_exp: 'item', 'item.date | date: "%Y"' %}
-            {% for group in groups %}
-                <h3 class="h5 mt-7 fg-secondary">{{ group.name }}</h3>
-                <div class="list-group">
+        {% assign groups = cat_items | group_by_exp: 'item', 'item.date | date: "%Y"' %}
+        {% for group in groups %}
+            <div class="year-block">
+            <h3 class="h5 mt-7 fg-secondary">{{ group.name }}</h3>
+            <div class="list-group">
+            {% if cat.seminars %}
                 {% for seminar in group.items %}
                     {% assign context = seminar.course | default: seminar.event %}
-                    <article class="card mt-3" itemscope itemtype="https://schema.org/{% if seminar.course %}EducationEvent{% else %}Event{% endif %}">
+                    <article class="card mt-3" data-category="{{ cat.name }}" data-year="{{ seminar.date | date: '%Y' }}" data-date="{{ seminar.date | date: '%Y-%m-%d' }}" itemscope itemtype="https://schema.org/{% if seminar.course %}EducationEvent{% else %}Event{% endif %}">
                         {% include talk-meta.html talk=seminar context=context %}
                         <div class="card-body">
                         <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
@@ -221,50 +169,258 @@ description: >-
                         </div>
                     </article>
                 {% endfor %}
-                </div>
-            {% endfor %}
-        {% endif %}
+            {% else %}
+                {% for talk in group.items %}
+                    <article class="card mt-3" data-category="{{ cat.name }}" data-year="{{ talk.date | date: '%Y' }}" data-date="{{ talk.date | date: '%Y-%m-%d' }}" itemscope itemtype="https://schema.org/Event">
+                        {% include talk-meta.html talk=talk context=talk.event %}
+                        <div class="card-body">
+                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5">
+                            <h4 class="card-title h6 mb-0">{{ talk.title | smartify }}</h4>
+                            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
+                                {% if talk.type %}<span class="badge bg-subtle-{{ cat.color }} fg-emphasis-{{ cat.color }} border border-subtle-{{ cat.color }} fw-normal">{{ talk.type }}</span>{% endif %}
+                                <time class="small fg-secondary font-monospace text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
+                            </div>
+                        </div>
+                        <ul class="list-inline small fg-secondary mb-0">
+                            {% if talk.event %}
+                            <li class="list-inline-item me-5">
+                                <i class="fa-solid fa-microphone fa-fw" aria-hidden="true"></i>
+                                {% if talk.event.url %}<a href="{{ talk.event.url }}" target="_blank" rel="noopener noreferrer">{{ talk.event.name | smartify }}</a>{% else %}{{ talk.event.name | smartify }}{% endif %}
+                            </li>
+                            {% endif %}
+                            {% if talk.institution %}
+                            <li class="list-inline-item me-5">
+                                <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ talk.institution | smartify }}
+                            </li>
+                            {% endif %}
+                            {% if talk.inviter %}
+                            <li class="list-inline-item me-5">
+                                <i class="fa-solid fa-user-tie fa-fw" aria-label="Invited by" title="Invited by"></i>
+                                {% if talk.inviter.url %}<a href="{{ talk.inviter.url }}" target="_blank" rel="noopener noreferrer">{{ talk.inviter.name | smartify }}</a>{% else %}{{ talk.inviter.name | smartify }}{% endif %}
+                            </li>
+                            {% endif %}
+                            {% if talk.location %}
+                            <li class="list-inline-item me-5">
+                                <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ talk.location.en | default: talk.location | smartify }}
+                            </li>
+                            {% endif %}
+                        </ul>
+
+                        {% if talk.description %}
+                            <small class="small">{{ talk.description | markdownify |  remove: '<p>' | remove: '</p>' }}</small>
+                        {% endif %}    
+                        
+                    </div>
+                    
+                    <div class="list-group list-group-flush">
+                        {% if talk.slides or talk.poster or talk.video %}
+                            <div class="list-group-item d-flex gap-5">
+                                {% if talk.slides %}<a class="theme-primary btn-text btn-sm" href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                {% if talk.poster %}<a class="theme-primary btn-text btn-sm" href="{{ talk.poster | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-image fa-fw" aria-hidden="true"></i> Poster</a>{% endif %}
+                                {% if talk.video %}<a class="theme-primary btn-text btn-sm" href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                        {% if talk.paper %}
+                        <div class="card-footer small d-flex flex-wrap align-items-baseline gap-3">
+                            <details>
+                                <summary class="fg-secondary"><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Associated paper</summary>
+                                {% capture paper_reference %}{% reference {{talk.paper}} %}{% endcapture %}
+                                <div class="mt-1">{{ paper_reference | emphasize_author }}</div>
+                            </details>
+                            <a href="{% details_link {{talk.paper}} %}" class="ms-auto"><i class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></i> See paper details</a>
+                        </div>
+                        {% endif %}
+                        </article>
+                {% endfor %}
+            {% endif %}
+            </div>
+            </div>
+        {% endfor %}
     </section>
+    {% endif %}
+    {% endfor %}
+
+    <div id="talk-grouped" hidden></div>
+
+    <p id="talk-no-results" class="fg-secondary" hidden>No talks or seminars match your search.</p>
 
 <script>
-    (function () {
-        var legend = document.getElementById("talk-types");
-        if (!legend) { return; }
+(function () {
+    var controls = document.getElementById('talk-controls');
+    var input = document.getElementById('talk-search');
+    var status = document.getElementById('talk-status');
+    var empty = document.getElementById('talk-no-results');
+    var grouped = document.getElementById('talk-grouped');
+    var yearFrom = document.getElementById('talk-year-from');
+    var yearTo = document.getElementById('talk-year-to');
+    var sliderFrom = document.getElementById('talk-range-from');
+    var sliderTo = document.getElementById('talk-range-to');
+    var fill = document.getElementById('talk-range-fill');
+    var range = { from: 0, to: 0 };
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section.mb-12'));
+    // Every entry with the list it belongs to in the "by type" layout, in document order.
+    var items = Array.prototype.slice.call(document.querySelectorAll('article[data-category]')).map(function (a) {
+        return {
+            article: a,
+            home: a.parentElement,
+            category: a.dataset.category,
+            year: parseInt(a.dataset.year, 10) || 0,
+            date: a.dataset.date || '',
+            text: normalize(a.textContent)
+        };
+    });
+    if (!items.length) { return; }
+    var total = items.length;
+    var mode = 'category';
+    var active = {};
 
-        var buttons = legend.querySelectorAll("button");
-        var articles = document.querySelectorAll("article[data-type]");
-        var years = document.querySelectorAll(".talk-year");
-        var count = document.getElementById("talks-count");
-        var empty = document.getElementById("talks-empty");
-        var active = {};
-        buttons.forEach(function (button) { active[button.dataset.type] = true; });
+    function normalize(str) {
+        return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ');
+    }
 
-        function update() {
-            var visible = 0;
-            articles.forEach(function (article) {
-                var show = active[article.dataset.type] !== false;
-                article.hidden = !show;
-                if (show) { visible++; }
-            });
-            years.forEach(function (year) {
-                year.hidden = !year.querySelector("article:not([hidden])");
-            });
-            buttons.forEach(function (button) {
-                var on = active[button.dataset.type];
-                button.setAttribute("aria-pressed", on);
-                button.classList.toggle("opacity-50", !on);
-            });
-            var total = count.dataset.total;
-            count.textContent = visible === +total ? total : visible + " / " + total;
-            empty.hidden = visible > 0;
-        }
+    // Moves every entry back into its original list.
+    function restore() {
+        items.forEach(function (it) { it.home.appendChild(it.article); });
+    }
 
-        buttons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                active[button.dataset.type] = !active[button.dataset.type];
-                update();
-            });
+    // Category chips are rendered by Liquid: wire them up.
+    document.querySelectorAll('#talk-types button').forEach(function (b) {
+        active[b.dataset.category] = true;
+        b.setAttribute('aria-pressed', 'true');
+        b.addEventListener('click', function () {
+            var on = b.getAttribute('aria-pressed') !== 'true';
+            active[b.dataset.category] = on;
+            b.setAttribute('aria-pressed', on);
+            b.classList.toggle('opacity-50', !on);
+            filter();
         });
-        legend.hidden = false;
-    })();
+    });
+
+    // Year range: spans the years that have entries.
+    var allYears = items.map(function (it) { return it.year; })
+        .filter(function (y, i, a) { return y && a.indexOf(y) === i; })
+        .sort(function (a, b) { return b - a; });
+    var minYear = allYears[allYears.length - 1], maxYear = allYears[0];
+
+    // Keeps both ends inside the available years and in order; `moved` is the end the user changed.
+    function setRange(from, to, moved) {
+        from = isNaN(from) ? range.from : Math.min(Math.max(from, minYear), maxYear);
+        to = isNaN(to) ? range.to : Math.min(Math.max(to, minYear), maxYear);
+        if (from > to) { if (moved === 'to') to = from; else from = to; }
+        range.from = from;
+        range.to = to;
+        [yearFrom, sliderFrom].forEach(function (e) { e.value = from; });
+        [yearTo, sliderTo].forEach(function (e) { e.value = to; });
+        var span = Math.max(maxYear - minYear, 1);
+        fill.style.left = ((from - minYear) / span * 100) + '%';
+        fill.style.right = ((maxYear - to) / span * 100) + '%';
+        filter();
+    }
+
+    [yearFrom, yearTo, sliderFrom, sliderTo].forEach(function (e) {
+        e.min = minYear;
+        e.max = maxYear;
+    });
+    yearFrom.addEventListener('change', function () { setRange(parseInt(yearFrom.value, 10), range.to, 'from'); });
+    yearTo.addEventListener('change', function () { setRange(range.from, parseInt(yearTo.value, 10), 'to'); });
+    sliderFrom.addEventListener('input', function () { setRange(+sliderFrom.value, range.to, 'from'); });
+    sliderTo.addEventListener('input', function () { setRange(range.from, +sliderTo.value, 'to'); });
+
+    document.getElementById('talk-reset').addEventListener('click', function () {
+        input.value = '';
+        document.querySelectorAll('#talk-types button[aria-pressed="false"]').forEach(function (b) { b.click(); });
+        setRange(minYear, maxYear);
+    });
+
+    function regroup() {
+        restore();
+        grouped.textContent = '';
+        var byType = mode === 'category';
+        sections.forEach(function (s) { s.classList.toggle('talk-original-hidden', !byType); });
+        grouped.hidden = byType;
+        if (!byType) {
+            var sorted = items.slice().sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+            var block = null, last = null;
+            sorted.forEach(function (it) {
+                if (it.year !== last) {
+                    last = it.year;
+                    block = document.createElement('div');
+                    block.className = 'year-block';
+                    var h = document.createElement('h2');
+                    h.id = 'year-' + (it.year || 'undated');
+                    h.className = 'h4 mt-7 d-flex align-items-baseline gap-3';
+                    h.appendChild(document.createTextNode((it.year || 'Undated') + ' '));
+                    var badge = document.createElement('span');
+                    badge.className = 'badge rounded-pill bg-secondary fg-contrast-secondary fw-normal';
+                    h.appendChild(badge);
+                    var list = document.createElement('div');
+                    list.className = 'list-group';
+                    block.appendChild(h);
+                    block.appendChild(list);
+                    grouped.appendChild(block);
+                }
+                block.lastChild.appendChild(it.article);
+            });
+            grouped.querySelectorAll('.year-block').forEach(function (b) {
+                b.querySelector('.badge').dataset.total = b.querySelectorAll('article').length;
+            });
+        }
+        filter();
+    }
+
+    function filter() {
+        var terms = normalize(input.value).split(' ').filter(Boolean);
+        var shown = 0;
+        var shownByCat = {};
+        var typesOff = Object.keys(active).some(function (k) { return !active[k]; });
+        var yearsOff = range.from > minYear || range.to < maxYear;
+        var filtering = terms.length > 0 || typesOff || yearsOff;
+        items.forEach(function (it) {
+            var match = active[it.category] !== false &&
+                it.year >= range.from && it.year <= range.to &&
+                terms.every(function (t) { return it.text.indexOf(t) !== -1; });
+            it.article.hidden = !match;
+            if (match) { shown++; shownByCat[it.category] = (shownByCat[it.category] || 0) + 1; }
+        });
+        document.querySelectorAll('.year-block').forEach(function (b) {
+            var visible = b.querySelectorAll('article:not([hidden])').length;
+            b.hidden = visible === 0;
+            var badge = b.querySelector('h2 .badge');
+            if (badge) { badge.textContent = filtering ? visible + ' / ' + badge.dataset.total : badge.dataset.total; }
+        });
+        sections.forEach(function (s) {
+            var badge = s.querySelector('h2 .badge');
+            var n = shownByCat[s.dataset.category] || 0;
+            if (badge) { badge.textContent = filtering ? n + ' / ' + badge.dataset.total : badge.dataset.total; }
+            s.hidden = filtering && n === 0;
+        });
+        empty.hidden = shown > 0;
+        status.textContent = 'Showing ' + shown + ' of ' + total;
+    }
+
+    controls.hidden = false;
+    setRange(minYear, maxYear);
+    input.addEventListener('input', filter);
+    document.querySelectorAll('input[name="talk-group"]').forEach(function (r) {
+        r.addEventListener('change', function () { mode = r.value; regroup(); });
+    });
+})();
 </script>
+<style>
+    #talk-controls > summary { cursor: pointer; }
+    .talk-range { position: relative; height: 1.5rem; flex: 1 1 12rem; max-width: 28rem; margin: 0 .5rem; }
+    .talk-chevron { transition: transform .15s; }
+    #talk-controls[open] .talk-chevron { transform: rotate(180deg); }
+    @media (max-width: 575.98px) { .talk-range { order: 1; flex-basis: 100%; max-width: none; margin: 0 .5rem; } }
+    .talk-range-track { position: absolute; top: 50%; left: 0; right: 0; height: .25rem; margin-top: -.125rem; border-radius: .125rem; background: var(--bg-3); }
+    .talk-range-fill { position: absolute; top: 0; bottom: 0; border-radius: .125rem; background: var(--primary-base); }
+    .talk-range input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; background: none; pointer-events: none; -webkit-appearance: none; appearance: none; }
+    .talk-range input[type=range]::-webkit-slider-runnable-track { background: none; }
+    .talk-range input[type=range]::-moz-range-track { background: none; }
+    .talk-range input[type=range]::-webkit-slider-thumb { pointer-events: auto; -webkit-appearance: none; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--primary-base); background: var(--bg-body); cursor: pointer; }
+    .talk-range input[type=range]::-moz-range-thumb { pointer-events: auto; width: 1.1rem; height: 1.1rem; border-radius: 50%; border: 2px solid var(--primary-base); background: var(--bg-body); cursor: pointer; }
+    .talk-original-hidden { display: none !important; }
+</style>
