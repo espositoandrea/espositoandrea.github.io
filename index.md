@@ -15,8 +15,7 @@ in the [Wimmics](https://team.inria.fr/wimmics/){:target="_blank"} team at
 I study how people and AI systems can work *together*: I'm interested in AI
 that augments human abilities rather than replacing them, and that people
 can understand, question, and trust.
-{: itemprop="description"}
-
+{: .fs-5 itemprop="description"}
 
 Before moving to France, I earned my PhD in Computer Science and Mathematics at
 the [University of Bari Aldo Moro](https://www.uniba.it/){:target="_blank"}.
@@ -26,18 +25,6 @@ explore metabolomics knowledge graphs.
 If you want the full story, have a look at my [curriculum]({{ '/curriculum' | relative_url }})
 or my [publications]({{ '/publications' | relative_url }}).
 
-## Research interests
-
-- **Human-Centered and Symbiotic AI**: designing AI systems that augment people
-  instead of replacing them, keeping humans in control.
-- **Explainable AI**: making the behavior of AI models understandable to the
-  people who rely on them.
-- **Human-AI Interaction**: studying how people perceive, use, and trust AI,
-  including the mental models they build of it.
-- **Conversational AI and Knowledge Graphs**: LLM-based assistants that make
-  complex scientific knowledge accessible through natural language.
-- **Usability, UX, and Accessibility**: evaluating and improving interactive
-  systems so that they work well for everyone.
 
 {% if site.data.news.size > 0 %}
 ## News
@@ -45,6 +32,22 @@ or my [publications]({{ '/publications' | relative_url }}).
 {% include news-list.html limit=5 %}
 <p><a href="{{ '/news' | relative_url }}">All news</a></p>
 {% endif %}
+
+
+## Research interests
+
+<div class="row row-cols-1 md:row-cols-3 g-4">
+  {% for interest in site.data.research_interests %}
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h3 class="h5 card-title">{{ interest.title }}</h3>
+          <p class="card-text">{{ interest.description }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
 
 {% assign highlights = site.data.highlights.highlights %}
 {% if highlights.size > 0 %}
@@ -61,6 +64,12 @@ or my [publications]({{ '/publications' | relative_url }}).
 
 ## Beyond research
 
+<div class="row row-cols-1 md:row-cols-2 g-4">
+<div class="col">
+<div class="card h-100"><div class="card-body" markdown="1">
+
+### Photography
+
 When I'm not doing research, you'll probably find me with a camera in my hands.
 Photography is one of my greatest passions: I love wandering around a city
 looking for street and architectural shots, and trying to see familiar places
@@ -72,7 +81,18 @@ You can find some of my photos on
 {%- endif %}
 Sometimes, I also post them in my [blog]({{ '/blog/' | absolute_url }}) or on [Substack](https://espositoandrea.substack.com){:target="_blank" rel="noopener noreferrer"}.
 
+</div></div>
+</div>
+<div class="col">
+<div class="card h-100"><div class="card-body" markdown="1">
+
+### Free software
+
 I'm also a strong supporter of [free (as in "libre") software](https://www.gnu.org/philosophy/free-sw.html){:target="_blank"}:
 software that respects its users' freedom to run, study, share, and improve it.
 That's why my projects, configuration files, and even the source code of this
 website are freely available on [GitHub](https://github.com/espositoandrea){:target="_blank"}.
+
+</div></div>
+</div>
+</div>
