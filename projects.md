@@ -3,6 +3,8 @@ layout: page
 lang: en
 permalink: /projects
 title: Projects
+description: >-
+  Personal and third-party projects Andrea Esposito worked on.
 ---
 
 Here is a list of some of the projects on which I worked.
