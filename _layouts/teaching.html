@@ -18,6 +18,8 @@ layout: default
     <meta itemprop="educationalLevel" content="{{ page.levelTranslation | default: page.level | escape }}">
     {% if page.officialPage %}<link itemprop="sameAs" href="{{ page.officialPage }}">{% endif %}
     {% if page.credits %}<meta itemprop="numberOfCredits" content="{{ page.credits }}">{% endif %}
+    {% assign description = content | strip %}
+    {% if description == "" %}<meta itemprop="description" content="{{ page.titleTranslation | default: page.title | escape }}, {{ page.levelTranslation | default: page.level | escape }} course in {{ page.degreeTranslation | default: page.degree | escape }} at {{ page.institution.name | escape }} (A.Y. {{ page.academicYear }}).">{% endif %}
     <div hidden itemprop="provider" itemscope itemtype="https://schema.org/CollegeOrUniversity">
         <meta itemprop="name" content="{{ page.institution.name | escape }}">
         {% if page.institution.department %}
@@ -103,7 +105,6 @@ layout: default
         </dl>
     </section>
 
-    {% assign description = content | strip %}
     {% if description != "" %}
     <section aria-labelledby="course-description" class="mb-12">
         <h2 id="course-description" class="h4">Description</h2>
