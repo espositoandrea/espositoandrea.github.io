@@ -5,10 +5,23 @@ permalink: /
 title: Andrea Esposito
 image: /assets/images/profile.jpeg
 description: >-
-  Andrea Esposito is a Ph.D. student in the Department of Computer Science at the University of Bari Aldo Moro. He is an active member of the Interaction, Visualization, Usability & UX (IVU) Laboratory, where his research focuses on Human-Centred Artificial Intelligence. His interests lie in Human-Computer Interaction, eXplainable Artificial Intelligence, and Human-AI Interaction.
+  Andrea Esposito is a postdoctoral researcher at Inria, in the Wimmics team at Université Côte d'Azur. He works on Human-Centered AI and Symbiotic AI, at the intersection of Human-Computer Interaction and Artificial Intelligence.
 ---
 
-{{ site.data.curriculum.brief | markdownify }}
+Hi, I'm Andrea! I'm a postdoctoral researcher at [Inria](https://www.inria.fr/){:target="_blank"},
+in the [Wimmics](https://team.inria.fr/wimmics/){:target="_blank"} team at
+[Université Côte d'Azur](https://univ-cotedazur.fr/){:target="_blank"}.
+I study how people and AI systems can work *together*: I'm interested in AI
+that augments human abilities rather than replacing them, and that people
+can understand, question, and trust.
+
+Before moving to France, I earned my PhD in Computer Science and Mathematics at
+the [University of Bari Aldo Moro](https://www.uniba.it/){:target="_blank"}.
+Today I'm building LLM-based conversational assistants that help scientists
+explore metabolomics knowledge graphs.
+
+If you want the full story, have a look at my [curriculum]({{ '/curriculum' | relative_url }})
+or my [publications]({{ '/publications' | relative_url }}).
 
 {% assign news = site.data.news | sort: 'date' | reverse %}
 {% if news.size > 0 %}
