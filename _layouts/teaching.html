@@ -10,23 +10,31 @@ layout: default
 {% assign news = "" | split: "" %}
 {% if page.news %}{% assign news = page.news | sort: 'date' | reverse %}{% endif %}
 
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Course",
-        "name": {{ page.title | jsonify }},
-        {% if translated %}"alternateName": {{ page.titleTranslation | jsonify }},{% endif %}
-        "inLanguage": {{ page.language | jsonify }},
-        "url": "{{ page.url | absolute_url }}",
-        "educationalLevel": {{ page.levelTranslation | default: page.level | jsonify }},
-        "provider": {
-            "@type": "CollegeOrUniversity",
-            "name": {{ page.institution.name | jsonify }}
-        }
-    }
-</script>
-
-<article class="container p-5 flex-grow-1">
+<article class="container p-5 flex-grow-1" itemprop="mainEntity" itemscope itemtype="https://schema.org/Course">
+    <link itemprop="url" href="{{ page.url | absolute_url }}">
+    <meta itemprop="name" content="{{ page.title | escape }}">
+    {% if translated %}<meta itemprop="alternateName" content="{{ page.titleTranslation | escape }}">{% endif %}
+    <meta itemprop="inLanguage" content="{{ page.language | default: 'en' }}">
+    <meta itemprop="educationalLevel" content="{{ page.levelTranslation | default: page.level | escape }}">
+    {% if page.officialPage %}<link itemprop="sameAs" href="{{ page.officialPage }}">{% endif %}
+    {% if page.credits %}<meta itemprop="numberOfCredits" content="{{ page.credits }}">{% endif %}
+    <div hidden itemprop="provider" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+        <meta itemprop="name" content="{{ page.institution.name | escape }}">
+        {% if page.institution.department %}
+        <div itemprop="department" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="{{ page.institution.department | escape }}">
+        </div>
+        {% endif %}
+    </div>
+    <div hidden itemprop="hasCourseInstance" itemscope itemtype="https://schema.org/CourseInstance">
+        <meta itemprop="name" content="{{ page.title | escape }} (A.Y. {{ page.academicYear }})">
+        <meta itemprop="courseMode" content="onsite">
+        <meta itemprop="inLanguage" content="{{ page.language | default: 'en' }}">
+        <div itemprop="instructor" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
+            <meta itemprop="name" content="{{ site.author.name }}">
+            <link itemprop="url" href="{{ '/' | absolute_url }}">
+        </div>
+    </div>
     <nav aria-label="breadcrumbs" class="small mb-5">
         <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
             <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
@@ -99,7 +107,7 @@ layout: default
     {% if description != "" %}
     <section aria-labelledby="course-description" class="mb-12">
         <h2 id="course-description" class="h4">Description</h2>
-        <div lang="{{ page.descriptionLanguage | default: 'en' }}">
+        <div lang="{{ page.descriptionLanguage | default: 'en' }}" itemprop="description">
             {{ content }}
         </div>
     </section>
