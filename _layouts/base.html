@@ -36,7 +36,9 @@
     {% include seo.html %}
     {% feed_meta %}
 
-    {% if page.doi %}
+    {% if page.entry %}
+    {% include citation-meta.html entry=page.entry %}
+    {% elsif page.doi %}
     <meta name="citation_doi" content="{{ page.doi }}">
     {% endif %}
 

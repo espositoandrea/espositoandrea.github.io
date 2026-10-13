@@ -1,0 +1,55 @@
+{%- comment -%}
+  Highwire Press meta tags of a publication page, used by Google Scholar to index it.
+  Parameter: entry (BibTeX entry, as exposed by jekyll-scholar). Uses page.links.pdf.
+{%- endcomment -%}
+{%- assign work = include.entry -%}
+{%- include scholarly-date.html entry=work separator="/" -%}
+<meta name="citation_title" content="{{ work.title | strip_html | normalize_whitespace | escape }}">
+{%- for author in work.author_array %}
+<meta name="citation_author" content="{{ author.last | escape }}, {{ author.first | escape }}">
+{%- endfor %}
+<meta name="citation_publication_date" content="{{ scholarly_date }}">
+{%- case work.type -%}
+  {%- when "article" %}
+<meta name="citation_journal_title" content="{{ work.journal | strip_html | normalize_whitespace | escape }}">
+  {%- when "inproceedings" %}
+<meta name="citation_conference_title" content="{{ work.booktitle | strip_html | normalize_whitespace | escape }}">
+  {%- when "incollection", "inbook" %}
+<meta name="citation_inbook_title" content="{{ work.booktitle | strip_html | normalize_whitespace | escape }}">
+  {%- when "phdthesis", "mastersthesis" %}
+<meta name="citation_dissertation_institution" content="{{ work.school | escape }}">
+{%- endcase %}
+{%- if work.volume %}
+<meta name="citation_volume" content="{{ work.volume }}">
+{%- endif %}
+{%- if work.number %}
+<meta name="citation_issue" content="{{ work.number }}">
+{%- endif %}
+{%- if work.pages %}
+{%- assign pages = work.pages | replace: "--", "-" | replace: "–", "-" | split: "-" %}
+<meta name="citation_firstpage" content="{{ pages.first | strip }}">
+{%- if pages.size > 1 %}
+<meta name="citation_lastpage" content="{{ pages.last | strip }}">
+{%- endif %}
+{%- endif %}
+{%- if work.publisher %}
+<meta name="citation_publisher" content="{{ work.publisher | escape }}">
+{%- endif %}
+{%- assign identifiers = work.isbn | split: " " %}
+{%- for isbn in identifiers %}
+<meta name="citation_isbn" content="{{ isbn }}">
+{%- endfor %}
+{%- assign identifiers = work.issn | split: " " %}
+{%- for issn in identifiers %}
+<meta name="citation_issn" content="{{ issn }}">
+{%- endfor %}
+{%- if work.doi %}
+<meta name="citation_doi" content="{{ work.doi }}">
+{%- endif %}
+{%- if work.langid %}
+<meta name="citation_language" content="{{ work.langid | replace: 'english', 'en' | replace: 'italian', 'it' }}">
+{%- endif %}
+<meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}">
+{%- if page.links.pdf %}
+<meta name="citation_pdf_url" content="{{ page.links.pdf | absolute_url }}">
+{%- endif %}

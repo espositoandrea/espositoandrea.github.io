@@ -49,6 +49,8 @@
 {%- comment -%} Description {%- endcomment -%}
 {%- if page.description -%}
   {%- assign seo_description = page.description -%}
+{%- elsif page.entry.abstract -%}
+  {%- assign seo_description = page.entry.abstract | remove_first: "Abstract " -%}
 {%- elsif is_post and page.excerpt -%}
   {%- assign seo_description = page.excerpt | markdownify | strip_html -%}
 {%- elsif page.posts -%}
@@ -104,7 +106,7 @@
   {%- assign twitter_card = "summary" -%}
 {%- endif -%}
 
-{%- if is_post -%}
+{%- if is_post or page.entry -%}
   {%- assign og_type = "article" -%}
 {%- elsif is_profile -%}
   {%- assign og_type = "profile" -%}
