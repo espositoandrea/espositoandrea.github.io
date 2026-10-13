@@ -23,6 +23,19 @@ explore metabolomics knowledge graphs.
 If you want the full story, have a look at my [curriculum]({{ '/curriculum' | relative_url }})
 or my [publications]({{ '/publications' | relative_url }}).
 
+## Research interests
+
+- **Human-Centered and Symbiotic AI**: designing AI systems that augment people
+  instead of replacing them, keeping humans in control.
+- **Explainable AI**: making the behavior of AI models understandable to the
+  people who rely on them.
+- **Human-AI Interaction**: studying how people perceive, use, and trust AI,
+  including the mental models they build of it.
+- **Conversational AI and Knowledge Graphs**: LLM-based assistants that make
+  complex scientific knowledge accessible through natural language.
+- **Usability, UX, and Accessibility**: evaluating and improving interactive
+  systems so that they work well for everyone.
+
 {% assign news = site.data.news | sort: 'date' | reverse %}
 {% if news.size > 0 %}
 ## News
