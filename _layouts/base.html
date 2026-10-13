@@ -33,7 +33,7 @@
     <link href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s' }}" rel="stylesheet">
 
 
-    {% seo %}
+    {% include seo.html %}
     {% feed_meta %}
 
     {% if page.doi %}

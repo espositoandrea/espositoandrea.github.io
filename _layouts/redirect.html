@@ -40,7 +40,7 @@
 	<link href="{{ '/assets/css/main.css' | absolute_url }}?{{ site.time | date: '%s' }}" rel="stylesheet">
 
 
-	{% seo %}
+	{% include seo.html %}
 
 	<script type="application/ld+json">
         {% include linked-data.json %}
