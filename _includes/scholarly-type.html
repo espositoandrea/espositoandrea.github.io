@@ -1,0 +1,11 @@
+{%- comment -%}
+  Sets `scholarly_type` (schema.org type) and `scholarly_container` (type of the work it is
+  published in) for the BibTeX entry `include.entry`.
+{%- endcomment -%}
+{%- case include.entry.type -%}
+  {%- when "article" -%}{%- assign scholarly_type = "ScholarlyArticle" -%}{%- assign scholarly_container = "Periodical" -%}
+  {%- when "incollection", "inbook" -%}{%- assign scholarly_type = "Chapter" -%}{%- assign scholarly_container = "Book" -%}
+  {%- when "phdthesis", "mastersthesis" -%}{%- assign scholarly_type = "Thesis" -%}{%- assign scholarly_container = nil -%}
+  {%- when "book" -%}{%- assign scholarly_type = "Book" -%}{%- assign scholarly_container = nil -%}
+  {%- else -%}{%- assign scholarly_type = "ScholarlyArticle" -%}{%- assign scholarly_container = "Book" -%}
+{%- endcase -%}

@@ -2,10 +2,12 @@
 layout: default
 ---
 
-<article>
+{%- include scholarly-type.html entry=page.entry -%}
+<article itemprop="mainEntity" itemscope itemtype="https://schema.org/{{ scholarly_type }}">
+	{% include scholarly-meta.html entry=page.entry url=page.url %}
 	<header class="text-center mb-7">
 		<h1 class="mb-5">
-			{{ page.entry.title }}
+			<span itemprop="headline">{{ page.entry.title }}</span>
 			{% if page.entry.copyright contains "CC" %}
 				<span class="ai ai-open-access fa-lg fg-warning" title="Published in Open Access"></span>
 			{% endif %}
@@ -74,7 +76,7 @@ layout: default
 		<section class="card mx-auto mb-12" style="max-width: 50rem;">
 			<div class="card-body">
 				<h2 class="h6 card-title text-uppercase fg-secondary" style="letter-spacing: .05em;">Abstract</h2>
-				<p class="card-text mb-0" style="text-align: justify; hyphens: auto;">{{ page.entry.abstract }}</p>
+				<p class="card-text mb-0" style="text-align: justify; hyphens: auto;" itemprop="abstract">{{ page.entry.abstract }}</p>
 			</div>
 		</section>
 	{% endif %}

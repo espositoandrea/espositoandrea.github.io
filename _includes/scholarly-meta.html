@@ -1,0 +1,62 @@
+{%- comment -%}
+  Microdata properties of a publication (inside an element with its schema.org type, see
+  scholarly-type.html): authors, date, venue, publisher, identifiers, and links.
+  Parameters: entry (BibTeX entry, as exposed by jekyll-scholar), url (details page).
+{%- endcomment -%}
+{%- assign work = include.entry -%}
+{%- include scholarly-type.html entry=work -%}
+{%- include scholarly-date.html entry=work -%}
+{%- assign work_venue = work.journal | default: work.booktitle -%}
+<link itemprop="url" href="{{ include.url | absolute_url }}">
+<meta itemprop="name" content="{{ work.title | strip_html | normalize_whitespace | escape }}">
+<meta itemprop="datePublished" content="{{ scholarly_date }}">
+{%- for author in work.author_array %}
+{%- capture author_name %}{{ author.first }} {{ author.last }}{% endcapture %}
+<span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"
+    {%- if author_name == site.author.name %} itemid="{{ '/#person' | absolute_url }}"{% endif %}>
+    <meta itemprop="name" content="{{ author_name | strip | escape }}">
+    <meta itemprop="givenName" content="{{ author.first | escape }}">
+    <meta itemprop="familyName" content="{{ author.last | escape }}">
+    {%- if author_name == site.author.name %}
+    <link itemprop="url" href="{{ '/' | absolute_url }}">
+    {%- endif %}
+</span>
+{%- endfor %}
+{%- if work.doi %}
+<meta itemprop="identifier" content="https://doi.org/{{ work.doi }}">
+<link itemprop="sameAs" href="https://doi.org/{{ work.doi }}">
+{%- endif %}
+{%- if work.url %}
+<link itemprop="sameAs" href="{{ work.url }}">
+{%- endif %}
+{%- if work.publisher %}
+<span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <meta itemprop="name" content="{{ work.publisher | escape }}">
+</span>
+{%- endif %}
+{%- if scholarly_type == "Thesis" and work.school %}
+<span hidden itemprop="sourceOrganization" itemscope itemtype="https://schema.org/CollegeOrUniversity">
+    <meta itemprop="name" content="{{ work.school | escape }}">
+</span>
+{%- endif %}
+{%- if scholarly_container and work_venue %}
+<span hidden itemprop="isPartOf" itemscope itemtype="https://schema.org/{{ scholarly_container }}">
+    <meta itemprop="name" content="{{ work_venue | strip_html | normalize_whitespace | escape }}">
+    {%- if work.volume and scholarly_container == "Periodical" %}
+    <meta itemprop="volumeNumber" content="{{ work.volume }}">
+    {%- endif %}
+</span>
+{%- endif %}
+{%- if work.pages %}
+<meta itemprop="pagination" content="{{ work.pages | replace: '--', '–' }}">
+{%- endif %}
+{%- if work.copyright contains "CC" %}
+<meta itemprop="isAccessibleForFree" content="true">
+{%- assign license = work.copyright | split: " " -%}
+{%- if license.size == 3 and license[0] == "CC" %}
+<link itemprop="license" href="https://creativecommons.org/licenses/{{ license[1] | downcase }}/{{ license[2] }}/">
+{%- endif %}
+{%- endif %}
+{%- if work.langid %}
+<meta itemprop="inLanguage" content="{{ work.langid | replace: 'english', 'en' | replace: 'italian', 'it' }}">
+{%- endif %}

@@ -1,0 +1,14 @@
+{%- comment -%}
+  Sets `scholarly_date` to the publication date of the BibTeX entry `include.entry` (YYYY or
+  YYYY-MM), using `include.separator` (default "-") between year and month.
+{%- endcomment -%}
+{%- assign scholarly_months = "jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec" | split: "," -%}
+{%- assign scholarly_month_key = include.entry.month | downcase | slice: 0, 3 -%}
+{%- assign scholarly_separator = include.separator | default: "-" -%}
+{%- assign scholarly_date = include.entry.year | append: "" -%}
+{%- for month in scholarly_months -%}
+  {%- if month == scholarly_month_key -%}
+    {%- assign scholarly_month = forloop.index | prepend: "0" | slice: -2, 2 -%}
+    {%- assign scholarly_date = scholarly_date | append: scholarly_separator | append: scholarly_month -%}
+  {%- endif -%}
+{%- endfor -%}
