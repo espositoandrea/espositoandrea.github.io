@@ -6,7 +6,7 @@
     html[data-title-language="original"] .i18n-en,
     html:not([data-title-language="original"]) .i18n-orig { display: none; }
 </style>
-<div class="mb-7" id="i18n-toggle" hidden>
+<div{% unless include.embedded %} class="mb-7"{% endunless %} id="i18n-toggle" hidden>
     <div class="d-flex flex-wrap align-items-center gap-3 small">
         <span class="fg-secondary" id="i18n-toggle-label">Show:</span>
         <div class="btn-group btn-group-sm" role="group" aria-labelledby="i18n-toggle-label">

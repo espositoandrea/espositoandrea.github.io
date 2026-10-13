@@ -27,7 +27,6 @@ description: >-
         {% if seminar.language != "en" and seminar.titleTranslation %}{% assign has_translation = true %}{% endif %}
         {% if seminar.course.nameTranslation or seminar.degreeTranslation %}{% assign has_translation = true %}{% endif %}
     {% endfor %}
-    {% if has_translation %}{% include i18n-toggle.html %}{% endif %}
 
     <details class="card mb-7" id="talk-controls" open hidden>
         <summary class="card-header d-flex flex-column md:flex-row flex-wrap justify-content-between align-items-baseline gap-3">
@@ -81,6 +80,9 @@ description: >-
                     </label>
                 </div>
             </div>
+
+            {% if has_translation %}{% include i18n-toggle.html embedded=true %}{% endif %}
+
             <div><button type="button" class="btn-sm btn-outline theme-secondary" id="talk-reset">Reset all</button></div>
         </div>
     </details>
