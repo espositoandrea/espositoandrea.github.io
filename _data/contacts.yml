@@ -6,6 +6,10 @@
   value: "@espositoandrea@hci.social"
   icon: fab fa-mastodon
   link: https://hci.social/@espositoandrea
+- name: Instagram
+  value: "@espositoandrea.exe"
+  icon: fab fa-instagram
+  link: https://www.instagram.com/espositoandrea.exe/
 - name: "GitHub"
   value: "espositoandrea"
   icon: "fab fa-github"
