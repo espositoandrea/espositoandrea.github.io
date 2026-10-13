@@ -39,19 +39,11 @@ or my [publications]({{ '/publications' | relative_url }}).
 - **Usability, UX, and Accessibility**: evaluating and improving interactive
   systems so that they work well for everyone.
 
-{% assign news = site.data.news | sort: 'date' | reverse %}
-{% if news.size > 0 %}
+{% if site.data.news.size > 0 %}
 ## News
 
-<ul class="list-unstyled news">
-{% for item in news limit: 5 %}
-  <li class="mb-3">
-    <span class="fg-secondary">{{ item.date | date: "%b %-d, %Y" }}</span> &middot;
-    <strong>{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</strong>
-    {% if item.description %}<div>{{ item.description | markdownify | remove: '<p>' | remove: '</p>' }}</div>{% endif %}
-  </li>
-{% endfor %}
-</ul>
+{% include news-list.html limit=5 %}
+<p><a href="{{ '/news' | relative_url }}">All news</a></p>
 {% endif %}
 
 {% assign highlights = site.data.highlights.highlights %}
