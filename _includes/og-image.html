@@ -1,0 +1,9 @@
+{%- comment -%}
+  Looks up the Open Graph image generated for a post by scripts/og-images.mjs
+  (/assets/images/og/posts/<post file name>.png, 1200x630). Sets `og_file` to the static file,
+  or nil when it was not generated. Parameter: post (defaults to the current page).
+{%- endcomment -%}
+{%- assign og_post = include.post | default: page -%}
+{%- assign og_slug = og_post.path | split: "/" | last | remove: ".markdown" | remove: ".md" -%}
+{%- assign og_path = "/assets/images/og/posts/" | append: og_slug | append: ".png" -%}
+{%- assign og_file = site.static_files | where: "path", og_path | first -%}

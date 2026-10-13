@@ -69,29 +69,27 @@
 {%- endif -%}
 
 {%- comment -%}
-  Sharing image: explicit og_image, then the image generated for the post (see scripts/og-images.mjs),
-  then the cover image, then the generated default card, then the profile picture.
+  Sharing image: explicit og_image, then the featured (cover) image,
+  then the image generated for the post (see scripts/og-images.mjs), then the generated default card, then the profile picture.
 {%- endcomment -%}
 {%- assign seo_image = nil -%}
 {%- assign seo_image_generated = false -%}
 {%- assign twitter_card = "summary_large_image" -%}
 {%- assign seo_image_alt = page.og_image_alt | default: page.image_alt -%}
 {%- if is_post -%}
-  {%- assign og_slug = page.path | split: "/" | last | remove: ".markdown" | remove: ".md" -%}
-  {%- assign og_path = "/assets/images/og/posts/" | append: og_slug | append: ".png" -%}
-  {%- assign og_file = site.static_files | where: "path", og_path | first -%}
+  {%- include og-image.html -%}
 {%- else -%}
   {%- assign og_file = nil -%}
 {%- endif -%}
 {%- assign og_default = site.static_files | where: "path", "/assets/images/og/default.png" | first -%}
 {%- if page.og_image -%}
   {%- assign seo_image = page.og_image | absolute_url -%}
+{%- elsif page.image and is_profile == false -%}
+  {%- assign seo_image = page.image | absolute_url -%}
 {%- elsif og_file -%}
   {%- assign seo_image = og_file.path | absolute_url -%}
   {%- assign seo_image_generated = true -%}
   {%- capture seo_image_alt -%}“{{ page_title }}”, by {{ site.author.name }}{%- endcapture -%}
-{%- elsif page.image and is_profile == false -%}
-  {%- assign seo_image = page.image | absolute_url -%}
 {%- elsif og_default and is_profile == false -%}
   {%- assign seo_image = og_default.path | absolute_url -%}
   {%- assign seo_image_generated = true -%}

@@ -10,7 +10,31 @@ layout: default
 {% assign words = content | number_of_words %}
 {% assign reading_time = words | divided_by: 200 | plus: 1 %}
 
-<article class="post">
+{% include og-image.html %}
+{% assign post_description = page.description | default: page.excerpt | markdownify | strip_html | normalize_whitespace %}
+
+<article class="post" itemprop="mainEntity" itemscope itemtype="https://schema.org/BlogPosting">
+    <link itemprop="url" href="{{ page.url | absolute_url }}">
+    <link itemprop="mainEntityOfPage" href="{{ page.url | absolute_url }}">
+    {% if page.canonical_url %}<link itemprop="sameAs" href="{{ page.canonical_url }}">{% endif %}
+    {% if page.doi %}<link itemprop="sameAs" href="https://doi.org/{{ page.doi }}">{% endif %}
+    <meta itemprop="description" content="{{ post_description | escape }}">
+    <meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">
+    <meta itemprop="dateModified" content="{{ page.last_modified_at | default: page.date | date_to_xmlschema }}">
+    <meta itemprop="inLanguage" content="{{ page.lang | default: 'en' }}">
+    <meta itemprop="wordCount" content="{{ words }}">
+    <meta itemprop="timeRequired" content="PT{{ reading_time }}M">
+    {% for tag in page.tags %}<meta itemprop="keywords" content="{{ tag | escape }}">{% endfor %}
+    {% for category in page.categories %}<meta itemprop="articleSection" content="{{ category | escape }}">{% endfor %}
+    {% if og_file and page.image == nil and page.og_image == nil %}<link itemprop="image" href="{{ og_file.path | absolute_url }}">{% endif %}
+    <div hidden itemprop="publisher" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
+        <meta itemprop="name" content="{{ site.author.name }}">
+        <link itemprop="url" href="{{ '/' | absolute_url }}">
+    </div>
+    <div hidden itemprop="isPartOf" itemscope itemtype="https://schema.org/Blog" itemid="{{ '/blog/' | absolute_url }}#blog">
+        <meta itemprop="name" content="{{ site.title }}’s Blog">
+        <link itemprop="url" href="{{ '/blog/' | absolute_url }}">
+    </div>
     <nav aria-label="breadcrumbs" class="small mb-5">
         <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
             <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -68,7 +92,7 @@ layout: default
         </p>
         {% endif %}
         
-        <h1 class="mt-0 mb-5">{{ page.title | smartify }}</h1>
+        <h1 class="mt-0 mb-5" itemprop="headline">{{ page.title | smartify }}</h1>
         
         {% comment %} Show the excerpt as a lede only if it is not just the post's opening paragraph. {% endcomment %}
         {% assign lede = page.excerpt | markdownify | strip_html | strip %}
@@ -81,14 +105,17 @@ layout: default
         <p class="fs-lg fg-secondary mb-5">{{ lede }}</p>
         {% endif %}
         
-        <div class="post-byline d-flex align-items-center">
+        {% comment %} The byline is the author (the publication date is set on the article above). {% endcomment %}
+        <div class="post-byline d-flex align-items-center" itemprop="author" itemscope itemtype="https://schema.org/Person"
+            {%- if author.name == site.author.name %} itemid="{{ '/#person' | absolute_url }}"{% endif %}>
+            {% if author.name == site.author.name %}<link itemprop="url" href="{{ '/' | absolute_url }}">{% endif %}
             {% if author.picture %}
             <span class="avatar">
-                <img alt="" aria-hidden="true" class="avatar-img" loading="lazy" src="{{ author.picture | absolute_url }}">
+                <img alt="" aria-hidden="true" class="avatar-img" loading="lazy" src="{{ author.picture | absolute_url }}" itemprop="image">
             </span>
             {% endif %}
             <div class="ms-5 small">
-                <span class="d-block fw-semibold">{{ author.name }}</span>
+                <span class="d-block fw-semibold" itemprop="name">{{ author.name }}</span>
                 <span class="d-block fg-secondary">
                     <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %e, %Y" }}</time>
                     &middot; {{ reading_time }} min read
@@ -110,7 +137,7 @@ layout: default
 
     {% if page.image %}
     <figure class="post-cover mb-7">
-        <img src="{{ page.image | absolute_url }}"
+        <img src="{{ page.image | absolute_url }}" itemprop="image"
             {% if page.image_alt != blank %}alt="{{ page.image_alt | strip_newlines | escape }}"{% else %}alt="" aria-hidden="true"{% endif %}
             onerror="this.closest('figure').remove();">
         {% if page.image_caption != blank %}
@@ -154,7 +181,9 @@ layout: default
     {% endfor %}
     {% endif %}
 
+    <div itemprop="articleBody">
     {{ content }}
+    </div>
 
     <footer>
         <hr />
