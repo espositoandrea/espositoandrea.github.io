@@ -107,8 +107,8 @@ layout: default
 
     {% if description != "" %}
     <section aria-labelledby="course-description" class="mb-12">
-        <h2 id="course-description" class="h4">Description</h2>
-        <div lang="{{ page.descriptionLanguage | default: 'en' }}" itemprop="description">
+        <!-- <h2 id="course-description" class="h4">Description</h2> -->
+        <div lang="{{ page.language | default: 'en' }}" itemprop="description">
             {{ content }}
         </div>
     </section>
