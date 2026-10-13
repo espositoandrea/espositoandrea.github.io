@@ -7,17 +7,19 @@ layout: default
     <header class="mb-7">
         {% if page.breadcrumbs %}
             <nav aria-label="breadcrumbs" class="small">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ '/' | absolute_url }}">Home</a></li>
+                <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
                     <li class="breadcrumb-divider"></li>
                     {% for crumb in page.breadcrumbs %}
-                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="{{ crumb.url | absolute_url }}">{{ crumb.title }}</a></li>
+                        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="{{ crumb.url | absolute_url }}" itemprop="item"><span itemprop="name">{{ crumb.title }}</span></a><meta itemprop="position" content="{{ forloop.index | plus: 1 }}"></li>
                         <li class="breadcrumb-divider"></li>
                     {% endfor %}
-                    <li class="breadcrumb-item" aria-current="page">
+                    <li class="breadcrumb-item" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                         <a href="#" class="breadcrumb-link active">
                             {% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}
                         </a>
+                        <meta itemprop="name" content="{{ page.title | smartify | escape }}">
+                        <meta itemprop="position" content="{{ page.breadcrumbs.size | plus: 2 }}">
                     </li>
                 </ol>
             </nav>

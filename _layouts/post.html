@@ -2,51 +2,6 @@
 layout: default
 ---
 
-<script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement":[
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "{{ '/' | absolute_url }}"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Blog",
-                "item": "{{ '/blog/' | absolute_url }}"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Posts",
-                "item": "{{ '/blog/posts/' | absolute_url }}"
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "name": "{{ page.date | date: '%Y'}}",
-                "item": "{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 5,
-                "name": "{{ page.date | date: '%m'}}",
-                "item": "{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 6,
-                "name": "{{ page.title | smartify}}",
-                "item": "{{ page.url | absolute_url }}"
-            }
-        ]
-    }
-</script>
-
 {% if page.author %}
 {% assign author = site.data.authors[page.author] %}
 {% elsif site.author %}
@@ -57,29 +12,35 @@ layout: default
 
 <article class="post">
     <nav aria-label="breadcrumbs" class="small mb-5">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="{{ '/' | absolute_url }}">Home</a>
+        <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumb-link" href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a>
+                <meta itemprop="position" content="1">
             </li>
             <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="{{ '/blog/' | absolute_url }}">Blog</a>
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumb-link" href="{{ '/blog/' | absolute_url }}" itemprop="item"><span itemprop="name">Blog</span></a>
+                <meta itemprop="position" content="2">
             </li>
             <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}">Posts</a>
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}" itemprop="item"><span itemprop="name">Posts</span></a>
+                <meta itemprop="position" content="3">
             </li>
             <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/">{{ page.date | date: '%Y' }}</a>
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%Y' }}</span></a>
+                <meta itemprop="position" content="4">
             </li>
             <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item">
-                <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/">{{ page.date | date: '%m' }}</a>
+            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%m' }}</span></a>
+                <meta itemprop="position" content="5">
             </li>
             <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item active" aria-current="page">
-                <a href="#" class="breadcrumb-link active">{{ page.title | smartify }}</a>
+            <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="#" class="breadcrumb-link active"><span itemprop="name">{{ page.title | smartify }}</span></a>
+                <meta itemprop="position" content="6">
             </li>
         </ol>
     </nav>
