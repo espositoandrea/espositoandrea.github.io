@@ -1,6 +1,6 @@
 {%- comment -%}
   Microdata properties of a talk or seminar (inside an element of type schema.org Event):
-  date, speaker (the site's author), location, hosting event, and recordings.
+  date, speaker (the site's author), location, hosting event, organizer, and recording.
   Parameters: talk (entry of _data/talks.yml), context (event or course it was part of).
 {%- endcomment -%}
 {%- assign talk = include.talk -%}
@@ -41,7 +41,10 @@
 </span>
 {%- endif %}
 {%- if talk.video %}
-<link itemprop="recordedIn" href="{{ talk.video }}">
+<span hidden itemprop="recordedIn" itemscope itemtype="https://schema.org/VideoObject">
+    <meta itemprop="name" content="{{ talk.title | smartify | escape }}">
+    <link itemprop="url" href="{{ talk.video }}">
+</span>
 {%- endif %}
 {%- if talk.description %}
 <meta itemprop="description" content="{{ talk.description | markdownify | strip_html | normalize_whitespace | escape }}">
