@@ -6,9 +6,15 @@
 {% assign ext = false %}
 {% if post.redirect != blank %}{% assign ext = true %}{% endif %}
 
-<article class="card {% if include.featured %} card-row {% else %} h-100 {% endif %} hover-lift">
+<article class="card {% if include.featured %} card-row {% else %} h-100 {% endif %} hover-lift" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <link itemprop="url" href="{{ url }}">
+    <meta itemprop="datePublished" content="{{ post.date | date_to_xmlschema }}">
+    <span hidden itemprop="author" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
+        <meta itemprop="name" content="{{ site.author.name }}">
+        <link itemprop="url" href="{{ '/' | absolute_url }}">
+    </span>
     {% if post.image %}
-        <img class="object-fit-cover ratio-21x9 {% if include.featured %} w-50 card-img-start {% else %} card-img-top {% endif %}" src="{{ post.image | absolute_url }}" alt="" onerror="this.remove();" loading="{% if include.featured %}eager{% else %}lazy{% endif %}">
+        <img class="object-fit-cover ratio-21x9 {% if include.featured %} w-50 card-img-start {% else %} card-img-top {% endif %}" src="{{ post.image | absolute_url }}" itemprop="image" alt="" onerror="this.remove();" loading="{% if include.featured %}eager{% else %}lazy{% endif %}">
     {% endif %}
     <div class="card-body">
         <small class="fg-3">
@@ -17,10 +23,10 @@
             &middot; <a href="{{ post.external_source_url }}" target="_blank">{{ post.external_source }}</a>
             {% endif %}
         </small>
-        <h2 class="card-title mt-0 h4">
+        <h2 class="card-title mt-0 h4" itemprop="headline">
             <a href="{{ url }}">{{ post.title | smartify }}</a>
         </h2>
-        <p class="card-text">
+        <p class="card-text" itemprop="description">
             {% assign text = post.excerpt | markdownify | strip_html | newline_to_br | replace: "<br />", " " | strip_newlines %}
             {% if include.featured %}{{ text | truncatewords: 60 }}{% else %}{{ text | truncatewords: 28 }}{% endif %}
         </p>

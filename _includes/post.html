@@ -1,10 +1,16 @@
 {% assign url = post.redirect | default: post.url | absolute_url %}
 
-<div class="post-card mb-5">
+<div class="post-card mb-5" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <link itemprop="url" href="{{ url }}">
+    <meta itemprop="datePublished" content="{{ post.date | date_to_xmlschema }}">
+    <span hidden itemprop="author" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
+        <meta itemprop="name" content="{{ site.author.name }}">
+        <link itemprop="url" href="{{ '/' | absolute_url }}">
+    </span>
     <div class="row g-0">
         <div class="md:col-8">
             <div class="card-body">
-                <h2 class="card-title mt-0">
+                <h2 class="card-title mt-0" itemprop="headline">
                     <a class="no-blank-icon" href="{{ url }}" {% if post.redirect !=blank %} target="_blank" {%
                        endif %}>
                         {{ post.title | smartify }}
@@ -17,19 +23,19 @@
                     Published in <a href="{{ post.external_source_url }}" target="_blank">{{ post.external_source }}</a>
                     {% endif %}
                 </p>
-                <p class="card-text">
+                <div class="card-text" itemprop="description">
                     {% if post.external_source != blank %}
                         {{ post.excerpt }}
                     {% else %}
                         {{ post.excerpt | markdownify }}
                     {% endif %}
-                </p>
+                </div>
             </div>
         </div>
         <div class="md:col-4">
             {% if post.image %}
             <a class="no-blank-icon" href="{{ url }}" {% if post.external_source !=blank %} target="_blank" {% endif %}>
-                <img src="{{ post.image | absolute_url }}" class="card-img rounded-end" alt="" aria-hidden="true">
+                <img src="{{ post.image | absolute_url }}" class="card-img rounded-end" alt="" aria-hidden="true" itemprop="image">
             </a>
             {% endif %}
         </div>

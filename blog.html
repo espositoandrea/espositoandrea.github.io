@@ -5,13 +5,14 @@ title: "Blog"
 permalink: /blog/
 pagination:
   enabled: true
-seo:
-  type: ProfilePage
+schema_type: CollectionPage
 description: >-
   Blog of Andrea Esposito: essays, brief research ideas, and personal columns on AI, Human-Computer Interaction, science, and digital well-being.
 ---
 
-<main class="container p-5 flex-grow-1">
+<main class="container p-5 flex-grow-1" itemprop="mainEntity" itemscope itemtype="https://schema.org/Blog" itemid="{{ '/blog/' | absolute_url }}#blog">
+        <meta itemprop="name" content="{{ site.title }}’s Blog">
+        <link itemprop="url" href="{{ '/blog/' | absolute_url }}">
     <header>
         <div class="d-flex flex-row flex-wrap align-items-center">
             <h1 class="flex-grow-1 mb-0">{{ page.title | smartify }}</h1>

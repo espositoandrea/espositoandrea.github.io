@@ -2,12 +2,15 @@
 layout: default
 lang: en
 title: "Posts' Archive"
+schema_type: CollectionPage
 permalink: /blog/posts/
 description: >-
   Archive of all blog posts by Andrea Esposito, grouped by year.
 ---
 
-<main class="container p-5 flex-grow-1">
+<main class="container p-5 flex-grow-1" itemprop="mainEntity" itemscope itemtype="https://schema.org/Blog" itemid="{{ '/blog/' | absolute_url }}#blog">
+        <meta itemprop="name" content="{{ site.title }}’s Blog">
+        <link itemprop="url" href="{{ '/blog/' | absolute_url }}">
     <header>
         <h1>{{ page.title | smartify }}</h1>
         <hr/>
