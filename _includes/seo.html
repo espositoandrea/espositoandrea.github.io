@@ -51,6 +51,8 @@
   {%- assign seo_description = page.description -%}
 {%- elsif page.entry.abstract -%}
   {%- assign seo_description = page.entry.abstract | remove_first: "Abstract " -%}
+{%- elsif page.collection == "teachings" -%}
+  {%- capture seo_description -%}{{ page.titleTranslation | default: page.title }}, {{ page.levelTranslation | default: page.level }} course at {{ page.institution.name }} (A.Y. {{ page.academicYear }}) {% if page.role %}with {{ site.author.name }} as {{ page.role }}{% else %}taught by {{ site.author.name }}{% endif %}: course information, news, and material.{%- endcapture -%}
 {%- elsif is_post and page.excerpt -%}
   {%- assign seo_description = page.excerpt | markdownify | strip_html -%}
 {%- elsif page.posts -%}
