@@ -63,3 +63,21 @@ or my [publications]({{ '/publications' | relative_url }}).
 {% endfor %}
 </div>
 {% endif %}
+
+## Beyond research
+
+When I'm not doing research, you'll probably find me with a camera in my hands.
+Photography is one of my greatest passions: I love wandering around a city
+looking for street and architectural shots, and trying to see familiar places
+under a new light.
+{%- assign instagram = site.data.contacts | where: "name", "Instagram" | first %}
+{%- if instagram %}
+You can find some of my photos on
+[Instagram]({{ instagram.link }}){:target="_blank" rel="noopener noreferrer"}.
+{%- endif %}
+Sometimes, I also post them in my [blog]({{ '/blog/' | absolute_url }}) or on [Substack](https://espositoandrea.substack.com){:target="_blank" rel="noopener noreferrer"}.
+
+I'm also a strong supporter of [free (as in "libre") software](https://www.gnu.org/philosophy/free-sw.html){:target="_blank"}:
+software that respects its users' freedom to run, study, share, and improve it.
+That's why my projects, configuration files, and even the source code of this
+website are freely available on [GitHub](https://github.com/espositoandrea){:target="_blank"}.
