@@ -2,7 +2,6 @@
 title: My struggle with boredom in an uninteresting city
 author: Andrea Esposito
 layout: post
-toc: false
 canonical_site_name: Research in Ink
 canonical_url: https://www.researchinink.com/2025/09/07/my-struggle-with-boredom-in-an-uninteresting-city/
 image: https://www.researchinink.com/wp-content/uploads/2025/09/0iT2UVjDo_7g7AFUQ.webp

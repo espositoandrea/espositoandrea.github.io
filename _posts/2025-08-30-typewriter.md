@@ -5,7 +5,6 @@ author: Andrea Esposito
 canonical_site_name: Research in Ink
 canonical_url: https://www.researchinink.com/2025/08/30/i-recently-got-a-typewriter-in-an-attempt-to-regain-my-focus/
 image: /assets/images/typewriter.jpg
-toc: false
 
 opening: Dear readers,
 to: |

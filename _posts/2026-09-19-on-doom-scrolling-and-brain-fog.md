@@ -7,7 +7,6 @@ canonical_url: https://espositoandrea.substack.com/p/on-doom-scrolling-and-brain
 image: https://images.unsplash.com/photo-1743184437508-f1b3b793922b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzMDAzMzh8MHwxfHNlYXJjaHw0fHxzY3JvbGxpbmd8ZW58MHx8fHwxNzg5NzU2MzAxfDA&ixlib=rb-4.1.0&q=80&w=1080
 image_caption: Photo by [Marco Palumbo](https://unsplash.com/@sapporo2025) on [Unsplash](https://unsplash.com/)
 image_alt: Person using a smartphone with a cup of coffee
-toc: false
 excerpt: >-
    Sometimes you have to admit that you have lost. Everyone sometimes loses a battle. In the last days, I've lost the battle against doom-scrolling. In this brief column, I try to process what happened.
 category: Personal Columns

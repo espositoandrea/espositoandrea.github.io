@@ -146,13 +146,6 @@ layout: default
     </figure>
     {% endif %}
 
-    {% unless page.toc == false %}
-    <aside class="text-start rounded p-5 border bg-2 mb-5">
-        <h2 class="mt-0">Table of Contents</h2>
-        {% include toc.html html=content %}
-    </aside>
-    {% endunless %}
-
     {% if page.paper %}
     {% bib_variable -f references.bib %}
     {% for entry in site.bibliography %}

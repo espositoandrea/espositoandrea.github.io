@@ -5,7 +5,6 @@ external_source: Journal of Brief Ideas
 external_source_url: http://beta.briefideas.org/ideas/326de755c8bdb494b354e804fb09a74e
 canonical_url: https://beta.briefideas.org/ideas/326de755c8bdb494b354e804fb09a74e
 canonical_site_name: Journal of Brief Ideas
-toc: false
 date: 2024-06-29
 author: Andrea Esposito
 doi: 10.5281/zenodo.13129574

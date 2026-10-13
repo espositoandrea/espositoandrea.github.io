@@ -36,6 +36,10 @@ layout: base
     </div>
 </div>
 
+{%- unless page.toc == false -%}
+    {% include toc.html html=content h_min=2 h_max=3 floating=true %}
+{%- endunless %}
+
 <footer class="text-center bg-2 py-3 mt-12 fg-2">
     <small>
         Last update: {{ site.time | date: "%a %b %d %Y %H:%M:%S GMT%z (%Z)"}}.
