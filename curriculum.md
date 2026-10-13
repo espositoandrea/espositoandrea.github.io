@@ -5,7 +5,7 @@ permalink: /curriculum
 title: "Curriculum"
 image: /assets/images/profile.jpeg
 description: >-
-  Curriculum of Andrea Esposito, postdoctoral researcher at Inria in the Wimmics team (Université Côte d'Azur), working on Human-Centered AI and Symbiotic AI at the intersection of Human-Computer Interaction and Artificial Intelligence. PhD in Computer Science and Mathematics from the University of Bari Aldo Moro.
+  Curriculum vitae of Andrea Esposito, PhD: postdoctoral researcher at Inria in the Wimmics team (Université Côte d'Azur), working on Human-Centered AI and Symbiotic AI at the intersection of Human-Computer Interaction and Artificial Intelligence. PhD in Computer Science and Mathematics from the University of Bari Aldo Moro.
 ---
 
 {{ site.data.curriculum.brief | markdownify }}

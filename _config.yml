@@ -1,6 +1,9 @@
 title: Andrea Esposito
 description: >-
-  Andrea Esposito's website and blog.
+  Andrea Esposito is a postdoctoral researcher at Inria working on Human-Centred
+  AI, Human-AI Interaction, and eXplainable AI. Publications, talks, teaching,
+  and blog.
+locale: en_US
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://espositoandrea.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 canonical_url: "https://espositoandrea.github.io/"
