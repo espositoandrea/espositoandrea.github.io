@@ -1,7 +1,8 @@
 {%- comment -%}
   Microdata properties of a publication (inside an element with its schema.org type, see
   scholarly-type.html): authors, date, venue, publisher, identifiers, and links.
-  Parameters: entry (BibTeX entry, as exposed by jekyll-scholar), url (details page).
+  Parameters: entry (BibTeX entry, as exposed by jekyll-scholar), url (details page), access
+  (free-access links, see _plugins/parse_bibliography.rb), pdf (self-archived PDF).
 {%- endcomment -%}
 {%- assign work = include.entry -%}
 {%- include scholarly-type.html entry=work -%}
@@ -22,13 +23,28 @@
     {%- endif %}
 </span>
 {%- endfor %}
+{%- comment -%} sameAs: every link to the paper itself (DOI, publisher, free-access copies). {%- endcomment -%}
+{%- assign work_links = "" | split: "" -%}
+{%- if work.doi -%}
+  {%- capture doi_url %}https://doi.org/{{ work.doi }}{% endcapture -%}
+  {%- assign work_links = work_links | push: doi_url -%}
+{%- endif -%}
+{%- if work.url -%}{%- assign work_links = work_links | push: work.url -%}{%- endif -%}
+{%- for item in include.access -%}
+  {%- assign item_url = item.url | absolute_url -%}
+  {%- assign work_links = work_links | push: item_url -%}
+{%- endfor -%}
+{%- if include.pdf -%}
+  {%- assign pdf_url = include.pdf | absolute_url -%}
+  {%- assign work_links = work_links | push: pdf_url -%}
+{%- endif -%}
 {%- if work.doi %}
 <meta itemprop="identifier" content="https://doi.org/{{ work.doi }}">
-<link itemprop="sameAs" href="https://doi.org/{{ work.doi }}">
 {%- endif %}
-{%- if work.url %}
-<link itemprop="sameAs" href="{{ work.url }}">
-{%- endif %}
+{%- assign work_links = work_links | uniq %}
+{%- for link in work_links %}
+<link itemprop="sameAs" href="{{ link }}">
+{%- endfor %}
 {%- if work.publisher %}
 <span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
     <meta itemprop="name" content="{{ work.publisher | escape }}">

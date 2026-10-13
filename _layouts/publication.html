@@ -4,7 +4,7 @@ layout: default
 
 {%- include scholarly-type.html entry=page.entry -%}
 <article itemprop="mainEntity" itemscope itemtype="https://schema.org/{{ scholarly_type }}">
-	{% include scholarly-meta.html entry=page.entry url=page.url %}
+	{% include scholarly-meta.html entry=page.entry url=page.url access=page.access pdf=page.links.pdf %}
 	<header class="text-center mb-7">
 		<h1 class="mb-5">
 			<span itemprop="headline">{{ page.entry.title }}</span>
