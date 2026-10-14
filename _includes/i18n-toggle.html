@@ -1,6 +1,7 @@
 {%- comment -%}
   Switch between English translations (default) and original titles for every
   `.i18n-orig` / `.i18n-en` pair on the page (see i18n.html). The choice is remembered.
+  Optional `en_label` / `orig_label` override the button texts.
 {%- endcomment -%}
 <style>
     html[data-title-language="original"] .i18n-en,
@@ -10,8 +11,8 @@
     <div class="d-flex flex-wrap align-items-center gap-3 small">
         <span class="fg-secondary" id="i18n-toggle-label">Show:</span>
         <div class="btn-group btn-group-sm" role="group" aria-labelledby="i18n-toggle-label">
-            <button type="button" class="btn-outline theme-secondary" data-title-language="en">English translations</button>
-            <button type="button" class="btn-outline theme-secondary" data-title-language="original">Original titles</button>
+            <button type="button" class="btn-outline theme-secondary" data-title-language="en">{{ include.en_label | default: "English translations" }}</button>
+            <button type="button" class="btn-outline theme-secondary" data-title-language="original">{{ include.orig_label | default: "Original titles" }}</button>
         </div>
     </div>
 </div>

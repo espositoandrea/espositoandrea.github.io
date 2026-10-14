@@ -307,3 +307,287 @@ Si suggerisce agli studenti di diffidare delle informazioni e dei materiali circ
 ---
 
 Link al corso sulla piattaforma e-learning: <https://elearning.uniba.it/course/view.php?id=13370>{:target="_blank" rel="noopener noreferrer"}
+
+<!-- translation -->
+
+## Useful information
+
+Scientific-disciplinary sector
+: INFO-01/A
+
+Virtual classroom (e-learning)
+: <https://elearning.uniba.it/course/view.php?id=13370>{:target="_blank" rel="noopener noreferrer"}
+
+## Learning objectives
+
+The Human-Computer Interaction course focuses on the design of software systems that are not only functional but also safe, efficient, engaging, and pleasant to use. This encompasses the design of effective user interfaces but also entails understanding the tasks people wish to perform and the environments in which they will carry them out.
+
+Students will acquire the fundamental principles, paradigms, methodologies, techniques, and technologies for the design and evaluation of usable interactive systems.
+
+## Prerequisites
+
+Students are required to possess basic knowledge of system design and development, acquired during the "Software Engineering" course.
+
+## Course content (Syllabus)
+
+1. Interactive systems and user interfaces (6 hours)
+    - Dimensions of complexity
+    - User diversity
+    - The pace of change
+    - The role of the user interface
+    - Human-Computer Interaction
+2. Usability (8 hours)
+    - An interaction model
+    - Affordance and feedback
+    - Usability
+    - User Experience (UX)
+    - ISO standards for usability, User Experience, and interactive system quality
+    - Usability and UX goals
+    - Universal usability
+3. Usability engineering (6 hours)
+    - Different engineering approaches
+    - The "Waterfall" model
+    - The task-artifact cycle
+    - Iterative models
+    - Human-centered design
+    - The ISO 9241-210 model
+    - The user's role in the design process
+    - Costs and benefits
+4. Data collection (6 hours)
+    - What product requirements are
+    - The requirements definition process
+    - Field observations
+    - Interviews
+    - Questionnaires
+    - Focus groups
+    - Spontaneous user suggestions
+    - Competitor analysis
+    - Usage scenarios
+    - Use cases
+5. Prototypes (4 hours)
+    - What a prototype is
+    - Types of prototypes
+6. Principles and guidelines (5 hours)
+    - Principles, guidelines, design rules, standards
+    - Human-system interaction standards
+    - Dialogue principles according to ISO 9241-110
+        - Suitability for the task
+        - Self-descriptiveness
+        - Conformity with user expectations
+        - Suitability for learning
+        - Controllability
+        - Error tolerance
+        - Suitability for individualization
+7. Designing for error (3 hours)
+    - Human error
+    - Prevention
+    - Diagnosis
+    - Correction
+8. Interaction design (12 hours)
+    - Interaction design and visual communication
+    - Gestalt principles
+    - Style guides
+    - Design patterns
+9. Evaluating usability (12 hours)
+    - Verification and validation
+    - Heuristic evaluations
+    - Usability testing
+    - Formative and summative testing
+    - Task-based and scenario-based testing
+    - Metrics
+    - Conducting a usability test
+    - The evaluation report
+    - Usability testing: costs and benefits
+    - Other evaluation techniques
+10. Accessibility
+
+## Reference texts
+
+- Sharp, H., Rogers, Y., & Preece, J. (2021). Interaction Design: Beyond Human-Computer Interaction.
+- R. Polillo, *Facile da usare - Una moderna introduzione alla ingegneria dell'usabilità* [Easy to Use: A Modern Introduction to Usability Engineering], Edizioni Apogeo, June 2010. *Available for free in various formats on the [author's webpage](http://www.rpolillo.it/facile-da-usare/){:target="_blank" rel="noopener noreferrer"}*
+
+Students may borrow these texts from the Library. It is advisable to check availability via the [University Library System](https://opac.uniba.it/easyweb/w8018/index.php){:target="_blank" rel="noopener noreferrer"} and contact the library to arrange the loan.
+
+### Notes on reference texts
+
+The lecturer makes the slides used in class, as well as any additional teaching materials supporting the lessons, available to students on the [e-learning platform](https://elearning.uniba.it/course/view.php?id=13370){:target="_blank" rel="noopener noreferrer"}.
+
+### Recommended text for further study of specific topics
+
+- Norman, D. A. (2019). *La caffettiera del masochista. Il design degli oggetti quotidiani* [The Design of Everyday Things].
+
+## Course organization
+
+<table class="table">
+  <tr>
+    <th scope="col" colspan="4">Hours</th>
+  </tr>
+  <tr>
+    <th scope="col">Total</th>
+    <th scope="col">Lectures</th>
+    <th scope="col">Laboratory and exercises</th>
+    <th scope="col">Individual study</th>
+  </tr>
+  <tr>
+    <td>150 hours</td>
+    <td>32 hours</td>
+    <td>30 hours of laboratory and guided exercises</td>
+    <td>88 hours</td>
+  </tr>
+  <tr>
+    <th scope="col" colspan="4">CFU/ECTS</th>
+  </tr>
+  <tr>
+    <td>6 CFU</td>
+    <td>4 CFU</td>
+    <td>2 CFU</td>
+    <td>/</td>
+  </tr>
+</table>
+
+## Teaching methods
+
+- Lectures supported by slides featuring examples to illustrate the topics covered.
+- Practical sessions focusing on the application of the principles and techniques presented in class, involving individual exercises.
+- A case study—ideally carried out in groups—where students apply the concepts presented in class.
+- Non-attending students may work individually, subject to prior agreement with the instructor.
+- Use of the Department of Computer Science's e-learning platform for distributing materials and facilitating interaction between instructors and students during and after the course.
+
+## Expected learning outcomes
+
+### Knowledge and understanding
+
+The primary intended learning outcome is knowledge regarding:
+
+- the principles, paradigms, methodologies, techniques, and technologies fundamental to user interaction design
+- quality characteristics significant from the user's perspective, particularly usability and User Experience (UX)
+
+Students acquire this knowledge through lectures and—where applicable—participation in specific seminars, as well as through individual and laboratory exercises; these allow them to put what they have learned into practice and verify their understanding, thereby gaining insight into their comprehension skills and how to improve them.
+
+### Applying knowledge and understanding
+
+To enable students to apply the knowledge they have acquired, they carry out:
+
+- individual and laboratory exercises.
+- a case study, in which they must apply some of the techniques presented in class, selecting those most appropriate for the specific case.
+
+The assessment of the in-class exercises and the case study contributes to the student's overall evaluation and, consequently, to the grade achieved in the final exam.
+
+### Soft skills
+
+#### Independent judgment
+
+A key objective of the course is for students to achieve a significant level of independent judgment regarding: 1) trade-off decisions concerning which software qualities to emphasize in the product being developed; 2) decisions made during the design and development of software system modules related to user interaction; and 3) managing issues related to the use of usability and UX design and evaluation techniques throughout the software development process.
+
+#### Communication skills
+
+Students are encouraged to work in groups and are frequently asked to present the results of exercises—whether completed individually or collaboratively—specifically to foster the development of their communication skills. To this end, students are also required to develop group case studies, applying techniques they have learned and selecting those they deem most appropriate (exercising their independent judgment). For attending students, case study presentations take place during the semester; for non-attending students, the presentation is part of the oral exam, allowing them to demonstrate their communication skills by explaining their work—potentially using slides prepared according to the instructor's guidelines.
+
+#### Ability to learn independently
+
+To foster independent learning, students are recommended—in addition to the main textbook—other resources for exploring specific topics in greater depth (including some not covered in detail by the instructor), which they can then discuss in class or report on during the exam. Students may also be invited to attend events or seminars led by other faculty members or visiting scholars, and are subsequently required to discuss the content of these seminars in class.
+
+## Assessment
+
+### Assessment methods
+
+Assessment of learning outcomes takes place during the final exam, which consists of:
+
+1. a semi-structured written test (open and closed questions) covering all course topics (duration: 120 minutes);
+2. a group-based case study.
+
+The result of each successfully completed test is valid for the entire current academic year (8 exam sessions). The written test is graded out of 27. The case study is graded on a scale of 0 to 5. The final grade is the sum of the scores obtained in the two tests. The final grade is communicated via the Esse3 platform, where the student can accept or reject the grade.
+
+The case study is assigned during the teaching semester. Students who do not attend classes must meet with the professor at the beginning of the semester to define the case study.
+
+The written test and the case study may be completed during two different exam sessions within the same academic year.
+
+The case study must be submitted 7 days prior to the exam session date on which the student intends to take the oral component (or the final assessment). The grade obtained for the case study is valid for all exam sessions in the 2025-2026 academic year.
+
+NOTE 1: A first intermediate written test, which grants exemption from the corresponding part of the final exam, is held around the mid-semester break (usually mid-November). A second intermediate written test, which also grants exemption, is held concurrently with the scheduled exam sessions of the same academic year.
+
+NOTE 2: Students wishing to take the exam during a specific session must always register via ESSE3 by the deadline, which is usually three days before the written test date.
+
+### Assessment criteria
+
+#### Knowledge and understanding
+
+Students must demonstrate that they can use appropriate methodologies for the design and evaluation of a software system, assess the correct application of the techniques used, and produce clear and complete documentation.
+
+#### Applying knowledge and understanding
+
+The case study presentation is evaluated to verify the skills acquired by the student and their ability to summarize, as well as the clarity of the presentation, the ability to make meaningful comparisons between the different methodologies, techniques, and technologies adopted, and to express their own critical judgment.
+
+#### Independent judgment
+
+Students must be able to apply appropriate solutions for the development of the software system.
+
+The case study presentation is evaluated to verify the skills acquired by the student and their ability to summarize, as well as the clarity of the presentation, the ability to make meaningful comparisons between the different methodologies, techniques, and technologies adopted, and to express their own critical judgment.
+
+The written test, with multiple-choice, closed, and/or open questions, is evaluated to ascertain the student's basic knowledge.
+
+#### Communication skills
+
+Students must be able to produce clear documentation containing the information required for the software system developed.
+
+#### Learning skills
+
+Students must demonstrate the ability to deepen their understanding of the concepts through self-study of the material provided by the lecturer, and the ability to independently complete the learning path set out in the reference text, in addition to the contents of the course syllabus.
+
+### Grading criteria and final mark
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Grade</th>
+    <th>Descriptors</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>&lt; 18 fail</td>
+    <td>Fragmentary and superficial knowledge of the contents, errors in applying concepts, poor description.</td>
+  </tr>
+  <tr>
+    <td>18 - 20</td>
+    <td>Sufficient but general knowledge of the contents, simple description, uncertainty in applying theoretical concepts.</td>
+  </tr>
+  <tr>
+    <td>21 - 23</td>
+    <td>Appropriate but not in-depth knowledge of the contents, ability to apply theoretical concepts, ability to present the contents in a simple way.</td>
+  </tr>
+  <tr>
+    <td>24 - 25</td>
+    <td>Appropriate and broad knowledge of the contents, fair ability to apply knowledge, ability to present the contents in a structured way.</td>
+  </tr>
+  <tr>
+    <td>26 - 27</td>
+    <td>Precise and complete knowledge of the contents, good ability to apply knowledge, analytical skills, clear and correct description.</td>
+  </tr>
+  <tr>
+    <td>28 - 29</td>
+    <td>Broad, complete, and in-depth knowledge of the contents, good application of the contents, good analytical and synthesis skills, confident and correct description.</td>
+  </tr>
+  <tr>
+    <td>30<br>30 cum laude</td>
+    <td>Very broad, complete, and in-depth knowledge of the contents, well-established ability to apply the contents, excellent analytical and synthesis skills and ability to make interdisciplinary connections, mastery of description.</td>
+  </tr>
+</tbody></table>
+
+## Other information
+
+Students are advised to rely exclusively on information and communications provided on the official websites of the Department of Computer Science, or on social media groups only if they are established and administered solely by the course instructors:
+
+- <https://www.uniba.it/it/ricerca/dipartimenti/informatica/didattica/corsi-di-laurea/corsi-di-laurea>{:target="_blank" rel="noopener noreferrer"}
+- <https://www.uniba.it/it/ricerca/dipartimenti/informatica>{:target="_blank" rel="noopener noreferrer"}
+- <https://elearning.uniba.it/>{:target="_blank" rel="noopener noreferrer"}
+
+Course syllabi are available at <https://programmi.di.uniba.it/>{:target="_blank" rel="noopener noreferrer"}
+
+Information that all students should be aware of is contained in the academic regulations and study program outlines available at <https://www.uniba.it/it/ricerca/dipartimenti/informatica/didattica/corsi-di-laurea/corsi-di-laurea>{:target="_blank" rel="noopener noreferrer"}
+
+Students are advised to be wary of information and materials circulating on unofficial websites or social media groups, as these have often proven to be unreliable, incorrect, or incomplete. If you have any questions, please request a meeting with the instructor during their scheduled office hours.
+
+---
+
+Link to the course on the e-learning platform: <https://elearning.uniba.it/course/view.php?id=13370>{:target="_blank" rel="noopener noreferrer"}

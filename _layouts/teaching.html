@@ -7,6 +7,17 @@ layout: default
 {% if page.language and page.language != "en" and page.titleTranslation %}
     {% assign translated = true %}
 {% endif %}
+{% comment %}
+    The page content may carry an English translation after a `<!-- translation -->` line:
+    everything before it is in `page.language`, everything after it is in English.
+{% endcomment %}
+{% assign content_parts = content | split: "<!-- translation -->" %}
+{% assign content_translated = false %}
+{% if page.language and page.language != "en" and content_parts.size > 1 %}
+    {% assign content_translated = true %}
+    {% assign translated = true %}
+{% endif %}
+{% assign language_name = site.data.languages[page.language].name.en | default: page.language %}
 {% assign news = "" | split: "" %}
 {% if page.news %}{% assign news = page.news | sort: 'date' | reverse %}{% endif %}
 
@@ -65,7 +76,12 @@ layout: default
         <hr/>
     </header>
 
-    {% if translated %}{% include i18n-toggle.html %}{% endif %}
+    {% if content_translated %}
+        {% assign orig_label = language_name | append: " (original)" %}
+        {% include i18n-toggle.html en_label="English" orig_label=orig_label %}
+    {% elsif translated %}
+        {% include i18n-toggle.html %}
+    {% endif %}
 
     <section aria-labelledby="course-info" class="mb-12">
         <h2 id="course-info" class="visually-hidden">Course information</h2>
@@ -108,9 +124,25 @@ layout: default
     {% if description != "" %}
     <section aria-labelledby="course-description" class="mb-12">
         <!-- <h2 id="course-description" class="h4">Description</h2> -->
+        {% if content_translated %}
+        <div class="i18n-orig" lang="{{ page.language }}" itemprop="description">
+            {{ content_parts[0] }}
+        </div>
+        <div class="i18n-en" lang="en">
+            <aside class="alert mb-7 d-flex align-items-center small" aria-label="Translation notice">
+                <i class="fa-solid fa-language me-3" aria-hidden="true"></i>
+                <span>
+                    This course is taught in <strong>{{ language_name }}</strong>.
+                    The English translation below is provided for convenience only; the {{ language_name }} version is the official one.
+                </span>
+            </aside>
+            {{ content_parts[1] }}
+        </div>
+        {% else %}
         <div lang="{{ page.language | default: 'en' }}" itemprop="description">
             {{ content }}
         </div>
+        {% endif %}
     </section>
     {% endif %}
 
