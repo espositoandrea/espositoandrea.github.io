@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "'Accuracy per FLOP': A Green AI Metric for Fair and Efficient AI Development"
-external_source: Journal of Brief Ideas
-external_source_url: https://beta.briefideas.org/ideas/7ca347b740b1e3876e3987d1fc986df9
 canonical_url: https://beta.briefideas.org/ideas/7ca347b740b1e3876e3987d1fc986df9
 date: 2024-05-31
 author: Andrea Esposito

@@ -2,8 +2,6 @@
 layout:	post
 title:	"The Future of Alzheimer’s Diagnosis: Unlocking Insights with Multi-modal Imaging Models"
 date:	2024-03-07
-external_source: Springer Nature Research Communities
-external_source_url: https://communities.springernature.com/posts/the-future-of-alzheimer-s-diagnosis-unlocking-insights-with-multi-modal-imaging-models
 canonical_url: https://communities.springernature.com/posts/the-future-of-alzheimer-s-diagnosis-unlocking-insights-with-multi-modal-imaging-models
 canonical_site_name: Springer Nature Research Communities
 image: /assets/images/posts/medium/1wiHIs-C6pf-Vf96QiuvCZQ.jpeg

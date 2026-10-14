@@ -1,8 +1,6 @@
 ---
 layout: post
 title: The need and format for publications is stifling innovation and science adoption
-external_source: Journal of Brief Ideas
-external_source_url: http://beta.briefideas.org/ideas/326de755c8bdb494b354e804fb09a74e
 canonical_url: https://beta.briefideas.org/ideas/326de755c8bdb494b354e804fb09a74e
 canonical_site_name: Journal of Brief Ideas
 toc: false

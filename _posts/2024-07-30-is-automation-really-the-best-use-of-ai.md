@@ -3,8 +3,6 @@ layout:	post
 title:	"Is automation really the best use of AI?"
 date:	2024-07-30
 
-external_source: AI Advances (Medium)
-external_source_url: https://medium.com/ai-advances/is-automation-really-the-best-use-of-ai-9620352ab531
 canonical_url: https://medium.com/ai-advances/is-automation-really-the-best-use-of-ai-9620352ab531
 canonical_site_name: AI Advances (Medium)
 excerpt: Research shows it isn’t… but it depends on users’ goals.

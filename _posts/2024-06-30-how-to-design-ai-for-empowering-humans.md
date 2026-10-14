@@ -6,8 +6,6 @@ image_alt: Cover image of the post. A robotic hand and a human hand with their p
 image: /assets/images/posts/medium/1WeqMmn78Dd9e8SZSE-Va1g.jpeg
 image_caption: Photo by [Igor Omilaev](https://unsplash.com/@omilaev) from [Unsplash](https://unsplash.com/photos/two-hands-touching-each-other-in-front-of-a-pink-background-gVQLAbGVB6Q)
 
-external_source: Bootcamp (Medium)
-external_source_url: https://medium.com/design-bootcamp/how-to-design-ai-for-empowering-humans-9d7cf49fe6c4
 canonical_url: https://medium.com/design-bootcamp/how-to-design-ai-for-empowering-humans-9d7cf49fe6c4
 canonical_site_name: Bootcamp (Medium)
 

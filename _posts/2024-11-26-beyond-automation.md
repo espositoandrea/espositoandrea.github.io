@@ -1,8 +1,6 @@
 ---
 layout: post
 title: "Beyond Automation, Toward Symbiosis: Interactions Between Humans and Artificial Intelligence"
-external_source: Medium
-external_source_url: https://medium.com/@espositoandrea/beyond-automation-toward-symbiosis-interactions-between-humans-and-artificial-intelligence-0f5218495063
 canonical_url: https://medium.com/@espositoandrea/beyond-automation-toward-symbiosis-interactions-between-humans-and-artificial-intelligence-0f5218495063
 canonical_site_name: Medium
 author: Andrea Esposito

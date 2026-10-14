@@ -75,8 +75,7 @@ module ExternalPosts
       doc = Jekyll::Document.new(
         path, { :site => site, :collection => site.collections['posts'] }
       )
-      doc.data['external_source'] = source_name.downcase.strip == "medium.com" ? MetadataParser.get_medium_publication(url) : source_name
-      doc.data['external_source_url'] = "#{URI.parse(url).scheme}://#{URI.parse(url).host}"
+      doc.data['canonical_site_name'] = source_name.downcase.strip == "medium.com" ? MetadataParser.get_medium_publication(url) : source_name
       doc.data['title'] = content[:title]
       doc.content = content[:content]
       doc.data['excerpt'] = unless (content[:summary].nil? or content[:summary].empty?) then content[:summary] else MetadataParser.get_description(url) end

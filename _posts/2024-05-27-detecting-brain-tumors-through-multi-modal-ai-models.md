@@ -2,8 +2,6 @@
 layout:	post
 title:	"Detecting Brain Tumors through Multi-modal AI Models"
 date:	2024-05-27
-external_source: Medium
-external_source_url: https://medium.com/@espositoandrea/detecting-brain-tumors-through-multi-modal-ai-models-416c89edcc78
 canonical_url: https://medium.com/@espositoandrea/detecting-brain-tumors-through-multi-modal-ai-models-416c89edcc78
 canonical_site_name: Medium
 excerpt: >-

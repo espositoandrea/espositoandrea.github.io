@@ -19,8 +19,8 @@
     <div class="card-body">
         <small class="fg-3">
             <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
-            {% if post.external_source != blank %}
-            &middot; <a href="{{ post.external_source_url }}" target="_blank">{{ post.external_source }}</a>
+            {% if post.canonical_site_name != blank %}
+            &middot; <a href="{{ post.canonical_url }}" target="_blank">{{ post.canonical_site_name }}</a>
             {% endif %}
         </small>
         <h2 class="card-title mt-0 h4" itemprop="headline">

@@ -2,8 +2,6 @@
 layout:	post
 title:	"To Automate or To Augment Humans?"
 date:	2024-06-04
-external_source: AI Advances (Medium)
-external_source_url: https://medium.com/ai-advances/to-automate-or-to-augment-humans-c3f805d35d55
 canonical_url: https://medium.com/ai-advances/to-automate-or-to-augment-humans-c3f805d35d55
 canonical_site_name: AI Advances (Medium)
 image: /assets/images/posts/medium/1aEhJ1VKGQkweAljFP8iDRA.jpeg

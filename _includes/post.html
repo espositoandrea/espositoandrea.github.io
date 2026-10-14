@@ -18,13 +18,13 @@
                 </h2>
                 <p class="card-text fg-secondary">
                     <span>{{ post.date | date: "%B %e, %Y" }}</span>
-                    {% if post.external_source != blank %}
+                    {% if post.canonical_site_name != blank %}
                     &nbsp;&centerdot;&nbsp;
-                    Published in <a href="{{ post.external_source_url }}" target="_blank">{{ post.external_source }}</a>
+                    Published in <a href="{{ post.canonical_url }}" target="_blank">{{ post.canonical_site_name }}</a>
                     {% endif %}
                 </p>
                 <div class="card-text" itemprop="description">
-                    {% if post.external_source != blank %}
+                    {% if post.redirect != blank %}
                         {{ post.excerpt }}
                     {% else %}
                         {{ post.excerpt | markdownify }}
@@ -34,7 +34,7 @@
         </div>
         <div class="md:col-4">
             {% if post.image %}
-            <a class="no-blank-icon" href="{{ url }}" {% if post.external_source !=blank %} target="_blank" {% endif %}>
+            <a class="no-blank-icon" href="{{ url }}" {% if post.redirect != blank %} target="_blank" {% endif %}>
                 <img src="{{ post.image | absolute_url }}" class="card-img rounded-end" alt="" aria-hidden="true" itemprop="image">
             </a>
             {% endif %}

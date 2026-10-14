@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "The Power of Handwriting: Embracing Slowness in a Digital World"
-tags: ["Handwriting", "Creativity", "Ideas", "Creative Process", "Writing"]
 author: Andrea Esposito
 canonical_site_name: Research in Ink
 canonical_url: https://www.researchinink.com/2025/08/23/the-power-of-handwriting-embracing-slowness-in-a-digital-world/
