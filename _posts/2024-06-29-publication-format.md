@@ -10,7 +10,6 @@ date: 2024-06-29
 author: Andrea Esposito
 doi: 10.5281/zenodo.13129574
 tags: [publications, science adoption, opinion]
-image: https://og.tailgraph.com/og?fontFamily=Roboto&title=Publication%20format%20is%20stifling%20innovation&titleTailwind=font-bold%20text-6xl%20text-white&text=A%20Brief%20Idea&textTailwind=text-2xl%20mt-4%20text-white&logoTailwind=h-8&bgTailwind=bg-black&footer=espositoandrea.github.io&footerTailwind=text-white
 category: Ideas
 excerpt: >-
   Nowadays two problems affect science: the quantum necessary to publish scientific discovery is large. This not only heavily increases the time needed for publication, but it also impacts the time required to stay up to date with the...

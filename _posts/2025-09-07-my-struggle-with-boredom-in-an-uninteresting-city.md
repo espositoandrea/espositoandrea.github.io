@@ -13,6 +13,8 @@ opening: Dear readers,
 to: |
   Research in Ink Readers
   https://www.researchinink.com/
+
+tags: ["writing", "journal", "rant", "boredom"]
 ---
 
 This post resembles a rant more than an actual blog post; thus, I doubt that you
