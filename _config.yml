@@ -109,6 +109,7 @@ defaults:
       comments: true
       math: false
       is_post: true
+      toc: false
   - scope:
       path: ""
       type: teachings
