@@ -23,7 +23,7 @@ We set out to explore the interplay between usability evaluators and AI tools, s
 
 ## Introducing “SERENE”
 
-We relied on the innovative [SERENE](https://github.com/uxsad) platform to explore the dynamic interplay between human evaluators and AI assistance in website usability evaluation. This tool represents a convergence of two pivotal trends in usability evaluation: the measurement of user emotions and the detection of actual usability problems.
+We relied on the innovative [SERENE](https://github.com/uxsad){:target="_blank" rel="noopener noreferrer"} platform to explore the dynamic interplay between human evaluators and AI assistance in website usability evaluation. This tool represents a convergence of two pivotal trends in usability evaluation: the measurement of user emotions and the detection of actual usability problems.
 
 Over recent years, there has been a surge in solutions aimed at automating aspects of usability evaluation. Some rely on affective computing techniques to recognize emotions without linking them to usability, while others provide static analyzers that may not accurately pinpoint usability problems.
 

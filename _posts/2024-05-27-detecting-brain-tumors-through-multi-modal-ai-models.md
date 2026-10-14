@@ -32,6 +32,6 @@ While AI holds promise in medical diagnostics, we emphasize the importance of tr
 
 In conclusion, our research represents a significant step forward in the field of brain tumor detection. By harnessing the power of AI, we aim to improve diagnostic accuracy and efficiency, ultimately benefiting patient care. Moving forward, we remain committed to further exploration and refinement of AI-assisted diagnostics, with a focus on transparency, accountability, and patient-centered care.
 
-*Content taken from *[GrowKudos.com](https://link.growkudos.com/19qun40okxs){:target="_blank" rel="noopener noreferrer"}.*
+*Content taken from [GrowKudos.com](https://link.growkudos.com/19qun40okxs){:target="_blank" rel="noopener noreferrer"}.*
 
   

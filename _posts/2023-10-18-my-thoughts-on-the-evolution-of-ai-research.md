@@ -27,8 +27,8 @@ In conclusion, the development of large language models has brought many excitin
 
 ### References
 
-[^1]: Esposito, Andrea. “‘Accuracy per FLOP’: A Green AI Metric for Fair and Efficient AI Development.” *The Journal of Brief Ideas (*July 5, 2024). DOI:[10.5281/zenodo.12660216](https://doi.org/10.5281/zenodo.12660216).
-[^2]: Roberto Verdecchia, June Sallou, and Luís Cruz. 2023. A systematic review of Green AI. *WIREs Data Mining and Knowledge Discovery* 13, 4 (2023), e1507. DOI:[10.1002/widm.1507](https://doi.org/10.1002/widm.1507)
-[^3]: Roy Schwartz, Jesse Dodge, Noah A. Smith, and Oren Etzioni. 2020. Green AI. *Commun. ACM* 63, 12 (November 2020), 54–63. DOI:[10.1145/3381831](https://doi.org/10.1145/3381831)
+[^1]: Esposito, Andrea. “‘Accuracy per FLOP’: A Green AI Metric for Fair and Efficient AI Development.” *The Journal of Brief Ideas (*July 5, 2024). DOI:[10.5281/zenodo.12660216](https://doi.org/10.5281/zenodo.12660216){:target="_blank" rel="noopener noreferrer"}.
+[^2]: Roberto Verdecchia, June Sallou, and Luís Cruz. 2023. A systematic review of Green AI. *WIREs Data Mining and Knowledge Discovery* 13, 4 (2023), e1507. DOI:[10.1002/widm.1507](https://doi.org/10.1002/widm.1507){:target="_blank" rel="noopener noreferrer"}
+[^3]: Roy Schwartz, Jesse Dodge, Noah A. Smith, and Oren Etzioni. 2020. Green AI. *Commun. ACM* 63, 12 (November 2020), 54–63. DOI:[10.1145/3381831](https://doi.org/10.1145/3381831){:target="_blank" rel="noopener noreferrer"}
 
 *This idea has been published in “The Journal of Brief Ideas” on July 5, 2024. This blog post has been updated to add a link back to the idea. If you want to cite this, please use the following DOI: [10.5281/zenodo.12660216](https://doi.org/10.5281/zenodo.12660216){:target="_blank" rel="noopener noreferrer"}. You can find the original publication mirrored in [this blog post]({% post_url 2024-05-31-accuracy-per-flop %}).*
