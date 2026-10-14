@@ -68,7 +68,18 @@ layout: default
             </li>
         </ol>
     </nav>
-    
+
+    {% if page.image %}
+    <figure class="post-cover mb-7">
+        <img src="{{ page.image | absolute_url }}" itemprop="image"
+            {% if page.image_alt != blank %}alt="{{ page.image_alt | strip_newlines | escape }}"{% else %}alt="" aria-hidden="true"{% endif %}
+            onerror="this.closest('figure').remove();">
+        {% if page.image_caption != blank %}
+        <figcaption class="figure-caption mt-3">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>
+        {% endif %}
+    </figure>
+    {% endif %}
+
     <header class="post-header mb-7">
         {% if page.canonical_url %}
             <aside class="alert mb-7 d-flex align-items-center small" role="alert" aria-label="Cross-post details">
@@ -134,17 +145,6 @@ layout: default
         </aside>
         {% endif %}
     </header>
-
-    {% if page.image %}
-    <figure class="post-cover mb-7">
-        <img src="{{ page.image | absolute_url }}" itemprop="image"
-            {% if page.image_alt != blank %}alt="{{ page.image_alt | strip_newlines | escape }}"{% else %}alt="" aria-hidden="true"{% endif %}
-            onerror="this.closest('figure').remove();">
-        {% if page.image_caption != blank %}
-        <figcaption class="figure-caption mt-3">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>
-        {% endif %}
-    </figure>
-    {% endif %}
 
     {% unless page.toc == false %}
     <aside class="text-start rounded p-5 border bg-2 mb-5">
