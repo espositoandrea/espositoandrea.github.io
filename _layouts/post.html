@@ -154,31 +154,11 @@ layout: default
     {% endunless %}
 
     {% if page.paper %}
-    {% bib_variable -f references.bib %}
-    {% for entry in site.bibliography %}
-    {% if page.paper == entry.key %}
-    <div class="card mb-5">
-        <div class="row g-0 position-relative">
-            <div class="md:col-9">
-                <div class="card-body">
-                    <h5 class="card-title">{{ entry.data.title }}</h5>
-                    <p class="card-text">{{ entry.data.abstract | truncatewords: 30 }}</p>
-                    <p class="card-text"><small class="fg-secondary"><a class="stretched-link no-blank-icon"
-                                href="https://doi.org/{{ entry.data.doi }}" target="_blank"
-                                rel="noopener noreferrer">doi.org/{{ entry.data.doi }}</a></small></p>
-                </div>
-            </div>
-            <div class="md:col-3">
-                <img src="{{ entry.data.url | photo_from_url }}" class="img-fluid rounded-start w-100"
-                    aria-hidden="true" alt="">
-            </div>
-        </div>
-        <div class="card-footer fg-secondary">
-            <a href="{{ entry.key | prepend: '/bibliography/' | absolute_url }}">See paper details</a>
-        </div>
-    </div>
-    {% endif %}
-    {% endfor %}
+    {% capture paper_html %}{% bibliography --group_by none --query @*[key = {{ page.paper }}] %}{% endcapture %}
+    <section class="mb-7" aria-labelledby="associated-paper">
+        <h2 id="associated-paper" class="h5 mt-0 mb-0">Associated paper</h2>
+        {{ paper_html | edit_urls | remove_number | emphasize_author }}
+    </section>
     {% endif %}
 
     <div itemprop="articleBody">
