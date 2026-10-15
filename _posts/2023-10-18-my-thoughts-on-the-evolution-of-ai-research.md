@@ -2,7 +2,7 @@
 layout:	post
 title:	"My Thoughts on the Evolution of AI Research"
 date:	2023-10-18
-image: /assets/images/posts/medium/1On6l0D0R-Zoo2cctcSO2Vw.png
+image: /assets/images/banners/ai-post-og.png
 canonical_url: https://medium.com/@espositoandrea/my-thoughts-on-the-evolution-of-ai-research-445660180906
 canonical_site_name: Medium
 ---

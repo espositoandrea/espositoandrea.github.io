@@ -24,7 +24,7 @@ In this blog post, we will explore some insights from my recent **research paper
 *Let’s dive into it, but first here’s a quick visual abstract of our paper as a TL;DR!*
 
 <figure>
-<img src="/assets/images/posts/medium/1Q1ek1v0x0o1bv2ZKg2Gs8A.png" alt="A visual abstract for the manuscript titled “The fine line between automation and augmentation in website usability evaluation.” It feature the title of the paper on top, while the journal logo, authors, and DOI are at the bottom. The main section is subdivided in three columns, titled (from left to right) “Context”, “Method”, and “Results”. The content of each column is described in the main text of the article.">
+<img src="{% link /assets/images/posts/scirep-serene/visual-abstract.png %}" alt="A visual abstract for the manuscript titled “The fine line between automation and augmentation in website usability evaluation.” It feature the title of the paper on top, while the journal logo, authors, and DOI are at the bottom. The main section is subdivided in three columns, titled (from left to right) “Context”, “Method”, and “Results”. The content of each column is described in the main text of the article.">
 <figcaption>Visual abstract of the paper. Image by the author.</figcaption>
 </figure>
 
@@ -48,7 +48,7 @@ Furthermore, we identified usability and UX issues connected to the emotion valu
 
 In showing the emotion values and the connected issues, we varied the “automation level,” meaning that we simulated the adoption of either an automation or an augmentation approach. The way the output was presented to evaluators is shown in the next image.
 
-![The different levels of automation/augmentation implemented in SERENE to help discover usability problems: a) a list of the usability problems; b) a heatmap showing the concentration of the emotions overlapped to the webpage; c) the heatmap of the previous visualization also extended with purple rectangles highlighting potential usability problems. Image by the author and extracted from the paper.](/assets/images/posts/medium/185LxGVVHkkQQVuzHXnLQlA.png){:standalone}
+![The different levels of automation/augmentation implemented in SERENE to help discover usability problems: a) a list of the usability problems; b) a heatmap showing the concentration of the emotions overlapped to the webpage; c) the heatmap of the previous visualization also extended with purple rectangles highlighting potential usability problems. Image by the author and extracted from the paper.]({% link /assets/images/posts/scirep-serene/automation-modalities.png %}){:standalone}
 
 The data collection phase involved a total of 99 usability evaluators, and each of them interacted with only one of the automation levels. The results were then analyzed statistically through the use of custom metrics defined to evaluate the amount of usability issues found and the errors made by the evaluators.
 

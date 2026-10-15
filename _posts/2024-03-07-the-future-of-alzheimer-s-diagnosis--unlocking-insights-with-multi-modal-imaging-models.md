@@ -4,7 +4,7 @@ title:	"The Future of Alzheimer’s Diagnosis: Unlocking Insights with Multi-mod
 date:	2024-03-07
 canonical_url: https://communities.springernature.com/posts/the-future-of-alzheimer-s-diagnosis-unlocking-insights-with-multi-modal-imaging-models
 canonical_site_name: Springer Nature Research Communities
-image: /assets/images/posts/medium/1wiHIs-C6pf-Vf96QiuvCZQ.jpeg
+image: /assets/images/posts/scirep-dementia-detection/banner.jpg
 paper: Castellano2024Automated
 excerpt: >-
   Dementia affects ~55 million individuals worldwide, with Alzheimer’s disease (AD) being the predominant type. Artificial Intelligence (AI) may aid in its diagnosis. We propose and evaluate multi-modal models for the task, incorporating eXplainable Artificial Intelligence for diagnostic transparency.
@@ -15,7 +15,7 @@ Dementia affects approximately 55 million individuals worldwide, with Alzheimer�
 
 Artificial Intelligence (AI), particularly Deep Learning, shows promise in transforming AD diagnosis. Neuroimaging techniques like Magnetic Resonance Imaging (MRI) and amyloid Positron Emission Tomography (PET) scans offer valuable biomarkers. Previous research has primarily focused on uni-modal approaches, utilizing mainly a single imaging technique for the diagnosis. Multi-modal neuroimaging, instead, still needs to be deeply explored, with few studies aiming to maximize performance by leveraging the combined strengths of different imaging modalities.
 
-![Examples of an MRI (on the left) and a PET scan (on the right).](/assets/images/posts/medium/07AqEGsHXLjLvfxeF_1.png){:standalone}
+![Examples of an MRI (on the left) and a PET scan (on the right).]({% link /assets/images/posts/scirep-dementia-detection/samples.png %}){:standalone}
 
 We addressed the gap by proposing and evaluating Convolutional Neural Network (CNN) models using 2D and 3D MRI and PET scans in both uni-modal and multi-modal configurations. Additionally, the incorporation of eXplainable Artificial Intelligence (XAI) enhances transparency in decision-making for AD diagnosis.
 
@@ -27,7 +27,7 @@ Our study systematically explored several variations of the proposed CNN archite
 
 The results are promising: all models reached a 70–95% diagnostic accuracy. Notably, models leveraging three-dimensional inputs outperformed their two-dimensional counterparts. Furthermore, our analysis revealed that MRI scans in 2D or 3D formats consistently provided superior results to amyloid PET scans, with an accuracy difference of approximately 8–10%. Utilizing a combination of both 3D MRIs and 3D amyloid PET scans in a “fusion” model allowed us to reach a staggering accuracy of 95%. This suggests that MRI and PET scans fulfill complementary roles in disease prediction, while MRI proves crucial in uni-modal scenarios. Furthermore, the fusion model’s remarkable sensitivity (the ability to avoid false negatives) is particularly advantageous for disease detection.
 
-![Architecture of the “fusion” model.](/assets/images/posts/medium/05draSXOCBTID7ZJp_1.jpg){:standalone}
+![Architecture of the “fusion” model.]({% link /assets/images/posts/scirep-dementia-detection/merged-model.jpg %}){:standalone}
 
 ### The Need for Explainability
 
@@ -39,7 +39,7 @@ Our models are inherently “black-box” in nature, as they do not offer interp
 
 Overlaying Grad-CAM heatmaps onto the AAL2 atlas, a detailed anatomical guide encompassing 120 brain regions, allowed us to precisely identify the key areas influencing the model’s classifications. Identifying regions with mean Grad-CAM values in the top 90th percentile revealed their critical role in the model’s decision-making process, emphasizing their potential relevance to Alzheimer’s disease pathology.
 
-![Three-dimensional visualizations created from multiple axial brain slices, showcasing Grad-CAM heatmaps for the positive class.](/assets/images/posts/medium/0YLsEUEaqE-o90U6S_1.png){:standalone}
+![Three-dimensional visualizations created from multiple axial brain slices, showcasing Grad-CAM heatmaps for the positive class.]({% link /assets/images/posts/scirep-dementia-detection/both.png %}){:standalone}
 
 For MRI scans, a notable consistency exists in the regions highlighted across both groups, with the Temporal Lobe emerging as the most critical area for classification. This observation aligns with established research indicating Temporal Lobe atrophy as a crucial predictor of AD and other dementia forms, particularly emphasizing the significance of the Medial Temporal Lobe. Interestingly, the Middle Cingulate Gyrus and the Left Inferior Parietal Gyrus were identified as unique indicators for the negative and positive groups. Additionally, the Precentral Gyrus and Precuneus, both associated with AD pathology, were identified as relevant, supporting their roles as early biomarkers of AD.
 

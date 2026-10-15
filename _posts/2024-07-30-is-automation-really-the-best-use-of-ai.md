@@ -6,7 +6,7 @@ date:	2024-07-30
 canonical_url: https://medium.com/ai-advances/is-automation-really-the-best-use-of-ai-9620352ab531
 canonical_site_name: AI Advances (Medium)
 excerpt: Research shows it isn’t… but it depends on users’ goals.
-image: /assets/images/posts/medium/0pLRNICnSOCFgaydu
+image: /assets/images/posts/medium/0pLRNICnSOCFgaydu.jpg
 image_caption: Photo by [Steve Johnson](https://unsplash.com/@steve_j?utm_source=medium&utm_medium=referral){:target="_blank" rel="noopener noreferrer"} on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral){:target="_blank" rel="noopener noreferrer"}
 
 paper: Esposito2024Fine
@@ -15,7 +15,7 @@ paper: Esposito2024Fine
 Artificial Intelligence (AI) has somewhat become an integral part of our daily lives. From the moment we wake up to when we go to bed, the chances of crossing AI are high. AI is everywhere, almost becoming a *buzzword*. From AI-powered virtual assistants (like Amazon’s Alexa, Google Assistant, and Apple’s Siri), helping us manage our schedules or control smart home devices, up to AI-enabled cars, as modern vehicles are equipped with AI for navigation and other driver-assistance systems. Even in day-to-day life, we interface with AI: think about recommender systems on your favourite streaming platforms or even just the text prediction of your smartphone’s keyboard.
 
 <figure>
-<img src="/assets/images/posts/medium/0I1l3o7xdWaQIrMm5" alt="" class="img-fluid">
+<img src="{% link /assets/images/posts/medium/0I1l3o7xdWaQIrMm5.jpg %}" alt="" class="img-fluid">
 <figcaption>We interface with AI everyday. For example, it is used to power the recommendation system of your favorite online streaming services. Photo by <a href="https://unsplash.com/@cardmapr?utm_source=medium&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">CardMapr.nl</a> on <a href="https://unsplash.com?utm_source=medium&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a></figcaption>
 </figure>
 
@@ -26,7 +26,7 @@ Most AI systems follow a simple trend: they are designed with the goal of *autom
 But one question arises: *is automation really the best way we can use AI?*
 
 <figure>
-<img src="/assets/images/posts/medium/0mYKOtI_6ZFHj74xW" alt="" class="img-fluid">
+<img src="{% link /assets/images/posts/medium/0mYKOtI_6ZFHj74xW.jpg %}" alt="" class="img-fluid">
 <figcaption>A lot of jobs are at risk of being replaced by Artificial Intelligence. An example is <a href="https://hms.harvard.edu/news/does-ai-help-or-hurt-human-radiologists-performance-depends-doctor" target="_blank" rel="noopener noreferrer">radiology</a>. However, the question should be: “is <em>replacing</em> human vision in radiology actually the best thing we could do for people?” Photo by <a href="https://unsplash.com/@nci?utm_source=medium&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">National Cancer Institute</a> on <a href="https://unsplash.com?utm_source=medium&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">Unsplash</a></figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ But one question arises: *is automation really the best way we can use AI?*
 In the study conducted by the [Interaction, Visualization, Usability & UX Laboratory](https://ivu.di.uniba.it){:target="_blank" rel="noopener noreferrer"} of the [University of Bari](https://uniba.it){:target="_blank" rel="noopener noreferrer"}, 99 participants were recruited to understand how their perception and performance varied while using AI. Three different strategies were explored: pure automation, pure augmentation (a strategy in which humans have all control), and a middle-ground solution.
 
 <figure>
-<img src="/assets/images/posts/medium/1Q1ek1v0x0o1bv2ZKg2Gs8A_1.png" alt="" class="img-fluid">
+<img src="{% link /assets/images/posts/scirep-serene/visual-abstract.png %}" alt="" class="img-fluid">
 <figcaption>Graphical abstract of the research article. Image by the <a href="https://medium.com/ai-advances/to-automate-or-to-augment-humans-c3f805d35d55" target="_blank" rel="noopener noreferrer">paper’s authors</a>.</figcaption>
 </figure>
 
@@ -48,7 +48,7 @@ The results show that users perceive its output completely differently by varyin
 ### Key Takeaways
 
 <figure>
-<img src="/assets/images/posts/medium/1cJCRVb13QI7RLNGUZ-F9Uw.png" alt="" class="img-fluid">
+<img src="{% link /assets/images/posts/medium/1cJCRVb13QI7RLNGUZ-F9Uw.png %}" alt="" class="img-fluid">
 <figcaption>Human-Centred Design has been around for decades. It is used to create better software, that satisfies our needs. So why should it be different for AI? Diagram by the <a href="http://dx.doi.org/10.2196/humanfactors.5443" target="_blank" rel="noopener noreferrer">authors of a research paper</a>.</figcaption>
 </figure>
 
