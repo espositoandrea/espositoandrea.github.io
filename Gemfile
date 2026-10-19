@@ -48,7 +48,7 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "octokit", "~> 10.0"
 gem "nokogiri", "~> 1.16"
-gem "faraday-http-cache", "~> 2.5"
+gem "faraday-http-cache", "~> 3.0"
 gem "ogp", "~> 0.5.0"
 
 gem "ostruct", "~> 0.6.3"
