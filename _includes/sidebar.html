@@ -78,7 +78,7 @@
                     <span class="visually-hidden">Institution:</span>
                     <span itemprop="name">{{ site.data.curriculum.affiliation.institution.name | smartify }}</span>
                 </a>
-                <a class="list-group-item list-group-item-action icon-link" href="mailto:{{ site.author.mail }}">
+                <a class="list-group-item list-group-item-action icon-link" href="mailto:{{ site.author.mail | uri_escape }}">
                     <span class="fas fa-envelope"></span>
                     <span class="visually-hidden">Email:</span>
                     {{ site.author.mail }}
@@ -110,7 +110,7 @@
                     <span class="visually-hidden">Institution:</span>
                     {{ site.data.curriculum.affiliation.institution.name | smartify }}
                 </a>
-                <a class="list-group-item list-group-item-action icon-link" href="mailto:{{ site.author.mail }}">
+                <a class="list-group-item list-group-item-action icon-link" href="mailto:{{ site.author.mail | uri_escape }}">
                     <span class="fas fa-envelope"></span>
                     <span class="visually-hidden">Email:</span>
                     {{ site.author.mail }}

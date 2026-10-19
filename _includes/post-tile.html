@@ -28,7 +28,7 @@
             <a href="{{ url }}">{{ post.title | smartify }}</a>
         </h2>
         <p class="card-text" itemprop="description">
-            {% assign text = post.excerpt | markdownify | strip_html | newline_to_br | replace: "<br />", " " | strip_newlines %}
+            {% assign text = post.excerpt | markdownify | strip_html | newline_to_br | replace: "<br >", " " | strip_newlines %}
             {% if include.featured %}{{ text | truncatewords: 60 }}{% else %}{{ text | truncatewords: 28 }}{% endif %}
         </p>
 

@@ -132,7 +132,7 @@ author:
   honorificSuffix: PhD
   jobTitle: Postdoctoral Researcher
   url: https://espositoandrea.github.io
-  mail: "andrea.esposito [at] inria.fr"
+  mail: "andrea.esposito[at]inria.fr"
 
 sass:
   load_paths:

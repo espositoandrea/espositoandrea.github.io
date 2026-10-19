@@ -163,17 +163,17 @@ layout: default
     </div>
 
     <footer>
-        <hr />
+        <hr >
         {% if page.tags %}
-        <section class="mb-5 fg-secondary">
+        <div class="mb-5 fg-secondary">
             <span>Tags:</span>
             {% for tag in page.tags %}
             <a href="{{ '/blog/posts/tags/' | append: tag | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
                 class="fg-secondary mx-1">#{{ tag }}</a>
             {% endfor %}
-        </section>
+        </div>
         {% endif %}
-        <section class="mb-5 fg-secondary">
+        <div class="mb-5 fg-secondary">
             <span class="h4 d-block">Share on</span>
             <a href="https://twitter.com/intent/tweet?text={{ page.url | absolute_url }}" class="btn-solid theme-secondary"
                 title="Share on Twitter">
@@ -185,16 +185,16 @@ layout: default
                 <i class="fab fa-facebook" aria-hidden="true"></i>
                 <span>Facebook</span>
             </a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ page.url | absolute_url }}"
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}"
                 class="btn-solid theme-secondary" title="Share on LinkedIn">
                 <i class="fab fa-linkedin" aria-hidden="true"></i>
                 <span>LinkedIn</span>
             </a>
-        </section>
+        </div>
         {% if page.comments %}
-        <section class="mb-5 fg-secondary">
+        <div class="mb-5 fg-secondary">
             {% include disqus.html %}
-        </section>
+        </div>
         {% endif %}
     </footer>
 </article>
