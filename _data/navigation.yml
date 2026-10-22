@@ -22,11 +22,10 @@
       title: Research
       number: "01"
       url: /research
-      children:
-        - title: Overview
-          url: /research
-        - title: Publications
-          url: /publications
+    - id: publications
+      title: Publications
+      number: "01"
+      url: /publications
     - id: talks
       title: Talks
       number: "01"
