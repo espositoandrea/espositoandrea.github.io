@@ -254,7 +254,8 @@
   .page-body {
     padding-bottom: clamp(3rem, 8vw, 6rem);
   }
-  .page-section + .page-section { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+  // Space before every section that follows something, whatever it is (a gallery, an intro, ...)
+  .page-section:not(:first-child) { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
 
   // Breadcrumbs
   .crumbs {
