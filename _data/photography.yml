@@ -1,0 +1,26 @@
+# Photographs shown on /photography and on the home page, together with the ones published
+# in blog posts (see _plugins/photo_stream.rb). Order does not matter: photos are sorted by
+# date, newest first.
+#
+# Photos posted on Instagram: save a copy under assets/images/photography/ and link the
+# post, rather than pointing `image` at Instagram (its image URLs expire). An entry with an
+# `instagram` link but no `image` is shown as an embedded Instagram post instead.
+#
+# - image: /assets/images/photography/2026-10-old-town.jpg   # local path or full URL
+#   alt: What the photo shows, for people who cannot see it  # required with `image`
+#   date: 2026-10-01
+#   title: Optional title
+#   caption: Optional caption, in Markdown
+#   location: Nice, France                                    # optional
+#   camera: Fujifilm X100V · 23mm f/2 · 1/250s · ISO 400      # optional, free text
+#   instagram: https://www.instagram.com/p/XXXXXXXXXXX/       # optional
+#
+# Photos in blog posts: list them in the post's front matter, with the same fields
+# (`src` or `image` for the file); a post in the "Photography" category without such a
+# list contributes its cover `image`:
+#
+#   photos:
+#     - src: /assets/images/posts/my-post/01.jpg
+#       alt: ...
+#       caption: ...
+[]
