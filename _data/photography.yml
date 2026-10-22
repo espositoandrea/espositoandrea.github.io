@@ -12,7 +12,13 @@
 #   title: Optional title
 #   caption: Optional caption, in Markdown
 #   location: Nice, France                                    # optional
-#   camera: Fujifilm X100V · 23mm f/2 · 1/250s · ISO 400      # optional, free text
+#   exif:                                                     # optional, every field too
+#     camera: Fujifilm X100V
+#     lens: 23mm f/2                                          # optional
+#     focal_length: 23                                        # mm
+#     aperture: 2                                             # f-number
+#     shutter_speed: 1/250                                    # seconds
+#     iso: 400
 #   instagram: https://www.instagram.com/p/XXXXXXXXXXX/       # optional
 #
 # Photos in blog posts: list them in the post's front matter, with the same fields

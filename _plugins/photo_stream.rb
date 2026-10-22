@@ -9,7 +9,7 @@ module Jekyll
   # - posts with a `photos` list in the front matter;
   # - posts in the "Photography" category without such a list, through their cover `image`.
   #
-  # Each photo is a hash with: src, alt, title, caption, location, camera, date, source
+  # Each photo is a hash with: src, alt, title, caption, location, exif, camera, date, source
   # ("blog", "instagram" or "site"), url (where the photo is published), url_label, external,
   # instagram, post_title, and embed (true for Instagram posts without a local image, shown
   # through Instagram's embed instead).
@@ -77,10 +77,33 @@ module Jekyll
         'title' => entry['title'],
         'caption' => entry['caption'],
         'location' => entry['location'],
-        'camera' => entry['camera'],
+        'exif' => exif(entry),
+        'camera' => exif_summary(exif(entry)),
         'date' => entry['date'],
         'instagram' => entry['instagram']
       }
+    end
+
+    # Structured `exif` hash (camera, lens, focal_length, aperture, shutter_speed, iso); a
+    # plain `camera` string is still accepted.
+    def exif(entry)
+      data = entry['exif']
+      data = {} unless data.is_a?(Hash)
+      data = { 'camera' => entry['camera'] }.merge(data) if entry['camera']
+      data.compact
+    end
+
+    # One-line version of the exif data, e.g. "Fujifilm X100V · 23mm f/2 · 1/250s · ISO 400".
+    def exif_summary(data)
+      return nil if data.empty?
+
+      focal = data['focal_length'] && "#{data['focal_length']}mm"
+      aperture = data['aperture'] && "f/#{data['aperture']}"
+      shutter = data['shutter_speed'] && "#{data['shutter_speed']}s"
+      iso = data['iso'] && "ISO #{data['iso']}"
+      lens = data['lens'] || [focal, aperture].compact.join(' ')
+      settings = data['lens'] ? [focal, aperture] : []
+      [data['camera'], lens, *settings, shutter, iso].map(&:to_s).reject(&:empty?).uniq.join(' · ')
     end
 
     def timestamp(date)
