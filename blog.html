@@ -1,65 +1,73 @@
 ---
-layout: default
+layout: page
+section: writing
 lang: en
 title: "Blog"
 permalink: /blog/
 pagination:
   enabled: true
 schema_type: CollectionPage
+lede: >-
+  Essays, brief research ideas, and personal columns on AI, Human-Computer
+  Interaction, science, and digital well-being.
 description: >-
   Blog of Andrea Esposito: essays, brief research ideas, and personal columns on AI, Human-Computer Interaction, science, and digital well-being.
 ---
 
-<main class="container p-5 flex-grow-1" itemprop="mainEntity" itemscope itemtype="https://schema.org/Blog" itemid="{{ '/blog/' | absolute_url }}#blog">
-        <meta itemprop="name" content="{{ site.title }}’s Blog">
-        <link itemprop="url" href="{{ '/blog/' | absolute_url }}">
-    <header>
-        <div class="d-flex flex-row flex-wrap align-items-center">
-            <h1 class="flex-grow-1 mb-0">{{ page.title | smartify }}</h1>
-            <a href="{{ '/feed.xml' | absolute_url }}" class="theme-primary btn-icon btn-lg">
-                <span class="fas fa-rss" aria-hidden="true" title="Open RSS feed"></span>
-                <span class="visually-hidden">Open RSS feed</span>
-            </a>
+<div itemprop="mainEntity" itemscope itemtype="https://schema.org/Blog" itemid="{{ '/blog/' | absolute_url }}#blog">
+    <meta itemprop="name" content="{{ site.title }}’s Blog">
+    <link itemprop="url" href="{{ '/blog/' | absolute_url }}">
 
+    <div class="blog-tools">
+        <nav class="blog-categories" aria-label="Categories">
+            {%- assign categories = site.categories | sort %}
+            {%- for category in categories %}
+            <a class="tag" href="{{ '/blog/posts/categories/' | append: category[0] | slugify | append: '.html' | relative_url }}">{{ category[0] }} <span class="opacity-75">{{ category[1].size }}</span></a>
+            {%- endfor %}
+        </nav>
+        <div class="d-flex gap-2">
+            <a class="btn-line is-quiet" href="{{ '/blog/posts/' | relative_url }}"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> Archive</a>
+            <a class="btn-line is-quiet" href="{{ '/feed.xml' | relative_url }}"><i class="fa-solid fa-rss" aria-hidden="true"></i> RSS</a>
         </div>
-        <hr>
-    </header>
-    {% if paginator.posts.size > 0 %}
-    <div class="row row-cols-1 md:row-cols-3 g-3">
-        {% for post in paginator.posts %}
-        <div class="col">
-            {% include post-tile.html post=post %}
-            </div>
-        {% endfor %}
     </div>
+
+    {% assign posts = paginator.posts %}
+    {% if paginator.page == 1 and posts.size > 0 %}
+        {% include post-tile.html post=posts.first %}
+        {% assign posts = posts | slice: 1, posts.size %}
     {% endif %}
-</main>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script> -->
-
-<!-- pagination -->
-<div class="text-center my-5">
-    {% if paginator.total_pages > 1 %}
-    <div class="btn-group" role="group" aria-label="Blog pagination" >
-        {% if paginator.previous_page %}
-        <a class="btn-solid theme-secondary" href="{{ paginator.previous_page_path | absolute_url }}">&laquo; Prev</a>
-        {% else %}
-        <a class="btn-solid theme-secondary disabled">&laquo; Prev</a>
-        {% endif %}
-        
-        {% for trail in paginator.page_trail %}
-        {% if page.url == trail.path %}
-        <a class="btn-solid theme-secondary active">{{ trail.num }}</a>
-        {% else %}
-        <a class="btn-solid theme-secondary" href="{{ trail.path | absolute_url }}">{{ trail.num }}</a>
-        {% endif %}
+    {% if posts.size > 0 %}
+    <div class="post-list">
+        {% for post in posts %}
+            {% include post.html post=post %}
         {% endfor %}
-        
-        {% if paginator.next_page %}
-        <a class="btn-solid theme-secondary" href="{{ paginator.next_page_path | absolute_url }}">Next &raquo;</a>
-        {% else %}
-        <a class="btn-solid theme-secondary disabled">Next &raquo;</a>
-        {% endif %}
     </div>
     {% endif %}
 </div>
+
+{% if paginator.total_pages > 1 %}
+<nav class="pager" aria-label="Blog pages">
+    {% if paginator.previous_page %}
+    <a class="pager-step" href="{{ paginator.previous_page_path | relative_url }}" rel="prev">← Newer</a>
+    {% else %}
+    <span class="pager-step is-disabled">← Newer</span>
+    {% endif %}
+    <ol>
+        {% for trail in paginator.page_trail %}
+        <li>
+            {% if page.url == trail.path %}
+            <span aria-current="page">{{ trail.num }}</span>
+            {% else %}
+            <a href="{{ trail.path | relative_url }}">{{ trail.num }}</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ol>
+    {% if paginator.next_page %}
+    <a class="pager-step" href="{{ paginator.next_page_path | relative_url }}" rel="next">Older →</a>
+    {% else %}
+    <span class="pager-step is-disabled">Older →</span>
+    {% endif %}
+</nav>
+{% endif %}

@@ -1,5 +1,6 @@
 ---
 layout: default
+section: writing
 ---
 
 {% if page.author %}
@@ -39,66 +40,51 @@ layout: default
     {%- if page.image -%}{% if page.image contains '://' %}{% assign cover_url = page.image %}{% else %}{% capture cover_url %}{% link {{ page.image }} %}{% endcapture %}{% endif %}{% endif %}
     {% if page.image %}<link itemprop="image" href="{{ cover_url | absolute_url }}">{% endif %}
 
-    <header class="post-header mb-7{% if page.image %} post-header-cover{% endif %}"
-        {%- if page.image %} style="background-image: url('{{ cover_url | absolute_url }}');"{% endif %}>
-        <nav aria-label="breadcrumbs" class="small mb-5">
-            <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a class="breadcrumb-link" href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a>
+    <header class="post-header shell shell-narrow">
+        <nav aria-label="Breadcrumbs">
+            <ol class="crumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a>
                     <meta itemprop="position" content="1">
                 </li>
-                <li class="breadcrumb-divider"></li>
-                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a class="breadcrumb-link" href="{{ '/blog/' | absolute_url }}" itemprop="item"><span itemprop="name">Blog</span></a>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="{{ '/blog/' | absolute_url }}" itemprop="item"><span itemprop="name">Blog</span></a>
                     <meta itemprop="position" content="2">
                 </li>
-                <li class="breadcrumb-divider"></li>
-                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}" itemprop="item"><span itemprop="name">Posts</span></a>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="{{ '/blog/posts/' | absolute_url }}" itemprop="item"><span itemprop="name">Posts</span></a>
                     <meta itemprop="position" content="3">
                 </li>
-                <li class="breadcrumb-divider"></li>
-                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%Y' }}</span></a>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%Y' }}</span></a>
                     <meta itemprop="position" content="4">
                 </li>
-                <li class="breadcrumb-divider"></li>
-                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a class="breadcrumb-link" href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%m' }}</span></a>
+                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%m' }}</span></a>
                     <meta itemprop="position" content="5">
                 </li>
-                <li class="breadcrumb-divider"></li>
-                <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="#" class="breadcrumb-link active"><span itemprop="name">{{ page.title | smartify }}</span></a>
+                <li class="visually-hidden" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">{{ page.title | smartify }}</span>
                     <meta itemprop="position" content="6">
                 </li>
             </ol>
         </nav>
 
-        {% if page.canonical_url %}
-            <aside class="alert mb-7 d-flex align-items-center small" role="alert" aria-label="Cross-post details">
-                <i class="fas fa-share-square me-3" aria-hidden="true"></i>
-                <span>
-                    This post was originally published
-                    {% if page.canonical_site_name %}on <strong>{{ page.canonical_site_name }}</strong>{% endif %}.
-                    <a href="{{ page.canonical_url }}" target="_blank" rel="noopener noreferrer canonical">Read the original</a>{% if page.doi %}
-                    &middot; DOI: <a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener noreferrer">{{ page.doi }}</a>{% endif %}.
-                </span>
-            </aside>
-        {% endif %}
-
-        {% assign cats = page.categories | join: ',' %}
-        {% if page.categories.size > 0 %}
-        <p class="post-kicker mb-3">
-            {% for category in page.categories %}
-            <a href="{{ '/blog/posts/categories/' | append: category | downcase | replace: ' ', '-' | append: '.html' | absolute_url }}"
-            class="text-decoration-none">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
+        <p class="kicker">
+            <span class="kicker-num">02</span>
+            {%- if page.categories.size > 0 %}
+            <span>
+            {%- for category in page.categories %}
+                <a href="{{ '/blog/posts/categories/' | append: category | slugify | append: '.html' | absolute_url }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+            {%- endfor %}
+            </span>
+            {%- else %}
+            <a href="{{ '/blog/' | relative_url }}">Writing</a>
+            {%- endif %}
         </p>
-        {% endif %}
-        
-        <h1 class="mt-0 mb-5" itemprop="headline">{{ page.title | smartify }}</h1>
-        
+
+        <h1 class="post-title" itemprop="headline">{{ page.title | smartify }}</h1>
+
         {% comment %} Show the excerpt as a lede only if it is not just the post's opening paragraph. {% endcomment %}
         {% assign lede = page.excerpt | markdownify | strip_html | strip %}
         {% assign lede_probe = lede | truncate: 60, "" %}
@@ -107,92 +93,130 @@ layout: default
         {% if lede == blank %}{% assign show_lede = false %}{% endif %}
         {% if body_text contains lede_probe %}{% assign show_lede = false %}{% endif %}
         {% if show_lede %}
-        <p class="fs-lg fg-secondary mb-5">{{ lede }}</p>
+        <p class="post-lede">{{ lede }}</p>
         {% endif %}
-        
+
         {% comment %} The byline is the author (the publication date is set on the article above). {% endcomment %}
-        <div class="post-byline d-flex align-items-center" itemprop="author" itemscope itemtype="https://schema.org/Person"
+        <div class="post-byline" itemprop="author" itemscope itemtype="https://schema.org/Person"
             {%- if author.name == site.author.name %} itemid="{{ '/#person' | absolute_url }}"{% endif %}>
             {% if author.name == site.author.name %}<link itemprop="url" href="{{ '/' | absolute_url }}">{% endif %}
             {% if author.picture %}
-            <span class="avatar">
-                <img alt="" aria-hidden="true" class="avatar-img" loading="lazy" src="{{ author.picture | absolute_url }}" itemprop="image">
-            </span>
+            <img alt="" aria-hidden="true" class="post-byline-avatar" loading="lazy" src="{{ author.picture | absolute_url }}" itemprop="image">
             {% endif %}
-            <div class="ms-5 small">
-                <span class="d-block fw-semibold" itemprop="name">{{ author.name }}</span>
-                <span class="d-block fg-secondary">
-                    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %e, %Y" }}</time>
-                    &middot; {{ reading_time }} min read
+            <div>
+                <span class="post-byline-name" itemprop="name">{{ author.name }}</span>
+                <span class="meta">
+                    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+                    · {{ reading_time }} min read
                 </span>
             </div>
         </div>
+
+        {% if page.canonical_url %}
+        <aside class="note mt-7" aria-label="Cross-post details">
+            <i class="fa-solid fa-share-from-square" aria-hidden="true"></i>
+            <span>
+                This post was originally published
+                {% if page.canonical_site_name %}on <strong>{{ page.canonical_site_name }}</strong>{% endif %}.
+                <a href="{{ page.canonical_url }}" target="_blank" rel="noopener noreferrer canonical">Read the original</a>{% if page.doi %}
+                &middot; DOI: <a href="https://doi.org/{{ page.doi }}" target="_blank" rel="noopener noreferrer">{{ page.doi }}</a>{% endif %}.
+            </span>
+        </aside>
+        {% endif %}
 
         {% comment %} Link the PDF version (built by the Makefile) when one exists for this post. {% endcomment %}
         {% assign post_slug = page.path | split: '/' | last | remove: '.md' | remove: '.markdown' %}
         {% assign pdf_path = '/assets/posts/pdfs/' | append: post_slug | append: '.pdf' %}
         {% assign pdf_file = site.static_files | where: 'path', pdf_path | first %}
         {% if pdf_file %}
-        <aside class="post-pdf mt-7" aria-label="PDF version">
-            <i class="fas fa-file-pdf me-3" aria-hidden="true"></i>
+        <aside class="note mt-3" aria-label="PDF version">
+            <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
             <span>You can also read this post <a href="{{ pdf_file.path | relative_url }}">in PDF format</a>.</span>
         </aside>
         {% endif %}
-        {% if page.image and page.image_caption != blank %}
-        <p class="post-cover-caption small mt-5 mb-0">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</p>
-        {% endif %}
     </header>
 
-    {% unless page.toc == false %}
-    <aside class="text-start rounded p-5 border bg-2 mb-5">
-        <h2 class="mt-0">Table of Contents</h2>
-        {% include toc.html html=content %}
-    </aside>
-    {% endunless %}
+    {% if page.image %}
+    <figure class="post-cover shell">
+        <img src="{{ cover_url | absolute_url }}" alt="{{ page.image_alt | escape }}" onerror="this.parentElement.remove();">
+        {% if page.image_caption != blank %}
+        <figcaption>{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>
+        {% endif %}
+    </figure>
+    {% endif %}
 
-    {% if page.paper %}
-    {% capture paper_html %}{% bibliography --group_by none --query @*[key = {{ page.paper }}] %}{% endcapture %}
-    <section class="mb-7" aria-labelledby="associated-paper">
-        <h2 id="associated-paper" class="h5 mt-0 mb-0">Associated paper</h2>
-        {{ paper_html | edit_urls | remove_number | emphasize_author }}
+    <div class="shell shell-narrow">
+        {% unless page.toc == false %}
+        <details class="post-toc" open>
+            <summary>Contents</summary>
+            {% include toc.html html=content %}
+        </details>
+        {% endunless %}
+
+        {% if page.paper %}
+        {% capture paper_html %}{% bibliography --group_by none --query @*[key = {{ page.paper }}] %}{% endcapture %}
+        <section class="post-paper" aria-labelledby="associated-paper">
+            <h2 id="associated-paper" class="nature-label">Associated paper</h2>
+            {{ paper_html | edit_urls | remove_number | emphasize_author }}
+        </section>
+        {% endif %}
+
+        <div class="post-body" itemprop="articleBody">
+        {{ content }}
+        </div>
+    </div>
+
+    {% if page.photos.size > 0 %}
+    {% assign post_photos = site.data.photo_stream | where: "url", page.url %}
+    <section class="post-photos shell" data-bs-theme="dark" aria-labelledby="post-photos">
+        <h2 id="post-photos" class="nature-label">Photographs</h2>
+        {% include photo-grid.html photos=post_photos id="post" %}
     </section>
     {% endif %}
 
-    <div itemprop="articleBody">
-    {{ content }}
-    </div>
-
-    <footer>
-        <hr >
+    <footer class="post-footer shell shell-narrow">
         {% if page.tags %}
-        <div class="mb-5 fg-secondary">
-            <span>Tags:</span>
+        <div class="post-tags">
             {% for tag in page.tags %}
-            <a href="{{ '/blog/posts/tags/' | append: tag | downcase | replace: ' ', '-' | append: '.html'| absolute_url }}"
-                class="fg-secondary mx-1">#{{ tag }}</a>
+            <a class="tag" href="{{ '/blog/posts/tags/' | append: tag | slugify | append: '.html' | absolute_url }}">#{{ tag }}</a>
             {% endfor %}
         </div>
         {% endif %}
-        <div class="mb-5 fg-secondary">
-            <span class="h4 d-block">Share on</span>
-            <a href="https://twitter.com/intent/tweet?text={{ page.url | absolute_url }}" class="btn-solid theme-secondary"
-                title="Share on Twitter">
-                <i class="fab fa-twitter" aria-hidden="true"></i>
-                <span>Twitter</span>
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}"
-                class="btn-solid theme-secondary" title="Share on Facebook">
-                <i class="fab fa-facebook" aria-hidden="true"></i>
-                <span>Facebook</span>
-            </a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}"
-                class="btn-solid theme-secondary" title="Share on LinkedIn">
-                <i class="fab fa-linkedin" aria-hidden="true"></i>
-                <span>LinkedIn</span>
-            </a>
+
+        <div class="post-share">
+            <span class="nature-label">Share</span>
+            <div class="d-flex flex-wrap gap-2 no-blank-icon">
+                <a href="https://twitter.com/intent/tweet?text={{ page.url | absolute_url | uri_escape }}" class="btn-line is-quiet" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-twitter" aria-hidden="true"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | uri_escape }}" class="btn-line is-quiet" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-facebook" aria-hidden="true"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url | uri_escape }}" class="btn-line is-quiet" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+            </div>
         </div>
+
+        {% if page.previous or page.next %}
+        <nav class="post-nav" aria-label="More posts">
+            {% if page.previous %}
+            <a class="post-nav-link" href="{{ page.previous.url | relative_url }}" rel="prev">
+                <span class="nature-label">← Previous</span>
+                <span class="post-nav-title">{{ page.previous.title | smartify }}</span>
+            </a>
+            {% else %}<span></span>{% endif %}
+            {% if page.next %}
+            <a class="post-nav-link is-next" href="{{ page.next.url | relative_url }}" rel="next">
+                <span class="nature-label">Next →</span>
+                <span class="post-nav-title">{{ page.next.title | smartify }}</span>
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
+
         {% if page.comments %}
-        <div class="mb-5 fg-secondary">
+        <div class="post-comments">
             {% include disqus.html %}
         </div>
         {% endif %}

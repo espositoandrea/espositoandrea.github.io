@@ -1,51 +1,36 @@
+{% comment %}
+  A post in a list: date, title, excerpt, and a small cover. Params: post, compact (true to
+  leave out the excerpt and the cover, for archives).
+{% endcomment %}
+{% assign post = include.post %}
 {% assign url = post.redirect | default: post.url | absolute_url %}
 
-<div class="post-card mb-5" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article class="post-row{% if include.compact %} post-row-compact{% endif %}" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
     <link itemprop="url" href="{{ url }}">
     <meta itemprop="datePublished" content="{{ post.date | date_to_xmlschema }}">
     <span hidden itemprop="author" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
         <meta itemprop="name" content="{{ site.author.name }}">
         <link itemprop="url" href="{{ '/' | absolute_url }}">
     </span>
-    <div class="row g-0">
-        <div class="md:col-8">
-            <div class="card-body">
-                <h2 class="card-title mt-0" itemprop="headline">
-                    <a class="no-blank-icon" href="{{ url }}" {% if post.redirect !=blank %} target="_blank" {%
-                       endif %}>
-                        {{ post.title | smartify }}
-                    </a>
-                </h2>
-                <p class="card-text fg-secondary">
-                    <span>{{ post.date | date: "%B %e, %Y" }}</span>
-                    {% if post.canonical_site_name != blank %}
-                    &nbsp;&centerdot;&nbsp;
-                    Published in <a href="{{ post.canonical_url }}" target="_blank">{{ post.canonical_site_name }}</a>
-                    {% endif %}
-                </p>
-                <div class="card-text" itemprop="description">
-                    {% if post.redirect != blank %}
-                        {{ post.excerpt }}
-                    {% else %}
-                        {{ post.excerpt | markdownify }}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <div class="md:col-4">
-            {% if post.image %}
-            <a class="no-blank-icon" href="{{ url }}" {% if post.redirect != blank %} target="_blank" {% endif %}>
-                <img src="{{ post.image | absolute_url }}" class="card-img rounded-end" alt="" aria-hidden="true" itemprop="image">
-            </a>
-            {% endif %}
-        </div>
-        <!--<div class="author-data card-footer bg-transparent">
-            <img src="{{ "assets/images/profile.png" | absolute_url }}" class="author-thumb" alt="" aria-hidden="true">
-            <div>
-                <span>{{ post.author }}</span>
-                <br>
-                <span class="fg-secondary">{{ post.date | date: "%B %e, %Y" }}</span>
-            </div>
-        </div>-->
+    <time class="post-row-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}<span>{{ post.date | date: "%Y" }}</span></time>
+    <div class="post-row-body">
+        <h3 class="post-row-title" itemprop="headline">
+            <a href="{{ url }}"{% if post.redirect != blank %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ post.title | smartify }}</a>
+        </h3>
+        {% unless include.compact %}
+        <p class="post-row-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | normalize_whitespace | truncatewords: 32 }}</p>
+        {% endunless %}
+        <p class="meta">
+            {%- if post.categories.size > 0 %}{{ post.categories | join: ", " }}{% endif %}
+            {%- if post.canonical_site_name != blank %}{% if post.categories.size > 0 %} · {% endif %}Also on {{ post.canonical_site_name }}{% endif %}
+        </p>
     </div>
-</div>
+    {% unless include.compact %}
+    {% if post.image %}
+        {% if post.image contains '://' %}{% assign image_url = post.image %}{% else %}{% capture image_url %}{% link {{ post.image }} %}{% endcapture %}{% endif %}
+        <a class="post-row-media" href="{{ url }}" tabindex="-1" aria-hidden="true">
+            <img src="{{ image_url | absolute_url }}" alt="" itemprop="image" loading="lazy" onerror="this.parentElement.remove();">
+        </a>
+    {% endif %}
+    {% endunless %}
+</article>
