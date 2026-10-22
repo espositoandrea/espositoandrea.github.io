@@ -1,0 +1,12 @@
+---
+---
+{%- comment -%}
+  Compact bibliography entry (title, venue, and year), for previews such as the home page:
+  {% bibliography --template bib-mini ... %}. The full entry is in bib.html.
+{%- endcomment -%}
+{%- assign venue = entry.journal | default: entry.booktitle | default: entry.school -%}
+{%- capture more_details_link -%}{% details_link key %}{%- endcapture -%}
+<article class="pub-mini">
+	<a class="pub-mini-title" href="{{ more_details_link | absolute_url }}">{{ entry.title }}</a>
+	<p class="pub-mini-meta">{% if venue %}<em>{{ venue }}</em> · {% endif %}{{ entry.year }}</p>
+</article>

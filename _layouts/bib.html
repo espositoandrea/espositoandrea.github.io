@@ -17,60 +17,37 @@
 {%- elsif keywords contains "reach/national" -%}{%- assign reach = "National" -%}
 {%- else -%}{%- assign reach = "" -%}{%- endif -%}
 {%- include scholarly-type.html entry=entry -%}
-<article class="mt-3 card position-relative" itemscope itemtype="https://schema.org/{{ scholarly_type }}" data-year="{{ entry.year }}" data-month="{{ entry.month }}" data-category="{{ category }}" data-color="{{ color }}">
-	<div class="card-header d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5">
-		{% include scholarly-meta.html entry=entry url=more_details_link access=access pdf=links.pdf %}
-		<h4 class="h6 mb-0" itemprop="headline"><a href="{{ more_details_link | absolute_url }}" class="fg-reset text-decoration-none">{{ entry.title }}</a></h4>
-		<div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
-		<span class="badge bg-subtle-{{ color }} fg-emphasis-{{ color }} border border-subtle-{{ color }} fw-normal">{{ category }}</span>
-		{% if reach != "" %}<span class="badge bg-subtle-secondary fg-emphasis-secondary border fw-normal">{{ reach }}</span>{% endif %}
-		{% if entry.year %}
-			<time class="small fg-secondary font-monospace text-nowrap">{% if entry.month %}{{ entry.month | capitalize }} {% endif %}{{ entry.year }}</time>
+<article class="pub" itemscope itemtype="https://schema.org/{{ scholarly_type }}" data-year="{{ entry.year }}" data-month="{{ entry.month }}" data-category="{{ category }}" data-color="{{ color }}">
+	{% include scholarly-meta.html entry=entry url=more_details_link access=access pdf=links.pdf %}
+	<div class="pub-side">
+		{% if entry.year %}<time class="pub-date">{% if entry.month %}{{ entry.month | capitalize | slice: 0, 3 }} {% endif %}{{ entry.year }}</time>{% endif %}
+		<span class="pub-type" data-color="{{ color }}">{{ category }}</span>
+		{% if reach != "" %}<span class="pub-reach">{{ reach }}</span>{% endif %}
+	</div>
+	<div class="pub-body">
+		<h4 class="pub-title" itemprop="headline">
+			<a href="{{ more_details_link | absolute_url }}">{{ entry.title }}</a>
+			{% if open_access %}<i class="ai ai-open-access pub-oa" title="Published in Open Access" aria-label="Open Access"></i>{% endif %}
+		</h4>
+		{% if entry.author_array %}
+		<p class="pub-authors">{% for author in entry.author_array %}{{ author.first }} {{ author.last }}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
 		{% endif %}
-		</div>
-	</div>
+		{% if venue %}<p class="pub-venue"><em>{{ venue }}</em></p>{% endif %}
 
-	<div class="card-body">
-		<ul class="list-inline small fg-secondary mb-0">
-			{% if entry.author_array %}
-				<li class="list-inline-item me-5">
-					<i class="fa-solid fa-users fa-fw" aria-label="Authors" title="Authors"></i>
-					{% for author in entry.author_array %}{{ author.first }} {{ author.last }}{% unless forloop.last %}, {% endunless %}{% endfor %}
-				</li>
-			{% endif %}
-			{% if venue %}
-				<li class="list-inline-item me-5">
-					<i class="fa-solid fa-book-open fa-fw" aria-label="Published in" title="Published in"></i>
-					<em>{{ venue }}</em>
-				</li>
-			{% endif %}
-			{% if entry.doi %}
-				<li class="list-inline-item me-5">
-					<i class="ai ai-doi fa-fw" aria-label="DOI" title="DOI"></i>
-					<a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer">{{ entry.doi }}</a>
-				</li>
-			{% endif %}
-		</ul>
-
-		{% unless access == blank %}
-		<div class="bib-actions">
+		<div class="pub-actions no-blank-icon">
 			{% for item in access %}
-				<a class="no-blank-icon d-inline-flex align-items-center gap-1 text-decoration-none icon-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" title="{{ item.description }}">
-					<span class="{{ item.icon }}" aria-hidden="true"></span> {{ item.label }}
-				</a>
+			<a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" title="{{ item.description }}"><span class="{{ item.icon }}" aria-hidden="true"></span> {{ item.label }}</a>
 			{% endfor %}
-			{% comment %}
-				{% include altmetric-badge.html entry=entry %}
-			{% endcomment %}
+			{% if entry.doi %}
+			{%- comment -%} The icon stays on its own line: edit_urls rewrites DOI URLs followed by </span> on the same line. {%- endcomment %}
+			<a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer" title="DOI: {{ entry.doi }}">
+				<span class="ai ai-doi" aria-hidden="true"></span> DOI</a>
+			{% endif %}
+			<details class="pub-cite">
+				<summary><i class="fa-solid fa-quote-left" aria-hidden="true"></i> Cite</summary>
+				<div class="pub-cite-text">{{ reference }}</div>
+			</details>
+			<a class="pub-details" href="{{ more_details_link | absolute_url }}">Details →</a>
 		</div>
-		{% endunless %}
-	</div>
-
-	<div class="card-footer small d-flex flex-wrap align-items-baseline gap-3">
-		<details>
-			<summary class="fg-secondary"><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Full citation</summary>
-			<div class="mt-1">{{ reference }}</div>
-		</details>
-		<a href="{{ more_details_link | absolute_url }}" class="ms-auto stretched-link"><i class="fa-solid fa-circle-info fa-fw" aria-hidden="true"></i> Details</a>
 	</div>
 </article>
