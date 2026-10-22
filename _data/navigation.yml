@@ -1,9 +1,10 @@
 # Structure of the website, used by the header, the footer, and the page kickers.
 #
-# The site has three sides (groups), each with one or more sections shown directly in the
-# header. Pages declare the section they belong to with `section: <id>` in their front matter
-# (or in the front matter of their layout): the section is then highlighted in the header
-# and its `children`, if any, are shown in a second navigation row.
+# The site has three sides (groups), each with one or more sections. In the header, a group
+# with several sections is a dropdown (expanded in the mobile drawer), a group with one
+# section is a plain link. Pages declare the section they belong to with `section: <id>` in
+# their front matter (or in the front matter of their layout): the section is then
+# highlighted in the header and its `children`, if any, are shown in a second navigation row.
 #
 # - id:        group identifier
 #   title:     name of the group

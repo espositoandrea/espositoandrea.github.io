@@ -88,6 +88,44 @@
     color: var(--accent);
   }
 
+  // Dropdown of a group with several sections (desktop)
+  button.site-nav-link {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .site-nav-caret {
+    margin-left: .35rem;
+    font-size: .6em;
+    transition: transform .15s;
+    [aria-expanded="true"] > & { transform: rotate(180deg); }
+  }
+  .site-menu {
+    --menu-min-width: 12rem;
+    --menu-padding-y: .4rem;
+    --menu-padding-x: .4rem;
+    --menu-item-padding-y: .45rem;
+    --menu-item-border-radius: var(--radius-2);
+
+    .menu-item {
+      font-size: .92rem;
+      color: var(--fg-1);
+      text-decoration: none;
+    }
+    .menu-item[aria-current] {
+      color: var(--accent);
+      font-weight: 600;
+      &::before {
+        content: "";
+        width: 2px;
+        align-self: stretch;
+        margin-right: .1rem;
+        background: var(--primary-base);
+      }
+    }
+  }
+
   .theme-toggle {
     display: grid;
     place-items: center;
