@@ -40,8 +40,8 @@
 			{% endfor %}
 			{% if entry.doi %}
 			{%- comment -%} The icon stays on its own line: edit_urls rewrites DOI URLs followed by </span> on the same line. {%- endcomment %}
-			<a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer" title="DOI: {{ entry.doi }}">
-				<span class="ai ai-doi" aria-hidden="true"></span> DOI</a>
+			<a href="https://doi.org/{{ entry.doi }}" target="_blank" rel="noopener noreferrer" title="DOI">
+				<span class="ai ai-doi" aria-hidden="true"></span><span class="visually-hidden">DOI:</span> {{ entry.doi }}</a>
 			{% endif %}
 			<details class="pub-cite">
 				<summary><i class="fa-solid fa-quote-left" aria-hidden="true"></i> Cite</summary>
