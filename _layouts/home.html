@@ -1,0 +1,144 @@
+---
+layout: default
+section: home
+---
+{%- comment -%}
+  Home page: who I am (the content of index.md), then the three sides of the site (research,
+  writing, photography), news, research interests, and publication highlights.
+{%- endcomment -%}
+{%- assign cv = site.data.curriculum -%}
+{%- include nav-items.html -%}
+{%- assign nav_research = nav_items | where: "id", "research" | first -%}
+{%- assign nav_academic = site.data.navigation | first -%}
+{%- assign nav_writing = nav_items | where: "id", "writing" | first -%}
+{%- assign nav_photo = nav_items | where: "id", "photography" | first -%}
+{%- assign photos = site.data.photo_stream | where_exp: "photo", "photo.embed != true" -%}
+{%- assign instagram = site.data.contacts | where: "name", "Instagram" | first -%}
+
+<section class="hero" aria-labelledby="hero-title">
+    <div class="shell hero-grid">
+        <div class="hero-text">
+            <p class="kicker">
+                <span class="kicker-num">{{ cv.position | smartify }}</span>
+                <span class="kicker-rule" aria-hidden="true"></span>
+                <span>{{ cv.affiliation.institution.name }} · {{ cv.affiliation.laboratory.name | smartify }}</span>
+            </p>
+            <h1 class="hero-title" id="hero-title">{{ site.author.firstName }} <span class="hero-title-line">{{ site.author.surname }}<span class="wordmark-dot" aria-hidden="true">.</span></span></h1>
+            {% if page.tagline %}<p class="hero-tagline">{{ page.tagline | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>{% endif %}
+            <div class="hero-intro rich-text">
+                {{ content }}
+            </div>
+            <div class="hero-actions">
+                <a class="btn-line is-accent" href="{{ '/curriculum' | relative_url }}">Curriculum</a>
+                <a class="btn-line" href="{{ '/publications' | relative_url }}">Publications</a>
+                <a class="btn-line is-quiet" href="mailto:{{ site.author.mail | uri_escape }}"><i class="fa-regular fa-envelope" aria-hidden="true"></i> {{ site.author.mail }}</a>
+            </div>
+        </div>
+        <figure class="hero-portrait">
+            <div class="hero-portrait-frame">
+                <img src="{{ site.author.picture | relative_url }}" alt="Portrait of {{ site.author.name }}" width="600" height="750" fetchpriority="high">
+            </div>
+            <figcaption>{{ site.author.name }}, {{ cv.title }}</figcaption>
+        </figure>
+    </div>
+</section>
+
+<section class="natures" aria-label="The three sides of this website">
+    <div class="shell natures-grid">
+        <article class="nature" aria-labelledby="nature-research">
+            <header class="nature-head">
+                <span class="nature-num">{{ nav_research.number }}</span>
+                <h2 id="nature-research"><a href="{{ nav_research.url | relative_url }}">{{ nav_academic.title }}</a></h2>
+            </header>
+            <p class="nature-desc">{{ page.natures.research | smartify }}</p>
+            <h3 class="nature-label">Latest publication</h3>
+            {% bibliography --group_by none --max 1 --template bib-mini %}
+            <ul class="nature-links">
+                <li><a href="{{ '/publications' | relative_url }}">Publications <span class="count">{% bibliography_count %}</span></a></li>
+                {%- assign talks_count = site.data.talks.talks.size | plus: site.data.talks.seminars.size %}
+                <li><a href="{{ '/talks' | relative_url }}">Talks &amp; seminars <span class="count">{{ talks_count }}</span></a></li>
+                <li><a href="{{ '/teachings' | relative_url }}">Teaching <span class="count">{{ site.teachings.size }}</span></a></li>
+                <li><a href="{{ '/curriculum' | relative_url }}">Curriculum <i class="fa-regular fa-id-card" aria-hidden="true"></i></a></li>
+            </ul>
+            <a class="more-link" href="{{ nav_research.url | relative_url }}">Research overview</a>
+        </article>
+
+        <article class="nature" aria-labelledby="nature-writing">
+            <header class="nature-head">
+                <span class="nature-num">{{ nav_writing.number }}</span>
+                <h2 id="nature-writing"><a href="{{ nav_writing.url | relative_url }}">{{ nav_writing.title }}</a></h2>
+            </header>
+            <p class="nature-desc">{{ page.natures.writing | smartify }}</p>
+            <h3 class="nature-label">Latest posts</h3>
+            <ol class="nature-posts">
+                {%- for post in site.posts limit: 4 %}
+                <li>
+                    <time class="meta" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %Y" }}</time>
+                    <a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>
+                </li>
+                {%- endfor %}
+            </ol>
+            <a class="more-link" href="{{ nav_writing.url | relative_url }}">All writing</a>
+        </article>
+
+        <article class="nature nature-photo" data-bs-theme="dark" aria-labelledby="nature-photography">
+            <header class="nature-head">
+                <span class="nature-num">{{ nav_photo.number }}</span>
+                <h2 id="nature-photography"><a href="{{ nav_photo.url | relative_url }}">{{ nav_photo.title }}</a></h2>
+            </header>
+            <p class="nature-desc">{{ page.natures.photography | smartify }}</p>
+            {%- if photos.size > 0 %}
+            {% include photo-grid.html photos=photos limit=6 id="home" compact=true %}
+            <a class="more-link" href="{{ nav_photo.url | relative_url }}">Open the gallery</a>
+            {%- else %}
+            <div class="nature-darkroom" aria-hidden="true">
+                {%- for i in (1..6) %}<span></span>{% endfor -%}
+            </div>
+            <p class="nature-empty">The first prints are still drying.{% if instagram %} Meanwhile, my photos are on <a href="{{ instagram.link }}" target="_blank" rel="noopener noreferrer">Instagram</a>.{% endif %}</p>
+            <a class="more-link" href="{{ nav_photo.url | relative_url }}">Photography</a>
+            {%- endif %}
+        </article>
+    </div>
+</section>
+
+<section class="shell home-band">
+    {% if site.data.news.size > 0 %}
+    <div>
+        <div class="section-head">
+            <h2>News</h2>
+            <a href="{{ '/news' | relative_url }}">All updates →</a>
+        </div>
+        {% include news-list.html limit=5 %}
+    </div>
+    {% endif %}
+    <div>
+        <div class="section-head">
+            <h2>Research interests</h2>
+        </div>
+        <ol class="interest-list">
+            {%- for interest in site.data.research_interests %}
+            <li>
+                <h3>{{ interest.title }}</h3>
+                <p>{{ interest.description }}</p>
+            </li>
+            {%- endfor %}
+        </ol>
+    </div>
+</section>
+
+{% assign highlights = site.data.highlights.highlights %}
+{% if highlights.size > 0 %}
+<section class="shell home-highlights" aria-labelledby="highlights">
+    <div class="section-head">
+        <h2 id="highlights">Publication highlights</h2>
+        <a href="{{ '/publications' | relative_url }}">All publications →</a>
+    </div>
+    <ol class="bibliography">
+    {% for item in highlights %}
+        {% capture paper_html %}{% bibliography --group_by none --query @*[key={{item.paper}}] %}{% endcapture %}
+        {% capture highlight %}<div class="pub-body"><div class="pub-highlight">{{ item.text | markdownify }}</div>{% endcapture %}
+        {{ paper_html | replace: '<ol class="bibliography">', '' | replace: '</ol>', '' | replace: '<div class="pub-body">', highlight | edit_urls | remove_number | emphasize_author }}
+    {% endfor %}
+    </ol>
+</section>
+{% endif %}

@@ -1,0 +1,299 @@
+// Home page: hero, the three sides of the site, and the news/interests band.
+
+@layer custom {
+  .hero {
+    padding-block: clamp(2.5rem, 7vw, 6rem) clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: 2.5rem;
+    align-items: end;
+
+    @media (min-width: 900px) {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+      gap: clamp(2.5rem, 6vw, 5rem);
+    }
+  }
+
+  .hero .kicker {
+    flex-wrap: wrap;
+    @media (max-width: 575.98px) { .kicker-rule { display: none; } > span:last-child { flex-basis: 100%; } }
+  }
+
+  .hero-title {
+    margin: 0 0 1.75rem;
+    font-size: clamp(3.2rem, 1.5rem + 7vw, 7rem);
+    font-weight: 600;
+    line-height: .92;
+    letter-spacing: -.04em;
+  }
+  .hero-title-line { display: block; }
+
+  .hero-intro {
+    max-width: 38rem;
+    color: var(--fg-2);
+
+    .hero-lede {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 1rem + .7vw, 1.45rem);
+      line-height: 1.45;
+      color: var(--fg-body);
+    }
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: 2rem;
+  }
+
+  .hero-portrait {
+    position: relative;
+    isolation: isolate;
+    margin: 0;
+    max-width: 24rem;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 50% 25%;
+      filter: grayscale(1) contrast(1.05);
+      transition: filter .6s ease;
+    }
+    &:hover img { filter: none; }
+
+    // Offset frame, like a print on a mat
+    .hero-portrait-frame { position: relative; }
+    .hero-portrait-frame::before {
+      content: "";
+      position: absolute;
+      inset: .9rem -.9rem -.9rem .9rem;
+      z-index: -1;
+      border: 1px solid var(--primary-base);
+    }
+
+    figcaption {
+      margin-top: 1.4rem;
+      font-family: var(--font-mono);
+      font-size: .7rem;
+      letter-spacing: .04em;
+      color: var(--fg-3);
+    }
+
+    @media (max-width: 899.98px) {
+      order: -1;
+      max-width: 11rem;
+      .hero-portrait-frame::before { inset: .5rem -.5rem -.5rem .5rem; }
+      figcaption { display: none; }
+    }
+  }
+
+  // The three sides of the site
+  .natures {
+    border-block: var(--rule-strong);
+  }
+
+  .natures-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .nature {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0 2.25rem;
+
+    & + & { border-top: var(--rule); }
+
+    @media (min-width: 992px) {
+      padding: 2.5rem 2rem 2.75rem;
+      & + & { border-top: 0; border-left: var(--rule); }
+      &:first-child { padding-left: 0; }
+    }
+
+    > .more-link { margin-top: auto; padding-top: 1.5rem; align-self: flex-start; }
+  }
+
+  .nature-head {
+    display: flex;
+    align-items: baseline;
+    gap: .75rem;
+    margin-bottom: .75rem;
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 1.4rem + 1.2vw, 2.4rem);
+      letter-spacing: -.03em;
+      a { color: inherit; text-decoration: none; }
+      a:hover { color: var(--accent); }
+    }
+  }
+  .nature-num {
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    color: var(--accent);
+  }
+
+  .nature-desc {
+    margin: 0 0 1.75rem;
+    color: var(--fg-2);
+    font-size: .95rem;
+  }
+
+  .nature-label {
+    margin: 0 0 .75rem;
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+  }
+
+  .nature .bibliography {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .pub-mini {
+    padding: 1rem 0;
+    border-block: var(--rule);
+  }
+  .pub-mini-title {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--fg-body);
+    text-decoration: none;
+    &:hover { color: var(--accent); text-decoration: underline; }
+  }
+  .pub-mini-meta {
+    margin: .4rem 0 0;
+    font-size: .8rem;
+    color: var(--fg-3);
+  }
+
+  .nature-links {
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    li + li { border-top: var(--rule); }
+    a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .55rem 0;
+      color: var(--fg-1);
+      text-decoration: none;
+      &:hover { color: var(--accent); }
+    }
+  }
+
+  .nature-posts {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: var(--rule);
+
+    li {
+      display: grid;
+      grid-template-columns: 4.75rem 1fr;
+      gap: 1rem;
+      padding: .8rem 0;
+      border-bottom: var(--rule);
+    }
+    time { padding-top: .2rem; }
+    a {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--fg-body);
+      text-decoration: none;
+      &:hover { color: var(--accent); text-decoration: underline; }
+    }
+  }
+
+  // The photography panel is a darkroom, in both themes
+  .nature-photo {
+    background: #0E0D0C;
+    color: var(--fg-body);
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+
+    @media (min-width: 992px) {
+      margin: 0;
+      padding-inline: 2rem;
+      border-left: 0 !important;
+    }
+  }
+
+  .nature-empty {
+    margin: 1.25rem 0 0;
+    font-size: .9rem;
+    color: var(--fg-2);
+  }
+
+  // News and research interests
+  .home-band {
+    display: grid;
+    gap: 3rem;
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+
+    @media (min-width: 992px) {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 5rem;
+    }
+  }
+
+  .interest-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: interest;
+    display: grid;
+    gap: 0 2.5rem;
+
+    @media (min-width: 640px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    li {
+      counter-increment: interest;
+      position: relative;
+      padding: 1rem 0 1.25rem 2.5rem;
+      border-bottom: var(--rule);
+
+      &::before {
+        content: counter(interest, decimal-leading-zero);
+        position: absolute;
+        left: 0;
+        top: 1.3rem;
+        font-family: var(--font-mono);
+        font-size: .72rem;
+        color: var(--accent);
+      }
+    }
+    h3 { margin: 0 0 .35rem; font-size: 1.15rem; }
+    p { margin: 0; font-size: .9rem; color: var(--fg-2); }
+  }
+
+  .home-highlights {
+    padding-bottom: clamp(3rem, 7vw, 5.5rem);
+  }
+  .pub-highlight {
+    margin-bottom: .75rem;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--fg-1);
+  }
+}
