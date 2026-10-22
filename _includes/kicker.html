@@ -1,0 +1,18 @@
+{%- comment -%}
+  Label above a title: the number and name of a section ("01 — Research"), optionally followed
+  by `label`. Parameters: section (id in _data/navigation.yml; default: the current section),
+  label, link (true to link the section name to its landing page).
+{%- endcomment -%}
+{%- assign kicker_id = include.section | default: page.section | default: layout.section -%}
+{%- include nav-items.html -%}
+{%- assign kicker_item = nav_items | where: "id", kicker_id | first -%}
+<p class="kicker">
+    {%- if kicker_item %}
+    <span class="kicker-num">{{ kicker_item.number }}</span>
+    {%- if include.link %}<a href="{{ kicker_item.url | relative_url }}">{{ kicker_item.title }}</a>{% else %}<span>{{ kicker_item.title }}</span>{% endif %}
+    {%- endif %}
+    {%- if include.label %}
+    {%- if kicker_item %}<span class="kicker-rule" aria-hidden="true"></span>{% endif %}
+    <span>{{ include.label }}</span>
+    {%- endif %}
+</p>

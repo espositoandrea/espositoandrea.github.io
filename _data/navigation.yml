@@ -1,16 +1,72 @@
-# This data file holds the navigation structure for the website.
-# It is used to generate the navigation menu (navbar).
-- title: About
-  url: '/'
-- title: Curriculum
-  url: '/curriculum'
-- title: Teaching
-  url: '/teachings'
-- title: Talks
-  url: '/talks'
-- title: Publications
-  url: '/publications'
-# - title: Projects
-#   url: '/projects'
-- title: Blog
-  url: /blog
+# Structure of the website, used by the header, the footer, and the page kickers.
+#
+# The site has three sides (groups), each with one or more sections shown directly in the
+# header. Pages declare the section they belong to with `section: <id>` in their front matter
+# (or in the front matter of their layout): the section is then highlighted in the header
+# and its `children`, if any, are shown in a second navigation row.
+#
+# - id:        group identifier
+#   title:     name of the group
+#   number:    index shown before the group ("01")
+#   items:     sections of the group
+#     - id:        section identifier, matched against `page.section`
+#       title:     label in the navigation
+#       number:    index of the group the section belongs to (shown in its kickers)
+#       url:       landing page of the section
+#       children:  pages of the section (`external: true` opens them in a new tab)
+- id: academic
+  title: Academic
+  number: "01"
+  items:
+    - id: research
+      title: Research
+      number: "01"
+      url: /research
+      children:
+        - title: Overview
+          url: /research
+        - title: Publications
+          url: /publications
+    - id: talks
+      title: Talks
+      number: "01"
+      url: /talks
+    - id: teaching
+      title: Teaching
+      number: "01"
+      url: /teachings
+    - id: curriculum
+      title: Curriculum
+      number: "01"
+      url: /curriculum
+- id: writing
+  title: Writing
+  number: "02"
+  items:
+    - id: writing
+      title: Writing
+      number: "02"
+      url: /blog/
+      children:
+        - title: Latest
+          url: /blog/
+        - title: Archive
+          url: /blog/posts/
+        - title: RSS feed
+          url: /feed.xml
+          icon: fa-solid fa-rss
+- id: photography
+  title: Photography
+  number: "03"
+  items:
+    - id: photography
+      title: Photography
+      number: "03"
+      url: /photography
+      children:
+        - title: Gallery
+          url: /photography
+        - title: Instagram
+          url: https://www.instagram.com/espositoandrea.exe/
+          icon: fa-brands fa-instagram
+          external: true

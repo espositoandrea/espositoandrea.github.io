@@ -1,0 +1,71 @@
+{%- comment -%}
+  Site footer: who I am, the map of the three sections, and where else to find me. Outside
+  profile pages it also carries the microdata of the author (see person-meta.html).
+{%- endcomment -%}
+{%- assign cv = site.data.curriculum -%}
+<footer class="site-footer"
+    {%- unless page.schema_type == "ProfilePage" %} itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}"{% endunless %}>
+    {%- unless page.schema_type == "ProfilePage" %}
+    {% include person-meta.html %}
+    {%- endunless %}
+    <div class="shell">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.author.name }}<span class="wordmark-dot" aria-hidden="true">.</span></a>
+                <p>
+                    {{ cv.position | smartify }} at
+                    <a href="{{ cv.affiliation.institution.url }}" target="_blank" rel="noopener noreferrer">{{ cv.affiliation.institution.name }}</a>,
+                    <a href="{{ cv.affiliation.laboratory.url }}" target="_blank" rel="noopener noreferrer">{{ cv.affiliation.laboratory.name | smartify }}</a>.
+                    I study how people and AI can work together, write about it, and take photographs along the way.
+                </p>
+                <p class="mono small">
+                    <i class="fa-regular fa-envelope me-1" aria-hidden="true"></i>
+                    <a href="mailto:{{ site.author.mail | uri_escape }}">{{ site.author.mail }}</a>
+                </p>
+                <p class="small">
+                    <a href="{{ '/news' | relative_url }}">News and availability →</a>
+                </p>
+            </div>
+            {%- for group in site.data.navigation %}
+            {%- if forloop.first %}
+            <nav aria-labelledby="footer-{{ group.id }}">
+            {%- elsif forloop.index == 2 %}
+            <nav aria-label="Writing and photography">
+            {%- endif %}
+                <h2 id="footer-{{ group.id }}"{% if forloop.index > 2 %} class="mt-7"{% endif %}><span class="kicker-num">{{ group.number }}</span> {{ group.title }}</h2>
+                <ul>
+                    {%- for item in group.items %}
+                    {%- if item.children %}
+                    {%- for child in item.children %}
+                    <li><a href="{% if child.external %}{{ child.url }}{% else %}{{ child.url | relative_url }}{% endif %}"{% if child.external %} target="_blank" rel="noopener noreferrer"{% endif %}>{% if child.url == item.url and group.items.size > 1 %}{{ item.title }}{% else %}{{ child.title }}{% endif %}</a></li>
+                    {%- endfor %}
+                    {%- else %}
+                    <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+                    {%- endif %}
+                    {%- endfor %}
+                </ul>
+            {%- unless forloop.index == 2 %}
+            </nav>
+            {%- endunless %}
+            {%- endfor %}
+            <div>
+                <h2>Elsewhere</h2>
+                <ul class="footer-contacts no-blank-icon">
+                    {%- for contact in site.data.contacts %}
+                    <li>
+                        <a href="{{ contact.link }}" rel="me noopener noreferrer" target="_blank">
+                            <i class="{{ contact.icon }}" aria-hidden="true"></i>{{ contact.name }}
+                        </a>
+                    </li>
+                    {%- endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="footer-base">
+            <span>Last update: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%b %-d, %Y" }}</time></span>
+            <a target="_blank" rel="noopener noreferrer" href="{{ 'pgp.asc' | absolute_url }}">Public GPG key</a>
+            <a href="https://github.com/{{ site.repository }}" target="_blank" rel="noopener noreferrer" title="Like all my projects, this website is free (as in “libre”) software">Source code (free software)</a>
+            <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        </div>
+    </div>
+</footer>

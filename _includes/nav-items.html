@@ -1,0 +1,8 @@
+{%- comment -%}
+  Sets `nav_items` to every section of _data/navigation.yml, across groups, so that a section
+  can be looked up by id: {% include nav-items.html %}{% assign item = nav_items | where: "id", "talks" | first %}
+{%- endcomment -%}
+{%- assign nav_items = "" | split: "" -%}
+{%- for nav_group in site.data.navigation -%}
+  {%- assign nav_items = nav_items | concat: nav_group.items -%}
+{%- endfor -%}
