@@ -3,8 +3,9 @@ layout: default
 section: home
 ---
 {%- comment -%}
-  Home page: who I am (the content of index.md), then the three sides of the site (research,
-  writing, photography), news, research interests, and publication highlights.
+  Home page: the latest news (mostly about my availability, so that people who want to contact
+  me see it first), who I am (the content of index.md), the three sides of the site (research,
+  writing, photography), research interests, and publication highlights.
 {%- endcomment -%}
 {%- assign cv = site.data.curriculum -%}
 {%- include nav-items.html -%}
@@ -14,6 +15,22 @@ section: home
 {%- assign nav_photo = nav_items | where: "id", "photography" | first -%}
 {%- assign photos = site.data.photo_stream | where_exp: "photo", "photo.embed != true" -%}
 {%- assign instagram = site.data.contacts | where: "name", "Instagram" | first -%}
+
+{%- assign latest_news = site.data.news | sort: 'date' | reverse | first %}
+{%- if latest_news %}
+{%- capture latest_news_id %}news-{{ latest_news.date | date: '%Y-%m-%d' }}-{{ latest_news.title | slugify: 'latin' }}{% endcapture %}
+<aside class="news-bar" aria-labelledby="news-bar-label">
+    <div class="shell news-bar-inner">
+        <p class="news-bar-label" id="news-bar-label"><span class="news-bar-dot" aria-hidden="true"></span>Latest news</p>
+        <p class="news-bar-text">
+            <time datetime="{{ latest_news.date | date_to_xmlschema }}">{{ latest_news.date | date: "%b %-d, %Y" }}</time>
+            <strong>{% if latest_news.url %}<a href="{{ latest_news.url }}">{{ latest_news.title }}</a>{% else %}{{ latest_news.title }}{% endif %}.</strong>
+            {%- if latest_news.description %} {{ latest_news.description | markdownify | remove: '<p>' | remove: '</p>' | strip }}{% endif %}
+        </p>
+        <a class="more-link" href="{{ '/news' | relative_url }}#{{ latest_news_id }}">All news</a>
+    </div>
+</aside>
+{%- endif %}
 
 <section class="hero" aria-labelledby="hero-title">
     <div class="shell hero-grid">
@@ -102,15 +119,6 @@ section: home
 </section>
 
 <section class="shell home-band">
-    {% if site.data.news.size > 0 %}
-    <div>
-        <div class="section-head">
-            <h2>News</h2>
-            <a href="{{ '/news' | relative_url }}">All updates →</a>
-        </div>
-        {% include news-list.html limit=5 %}
-    </div>
-    {% endif %}
     <div>
         <div class="section-head">
             <h2>Research interests</h2>
