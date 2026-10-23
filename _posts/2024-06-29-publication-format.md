@@ -8,6 +8,7 @@ date: 2024-06-29
 author: Andrea Esposito
 doi: 10.5281/zenodo.13129574
 tags: [publications, science adoption, opinion]
+image: /assets/images/banners/publication-format.png
 category: Ideas
 excerpt: >-
   Nowadays two problems affect science: the quantum necessary to publish scientific discovery is large. This not only heavily increases the time needed for publication, but it also impacts the time required to stay up to date with the...

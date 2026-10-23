@@ -2,6 +2,8 @@
 title: "Blending the Personal and the Professional: On Writing on a Blog as a Researcher"
 slug: "blending-the-personal-and-the-professional-on-writing-on-a-blog-as-a-researcher"
 date: "2025-06-09T16:20:58"
+image: /assets/images/banners/blending-the-personal-and-the-professional-on-writing-on-a-blog-as-a-researcher.jpg
+image_caption: Photo by [Fikret tozak](https://unsplash.com/@tozakfikret?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText){:target="_blank"} on [Unsplash](https://unsplash.com/photos/turned-on-monitor-rfNLa1HL7eY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText){:target="_blank"}
 categories: ["Thoughts"]
 toc: false
 canonical_site_name: Research in Ink

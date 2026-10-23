@@ -6,7 +6,7 @@ toc: false
 canonical_site_name: Research in Ink
 canonical_url: https://www.researchinink.com/2025/09/07/my-struggle-with-boredom-in-an-uninteresting-city/
 image: https://www.researchinink.com/wp-content/uploads/2025/09/0iT2UVjDo_7g7AFUQ.webp
-
+image_caption: Photo by [Jorge Fernández](https://unsplash.com/@j_fdz){:target="_blank"} on [Unsplash](https://unsplash.com/photos/grayscale-photo-of-woman-holding-smartphone-enw7zKosNjE){:target="_blank"}
 category: Personal Columns
 
 opening: Dear readers,

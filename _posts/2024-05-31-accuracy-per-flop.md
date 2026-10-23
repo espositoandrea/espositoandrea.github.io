@@ -8,6 +8,7 @@ canonical_site_name: Journal of Brief Ideas
 doi: 10.5281/zenodo.12660216
 math: true
 toc: false
+image: /assets/images/banners/accuracy-per-flop.png
 tags: [artificial intelligence, green ai, democratization, new metrics]
 category: Ideas
 excerpt: >-

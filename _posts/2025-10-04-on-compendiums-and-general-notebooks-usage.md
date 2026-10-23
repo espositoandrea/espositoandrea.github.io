@@ -4,6 +4,8 @@ slug: "on-compendiums-and-general-notebooks-usage"
 date: "2025-10-04T13:46:00"
 categories: ["Letters"]
 opening: Dear readers,
+image: assets/images/banners/on-compendiums-and-general-notebooks-usage.jpg
+image_caption: Photo by [Kelly Sikkema](https://unsplash.com/@kellysikkema?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText){:target="_blank"} on [Unsplash](https://unsplash.com/photos/white-and-black-card-on-brown-wooden-table-BHKEOOUdDnk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText){:target="_blank"}
 to: |
   Research in Ink Readers
   https://www.researchinink.com/
