@@ -1,0 +1,95 @@
+{%- comment -%}
+  Header of a photo post (see _layouts/post.html): the cover photo first, on a dark stage, then
+  its title, caption, and details. Front matter of the post:
+
+    title: Postcard of Promenade Admiral de Grasse
+    categories: [Photography]
+    image: /assets/images/photography/2026-10-postcard.jpg
+    image_alt: What the photo shows
+    image_caption: Optional, in Markdown
+    location: Antibes, France          # optional
+    photo_date: 2026-10-17 15:43:29    # optional: when the photo was taken (default: the post date)
+    exif:                              # optional, as in _data/photography.yml
+      camera: Fujifilm X-T30 II
+      ...
+
+  Parameters: cover_url (URL of the cover image), author.
+{%- endcomment -%}
+{%- assign photo_date = page.photo_date | default: page.date -%}
+<div class="photo-post-stage" data-bs-theme="dark" data-gallery="photo-post">
+    <figure class="photo-post-figure" id="photo" itemscope itemtype="https://schema.org/Photograph">
+        <a class="photo-link no-blank-icon" href="{{ include.cover_url | absolute_url }}" data-lightbox>
+            <img src="{{ include.cover_url | absolute_url }}" alt="{{ page.image_alt | escape }}" itemprop="contentUrl" fetchpriority="high">
+        </a>
+        <figcaption class="visually-hidden">
+            <strong class="photo-title" itemprop="name">{{ page.title | smartify }}</strong>
+            {%- if page.image_caption != blank %}<span class="photo-text" itemprop="caption">{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>{% endif %}
+            <span class="photo-meta">
+                <time itemprop="dateCreated" datetime="{{ photo_date | date: '%Y-%m-%d' }}">{{ photo_date | date: "%b %-d, %Y" }}</time>
+                {%- if page.location %}<span itemprop="contentLocation">{{ page.location }}</span>{% endif %}
+                {%- if page.cover_camera_summary %}<span>{{ page.cover_camera_summary }}</span>{% endif %}
+            </span>
+        </figcaption>
+    </figure>
+</div>
+
+<header class="post-header photo-post-header shell shell-narrow">
+    {% include post-crumbs.html %}
+    <p class="kicker">
+        <span class="kicker-num">03</span>
+        <a href="{{ '/photography' | relative_url }}">Photography</a>
+    </p>
+    <h1 class="post-title" itemprop="headline">{{ page.title | smartify }}</h1>
+    {% if page.image_caption != blank %}
+    <div class="post-lede">{{ page.image_caption | markdownify }}</div>
+    {% endif %}
+
+    <dl class="photo-post-details">
+        <div>
+            <dt>Taken</dt>
+            <dd><time datetime="{{ photo_date | date_to_xmlschema }}">{{ photo_date | date: "%B %-d, %Y" }}</time></dd>
+        </div>
+        {%- if page.location %}
+        <div>
+            <dt>Place</dt>
+            <dd>{{ page.location }}</dd>
+        </div>
+        {%- endif %}
+        {%- if page.cover_camera_summary %}
+        <div class="photo-post-exif">
+            <dt>Camera</dt>
+            <dd>{{ page.cover_camera_summary }}</dd>
+        </div>
+        {%- endif %}
+    </dl>
+
+    <p class="post-byline meta" itemprop="author" itemscope itemtype="https://schema.org/Person"
+        {%- if include.author.name == site.author.name %} itemid="{{ '/#person' | absolute_url }}"{% endif %}>
+        {%- if include.author.name == site.author.name %}<link itemprop="url" href="{{ '/' | absolute_url }}">{% endif %}
+        Posted by&nbsp;<span itemprop="name">{{ include.author.name }}</span>&nbsp;on&nbsp;<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </p>
+
+    {% if page.canonical_url %}
+    <aside class="note mt-7" aria-label="Cross-post details">
+        <i class="fa-solid fa-share-from-square" aria-hidden="true"></i>
+        <span>
+            This photo was originally published
+            {% if page.canonical_site_name %}on <strong>{{ page.canonical_site_name }}</strong>{% endif %}.
+            <a href="{{ page.canonical_url }}" target="_blank" rel="noopener noreferrer canonical">See the original</a>.
+        </span>
+    </aside>
+    {% endif %}
+</header>
+
+{%- unless page.photos.size > 0 %}
+{% include photo-lightbox.html %}
+{%- endunless %}
+
+{%- assign photo_post_text = content | strip_html | strip %}
+{%- if photo_post_text != "" %}
+<div class="shell shell-narrow">
+    <div class="post-body" itemprop="articleBody">
+    {{ content }}
+    </div>
+</div>
+{%- endif %}

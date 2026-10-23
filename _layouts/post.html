@@ -8,6 +8,15 @@ section: writing
 {% elsif site.author %}
 {% assign author = site.author %}
 {% endif %}
+{% comment %}
+    A photo post (Photography category, a cover image, and no text; or `photo_post: true`)
+    puts its photo first, with its details: see _includes/photo-post.html.
+{% endcomment %}
+{% assign post_categories = page.categories | join: "|" | downcase | split: "|" %}
+{% assign post_text = content | strip_html | strip %}
+{% assign is_photo_post = false %}
+{% if page.image and post_categories contains "photography" and post_text == "" %}{% assign is_photo_post = true %}{% endif %}
+{% if page.photo_post == true and page.image %}{% assign is_photo_post = true %}{% elsif page.photo_post == false %}{% assign is_photo_post = false %}{% endif %}
 {% assign words = content | number_of_words %}
 {% assign reading_time = words | divided_by: 200 | plus: 1 %}
 
@@ -40,35 +49,11 @@ section: writing
     {%- if page.image -%}{% if page.image contains '://' %}{% assign cover_url = page.image %}{% else %}{% capture cover_url %}{% link {{ page.image }} %}{% endcapture %}{% endif %}{% endif %}
     {% if page.image %}<link itemprop="image" href="{{ cover_url | absolute_url }}">{% endif %}
 
+    {% if is_photo_post %}
+    {% include photo-post.html cover_url=cover_url author=author %}
+    {% else %}
     <header class="post-header shell shell-narrow">
-        <nav aria-label="Breadcrumbs">
-            <ol class="crumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a>
-                    <meta itemprop="position" content="1">
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="{{ '/blog/' | absolute_url }}" itemprop="item"><span itemprop="name">Blog</span></a>
-                    <meta itemprop="position" content="2">
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="{{ '/blog/posts/' | absolute_url }}" itemprop="item"><span itemprop="name">Posts</span></a>
-                    <meta itemprop="position" content="3">
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%Y' }}</span></a>
-                    <meta itemprop="position" content="4">
-                </li>
-                <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%m' }}</span></a>
-                    <meta itemprop="position" content="5">
-                </li>
-                <li class="visually-hidden" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                    <span itemprop="name">{{ page.title | smartify }}</span>
-                    <meta itemprop="position" content="6">
-                </li>
-            </ol>
-        </nav>
+        {% include post-crumbs.html %}
 
         <p class="kicker">
             <span class="kicker-num">02</span>
@@ -139,8 +124,11 @@ section: writing
     {% if page.image %}
     <figure class="post-cover shell">
         <img src="{{ cover_url | absolute_url }}" alt="{{ page.image_alt | escape }}" onerror="this.parentElement.remove();">
-        {% if page.image_caption != blank %}
-        <figcaption>{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>
+        {% if page.image_caption != blank or page.cover_camera_summary %}
+        <figcaption>
+            {%- if page.image_caption != blank %}{{ page.image_caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}{% endif %}
+            {%- if page.cover_camera_summary %}<span class="d-block">{{ page.cover_camera_summary }}</span>{% endif -%}
+        </figcaption>
         {% endif %}
     </figure>
     {% endif %}
@@ -165,6 +153,7 @@ section: writing
         {{ content }}
         </div>
     </div>
+    {% endif %}
 
     {% comment %}
         The photos of the post are placed in its text (_includes/photo.html); the ones that are

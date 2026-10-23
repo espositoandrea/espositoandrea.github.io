@@ -1,0 +1,31 @@
+{%- comment -%}
+  Breadcrumbs of a post (Home / Blog / Posts / year / month), as a schema.org BreadcrumbList.
+{%- endcomment -%}
+<nav aria-label="Breadcrumbs">
+    <ol class="crumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a>
+            <meta itemprop="position" content="1">
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ '/blog/' | absolute_url }}" itemprop="item"><span itemprop="name">Blog</span></a>
+            <meta itemprop="position" content="2">
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ '/blog/posts/' | absolute_url }}" itemprop="item"><span itemprop="name">Posts</span></a>
+            <meta itemprop="position" content="3">
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%Y' }}</span></a>
+            <meta itemprop="position" content="4">
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="{{ '/blog/posts/' | absolute_url }}{{ page.date | date: '%Y/%m' }}/" itemprop="item"><span itemprop="name">{{ page.date | date: '%m' }}</span></a>
+            <meta itemprop="position" content="5">
+        </li>
+        <li class="visually-hidden" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">{{ page.title | smartify }}</span>
+            <meta itemprop="position" content="6">
+        </li>
+    </ol>
+</nav>

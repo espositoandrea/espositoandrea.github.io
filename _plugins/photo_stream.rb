@@ -46,14 +46,24 @@ module Jekyll
 
     # Photos of a post link to their place in it: `photo-<id>`, or `photo-<n>` (1-based) for
     # photos without an id (see _includes/photo.html). A cover image links to the post.
+    # The cover of a post can carry its own photo details, in the post's front matter: `exif`
+    # (or `camera`), `location`, and `image_caption`. Photo posts (see _layouts/post.html) are
+    # made of the cover only.
     def from_post(post)
+      summary = exif_summary(exif(post.data))
+      post.data['cover_camera_summary'] = summary if post.data['image'] && summary
+
       list = post.data['photos']
       cover = list.nil? || list.empty?
       if cover
         categories = Array(post.data['categories']).map { |c| c.to_s.downcase }
         return [] unless categories.include?(CATEGORY) && post.data['image']
 
-        list = [{ 'src' => post.data['image'], 'alt' => post.data['image_alt'], 'caption' => post.data['image_caption'] }]
+        list = [{
+          'src' => post.data['image'], 'alt' => post.data['image_alt'], 'caption' => post.data['image_caption'],
+          'title' => post.data['title'], 'location' => post.data['location'], 'exif' => post.data['exif'],
+          'camera' => post.data['camera'], 'date' => post.data['photo_date']
+        }]
       end
 
       Array(list).each_with_index.filter_map do |entry, index|

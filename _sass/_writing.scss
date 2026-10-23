@@ -329,6 +329,46 @@
     .photo-meta:empty { display: none; }
   }
 
+  // Photo posts (_includes/photo-post.html): the photo first, on a dark stage
+  .photo-post-stage {
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 4vw, 3rem) var(--gutter);
+    background: #0E0D0C;
+
+    .photo-post-figure { margin: 0; }
+    .photo-link { display: block; cursor: zoom-in; }
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: calc(100vh - var(--header-height) - 6rem);
+      width: auto;
+      height: auto;
+    }
+  }
+  .photo-post-header { padding-top: clamp(1.5rem, 4vw, 2.5rem); }
+  .photo-post-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2.5rem;
+    margin: 1.75rem 0 0;
+    padding-top: 1.25rem;
+    border-top: var(--rule);
+
+    dt {
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+    dd { margin: .2rem 0 0; font-size: .95rem; }
+    .photo-post-exif { flex-basis: 100%; }
+    .photo-post-exif dd { font-family: var(--font-mono); font-size: .8rem; color: var(--fg-2); }
+  }
+  .photo-post-header .post-byline { display: block; margin-top: 1.5rem; padding-top: 0; border: 0; }
+
   // Photos of the post that are not placed in its text
   .post-photos { margin-block: 3rem 1rem; }
 
