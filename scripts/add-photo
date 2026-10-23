@@ -12,6 +12,8 @@
 
 require 'date'
 require 'fileutils'
+require 'json'
+require 'net/http'
 require 'shellwords'
 require 'optparse'
 require 'tempfile'
@@ -26,7 +28,8 @@ INPUT_FORMATS = %w[.jpg .jpeg .tif .tiff .heic .heif].freeze
 # Reads the few EXIF tags the photography page shows, from a JPEG or a TIFF file.
 module Exif
   TYPE_SIZES = { 1 => 1, 2 => 1, 3 => 2, 4 => 4, 5 => 8, 7 => 1, 9 => 4, 10 => 8 }.freeze
-  IFD0_TAGS = { 0x010F => :make, 0x0110 => :model, 0x0112 => :orientation, 0x8769 => :exif_ifd }.freeze
+  IFD0_TAGS = { 0x010F => :make, 0x0110 => :model, 0x0112 => :orientation, 0x8769 => :exif_ifd, 0x8825 => :gps_ifd }.freeze
+  GPS_TAGS = { 1 => :lat_ref, 2 => :lat, 3 => :lon_ref, 4 => :lon }.freeze
   EXIF_TAGS = {
     0x829A => :exposure_time, 0x829D => :f_number, 0x8827 => :iso, 0x9003 => :date_time,
     0x920A => :focal_length, 0xA434 => :lens
@@ -81,7 +84,8 @@ module Exif
 
     ifd0 = read_ifd.call(tiff.byteslice(4, 4).unpack1(u32), IFD0_TAGS)
     exif = ifd0[:exif_ifd] ? read_ifd.call(ifd0[:exif_ifd], EXIF_TAGS) : {}
-    ifd0.merge(exif)
+    gps = ifd0[:gps_ifd] ? read_ifd.call(ifd0[:gps_ifd], GPS_TAGS) : {}
+    ifd0.merge(exif).merge(gps)
   end
 
   def decode(bytes, type, count, u16, u32, s32)
@@ -166,6 +170,35 @@ def strip_metadata(path)
   File.binwrite(path, out)
 end
 
+# [latitude, longitude] in decimal degrees from the GPS tags, if the photo is geotagged
+def gps_position(exif)
+  coordinates = %i[lat lon].map do |axis|
+    degrees, minutes, seconds = exif[axis]
+    next nil unless [degrees, minutes, seconds].all?(Rational)
+
+    value = (degrees + minutes / 60 + seconds / 3600).to_f
+    %w[S W].include?(exif[:"#{axis}_ref"]) ? -value : value
+  end
+  coordinates.all? ? coordinates : nil
+end
+
+# "City, Country" for a position, through OpenStreetMap's Nominatim (this sends the
+# coordinates to openstreetmap.org); nil when the lookup fails
+def place_name(latitude, longitude)
+  uri = URI('https://nominatim.openstreetmap.org/reverse')
+  uri.query = URI.encode_www_form(format: 'jsonv2', zoom: 12, lat: latitude, lon: longitude, 'accept-language': 'en')
+  response = Net::HTTP.start(uri.host, uri.port, use_ssl: true, open_timeout: 5, read_timeout: 10) do |http|
+    http.get(uri.request_uri, 'User-Agent' => 'espositoandrea.github.io add-photo script')
+  end
+  return nil unless response.is_a?(Net::HTTPSuccess)
+
+  address = JSON.parse(response.body)['address'] || {}
+  local = address.values_at('city', 'town', 'village', 'municipality', 'suburb', 'county', 'state').compact.first
+  [local, address['country']].compact.uniq.join(', ').then { |name| name.empty? ? nil : name }
+rescue StandardError
+  nil
+end
+
 # A single scalar the way it goes in the YAML file
 def scalar(value)
   return value.to_s if value.is_a?(Numeric)
@@ -192,7 +225,7 @@ def entry_yaml(entry)
   "#{lines.join("\n")}\n"
 end
 
-options = { max_size: 1800, quality: 80, exif: {} }
+options = { max_size: 1800, quality: 80, exif: {}, gps: true }
 parser = OptionParser.new do |o|
   o.banner = "Usage: #{File.basename($PROGRAM_NAME)} PHOTO [options]"
   o.separator 'Compresses PHOTO (JPEG, TIFF or HEIC) into assets/images/photography/ and adds it to'
@@ -203,6 +236,7 @@ parser = OptionParser.new do |o|
   o.on('-t', '--title TEXT', 'Title') { |v| options[:title] = v }
   o.on('-c', '--caption TEXT', 'Caption, in Markdown') { |v| options[:caption] = v }
   o.on('-l', '--location TEXT', 'Where it was taken, e.g. "Nice, France"') { |v| options[:location] = v }
+  o.on('--[no-]gps', 'Look the location up from the photo\'s GPS tags (default: yes, if no --location)') { |v| options[:gps] = v }
   o.on('-d', '--date DATE', 'YYYY-MM-DD or "YYYY-MM-DD HH:MM:SS" (default: EXIF capture date)') { |v| options[:date] = v }
   o.on('-i', '--instagram URL', 'Link to the Instagram post') { |v| options[:instagram] = v }
   o.separator ''
@@ -291,13 +325,19 @@ Tempfile.create(['add-photo', '.jpg']) do |tmp|
   yaml_text = File.read(DATA_FILE)
   die("#{relative} is already listed in photography.yml") if yaml_text.include?("/#{relative}") && !options[:force]
 
+  location = options[:location]
+  if location.nil? && options[:gps] && (position = gps_position(exif))
+    location = place_name(*position)
+    warn(location ? "add-photo: location from GPS: #{location}" : "add-photo: photo is geotagged (#{position.map { |c| c.round(5) }.join(', ')}) but the place lookup failed; use --location")
+  end
+
   entry = {
     'image' => "/#{relative}",
     'alt' => alt.to_s,
     'date' => date,
     'title' => options[:title],
     'caption' => options[:caption],
-    'location' => options[:location],
+    'location' => location,
     'exif' => exif_fields(exif).merge(options[:exif]).slice('camera', 'lens', 'focal_length', 'aperture', 'shutter_speed', 'iso'),
     'instagram' => options[:instagram]
   }
