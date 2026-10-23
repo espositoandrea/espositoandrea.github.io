@@ -22,7 +22,8 @@ description: >-
         <nav class="blog-categories" aria-label="Categories">
             {%- assign categories = site.categories | sort %}
             {%- for category in categories %}
-            <a class="tag" href="{{ '/blog/posts/categories/' | append: category[0] | slugify | append: '.html' | relative_url }}">{{ category[0] }} <span class="opacity-75">{{ category[1].size }}</span></a>
+            {% assign category_slug = category[0] | slugify %}\
+            <a class="tag" href="{{ '/blog/posts/categories/' | append: category_slug | append: '.html' | relative_url }}">{{ category[0] }} <span class="opacity-75">{{ category[1].size }}</span></a>
             {%- endfor %}
         </nav>
         <div class="d-flex gap-2">
