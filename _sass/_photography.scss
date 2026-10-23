@@ -23,12 +23,26 @@
   }
 
   // Masonry of photos in their own aspect ratio
+  // Without JavaScript the photos flow down each column; with it (see photo-grid.html) they
+  // are placed in reading order: left to right, each one in the shortest column.
   .photo-grid {
-    columns: 1;
+    --photo-cols: 1;
+    columns: var(--photo-cols);
     column-gap: .75rem;
 
-    @media (min-width: 576px) { columns: 2; }
-    @media (min-width: 992px) { columns: 3; }
+    @media (min-width: 576px) { --photo-cols: 2; }
+    @media (min-width: 992px) { --photo-cols: 3; }
+
+    &.is-masonry {
+      display: grid;
+      columns: auto;
+      grid-template-columns: repeat(var(--photo-cols), minmax(0, 1fr));
+      grid-auto-rows: 1px;
+      column-gap: .75rem;
+
+      // Natural height, not stretched to the row span: the span is computed from it
+      .photo { align-self: start; }
+    }
   }
 
   .photo {
