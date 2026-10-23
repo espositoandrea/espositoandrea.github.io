@@ -204,7 +204,7 @@ def scalar(value)
   return value.to_s if value.is_a?(Numeric)
   return value if value.match?(%r{\A/[\w./-]+\z}) # paths are fine unquoted
 
-  YAML.dump(value.to_s.gsub(/\s+/, ' ').strip).sub(/\A--- ?/, '').sub(/\n(\.\.\.\n)?\z/, '')
+  YAML.dump(value.to_s.gsub(/\s+/, ' ').strip, line_width: -1).sub(/\A--- ?/, '').sub(/\n(\.\.\.\n)?\z/, '')
 end
 
 def entry_yaml(entry)
