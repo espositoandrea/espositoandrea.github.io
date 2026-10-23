@@ -22,11 +22,14 @@
 #   instagram: https://www.instagram.com/p/XXXXXXXXXXX/       # optional
 #
 # Photos in blog posts: list them in the post's front matter, with the same fields
-# (`src` or `image` for the file); a post in the "Photography" category without such a
-# list contributes its cover `image`:
+# (`src` or `image` for the file) and an `id`, then place each one in the text, where the
+# story reaches it, with `{% include photo.html id="..." %}` (see _includes/photo.html for
+# the widths). Photos that are not placed are shown at the end of the post. A post in the
+# "Photography" category without such a list contributes its cover `image`.
 #
 #   photos:
-#     - src: /assets/images/posts/my-post/01.jpg
+#     - id: harbour
+#       src: /assets/images/photography/2026-10-harbour.jpg
 #       alt: ...
 #       caption: ...
 []

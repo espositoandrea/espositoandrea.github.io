@@ -1,14 +1,15 @@
 {%- comment -%}
   Grid of photographs (see _plugins/photo_stream.rb), opened full screen in the lightbox.
   Parameters: photos (array), id (name of the gallery: the lightbox moves within it), limit,
-  compact (true for a small square mosaic, without captions).
+  compact (true for a small square mosaic, without captions), nested (true to leave the grid
+  in an enclosing gallery, e.g. with the photos placed in the text of a post).
 {%- endcomment -%}
 {%- assign grid_limit = include.limit | default: 1000 -%}
-<div class="photo-grid{% if include.compact %} photo-grid-compact{% endif %}" data-gallery="{{ include.id | default: 'photos' }}">
+<div class="photo-grid{% if include.compact %} photo-grid-compact{% endif %}"{% unless include.nested %} data-gallery="{{ include.id | default: 'photos' }}"{% endunless %}>
     {%- for photo in include.photos limit: grid_limit %}
     {%- if photo.src contains '://' %}{% assign photo_src = photo.src %}{% else %}{% assign photo_src = photo.src | relative_url %}{% endif %}
     {%- if photo.url contains '://' %}{% assign photo_url = photo.url %}{% elsif photo.url %}{% assign photo_url = photo.url | relative_url %}{% else %}{% assign photo_url = nil %}{% endif %}
-    <figure class="photo" data-source="{{ photo.source }}" itemscope itemtype="https://schema.org/Photograph">
+    <figure class="photo" data-source="{{ photo.source }}"{% if include.nested and photo.anchor %} id="photo-{{ photo.anchor }}" data-photo-id="{{ photo.anchor }}"{% endif %} itemscope itemtype="https://schema.org/Photograph">
         <a class="photo-link no-blank-icon" href="{{ photo_src }}" data-lightbox>
             <img src="{{ photo_src }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async" itemprop="contentUrl">
         </a>
@@ -20,7 +21,7 @@
                 {%- if photo.location %}<span itemprop="contentLocation">{{ photo.location }}</span>{% endif %}
                 {%- if photo.camera %}<span>{{ photo.camera }}</span>{% endif %}
             </span>
-            {%- if photo_url %}
+            {%- if photo_url and include.nested == nil %}
             <a class="photo-source" href="{{ photo_url }}"{% if photo.external %} target="_blank" rel="noopener noreferrer"{% endif %}>
                 {%- if photo.source == "instagram" %}<i class="fa-brands fa-instagram" aria-hidden="true"></i> {% endif %}{{ photo.url_label | smartify }}
             </a>

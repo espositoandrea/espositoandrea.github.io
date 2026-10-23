@@ -11,7 +11,7 @@ module Jekyll
   #
   # Each photo is a hash with: src, alt, title, caption, location, exif, camera, date, source
   # ("blog", "instagram" or "site"), url (where the photo is published), url_label, external,
-  # instagram, post_title, and embed (true for Instagram posts without a local image, shown
+  # instagram, post_title, post_url and anchor (for photos of posts), and embed (true for Instagram posts without a local image, shown
   # through Instagram's embed instead).
   class PhotoStream < Generator
     safe true
@@ -44,30 +44,45 @@ module Jekyll
       )
     end
 
+    # Photos of a post link to their place in it: `photo-<id>`, or `photo-<n>` (1-based) for
+    # photos without an id (see _includes/photo.html). A cover image links to the post.
     def from_post(post)
       list = post.data['photos']
-      if list.nil? || list.empty?
+      cover = list.nil? || list.empty?
+      if cover
         categories = Array(post.data['categories']).map { |c| c.to_s.downcase }
         return [] unless categories.include?(CATEGORY) && post.data['image']
 
         list = [{ 'src' => post.data['image'], 'alt' => post.data['image_alt'], 'caption' => post.data['image_caption'] }]
       end
 
-      Array(list).filter_map do |entry|
+      Array(list).each_with_index.filter_map do |entry, index|
         entry = { 'src' => entry } if entry.is_a?(String)
         src = entry['src'] || entry['image']
         next if src.nil?
 
+        anchor = cover ? nil : (entry['id'] || index + 1).to_s
+        enrich_post_photo(entry, src, anchor) unless cover
         photo(entry, src).merge(
           'date' => entry['date'] || post.date,
           'source' => 'blog',
-          'url' => post.url,
+          'url' => anchor ? "#{post.url}#photo-#{anchor}" : post.url,
+          'post_url' => post.url,
+          'anchor' => anchor,
           'url_label' => "From “#{post.data['title']}”",
           'external' => false,
           'post_title' => post.data['title'],
           'embed' => false
         )
       end
+    end
+
+    # Completes a photo of the post's own `photos` list for _includes/photo.html, which places
+    # it in the text: its anchor, its file, and the one-line exif summary.
+    def enrich_post_photo(entry, src, anchor)
+      entry['anchor'] = anchor
+      entry['src'] = src
+      entry['camera_summary'] = exif_summary(exif(entry))
     end
 
     def photo(entry, src)

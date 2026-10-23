@@ -14,7 +14,7 @@ section: writing
 {% include og-image.html %}
 {% assign post_description = page.description | default: page.excerpt | markdownify | strip_html | normalize_whitespace %}
 
-<article class="post" itemprop="mainEntity" itemscope itemtype="https://schema.org/BlogPosting">
+<article class="post" data-gallery="post" itemprop="mainEntity" itemscope itemtype="https://schema.org/BlogPosting">
     <link itemprop="url" href="{{ page.url | absolute_url }}">
     <link itemprop="mainEntityOfPage" href="{{ page.url | absolute_url }}">
     {% if page.canonical_url %}<link itemprop="sameAs" href="{{ page.canonical_url }}">{% endif %}
@@ -166,12 +166,25 @@ section: writing
         </div>
     </div>
 
+    {% comment %}
+        The photos of the post are placed in its text (_includes/photo.html); the ones that are
+        not are shown here. The lightbox moves through all of them (data-gallery on the article).
+    {% endcomment %}
     {% if page.photos.size > 0 %}
-    {% assign post_photos = site.data.photo_stream | where: "url", page.url %}
-    <section class="post-photos shell" data-bs-theme="dark" aria-labelledby="post-photos">
-        <h2 id="post-photos" class="nature-label">Photographs</h2>
-        {% include photo-grid.html photos=post_photos id="post" %}
+    {% assign post_photos = site.data.photo_stream | where: "post_url", page.url %}
+    {% assign unplaced_photos = "" | split: "" %}
+    {% for photo in post_photos %}
+        {% capture photo_marker %}data-photo-id="{{ photo.anchor }}"{% endcapture %}
+        {% unless content contains photo_marker %}{% assign unplaced_photos = unplaced_photos | push: photo %}{% endunless %}
+    {% endfor %}
+    {% assign photo_lightbox_included = true %}
+    {% include photo-lightbox.html %}
+    {% if unplaced_photos.size > 0 %}
+    <section class="post-photos shell" aria-labelledby="post-photos">
+        <h2 id="post-photos" class="nature-label">{% if unplaced_photos.size < post_photos.size %}More photographs{% else %}Photographs{% endif %}</h2>
+        {% include photo-grid.html photos=unplaced_photos nested=true %}
     </section>
+    {% endif %}
     {% endif %}
 
     <footer class="post-footer shell shell-narrow">

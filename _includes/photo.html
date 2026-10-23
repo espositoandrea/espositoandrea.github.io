@@ -1,0 +1,48 @@
+{%- comment -%}
+  One of the post's `photos` (front matter), placed in the text of the post so that the text
+  can tell the story of the photos:
+
+    {% include photo.html id="harbour" %}      the photo with `id: harbour`
+    {% include photo.html n=2 %}               the second photo of the list
+    {% include photo.html id="harbour" width="full" %}
+
+  Leave a blank line before and after it. `width` is "wide" (default: wider than the text),
+  "full" (the whole width of the window), or "text" (as wide as the text). The photo opens in
+  the lightbox, where the arrows move through the photos of the post, and the photography
+  section links to it (`#photo-<id>`, or `#photo-<n>` without an id). Photos of the list that
+  are not placed in the text are shown at the end of the post.
+{%- endcomment -%}
+{%- assign photo_list = page.photos -%}
+{%- if include.id -%}
+  {%- assign photo_entry = photo_list | where: "id", include.id | first -%}
+  {%- assign photo_anchor = include.id -%}
+{%- else -%}
+  {%- assign photo_n = include.n | default: 1 -%}
+  {%- assign photo_index = photo_n | minus: 1 -%}
+  {%- assign photo_entry = photo_list[photo_index] -%}
+  {%- assign photo_anchor = photo_entry.id | default: photo_n -%}
+{%- endif -%}
+{%- comment -%} _plugins/photo_stream.rb completes the entry with `src`, `anchor` and `camera_summary`. {%- endcomment -%}
+{%- assign photo = photo_entry -%}
+{%- comment -%} Not `size`: on a hash, Liquid reads it as the number of keys. {%- endcomment -%}
+{%- assign photo_width = include.width | default: "wide" -%}
+{%- if photo.src -%}
+{%- if photo.src contains '://' %}{% assign photo_src = photo.src %}{% else %}{% assign photo_src = photo.src | relative_url %}{% endif -%}
+<figure class="post-photo post-photo-{{ photo_width }}" id="photo-{{ photo_anchor }}" data-photo-id="{{ photo_anchor }}" itemscope itemtype="https://schema.org/Photograph">
+    <a class="photo-link no-blank-icon" href="{{ photo_src }}" data-lightbox>
+        <img src="{{ photo_src }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async" itemprop="contentUrl">
+    </a>
+    <figcaption class="post-photo-caption">
+        {%- if photo.title %}<strong class="photo-title" itemprop="name">{{ photo.title | smartify }}</strong>{% endif %}
+        {%- if photo.caption %}<span class="photo-text" itemprop="caption">{{ photo.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>{% endif %}
+        <span class="photo-meta">
+            {%- assign photo_date = photo.date | default: page.date %}
+            {%- if photo_date %}<time itemprop="dateCreated" datetime="{{ photo_date | date: '%Y-%m-%d' }}">{{ photo_date | date: "%b %-d, %Y" }}</time>{% endif %}
+            {%- if photo.location %}<span itemprop="contentLocation">{{ photo.location }}</span>{% endif %}
+        </span>
+        {%- if photo.camera_summary %}<span class="photo-meta photo-exif">{{ photo.camera_summary }}</span>{% endif %}
+    </figcaption>
+</figure>
+{%- else -%}
+<p class="note"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i><span>No photo {% if include.id %}with id “{{ include.id }}”{% else %}number {{ photo_n }}{% endif %} in the <code>photos</code> of this post.</span></p>
+{%- endif -%}

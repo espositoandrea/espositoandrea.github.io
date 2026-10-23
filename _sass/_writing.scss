@@ -291,11 +291,46 @@
     .footnotes { margin-top: 3rem; padding-top: 1rem; border-top: var(--rule); font-size: .9rem; }
   }
 
-  .post-photos {
-    margin-block: 3rem;
-    padding-block: 2rem;
-    background: var(--bg-body);
+  // Photos placed in the text (_includes/photo.html): wider than the text by default, with
+  // their caption back at the width of the text
+  .post { overflow-x: clip; }
+  .post-body .post-photo {
+    margin-block: clamp(2.5rem, 6vw, 4rem);
+    hyphens: none;
+
+    img { display: block; width: 100%; height: auto; }
+    .photo-link { display: block; cursor: zoom-in; }
+    .photo-link:focus-visible { outline: 2px solid var(--fg-body); outline-offset: 3px; }
   }
+  .post-body .post-photo-text { margin-inline: 0; }
+  .post-body .post-photo-wide { margin-inline: calc((100% - min(64rem, 100vw - 2 * var(--gutter))) / 2); }
+  .post-body .post-photo-full {
+    margin-inline: calc((100% - 100vw) / 2);
+    img { max-height: 90vh; object-fit: cover; }
+  }
+
+  .post-photo-caption {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    max-width: var(--shell-narrow);
+    margin: .9rem auto 0;
+    padding-left: .9rem;
+    border-left: 2px solid var(--primary-base);
+    font-family: var(--font-sans);
+    font-size: .88rem;
+    line-height: 1.5;
+    color: var(--fg-2);
+
+    .post-photo-full & { width: min(100% - 2 * var(--gutter), var(--shell-narrow)); }
+    .photo-title { font-family: var(--font-serif); font-size: 1.02rem; color: var(--fg-body); }
+    .photo-text a { color: inherit; }
+    .photo-meta { font-size: .68rem; color: var(--fg-3); }
+    .photo-meta:empty { display: none; }
+  }
+
+  // Photos of the post that are not placed in its text
+  .post-photos { margin-block: 3rem 1rem; }
 
   .post-footer {
     margin-top: 3rem;
