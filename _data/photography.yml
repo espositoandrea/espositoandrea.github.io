@@ -32,4 +32,168 @@
 #       src: /assets/images/photography/2026-10-harbour.jpg
 #       alt: ...
 #       caption: ...
-[]
+- image: /assets/images/photography/2025-05-an-afternoon-pause.jpg
+  alt: A wooden tray on a table holds a teal and gold porcelain teacup with green tea, a glass teapot with a black lid, a small book titled L’arte di conoscere se stessi by Arthur Schopenhauer, an unopened box of Toscano Garibaldi cigars, a metal lighter, and a single Toscano cigar. The scene is softly lit, evoking a calm, introspective atmosphere.
+  date: 2025-05-29 19:02:51
+  title: An Afternoon Pause
+  location: Bari, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 2.8
+    shutter_speed: 1/800
+    iso: 5000
+- image: /assets/images/photography/2025-09-total-lunar-eclipse-2025.jpg
+  alt: A collage of the moon in various stages of the Lunar Eclipse
+  date: 2025-09-08 01:15:21
+  title: Total Lunar Eclipse 2025
+  caption: 'The total lunar eclipse of September 7, 2025: a collage of various shots taken during different stages'
+  location: Taranto, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    focal_length: 21
+    shutter_speed: 1/640
+    iso: 200
+- image: /assets/images/photography/2026-05-bee.jpg
+  alt: A picture of a bee flying towards some flowers
+  date: 2026-05-03 14:55:47
+  title: Bee
+  location: Taranto, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF70-300mmF4-5.6 R LM OIS WR
+    focal_length: 300
+    aperture: 10
+    shutter_speed: 1/3500
+    iso: 1250
+  instagram: https://www.instagram.com/p/DX4bFfhjalR/?utm_source=ig_web_copy_link
+- image: /assets/images/photography/2026-06-postcard-tibidabo.jpg
+  alt: A postcard-like shot of the Tibidabo in Barcelona depicting the ferris wheel and the merry-go-round
+  date: 2026-06-13 20:16:06
+  title: Postcard - Tibidabo
+  location: Barcelona, Spain
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 4
+    shutter_speed: 1/1800
+    iso: 800
+- image: /assets/images/photography/2026-09-postcard-heidelberg.jpg
+  alt: A postcard-like shot of Heidelberg
+  date: 2026-09-12 16:31:33
+  title: Postcard - Heidelberg
+  location: Heidelberg, Germany
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 16
+    shutter_speed: 1/1100
+    iso: 2500
+  instagram: https://www.instagram.com/p/Ddn37EWCCyu/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-03-still-life-calmness-in-frankfurt.jpg
+  alt: A picture of some candles and a TV remote, with a warm tone
+  date: 2026-03-18 17:04:05
+  title: Still Life - Calmness in Frankfurt
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 11
+    shutter_speed: 1/20
+    iso: 800
+  instagram: https://www.instagram.com/p/DWD0v86ldd9/?utm_source=ig_web_copy_link&mdxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-03-frankfurt-skyline.jpg
+  alt: A picture of the famous skyline of Frankfurt
+  date: 2026-03-22 14:32:51
+  title: Frankfurt Skyline
+  location: Frankfurt, Germany
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 13
+    shutter_speed: 1/280
+    iso: 320
+  instagram: https://www.instagram.com/p/DWkGDdEkmyL/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-04-patterns-from-gaud-s-parc-guell.jpg
+  alt: A shot of repeating circular patterns from a ceiling in Parc Guell
+  date: 2026-04-15 13:45:14
+  title: Patterns from Gaudí's Parc Guell
+  location: Barcelona, Spain
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 16
+    shutter_speed: 1/9
+    iso: 800
+  instagram: https://www.instagram.com/p/DXTg_AOCLsZ/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-01-people-crossing-the-clouds.jpg
+  alt: A picture of a road signal for road crossings against the backdrop of clouds
+  date: 2026-01-31 11:29:53
+  title: People Crossing the Clouds
+  caption: Watch out! People may be crossing the clouds
+  location: Taranto, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 8
+    shutter_speed: 1/500
+    iso: 320
+  instagram: https://www.instagram.com/p/DU7ufh2lqrF/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-03-european-central-bank-building.jpg
+  alt: A shot of the European Central Bank building in frankfurt
+  date: 2026-03-19 16:42:43
+  title: European Central Bank Building
+  location: Frankfurt, Germany
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 4
+    shutter_speed: 1/1800
+    iso: 320
+  instagram: https://www.instagram.com/p/DXHc7d5iYem/?utm_source=ig_web_copy_link&obrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-03-frankfurt-am-main.jpg
+  alt: A shot of the Main river in Frankfurt
+  date: 2026-03-22 14:36:08
+  title: Frankfurt am Main
+  location: Frankfurt, Germany
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 11
+    shutter_speed: 1/600
+    iso: 320
+  instagram: https://www.instagram.com/p/DW1bXSpFuYm/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-04-patterns-towards-darkness.jpg
+  alt: A picture of some patterns in a cealing of a train station in Frankfurt
+  date: 2026-04-11 12:04:05
+  title: Patterns Towards Darkness
+  location: Frankfurt, Germany
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 4
+    shutter_speed: 1/850
+    iso: 320
+  instagram: https://www.instagram.com/p/DX15o7kCKfD/?utm_source=ig_web_copy_link&rpxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-09-hauptwache.jpg
+  alt: A picture of the Hauptwache station in Frankfurt, with a couple of people getting out
+  date: 2026-09-11 20:04:03
+  title: Hauptwache
+  location: Frankfurt, Germany
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 2.8
+    shutter_speed: 1/100
+    iso: 400
+  instagram: https://www.instagram.com/p/DdgZUftofsG/?utm_source=ig_web_copy_link&mdxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
