@@ -127,7 +127,7 @@ jobs:
           cp -a sites/site-redesign/. _site/redesign/
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3.0.1
+        uses: actions/upload-pages-artifact@v5
 
   # Deployment job
   deploy:
@@ -139,4 +139,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4.0.5
+        uses: actions/deploy-pages@v5
