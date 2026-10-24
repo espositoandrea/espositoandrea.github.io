@@ -3,6 +3,9 @@ layout: page
 lang: en
 permalink: /publications
 title: Publications
+section: publications
+lede: >-
+  I always try to provide a freely accessible version of my papers, so that everyone can read them.
 description: >-
   Publications by Andrea Esposito: journal articles, conference and workshop papers, and book chapters on Human-Centred AI, explainable AI, and HCI.
 ---
@@ -38,36 +41,35 @@ description: >-
 {% assign conf_count = conf_int_count | plus: conf_nat_count %}
 {% assign work_count = work_int_count | plus: work_nat_count %}
 
-<p>In this section, you'll find a list of my publications. I always try to provide a freely accessible version of all of my papers, to ensure that everyone can read them. Depending on the publisher, though, the ways I can do that may vary.</p>
-
-<details class="mb-7">
-    <summary class="fg-secondary">How to read the icons next to each paper</summary>
-    <p class="small mt-3 mb-0">For all those paper that ACM allows me to share through the <a href="https://www.acm.org/publications/authors/acm-author-izer-service" target="_blank" rel="noopener noreferrer">Author-Izer</a> service, you'll find a little ACM DL logo <i class="ai ai-acmdl" aria-label="ACM Digital Library" title="Example of the icon to indicate free access to the paper"></i> that links to a full version of the paper.</p>
-    <p class="small mt-3 mb-0">For all those paper published by Springer Nature that the publisher allows me to share through the <a href="https://www.springernature.com/gp/researchers/sharedit" target="_blank" rel="noopener noreferrer">SharedIt</a> service, you'll find a little Springer logo <i class="ai ai-springer" aria-label="Springer Nature SharedIt" title="Example of the icon to indicate free access to the paper"></i> that links to a full version of the paper.</p>
+<details class="pub-help">
+    <summary>How to read the icons next to each paper</summary>
+    <p class="small mt-3 mb-0">Depending on the publisher, the ways I can share a paper vary.</p>
+    <p class="small mt-3 mb-0">For all those papers that ACM allows me to share through the <a href="https://www.acm.org/publications/authors/acm-author-izer-service" target="_blank" rel="noopener noreferrer">Author-Izer</a> service, you'll find a little ACM DL logo <i class="ai ai-acmdl" aria-label="ACM Digital Library" title="Example of the icon to indicate free access to the paper"></i> that links to a full version of the paper.</p>
+    <p class="small mt-3 mb-0">For all those papers published by Springer Nature that the publisher allows me to share through the <a href="https://www.springernature.com/gp/researchers/sharedit" target="_blank" rel="noopener noreferrer">SharedIt</a> service, you'll find a little Springer logo <i class="ai ai-springer" aria-label="Springer Nature SharedIt" title="Example of the icon to indicate free access to the paper"></i> that links to a full version of the paper.</p>
     <p class="small mt-3 mb-0">Similarly, if a paper is open access, you'll find an open access logo near the entry <i class="ai ai-open-access" aria-label="Open Access icon" title="Example of the icon to indicate open access"></i>.</p>
     <p class="small mt-3 mb-0">For all the papers that are neither open access nor available through other means, I always try to publish a pre-print version on <a href="https://arxiv.org" target="_blank" rel="noopener noreferrer">arXiv</a> or <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">ResearchGate</a>, or a self-archived PDF version that is freely available (in compliance to the publisher's license). In those cases, pre-prints are marked using the arXiv logomark <i class="ai ai-arxiv" aria-label="Preprint available on arXiv" title="Example of the icon indicating that a preprint is available on arXiv"></i> or ResearchGate's icon <i class="fab fa-researchgate" title="Example of the icon indicating that a preprint is available on ResearchGate" aria-label="Example of the icon indicating that a preprint is available on ResearchGate"></i> (depending on the platform) while self-archived PDFs are marked with a PDF icon <i class="fas fa-file-pdf" title="Example of icon indicating a self-archived PDF version" aria-label="Example of icon indicating a self-archived PDF version"></i>.</p>
 </details>
 
-<details class="card mb-7" id="pub-controls" open>
-    <summary class="card-header d-flex flex-column md:flex-row flex-wrap justify-content-between align-items-baseline gap-3">
+<details class="toolbar" id="pub-controls" open>
+    <summary class="toolbar-head">
         <span class="fw-semibold"><i class="fa-solid fa-sliders fa-fw" aria-hidden="true"></i> Search, filter and view options</span>
         <span class="d-flex align-items-baseline gap-5">
-            <span class="small fg-secondary" id="pub-search-status" role="status" aria-live="polite"></span>
-            <i class="fa-solid fa-chevron-down pub-chevron" aria-hidden="true" title="Click to collapse or expand"></i>
+            <span class="meta" id="pub-search-status" role="status" aria-live="polite"></span>
+            <i class="fa-solid fa-chevron-down toolbar-chevron" aria-hidden="true" title="Click to collapse or expand"></i>
         </span>
     </summary>
-    <div class="card-body vstack gap-5">
+    <div class="toolbar-body">
         <div>
-            <label for="pub-search" class="form-label small fg-secondary mb-1">Search</label>
+            <label for="pub-search" class="toolbar-label">Search</label>
             <input type="search" id="pub-search" class="form-control" placeholder="Title, author, venue, year…" autocomplete="off">
         </div>
 
-        <div class="d-flex flex-wrap align-items-center gap-3 small" id="pub-types" role="group" aria-label="Filter publications by type" hidden>
-            <span class="fg-secondary">Type:</span>
+        <div class="toolbar-row" id="pub-types" role="group" aria-label="Filter publications by type" hidden>
+            <span class="toolbar-label">Type:</span>
         </div>
 
-        <div class="d-flex flex-wrap align-items-center gap-3 small" role="group" aria-label="Filter publications by year">
-            <span class="fg-secondary">Years:</span>
+        <div class="toolbar-row" role="group" aria-label="Filter publications by year">
+            <span class="toolbar-label">Years:</span>
             <label for="pub-year-from" class="visually-hidden">From year</label>
             <input type="number" id="pub-year-from" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
             <div class="pub-range" id="pub-range">
@@ -79,8 +81,8 @@ description: >-
             <input type="number" id="pub-year-to" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
         </div>
 
-        <div class="d-flex flex-wrap align-items-center gap-3 small" role="group" aria-label="Group publications by">
-            <span class="fg-secondary">Group by:</span>
+        <div class="toolbar-row" role="group" aria-label="Group publications by">
+            <span class="toolbar-label">Group by:</span>
             <div class="btn-group btn-group-sm" id="pub-group">
                 <label class="btn-check btn-outline theme-secondary">
                     <input type="radio" name="pub-group" value="category" autocomplete="off" checked>
@@ -96,50 +98,50 @@ description: >-
                 </label>
             </div>
         </div>
-        <div><button type="button" class="btn-sm btn-outline theme-secondary" id="pub-reset">Reset all</button></div>
+        <div><button type="button" class="btn-line is-quiet" id="pub-reset">Reset all</button></div>
     </div>
 </details>
 
-<section class="mb-12">
+<section class="pub-section">
 {% include bib-list.html id="journal-articles" title="Journal Articles" html=journal count=journal_count level=2 %}
 </section>
 
 {% if conf_count > 0 %}
-<section class="mb-12">
-    <h2 id="conference-papers" class="h4 d-flex align-items-baseline gap-3">Conference Papers <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal">{{ conf_count }}</span></h2>
+<section class="pub-section">
+    <h2 id="conference-papers" class="pub-group-head">Conference Papers <span class="count">{{ conf_count }}</span></h2>
     {% include bib-list.html id="conference-international" title="International" html=conf_int count=conf_int_count level=3 %}
     {% include bib-list.html id="conference-national" title="National" html=conf_nat count=conf_nat_count level=3 %}
 </section>
 {% endif %}
 
 {% if work_count > 0 %}
-<section class="mb-12">
-    <h2 id="workshop-papers" class="h4 d-flex align-items-baseline gap-3">Workshop Papers <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal">{{ work_count }}</span></h2>
+<section class="pub-section">
+    <h2 id="workshop-papers" class="pub-group-head">Workshop Papers <span class="count">{{ work_count }}</span></h2>
     {% include bib-list.html id="workshop-international" title="International" html=work_int count=work_int_count level=3 %}
     {% include bib-list.html id="workshop-national" title="National" html=work_nat count=work_nat_count level=3 %}
 </section>
 {% endif %}
 
 {% if unclassified_count > 0 %}
-<section class="mb-12">
-    <div class="alert theme-danger" role="alert">
+<section class="pub-section">
+    <div class="note mb-5" role="alert">
         These proceedings papers have a missing or invalid <code>type/</code> or <code>reach/</code> keyword in the bibliography.
     </div>
     {% include bib-list.html id="unclassified" title="Unclassified Proceedings" html=unclassified count=unclassified_count level=2 %}
 </section>
 {% endif %}
 
-<section class="mb-12">
+<section class="pub-section">
 {% include bib-list.html id="book-chapters" title="Book Chapters" html=chapters count=chapters_count level=2 %}
 </section>
 
-<section class="mb-12">
+<section class="pub-section">
 {% include bib-list.html id="theses" title="Theses" html=theses count=theses_count level=2 %}
 </section>
 
 <div id="pub-grouped" hidden></div>
 
-<p id="pub-no-results" class="fg-secondary" hidden>No publications match your search.</p>
+<p id="pub-no-results" class="empty-state" hidden>No publications match your search.</p>
 
 <script>
 (function () {
@@ -153,9 +155,9 @@ description: >-
     var sliderTo = document.getElementById('pub-range-to');
     var fill = document.getElementById('pub-range-fill');
     var range = { from: 0, to: 0 };
-    var sections = Array.prototype.slice.call(document.querySelectorAll('section.mb-12'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section.pub-section'));
     // Every entry with the list it belongs to in the "by type" layout, in document order.
-    var items = Array.prototype.slice.call(document.querySelectorAll('section.mb-12 li')).filter(function (li) {
+    var items = Array.prototype.slice.call(document.querySelectorAll('section.pub-section li')).filter(function (li) {
         return li.querySelector(':scope > article');
     }).map(function (li) {
         return { li: li, home: li.parentElement, article: li.querySelector(':scope > article'), text: normalize(li.textContent) };
@@ -189,10 +191,10 @@ description: >-
     function makeHeading(id, label, count) {
         var h = document.createElement('h2');
         h.id = id;
-        h.className = 'h4 mt-7 d-flex align-items-baseline gap-3';
+        h.className = 'pub-group-head';
         h.appendChild(document.createTextNode(label + ' '));
         var b = document.createElement('span');
-        b.className = 'badge rounded-pill bg-secondary fg-contrast-secondary fw-normal';
+        b.className = 'count';
         b.textContent = count;
         h.appendChild(b);
         return h;
@@ -212,7 +214,8 @@ description: >-
             active[t.name] = true;
             var b = document.createElement('button');
             b.type = 'button';
-            b.className = 'btn btn-sm rounded-pill border bg-subtle-' + t.color + ' fg-emphasis-' + t.color + ' border-subtle-' + t.color;
+            b.className = 'chip-filter';
+            b.dataset.color = t.color;
             b.setAttribute('aria-pressed', 'true');
             b.appendChild(document.createTextNode(t.name + ' '));
             var n = document.createElement('span');
@@ -222,7 +225,6 @@ description: >-
             b.addEventListener('click', function () {
                 active[t.name] = !active[t.name];
                 b.setAttribute('aria-pressed', active[t.name]);
-                b.classList.toggle('opacity-50', !active[t.name]);
                 filter();
             });
             box.appendChild(b);
@@ -308,10 +310,10 @@ description: >-
             if (match) shown++;
         });
         // A block is a heading followed by its list.
-        document.querySelectorAll('section.mb-12 :is(h2, h3)[id], #pub-grouped > h2[id]').forEach(function (h) {
+        document.querySelectorAll('section.pub-section :is(h2, h3)[id], #pub-grouped > h2[id]').forEach(function (h) {
             var list = h.nextElementSibling;
             while (list && !/^(OL|UL)$/.test(list.tagName)) list = list.nextElementSibling;
-            var badge = h.querySelector('.badge');
+            var badge = h.querySelector('.count');
             if (!list || !badge) return;
             if (!badge.dataset.total) badge.dataset.total = badge.textContent.trim();
             var visible = list.querySelectorAll(':scope > li:not([hidden])').length;
@@ -333,10 +335,7 @@ description: >-
 })();
 </script>
 <style>
-    #pub-controls > summary { cursor: pointer; }
-    .pub-range { position: relative; height: 1.5rem; flex: 1 1 12rem; max-width: 28rem; margin: 0 .5rem; }
-    .pub-chevron { transition: transform .15s; }
-    #pub-controls[open] .pub-chevron { transform: rotate(180deg); }
+        .pub-range { position: relative; height: 1.5rem; flex: 1 1 12rem; max-width: 28rem; margin: 0 .5rem; }
     @media (max-width: 575.98px) { .pub-range { order: 1; flex-basis: 100%; max-width: none; margin: 0 .5rem; } }
     .pub-range-track { position: absolute; top: 50%; left: 0; right: 0; height: .25rem; margin-top: -.125rem; border-radius: .125rem; background: var(--bg-3); }
     .pub-range-fill { position: absolute; top: 0; bottom: 0; border-radius: .125rem; background: var(--primary-base); }

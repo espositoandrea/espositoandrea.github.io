@@ -1,0 +1,76 @@
+{%- comment -%}
+  Grid of photographs (see _plugins/photo_stream.rb), opened full screen in the lightbox.
+  Parameters: photos (array), id (name of the gallery: the lightbox moves within it), limit,
+  compact (true for a small square mosaic, without captions), nested (true to leave the grid
+  in an enclosing gallery, e.g. with the photos placed in the text of a post).
+{%- endcomment -%}
+{%- assign grid_limit = include.limit | default: 1000 -%}
+<div class="photo-grid{% if include.compact %} photo-grid-compact{% endif %}"{% unless include.nested %} data-gallery="{{ include.id | default: 'photos' }}"{% endunless %}>
+    {%- for photo in include.photos limit: grid_limit %}
+    {%- if photo.src contains '://' %}{% assign photo_src = photo.src %}{% else %}{% assign photo_src = photo.src | relative_url %}{% endif %}
+    {%- if photo.url contains '://' %}{% assign photo_url = photo.url %}{% elsif photo.url %}{% assign photo_url = photo.url | relative_url %}{% else %}{% assign photo_url = nil %}{% endif %}
+    <figure class="photo" data-source="{{ photo.source }}"{% if include.nested and photo.anchor %} id="photo-{{ photo.anchor }}" data-photo-id="{{ photo.anchor }}"{% endif %} itemscope itemtype="https://schema.org/Photograph">
+        <a class="photo-link no-blank-icon" href="{{ photo_src }}" data-lightbox>
+            <img src="{{ photo_src }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async" itemprop="contentUrl">
+        </a>
+        <figcaption class="photo-caption">
+            {%- if photo.title %}<strong class="photo-title" itemprop="name">{{ photo.title | smartify }}</strong>{% endif %}
+            {%- if photo.caption %}<span class="photo-text" itemprop="caption">{{ photo.caption | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>{% endif %}
+            <span class="photo-meta">
+                {%- if photo.date %}<time itemprop="dateCreated" datetime="{{ photo.date | date: '%Y-%m-%d' }}">{{ photo.date | date: "%b %-d, %Y" }}</time>{% endif %}
+                {%- if photo.location %}<span itemprop="contentLocation">{{ photo.location }}</span>{% endif %}
+                {%- if photo.camera %}<span>{{ photo.camera }}</span>{% endif %}
+            </span>
+            {%- if photo_url and include.nested == nil %}
+            <a class="photo-source" href="{{ photo_url }}"{% if photo.external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                {%- if photo.source == "instagram" %}<i class="fa-brands fa-instagram" aria-hidden="true"></i> {% endif %}{{ photo.url_label | smartify }}
+            </a>
+            {%- endif %}
+            {%- if photo.instagram and photo.source != "instagram" %}
+            <a class="photo-source" href="{{ photo.instagram }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a>
+            {%- endif %}
+        </figcaption>
+    </figure>
+    {%- endfor %}
+</div>
+{%- unless photo_lightbox_included %}
+{%- assign photo_lightbox_included = true %}
+{% include photo-lightbox.html %}
+{%- endunless %}
+
+{%- unless photo_masonry_included %}
+{%- assign photo_masonry_included = true %}
+<script>
+(() => {
+    // Places the photos of each grid in reading order (left to right, then top to bottom):
+    // every photo goes in the shortest column, so the DOM order (and the lightbox) is kept.
+    const layout = grid => {
+        const style = getComputedStyle(grid)
+        const cols = Number(style.getPropertyValue('--photo-cols')) || 1
+        const gap = parseFloat(style.columnGap) || 0
+        const heights = Array(cols).fill(0)
+        grid.querySelectorAll('.photo').forEach(photo => {
+            if (photo.hidden) return
+            const col = heights.indexOf(Math.min(...heights))
+            const height = Math.ceil(photo.getBoundingClientRect().height)
+            photo.style.gridColumn = col + 1
+            photo.style.gridRow = `${heights[col] + 1} / span ${height}`
+            heights[col] += height + gap
+        })
+    }
+    const init = () => document.querySelectorAll('.photo-grid:not(.photo-grid-compact)').forEach(grid => {
+        grid.classList.add('is-masonry')
+        grid.querySelectorAll('.photo').forEach(photo => { photo.style.marginBottom = '0' })
+        let frame
+        const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(() => layout(grid)) }
+        const observer = new ResizeObserver(schedule)
+        observer.observe(grid)
+        grid.querySelectorAll('.photo img').forEach(img => observer.observe(img))
+        new MutationObserver(schedule).observe(grid, { attributes: true, attributeFilter: ['hidden'], subtree: true })
+        schedule()
+    })
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init)
+    else init()
+})()
+</script>
+{%- endunless %}

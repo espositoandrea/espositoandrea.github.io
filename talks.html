@@ -2,6 +2,9 @@
 layout: page
 lang: en
 title: Talks and Seminars
+section: talks
+lede: >-
+  Talks presenting my research, typically tied to a publication, and seminars I gave as a guest in courses or events.
 permalink: /talks
 description: >-
   Talks and seminars given by Andrea Esposito on Human-Centred AI, Human-AI Interaction, and eXplainable AI at conferences, workshops, and universities.
@@ -16,11 +19,7 @@ description: >-
 {% assign known = "" | split: "" %}
 {% for cat in categories %}{% if cat.types %}{% assign known = known | concat: cat.types %}{% endif %}{% endfor %}
 
-    <p>
-        This page lists the talks I gave to present my research (typically associated with a publication) and the
-        seminars I gave as a guest in courses or events. For my regular teaching activities, see the
-        <a href="{{ '/teachings' | relative_url }}">teaching page</a>.
-    </p>
+    <p class="note mb-7"><i class="fa-solid fa-chalkboard-user" aria-hidden="true"></i><span>For my regular teaching activities, see the <a href="{{ '/teachings' | relative_url }}">teaching page</a>.</span></p>
 
     {% assign has_translation = false %}
     {% for seminar in seminars %}
@@ -28,34 +27,34 @@ description: >-
         {% if seminar.course.nameTranslation or seminar.degreeTranslation %}{% assign has_translation = true %}{% endif %}
     {% endfor %}
 
-    <details class="card mb-7" id="talk-controls" open hidden>
-        <summary class="card-header d-flex flex-column md:flex-row flex-wrap justify-content-between align-items-baseline gap-3">
+    <details class="toolbar" id="talk-controls" open hidden>
+        <summary class="toolbar-head">
             <span class="fw-semibold"><i class="fa-solid fa-sliders fa-fw" aria-hidden="true"></i> Search, filter and view options</span>
             <span class="d-flex align-items-baseline gap-5">
-                <span class="small fg-secondary" id="talk-status" role="status" aria-live="polite"></span>
-                <i class="fa-solid fa-chevron-down talk-chevron" aria-hidden="true" title="Click to collapse or expand"></i>
+                <span class="meta" id="talk-status" role="status" aria-live="polite"></span>
+                <i class="fa-solid fa-chevron-down toolbar-chevron" aria-hidden="true" title="Click to collapse or expand"></i>
             </span>
         </summary>
-        <div class="card-body vstack gap-5">
+        <div class="toolbar-body">
             <div>
-                <label for="talk-search" class="form-label small fg-secondary mb-1">Search</label>
+                <label for="talk-search" class="toolbar-label">Search</label>
                 <input type="search" id="talk-search" class="form-control" placeholder="Title, event, institution, year…" autocomplete="off">
             </div>
 
-            <div class="d-flex flex-wrap align-items-center gap-3 small" id="talk-types" role="group" aria-label="Filter by category">
-                <span class="fg-secondary">Category:</span>
+            <div class="toolbar-row" id="talk-types" role="group" aria-label="Filter by category">
+                <span class="toolbar-label">Category:</span>
                 {% for cat in categories %}
                     {% include talk-items.html cat=cat talks=talks seminars=seminars known=known %}
                     {% if cat_items.size > 0 %}
-                    <button type="button" class="btn btn-sm rounded-pill border bg-subtle-{{ cat.color }} fg-emphasis-{{ cat.color }} border-subtle-{{ cat.color }}" data-category="{{ cat.name }}" aria-pressed="true">
+                    <button type="button" class="chip-filter" data-color="{{ cat.color }}" data-category="{{ cat.name }}" aria-pressed="true">
                         {{ cat.name }} <span class="opacity-75">{{ cat_items.size }}</span>
                     </button>
                     {% endif %}
                 {% endfor %}
             </div>
 
-            <div class="d-flex flex-wrap align-items-center gap-3 small" role="group" aria-label="Filter by year">
-                <span class="fg-secondary">Years:</span>
+            <div class="toolbar-row" role="group" aria-label="Filter by year">
+                <span class="toolbar-label">Years:</span>
                 <label for="talk-year-from" class="visually-hidden">From year</label>
                 <input type="number" id="talk-year-from" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
                 <div class="talk-range">
@@ -67,8 +66,8 @@ description: >-
                 <input type="number" id="talk-year-to" class="form-control form-control-sm" style="width: 6rem" inputmode="numeric">
             </div>
 
-            <div class="d-flex flex-wrap align-items-center gap-3 small" role="group" aria-label="Group by">
-                <span class="fg-secondary">Group by:</span>
+            <div class="toolbar-row" role="group" aria-label="Group by">
+                <span class="toolbar-label">Group by:</span>
                 <div class="btn-group btn-group-sm" id="talk-group">
                     <label class="btn-check btn-outline theme-secondary">
                         <input type="radio" name="talk-group" value="category" autocomplete="off" checked>
@@ -83,73 +82,73 @@ description: >-
 
             {% if has_translation %}{% include i18n-toggle.html embedded=true %}{% endif %}
 
-            <div><button type="button" class="btn-sm btn-outline theme-secondary" id="talk-reset">Reset all</button></div>
+            <div><button type="button" class="btn-line is-quiet" id="talk-reset">Reset all</button></div>
         </div>
     </details>
 
     {% for cat in categories %}
     {% include talk-items.html cat=cat talks=talks seminars=seminars known=known %}
     {% if cat_items.size > 0 %}
-    <section class="mb-12" aria-labelledby="{{ cat.name | slugify }}" data-category="{{ cat.name }}">
-        <h2 id="{{ cat.name | slugify }}" class="h4 d-flex align-items-baseline gap-3">
+    <section class="talk-section" aria-labelledby="{{ cat.name | slugify }}" data-category="{{ cat.name }}">
+        <h2 id="{{ cat.name | slugify }}" class="pub-group-head">
             {{ cat.name }}
-            <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal" data-total="{{ cat_items.size }}">{{ cat_items.size }}</span>
+            <span class="count" data-total="{{ cat_items.size }}">{{ cat_items.size }}</span>
         </h2>
 
         {% assign groups = cat_items | group_by_exp: 'item', 'item.date | date: "%Y"' %}
         {% for group in groups %}
             <div class="year-block">
-            <h3 class="h5 mt-7 fg-secondary">{{ group.name }}</h3>
-            <div class="list-group">
+            <h3 class="pub-subhead">{{ group.name }}</h3>
+            <div class="entry-list">
             {% if cat.seminars %}
                 {% for seminar in group.items %}
                     {% assign context = seminar.course | default: seminar.event %}
-                    <article class="card mt-3" data-category="{{ cat.name }}" data-year="{{ seminar.date | date: '%Y' }}" data-date="{{ seminar.date | date: '%Y-%m-%d' }}" itemscope itemtype="https://schema.org/{% if seminar.course %}EducationEvent{% else %}Event{% endif %}">
+                    <article class="entry" data-category="{{ cat.name }}" data-year="{{ seminar.date | date: '%Y' }}" data-date="{{ seminar.date | date: '%Y-%m-%d' }}" itemscope itemtype="https://schema.org/{% if seminar.course %}EducationEvent{% else %}Event{% endif %}">
                         {% include talk-meta.html talk=seminar context=context %}
-                        <div class="card-body">
-                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
+                        <div class="entry-main">
+                        <div class="entry-head">
                             <div>
-                                <h4 class="h6 mb-0 card-title">{% include i18n.html orig=seminar.title trans=seminar.titleTranslation lang=seminar.language %}</h4>
+                                <h4 class="entry-title">{% include i18n.html orig=seminar.title trans=seminar.titleTranslation lang=seminar.language %}</h4>
                             </div>
-                            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
-                                {% if seminar.language %}<span class="badge bg-subtle-secondary fg-emphasis-secondary border" title="Seminar language">{{ seminar.language | upcase }}</span>{% endif %}
-                                <time class="small fg-secondary font-monospace text-nowrap" datetime="{{ seminar.date | date: '%Y-%m-%d' }}">{{ seminar.date | date: "%b %-d, %Y" }}</time>
+                            <div class="entry-badges">
+                                {% if seminar.language %}<span class="tag" title="Seminar language">{{ seminar.language | upcase }}</span>{% endif %}
+                                <time class="meta text-nowrap" datetime="{{ seminar.date | date: '%Y-%m-%d' }}">{{ seminar.date | date: "%b %-d, %Y" }}</time>
                             </div>
                         </div>
 
-                        <ul class="list-inline small fg-secondary mb-0">
+                        <ul class="entry-facts">
                             {% if context %}
                             {% assign context_lang = context.language | default: seminar.language | default: "en" %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 {% if seminar.course %}<i class="fa-solid fa-graduation-cap fa-fw" aria-label="Course" title="Course"></i>{% else %}<i class="fa-regular fa-calendar fa-fw" aria-label="Event" title="Event"></i>{% endif %}
                                 {% capture context_name %}{% include i18n.html orig=context.name trans=context.nameTranslation lang=context_lang %}{% endcapture %}
                                 {% if context.url %}<a href="{{ context.url }}" target="_blank" rel="noopener noreferrer">{{ context_name }}</a>{% else %}{{ context_name }}{% endif %}
                             </li>
                             {% endif %}
                             {% if seminar.lecturer %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 <i class="fa-solid fa-user-tie fa-fw" aria-label="Lecturer" title="Lecturer"></i>
                                 {% if seminar.lecturer.url %}<a href="{{ seminar.lecturer.url }}" target="_blank" rel="noopener noreferrer">{{ seminar.lecturer.name | smartify }}</a>{% else %}{{ seminar.lecturer.name | smartify }}{% endif %}
                             </li>
                             {% endif %}
                             {% if seminar.duration %}
-                            <li class="list-inline-item">
+                            <li >
                                 <i class="fa-regular fa-clock fa-fw" aria-label="Duration" title="Duration"></i> {{ seminar.duration }}
                             </li>
                             {% endif %}
                             {% if seminar.location %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ seminar.location.en | default: seminar.location | smartify }}
                             </li>
                             {% endif %}
                             {% if seminar.institution %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ seminar.institution | smartify }}
                             </li>
                             {% endif %}
                             {% if seminar.degree %}
                             {% assign degree_lang = seminar.course.language | default: seminar.language | default: "en" %}
-                            <li class="list-inline-item d-block">
+                            <li class="d-block w-100">
                                 <i class="fa-solid fa-award fa-fw" aria-label="Degree" title="Degree"></i>
                                 {% include degree-line.html level=seminar.degreeLevel levelTranslation=seminar.degreeLevelTranslation degree=seminar.degree degreeTranslation=seminar.degreeTranslation lang=degree_lang %}
                             </li>
@@ -157,14 +156,14 @@ description: >-
                         </ul>
 
                         {% if seminar.description %}
-                            <div class="small" lang="{{ seminar.descriptionLanguage | default: seminar.language | default: 'en' }}">{{ seminar.description | markdownify }}</div>
+                            <div class="entry-text" lang="{{ seminar.descriptionLanguage | default: seminar.language | default: 'en' }}">{{ seminar.description | markdownify }}</div>
                         {% endif %}
 
-                            <div class="list-group list-group-flush">
+                            <div>
                                 {% if seminar.slides or seminar.video %}
-                                    <div class="list-group-item d-flex gap-5">
-                                        {% if seminar.slides %}<a class="theme-primary btn-text btn-sm" href="{{ seminar.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
-                                        {% if seminar.video %}<a class="theme-primary btn-text btn-sm" href="{{ seminar.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                                    <div class="entry-actions no-blank-icon">
+                                        {% if seminar.slides %}<a  href="{{ seminar.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                        {% if seminar.video %}<a  href="{{ seminar.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
                                     </div>
                                 {% endif %}
                             </div>
@@ -173,62 +172,62 @@ description: >-
                 {% endfor %}
             {% else %}
                 {% for talk in group.items %}
-                    <article class="card mt-3" data-category="{{ cat.name }}" data-year="{{ talk.date | date: '%Y' }}" data-date="{{ talk.date | date: '%Y-%m-%d' }}" itemscope itemtype="https://schema.org/Event">
+                    <article class="entry" data-category="{{ cat.name }}" data-year="{{ talk.date | date: '%Y' }}" data-date="{{ talk.date | date: '%Y-%m-%d' }}" itemscope itemtype="https://schema.org/Event">
                         {% include talk-meta.html talk=talk context=talk.event %}
-                        <div class="card-body">
-                        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5">
-                            <h4 class="card-title h6 mb-0">{{ talk.title | smartify }}</h4>
-                            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
-                                {% if talk.type %}<span class="badge bg-subtle-{{ cat.color }} fg-emphasis-{{ cat.color }} border border-subtle-{{ cat.color }} fw-normal">{{ talk.type }}</span>{% endif %}
-                                <time class="small fg-secondary font-monospace text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
+                        <div class="entry-main">
+                        <div class="entry-head">
+                            <h4 class="entry-title">{{ talk.title | smartify }}</h4>
+                            <div class="entry-badges">
+                                {% if talk.type %}<span class="pub-type" data-color="{{ cat.color }}">{{ talk.type }}</span>{% endif %}
+                                <time class="meta text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
                             </div>
                         </div>
-                        <ul class="list-inline small fg-secondary mb-0">
+                        <ul class="entry-facts">
                             {% if talk.event %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 <i class="fa-solid fa-microphone fa-fw" aria-hidden="true"></i>
                                 {% if talk.event.url %}<a href="{{ talk.event.url }}" target="_blank" rel="noopener noreferrer">{{ talk.event.name | smartify }}</a>{% else %}{{ talk.event.name | smartify }}{% endif %}
                             </li>
                             {% endif %}
                             {% if talk.institution %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> {{ talk.institution | smartify }}
                             </li>
                             {% endif %}
                             {% if talk.inviter %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 <i class="fa-solid fa-user-tie fa-fw" aria-label="Invited by" title="Invited by"></i>
                                 {% if talk.inviter.url %}<a href="{{ talk.inviter.url }}" target="_blank" rel="noopener noreferrer">{{ talk.inviter.name | smartify }}</a>{% else %}{{ talk.inviter.name | smartify }}{% endif %}
                             </li>
                             {% endif %}
                             {% if talk.location %}
-                            <li class="list-inline-item me-5">
+                            <li >
                                 <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ talk.location.en | default: talk.location | smartify }}
                             </li>
                             {% endif %}
                         </ul>
 
                         {% if talk.description %}
-                            <small class="small">{{ talk.description | markdownify |  remove: '<p>' | remove: '</p>' }}</small>
+                            <div class="entry-text">{{ talk.description | markdownify |  remove: '<p>' | remove: '</p>' }}</div>
                         {% endif %}    
                         
                     </div>
                     
-                    <div class="list-group list-group-flush">
+                    <div>
                         {% if talk.slides or talk.poster or talk.video %}
-                            <div class="list-group-item d-flex gap-5">
-                                {% if talk.slides %}<a class="theme-primary btn-text btn-sm" href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
-                                {% if talk.poster %}<a class="theme-primary btn-text btn-sm" href="{{ talk.poster | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-image fa-fw" aria-hidden="true"></i> Poster</a>{% endif %}
-                                {% if talk.video %}<a class="theme-primary btn-text btn-sm" href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
+                            <div class="entry-actions no-blank-icon">
+                                {% if talk.slides %}<a  href="{{ talk.slides | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-person-chalkboard fa-fw" aria-hidden="true"></i> Slides</a>{% endif %}
+                                {% if talk.poster %}<a  href="{{ talk.poster | relative_url }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-image fa-fw" aria-hidden="true"></i> Poster</a>{% endif %}
+                                {% if talk.video %}<a  href="{{ talk.video }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-video fa-fw" aria-hidden="true"></i> Video</a>{% endif %}
                             </div>
                         {% endif %}
                     </div>
 
 
                         {% if talk.paper %}
-                        <div class="card-footer small d-flex flex-wrap align-items-baseline gap-3">
+                        <div class="entry-actions">
                             <details>
-                                <summary class="fg-secondary"><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Associated paper</summary>
+                                <summary><i class="fa-solid fa-quote-left fa-fw" aria-hidden="true"></i> Associated paper</summary>
                                 {% capture paper_reference %}{% reference {{talk.paper}} %}{% endcapture %}
                                 <div class="mt-1">{{ paper_reference | emphasize_author }}</div>
                             </details>
@@ -247,7 +246,7 @@ description: >-
 
     <div id="talk-grouped" hidden></div>
 
-    <p id="talk-no-results" class="fg-secondary" hidden>No talks or seminars match your search.</p>
+    <p id="talk-no-results" class="empty-state" hidden>No talks or seminars match your search.</p>
 
 <script>
 (function () {
@@ -262,7 +261,7 @@ description: >-
     var sliderTo = document.getElementById('talk-range-to');
     var fill = document.getElementById('talk-range-fill');
     var range = { from: 0, to: 0 };
-    var sections = Array.prototype.slice.call(document.querySelectorAll('section.mb-12'));
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section.talk-section'));
     // Every entry with the list it belongs to in the "by type" layout, in document order.
     var items = Array.prototype.slice.call(document.querySelectorAll('article[data-category]')).map(function (a) {
         return {
@@ -296,7 +295,6 @@ description: >-
             var on = b.getAttribute('aria-pressed') !== 'true';
             active[b.dataset.category] = on;
             b.setAttribute('aria-pressed', on);
-            b.classList.toggle('opacity-50', !on);
             filter();
         });
     });
@@ -353,13 +351,13 @@ description: >-
                     block.className = 'year-block';
                     var h = document.createElement('h2');
                     h.id = 'year-' + (it.year || 'undated');
-                    h.className = 'h4 mt-7 d-flex align-items-baseline gap-3';
+                    h.className = 'pub-group-head';
                     h.appendChild(document.createTextNode((it.year || 'Undated') + ' '));
                     var badge = document.createElement('span');
-                    badge.className = 'badge rounded-pill bg-secondary fg-contrast-secondary fw-normal';
+                    badge.className = 'count';
                     h.appendChild(badge);
                     var list = document.createElement('div');
-                    list.className = 'list-group';
+                    list.className = 'entry-list';
                     block.appendChild(h);
                     block.appendChild(list);
                     grouped.appendChild(block);
@@ -367,7 +365,7 @@ description: >-
                 block.lastChild.appendChild(it.article);
             });
             grouped.querySelectorAll('.year-block').forEach(function (b) {
-                b.querySelector('.badge').dataset.total = b.querySelectorAll('article').length;
+                b.querySelector('.count').dataset.total = b.querySelectorAll('article').length;
             });
         }
         filter();
@@ -390,11 +388,11 @@ description: >-
         document.querySelectorAll('.year-block').forEach(function (b) {
             var visible = b.querySelectorAll('article:not([hidden])').length;
             b.hidden = visible === 0;
-            var badge = b.querySelector('h2 .badge');
+            var badge = b.querySelector('h2 .count');
             if (badge) { badge.textContent = filtering ? visible + ' / ' + badge.dataset.total : badge.dataset.total; }
         });
         sections.forEach(function (s) {
-            var badge = s.querySelector('h2 .badge');
+            var badge = s.querySelector('h2 .count');
             var n = shownByCat[s.dataset.category] || 0;
             if (badge) { badge.textContent = filtering ? n + ' / ' + badge.dataset.total : badge.dataset.total; }
             s.hidden = filtering && n === 0;
@@ -412,10 +410,7 @@ description: >-
 })();
 </script>
 <style>
-    #talk-controls > summary { cursor: pointer; }
     .talk-range { position: relative; height: 1.5rem; flex: 1 1 12rem; max-width: 28rem; margin: 0 .5rem; }
-    .talk-chevron { transition: transform .15s; }
-    #talk-controls[open] .talk-chevron { transform: rotate(180deg); }
     @media (max-width: 575.98px) { .talk-range { order: 1; flex-basis: 100%; max-width: none; margin: 0 .5rem; } }
     .talk-range-track { position: absolute; top: 50%; left: 0; right: 0; height: .25rem; margin-top: -.125rem; border-radius: .125rem; background: var(--bg-3); }
     .talk-range-fill { position: absolute; top: 0; bottom: 0; border-radius: .125rem; background: var(--primary-base); }

@@ -1,5 +1,7 @@
 ---
 layout: default
+section: teaching
+nav_url: /teachings
 ---
 
 {% assign role = page.role | default: "Main Lecturer" %}
@@ -21,7 +23,7 @@ layout: default
 {% assign news = "" | split: "" %}
 {% if page.news %}{% assign news = page.news | sort: 'date' | reverse %}{% endif %}
 
-<article class="container p-5 flex-grow-1" itemprop="mainEntity" itemscope itemtype="https://schema.org/Course">
+<article class="page shell" itemprop="mainEntity" itemscope itemtype="https://schema.org/Course">
     <link itemprop="url" href="{{ page.url | absolute_url }}">
     <meta itemprop="name" content="{{ page.title | escape }}">
     {% if translated %}<meta itemprop="alternateName" content="{{ page.titleTranslation | escape }}">{% endif %}
@@ -48,89 +50,88 @@ layout: default
             <link itemprop="url" href="{{ '/' | absolute_url }}">
         </div>
     </div>
-    <nav aria-label="breadcrumbs" class="small mb-5">
-        <ol class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
-            <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="{{ '/teachings' | absolute_url }}" itemprop="item"><span itemprop="name">Teaching</span></a><meta itemprop="position" content="2"></li>
-            <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a class="breadcrumb-link" href="{{ '/teachings' | absolute_url }}#ay-{{ page.academicYear | slugify }}" itemprop="item"><span itemprop="name">A.Y. {{ page.academicYear }}</span></a><meta itemprop="position" content="3"></li>
-            <li class="breadcrumb-divider"></li>
-            <li class="breadcrumb-item" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                <a href="#" class="breadcrumb-link active">
-                    {% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}
-                </a>
+    <header class="page-header">
+    <nav aria-label="Breadcrumbs">
+        <ol class="crumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="{{ '/' | absolute_url }}" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li>
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="{{ '/teachings' | absolute_url }}" itemprop="item"><span itemprop="name">Teaching</span></a><meta itemprop="position" content="2"></li>
+                        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="{{ '/teachings' | absolute_url }}#ay-{{ page.academicYear | slugify }}" itemprop="item"><span itemprop="name">A.Y. {{ page.academicYear }}</span></a><meta itemprop="position" content="3"></li>
+                        <li aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                {% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}
                 <meta itemprop="name" content="{{ page.title | smartify | escape }}">
                 <meta itemprop="position" content="4">
             </li>
         </ol>
     </nav>
 
-    <header class="mb-7">
-        <h1 class="mb-1">{% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}</h1>
-        <div class="d-flex flex-wrap gap-1 mb-3">
-            <span class="badge bg-subtle-secondary fg-emphasis-secondary border border-subtle-secondary fw-normal">{{ role }}</span>
-            <span class="badge bg-subtle-secondary fg-emphasis-secondary border border-subtle-secondary fw-normal">A.Y. {{ page.academicYear }}</span>
-            {% if page.language %}<span class="badge bg-subtle-secondary fg-emphasis-secondary border" title="Course language">{{ page.language | upcase }}</span>{% endif %}
+        {% include kicker.html label="Course" %}
+        <h1 class="page-title">{% include i18n.html orig=page.title trans=page.titleTranslation lang=page.language %}</h1>
+        <div class="d-flex flex-wrap gap-2 mt-5">
+            <span class="tag">{{ role }}</span>
+            <span class="tag">A.Y. {{ page.academicYear }}</span>
+            {% if page.language %}<span class="tag" title="Course language">{{ page.language | upcase }}</span>{% endif %}
         </div>
-        <hr>
     </header>
 
+    <div class="mb-7">
     {% if content_translated %}
         {% assign orig_label = language_name | append: " (original)" %}
-        {% include i18n-toggle.html en_label="English" orig_label=orig_label %}
+        {% include i18n-toggle.html en_label="English" orig_label=orig_label embedded=true %}
     {% elsif translated %}
-        {% include i18n-toggle.html %}
+        {% include i18n-toggle.html embedded=true %}
     {% endif %}
+    </div>
 
-    <section aria-labelledby="course-info" class="mb-12">
+    <div class="course-grid page-body">
+    <section aria-labelledby="course-info" class="course-info">
         <h2 id="course-info" class="visually-hidden">Course information</h2>
-        <dl class="row small mb-0">
-            <dt class="sm:col-3 fg-secondary fw-normal">
+        <dl class="facts">
+            <dt>
                 <i class="fa-solid fa-graduation-cap fa-fw" aria-hidden="true"></i> Degree
             </dt>
-            <dd class="sm:col-9">
+            <dd>
                 {% include degree-line.html level=page.level levelTranslation=page.levelTranslation degree=page.degree degreeTranslation=page.degreeTranslation lang=page.language %}
             </dd>
 
-            <dt class="sm:col-3 fg-secondary fw-normal">
+            <dt>
                 <i class="fa-regular fa-calendar fa-fw" aria-hidden="true"></i> Scheduling
             </dt>
-            <dd class="sm:col-9">{{ page.degreeYear }} year, {{ page.semester }} semester</dd>
+            <dd>{{ page.degreeYear }} year, {{ page.semester }} semester</dd>
 
-            <dt class="sm:col-3 fg-secondary fw-normal">
+            <dt>
                 <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i> Institution
             </dt>
-            <dd class="sm:col-9">{{ page.institution.name }} &middot; {{ page.institution.department }}</dd>
+            <dd>{{ page.institution.name }} &middot; {{ page.institution.department }}</dd>
 
             {% if page.credits %}
-            <dt class="sm:col-3 fg-secondary fw-normal">
+            <dt>
                 <i class="fa-solid fa-scale-balanced fa-fw" aria-hidden="true"></i> Credits
             </dt>
-            <dd class="sm:col-9">{{ page.credits }} ECTS{% if page.hours %}, {{ page.hours }} hours{% endif %}</dd>
+            <dd>{{ page.credits }} ECTS{% if page.hours %}, {{ page.hours }} hours{% endif %}</dd>
             {% endif %}
 
             {% if page.officialPage %}
-            <dt class="sm:col-3 fg-secondary fw-normal">
+            <dt>
                 <i class="fa-solid fa-link fa-fw" aria-hidden="true"></i> Official page
             </dt>
-            <dd class="sm:col-9">
+            <dd>
                 <a href="{{ page.officialPage }}" target="_blank" rel="noopener noreferrer">{{ page.officialPage | remove: 'https://' | remove: 'http://' | truncate: 60 }}</a>
             </dd>
             {% endif %}
         </dl>
     </section>
 
+    <div class="course-main">
     {% if description != "" %}
-    <section aria-labelledby="course-description" class="mb-12">
+    <section aria-labelledby="course-description" class="rich-text page-section">
         <!-- <h2 id="course-description" class="h4">Description</h2> -->
         {% if content_translated %}
         <div class="i18n-orig" lang="{{ page.language }}" itemprop="description">
             {{ content_parts[0] }}
         </div>
         <div class="i18n-en" lang="en">
-            <aside class="alert mb-7 d-flex align-items-center small" aria-label="Translation notice">
-                <i class="fa-solid fa-language me-3" aria-hidden="true"></i>
+            <aside class="note mb-7" aria-label="Translation notice">
+                <i class="fa-solid fa-language" aria-hidden="true"></i>
                 <span>
                     This course is taught in <strong>{{ language_name }}</strong>.
                     The English translation below is provided for convenience only; the {{ language_name }} version is the official one.
@@ -147,17 +148,17 @@ layout: default
     {% endif %}
 
     {% if news.size > 0 %}
-    <section aria-labelledby="course-news" class="mb-12">
-        <h2 id="course-news" class="h4">News</h2>
-        <div class="list-group list-group-flush border-top border-bottom">
+    <section aria-labelledby="course-news" class="page-section">
+        <div class="section-head"><h2 id="course-news">News</h2></div>
+        <div class="entry-list">
             {% for item in news %}
-            <article class="list-group-item px-0 py-5">
-                <div class="d-flex flex-wrap align-items-baseline gap-3 mb-1">
-                    <time class="small fg-secondary font-monospace" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %-d, %Y" }}</time>
-                    <h3 class="h6 mb-0">{{ item.title | smartify }}</h3>
+            <article class="entry">
+                <div class="entry-main">
+                    <time class="meta" datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: "%b %-d, %Y" }}</time>
+                    <h3 class="entry-title">{{ item.title | smartify }}</h3>
                 </div>
                 {% if item.body %}
-                <div class="small">{{ item.body | markdownify }}</div>
+                <div class="entry-text">{{ item.body | markdownify }}</div>
                 {% endif %}
             </article>
             {% endfor %}
@@ -166,9 +167,9 @@ layout: default
     {% endif %}
 
     {% if page.materials.size > 0 %}
-    <section aria-labelledby="course-materials" class="mb-12">
-        <h2 id="course-materials" class="h4">Course material</h2>
-        <div class="list-group">
+    <section aria-labelledby="course-materials" class="page-section">
+        <div class="section-head"><h2 id="course-materials">Course material</h2></div>
+        <div class="entry-list">
             {% for material in page.materials %}
             {% case material.type %}
                 {% when "slides" %}{% assign icon = "fa-solid fa-person-chalkboard" %}
@@ -180,20 +181,22 @@ layout: default
                 {% else %}{% assign icon = "fa-solid fa-link" %}
             {% endcase %}
             {% assign external = material.url | slice: 0, 4 %}
-            <a class="list-group-item list-group-item-action d-flex gap-5 align-items-start py-5"
+            <a class="entry material no-blank-icon"
                 href="{% if external == 'http' %}{{ material.url }}{% else %}{{ material.url | relative_url }}{% endif %}"
                 {% if external == 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                <i class="{{ icon }} fa-fw fg-secondary mt-1" aria-hidden="true"></i>
+                <i class="{{ icon }} fa-fw material-icon" aria-hidden="true"></i>
                 <div class="flex-grow-1">
                     <div class="d-flex flex-wrap justify-content-between gap-3">
-                        <span class="fw-semibold">{{ material.title | smartify }}</span>
-                        {% if material.date %}<time class="small fg-secondary" datetime="{{ material.date | date: '%Y-%m-%d' }}">{{ material.date | date: "%b %-d, %Y" }}</time>{% endif %}
+                        <span class="entry-title">{{ material.title | smartify }}</span>
+                        {% if material.date %}<time class="meta" datetime="{{ material.date | date: '%Y-%m-%d' }}">{{ material.date | date: "%b %-d, %Y" }}</time>{% endif %}
                     </div>
-                    {% if material.description %}<div class="small fg-secondary">{{ material.description | smartify }}</div>{% endif %}
+                    {% if material.description %}<div class="entry-text">{{ material.description | smartify }}</div>{% endif %}
                 </div>
             </a>
             {% endfor %}
         </div>
     </section>
     {% endif %}
+    </div>
+    </div>
 </article>

@@ -1,12 +1,10 @@
 {% comment %}
-  Magazine-style post tile. Params: post, featured (optional boolean).
+  Lead story of the blog: large cover and excerpt. Params: post.
 {% endcomment %}
 {% assign post = include.post %}
 {% assign url = post.redirect | default: post.url | absolute_url %}
-{% assign ext = false %}
-{% if post.redirect != blank %}{% assign ext = true %}{% endif %}
 
-<article class="card {% if include.featured %} card-row {% else %} h-100 {% endif %} hover-lift" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+<article class="lead-post{% unless post.image %} lead-post-noimage{% endunless %}" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
     <link itemprop="url" href="{{ url }}">
     <meta itemprop="datePublished" content="{{ post.date | date_to_xmlschema }}">
     <span hidden itemprop="author" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
@@ -15,23 +13,25 @@
     </span>
     {% if post.image %}
         {% if post.image contains '://' %}{% assign image_url = post.image %}{% else %}{% capture image_url %}{% link {{ post.image }} %}{% endcapture %}{% endif %}
-        <img class="object-fit-cover ratio-21x9 {% if include.featured %} w-50 card-img-start {% else %} card-img-top {% endif %}" src="{{ image_url | absolute_url }}" itemprop="image" alt="" onerror="this.remove();" loading="{% if include.featured %}eager{% else %}lazy{% endif %}">
+        <a class="lead-post-media" href="{{ url }}" tabindex="-1" aria-hidden="true">
+            <img src="{{ image_url | absolute_url }}" itemprop="image" alt="" onerror="this.parentElement.remove();" loading="eager">
+        </a>
     {% endif %}
-    <div class="card-body">
-        <small class="fg-3">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
-            {% if post.canonical_site_name != blank %}
-            &middot; <a href="{{ post.canonical_url }}" target="_blank">{{ post.canonical_site_name }}</a>
-            {% endif %}
-        </small>
-        <h2 class="card-title mt-0 h4" itemprop="headline">
-            <a href="{{ url }}">{{ post.title | smartify }}</a>
-        </h2>
-        <p class="card-text" itemprop="description">
-            {% assign text = post.excerpt | markdownify | strip_html | newline_to_br | replace: "<br >", " " | strip_newlines %}
-            {% if include.featured %}{{ text | truncatewords: 60 }}{% else %}{{ text | truncatewords: 28 }}{% endif %}
+    <div class="lead-post-body">
+        <p class="kicker">
+            <span class="kicker-num">Latest</span>
+            <span class="kicker-rule" aria-hidden="true"></span>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
         </p>
-
-        <a href="{{ url }}">Read more</a>
+        <h2 class="lead-post-title" itemprop="headline"><a href="{{ url }}">{{ post.title | smartify }}</a></h2>
+        <p class="lead-post-excerpt" itemprop="description">
+            {% assign text = post.excerpt | markdownify | strip_html | normalize_whitespace %}
+            {{ text | truncatewords: 55 }}
+        </p>
+        <p class="meta">
+            {% if post.categories.size > 0 %}{{ post.categories | join: ", " }}{% endif %}
+            {% if post.canonical_site_name != blank %}{% if post.categories.size > 0 %} · {% endif %}Also on {{ post.canonical_site_name }}{% endif %}
+        </p>
+        <a class="more-link" href="{{ url }}">Read the post</a>
     </div>
 </article>

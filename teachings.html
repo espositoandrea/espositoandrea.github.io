@@ -2,6 +2,9 @@
 layout: page
 lang: en
 title: Teaching Activities
+section: teaching
+lede: >-
+  University courses I teach or taught, with their information, news, and material.
 permalink: /teachings
 description: >-
   Teaching activities of Andrea Esposito: university courses and teaching assistance in Human-Computer Interaction and related Computer Science topics.
@@ -9,10 +12,7 @@ description: >-
 
 {% assign groups = site.teachings | group_by: 'academicYear' | sort: 'name' | reverse %}
 
-    <p>
-        Seminars and guest lectures are not listed here: you can find them on the
-        <a href="{{ '/talks' | relative_url }}">talks and seminars</a> page.
-    </p>
+    <p class="note mb-7"><i class="fa-solid fa-microphone" aria-hidden="true"></i><span>Seminars and guest lectures are not listed here: you can find them on the <a href="{{ '/talks' | relative_url }}">talks and seminars</a> page.</span></p>
 
     {% assign has_translation = false %}
     {% for teaching in site.teachings %}
@@ -22,37 +22,37 @@ description: >-
 
     {% for group in groups %}
         {% assign year_id = group.name | slugify %}
-        <section class="mb-12" aria-labelledby="ay-{{ year_id }}">
-            <h2 id="ay-{{ year_id }}" class="h4 d-flex align-items-baseline gap-3">
+        <section class="talk-section" aria-labelledby="ay-{{ year_id }}">
+            <h2 id="ay-{{ year_id }}" class="pub-group-head">
                 A.Y. {{ group.name }}
-                <span class="badge rounded-pill bg-secondary fg-contrast-secondary fw-normal">{{ group.size }} {% if group.size == 1 %}course{% else %}courses{% endif %}</span>
+                <span class="count">{{ group.size }} {% if group.size == 1 %}course{% else %}courses{% endif %}</span>
             </h2>
 
-            <div class="list-group">
+            <div class="entry-list">
             {% assign sorted_items = group.items | sort: 'title' %}
             {% for teaching in sorted_items %}
-                <article class="card list-group-item-action mt-3 position-relative">
-                    <div class="card-body">
-                    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-1">
-                        <h3 class="h5 card-title">
-                            <a class="stretched-link text-decoration-none" href="{{ teaching.url | relative_url }}">{% include i18n.html orig=teaching.title trans=teaching.titleTranslation lang=teaching.language %}</a>
+                <article class="entry entry-link position-relative">
+                    <div class="entry-main">
+                    <div class="entry-head">
+                        <h3 class="entry-title">
+                            <a class="stretched-link" href="{{ teaching.url | relative_url }}">{% include i18n.html orig=teaching.title trans=teaching.titleTranslation lang=teaching.language %}</a>
                         </h3>
-                        <div class="d-flex gap-1">
-                            <span class="badge bg-subtle-secondary fg-emphasis-secondary border border-subtle-secondary fw-normal">{{ teaching.role | default: "Main Lecturer" }}</span>
-                            {% if teaching.language %}<span class="badge bg-subtle-secondary fg-emphasis-secondary border" title="Course language">{{ teaching.language | upcase }}</span>{% endif %}
+                        <div class="entry-badges">
+                            <span class="tag">{{ teaching.role | default: "Main Lecturer" }}</span>
+                            {% if teaching.language %}<span class="tag" title="Course language">{{ teaching.language | upcase }}</span>{% endif %}
                         </div>
                     </div>
 
-                    <ul class="list-inline small fg-secondary mb-0">
-                        <li class="list-inline-item me-5">
+                    <ul class="entry-facts">
+                        <li>
                             <i class="fa-solid fa-graduation-cap fa-fw" aria-hidden="true"></i>
                             {% include degree-line.html level=teaching.level levelTranslation=teaching.levelTranslation degree=teaching.degree degreeTranslation=teaching.degreeTranslation lang=teaching.language %}
                         </li>
-                        <li class="list-inline-item me-5">
+                        <li>
                             <i class="fa-regular fa-calendar fa-fw" aria-hidden="true"></i>
                             {{ teaching.degreeYear }} year, {{ teaching.semester }} semester
                         </li>
-                        <li class="list-inline-item">
+                        <li>
                             <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i>
                             {{ teaching.institution.name }} &middot; {{ teaching.institution.department }}
                         </li>
@@ -60,7 +60,7 @@ description: >-
 
                     {% assign excerpt = teaching.excerpt | strip_html | strip %}
                     {% if excerpt != "" %}
-                        <p class="mt-3 mb-0">{{ excerpt | smartify }}</p>
+                        <p class="entry-text">{{ excerpt | smartify }}</p>
                     {% endif %}
                     </div>
                 </article>

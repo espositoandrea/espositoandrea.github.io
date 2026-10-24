@@ -1,0 +1,36 @@
+{%- comment -%}
+  Microdata properties of the author (schema.org Person, identified by `<site url>/#person`),
+  to be placed inside the element that carries the Person item: on profile pages the default
+  layout wraps the whole content in it (so that the content can add properties, such as the
+  curriculum entries), elsewhere the footer does.
+{%- endcomment -%}
+{%- assign cv = site.data.curriculum -%}
+<link itemprop="url" href="{{ '/' | absolute_url }}">
+<meta itemprop="name" content="{{ site.author.name }}">
+<meta itemprop="givenName" content="{{ site.author.firstName }}">
+<meta itemprop="familyName" content="{{ site.author.surname }}">
+<meta itemprop="honorificPrefix" content="{{ site.author.honorificPrefix }}">
+<meta itemprop="honorificSuffix" content="{{ cv.title }}">
+<meta itemprop="jobTitle" content="{{ cv.position | smartify }}">
+<link itemprop="image" href="{{ site.author.picture | absolute_url }}">
+{%- for topic in cv.interests %}
+<meta itemprop="knowsAbout" content="{{ topic }}">
+{%- endfor %}
+{%- for language in site.data.languages %}
+<meta itemprop="knowsLanguage" content="{{ language[0] }}">
+{%- endfor %}
+{%- assign affiliation_units = "laboratory,department" | split: "," %}
+        {%- for unit in affiliation_units %}
+{%- assign org = cv.affiliation[unit] %}
+<span hidden itemprop="affiliation" itemscope itemtype="https://schema.org/ResearchOrganization">
+    <meta itemprop="name" content="{{ org.name | smartify | escape }}">
+    <link itemprop="url" href="{{ org.url }}">
+</span>
+{%- endfor %}
+<span hidden itemprop="worksFor" itemscope itemtype="https://schema.org/ResearchOrganization">
+    <meta itemprop="name" content="{{ cv.affiliation.institution.name | smartify | escape }}">
+    <link itemprop="url" href="{{ cv.affiliation.institution.url }}">
+</span>
+{%- for contact in site.data.contacts %}
+<link itemprop="sameAs" href="{{ contact.link }}">
+{%- endfor %}

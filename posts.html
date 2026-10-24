@@ -1,44 +1,30 @@
 ---
-layout: default
+layout: page
+section: writing
 lang: en
-title: "Posts' Archive"
+title: "Archive"
 schema_type: CollectionPage
 permalink: /blog/posts/
+lede: Every post, from the most recent.
 description: >-
   Archive of all blog posts by Andrea Esposito, grouped by year.
 ---
 
-<main class="container p-5 flex-grow-1" itemprop="mainEntity" itemscope itemtype="https://schema.org/Blog" itemid="{{ '/blog/' | absolute_url }}#blog">
-        <meta itemprop="name" content="{{ site.title }}’s Blog">
-        <link itemprop="url" href="{{ '/blog/' | absolute_url }}">
-    <header>
-        <h1>{{ page.title | smartify }}</h1>
-        <hr>
-    </header>
-    <div>
-        {% for post in site.posts %}
-            {%- capture this_year -%}
-                {{ post.date | date: "%Y" }}
-            {%- endcapture -%}
-            {%- capture next_year -%}
-                {{ post.previous.date | date: "%Y" }}
-            {%- endcapture -%}
-
-            {% if forloop.first %}
-                <h2 id="{{ this_year }}-ref">{{this_year}}</h2>
-                <div class="card-columns">
-                {% endif %}
-                {% include post.html post=post %}
-                {% if forloop.last %}
-                </div>
-            {% else %}
-                {% if this_year != next_year %}
-                </div>
-                <h2 id="{{ next_year }}-ref">{{next_year}}</h2>
-                <div class="card-columns">
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-    </div>
-
-</main>
+<div itemprop="mainEntity" itemscope itemtype="https://schema.org/Blog" itemid="{{ '/blog/' | absolute_url }}#blog">
+    <meta itemprop="name" content="{{ site.title }}’s Blog">
+    <link itemprop="url" href="{{ '/blog/' | absolute_url }}">
+    {% assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in years %}
+    <section class="archive-year" aria-labelledby="{{ year.name }}-ref">
+        <h2 class="archive-year-label" id="{{ year.name }}-ref">
+            <a href="{{ '/blog/posts/' | append: year.name | append: '/' | relative_url }}">{{ year.name }}</a>
+            <span class="count">{{ year.items.size }}</span>
+        </h2>
+        <div class="post-list">
+            {% for post in year.items %}
+                {% include post.html post=post compact=true %}
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</div>

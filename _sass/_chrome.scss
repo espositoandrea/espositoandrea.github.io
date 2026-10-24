@@ -1,0 +1,332 @@
+// Header, section navigation, and footer.
+
+@layer custom {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background: color-mix(in oklch, var(--bg-body) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(12px);
+    -webkit-backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: var(--rule);
+  }
+
+  .site-header-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem 2rem;
+    min-height: var(--header-height);
+  }
+
+  .wordmark {
+    flex-shrink: 0;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    color: var(--fg-body);
+    text-decoration: none;
+
+    &:hover { color: var(--fg-body); text-decoration: none; }
+    .wordmark-dot { color: var(--primary-base); }
+  }
+
+  .site-nav {
+    margin-left: auto;
+
+    ul { margin: 0; padding: 0; list-style: none; }
+  }
+  .site-nav-groups {
+    display: flex;
+    align-items: center;
+  }
+  .site-nav-group {
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+
+    & + & {
+      margin-left: clamp(.9rem, 2vw, 1.5rem);
+      padding-left: clamp(.9rem, 2vw, 1.5rem);
+      border-left: var(--rule);
+    }
+    > ul { display: flex; gap: clamp(.75rem, 1.8vw, 1.4rem); }
+  }
+
+  .site-nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: baseline;
+    gap: .4rem;
+    padding: .5rem 0;
+    font-size: .95rem;
+    font-weight: 500;
+    color: var(--fg-2);
+    text-decoration: none;
+
+    &:hover { color: var(--fg-body); text-decoration: none; }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: .15rem;
+      height: 2px;
+      background: var(--primary-base);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+    &:hover::after { transform: scaleX(.35); }
+    &.is-active { color: var(--fg-body); }
+    &.is-active::after { transform: scaleX(1); }
+  }
+  .site-nav-num {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    color: var(--accent);
+  }
+
+  // Dropdown of a group with several sections (desktop)
+  button.site-nav-link {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .site-nav-caret {
+    margin-left: .35rem;
+    font-size: .6em;
+    transition: transform .15s;
+    [aria-expanded="true"] > & { transform: rotate(180deg); }
+  }
+  .site-menu {
+    --menu-min-width: 12rem;
+    --menu-padding-y: .4rem;
+    --menu-padding-x: .4rem;
+    --menu-item-padding-y: .45rem;
+    --menu-item-border-radius: var(--radius-2);
+
+    .menu-item {
+      font-size: .92rem;
+      color: var(--fg-1);
+      text-decoration: none;
+    }
+    .menu-item[aria-current] {
+      color: var(--accent);
+      font-weight: 600;
+      &::before {
+        content: "";
+        width: 2px;
+        align-self: stretch;
+        margin-right: .1rem;
+        background: var(--primary-base);
+      }
+    }
+  }
+
+  .theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: var(--rule);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--fg-2);
+    cursor: pointer;
+
+    &:hover { color: var(--fg-body); border-color: var(--fg-body); }
+    .theme-icon { display: none; }
+  }
+  html[data-theme-pref="auto"]  .theme-icon-auto,
+  html[data-theme-pref="light"] .theme-icon-light,
+  html[data-theme-pref="dark"]  .theme-icon-dark { display: inline-block; }
+
+  // Second row: the pages of the current section
+  .subnav {
+    border-top: var(--rule);
+
+    ul {
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+      list-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+    }
+    a {
+      display: block;
+      padding: .6rem 0;
+      font-family: var(--font-mono);
+      font-size: .74rem;
+      letter-spacing: .03em;
+      white-space: nowrap;
+      color: var(--fg-3);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+
+      &:hover { color: var(--fg-body); }
+      &[aria-current] { color: var(--fg-body); border-bottom-color: var(--fg-body); }
+    }
+    i { margin-right: .3rem; }
+  }
+  .subnav-label {
+    flex-shrink: 0;
+    padding: .6rem 0;
+    font-family: var(--font-mono);
+    font-size: .74rem;
+    color: var(--accent);
+  }
+
+  // The main navigation is inline from md up, and a drawer below (see navigation.html)
+  @media (min-width: 768px) {
+    .site-drawer .drawer-body { justify-content: flex-end; }
+  }
+  .site-header-tools {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .site-nav-group-title { display: none; }
+
+  .nav-toggle {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border: var(--rule);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--fg-body);
+    cursor: pointer;
+    &:hover { border-color: var(--fg-body); }
+  }
+
+  @media (max-width: 767.98px) {
+    .wordmark { font-size: 1.15rem; }
+    .site-header-tools { margin-left: auto; }
+
+    .site-drawer {
+      --drawer-width: min(20rem, 85vw);
+      --drawer-bg: var(--bg-body);
+
+      .drawer-header {
+        padding: 1rem 1.25rem;
+        border-bottom: var(--rule);
+      }
+      .drawer-title {
+        margin: 0;
+        font-family: var(--font-mono);
+        font-size: .72rem;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+      }
+      .drawer-body { padding: .5rem 1.25rem 2rem; }
+    }
+
+    .site-nav { margin: 0; width: 100%; }
+    .site-nav-groups { flex-direction: column; align-items: stretch; }
+    .site-nav-group {
+      flex-direction: column;
+      gap: .25rem;
+      padding-block: 1.25rem;
+
+      & + & {
+        margin: 0;
+        padding-left: 0;
+        border-left: 0;
+        border-top: var(--rule);
+      }
+      > ul { flex-direction: column; gap: 0; }
+    }
+    .site-nav-num { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+    .site-nav-group-title { display: inline; color: var(--fg-3); }
+
+    .site-nav-link {
+      display: flex;
+      padding: .3rem 0 .3rem .9rem;
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--fg-1);
+
+      // A bar on the left marks the current section
+      &::after {
+        top: .5rem;
+        bottom: .5rem;
+        left: 0;
+        right: auto;
+        width: 2px;
+        height: auto;
+        transform: scaleY(0);
+      }
+      &:hover::after { transform: scaleY(.5); }
+      &.is-active::after { transform: scaleY(1); }
+    }
+  }
+
+  // Footer
+  .site-footer {
+    margin-top: auto;
+    padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
+    border-top: var(--rule-strong);
+    background: var(--bg-1);
+    font-size: .9rem;
+    color: var(--fg-2);
+
+    h2 {
+      margin: 0 0 1rem;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+    ul { margin: 0; padding: 0; list-style: none; }
+    li + li { margin-top: .4rem; }
+    a { color: var(--fg-1); text-decoration: none; }
+    a:hover { color: var(--accent); text-decoration: underline; }
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1.6fr repeat(3, 1fr);
+    }
+  }
+
+  .footer-about {
+    .wordmark { font-size: 1.6rem; }
+    p { max-width: 24rem; margin: .75rem 0 0; }
+  }
+
+  .footer-contacts {
+    i { width: 1.25em; text-align: center; margin-right: .35rem; color: var(--fg-3); }
+  }
+
+  .footer-base {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem 1.5rem;
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: var(--rule);
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    color: var(--fg-3);
+
+    a { color: inherit; }
+  }
+}

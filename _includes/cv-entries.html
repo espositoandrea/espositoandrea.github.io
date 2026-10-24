@@ -1,50 +1,46 @@
 {%- comment -%}
-  Renders a list of curriculum entries (experience or education), grouped as a list-group.
+  Renders a list of curriculum entries (experience or education) as a timeline.
   Parameters: entries (array), icon (Font Awesome icon name), and, for the microdata of the
   author (schema.org role pattern), property (Person property, e.g. worksFor or alumniOf),
   role (Role type, e.g. EmployeeRole) and organization (Organization type).
 {%- endcomment -%}
-<div class="list-group mb-12">
+<ol class="timeline">
     {% for entry in include.entries %}
     {% assign current = false %}
     {% unless entry.years.end %}{% assign current = true %}{% endunless %}
-    <article class="list-group-item py-5"
+    <li class="timeline-item{% if current %} is-current{% endif %}"
         {%- if include.property %} itemprop="{{ include.property }}" itemscope itemtype="https://schema.org/{{ include.role | default: 'OrganizationRole' }}"{% endif %}>
-        <div class="d-flex flex-column md:flex-row justify-content-between md:align-items-baseline gap-1 md:gap-5 mb-1">
-            <h3 class="h6 mb-0" itemprop="roleName">{{ entry.title | smartify }}</h3>
-            <div class="d-flex flex-wrap align-items-baseline gap-3 md:flex-shrink-0">
-                {% if current %}<span class="badge bg-subtle-success fg-emphasis-success border border-subtle-success fw-normal">Current</span>{% endif %}
-                <span class="small fg-secondary font-monospace text-nowrap">
-                    <time itemprop="startDate" datetime="{{ entry.years.start | date: '%Y-%m' }}">{{ entry.years.start | date: "%b %Y" }}</time>
-                    &ndash;
-                    {% if current %}Present{% else %}<time itemprop="endDate" datetime="{{ entry.years.end | date: '%Y-%m' }}">{{ entry.years.end | date: "%b %Y" }}</time>{% endif %}
-                </span>
-            </div>
+        <p class="timeline-when">
+            <time itemprop="startDate" datetime="{{ entry.years.start | date: '%Y-%m' }}">{{ entry.years.start | date: "%b %Y" }}</time>
+            &ndash;
+            {% if current %}<span class="timeline-now">Present</span>{% else %}<time itemprop="endDate" datetime="{{ entry.years.end | date: '%Y-%m' }}">{{ entry.years.end | date: "%b %Y" }}</time>{% endif %}
+        </p>
+        <div class="timeline-body">
+            <h3 class="timeline-title" itemprop="roleName">{{ entry.title | smartify }}</h3>
+            <ul class="entry-facts"
+                {%- if include.property %} itemprop="{{ include.property }}" itemscope itemtype="https://schema.org/{{ include.organization | default: 'Organization' }}"{% endif %}>
+                <li>
+                    <i class="fa-solid fa-{{ include.icon }} fa-fw" aria-hidden="true"></i>
+                    {% if entry.institute.url %}<a href="{{ entry.institute.url }}" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">{{ entry.institute.name | smartify }}</span></a>{% else %}<span itemprop="name">{{ entry.institute.name | default: entry.institute | smartify }}</span>{% endif %}
+                </li>
+                {% if entry.location %}
+                <li>
+                    <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> <span itemprop="location">{{ entry.location | smartify }}</span>
+                </li>
+                {% endif %}
+            </ul>
+
+            {% if entry.notes %}
+                {% if entry.notes.size > 500 %}
+                <details class="entry-text">
+                    <summary>Details</summary>
+                    <div class="mt-3" itemprop="description">{{ entry.notes | markdownify }}</div>
+                </details>
+                {% else %}
+                <div class="entry-text" itemprop="description">{{ entry.notes | markdownify }}</div>
+                {% endif %}
+            {% endif %}
         </div>
-
-        <ul class="list-inline small fg-secondary mb-0"
-            {%- if include.property %} itemprop="{{ include.property }}" itemscope itemtype="https://schema.org/{{ include.organization | default: 'Organization' }}"{% endif %}>
-            <li class="list-inline-item me-5">
-                <i class="fa-solid fa-{{ include.icon }} fa-fw" aria-hidden="true"></i>
-                {% if entry.institute.url %}<a href="{{ entry.institute.url }}" target="_blank" rel="noopener noreferrer" itemprop="url"><span itemprop="name">{{ entry.institute.name | smartify }}</span></a>{% else %}<span itemprop="name">{{ entry.institute.name | default: entry.institute | smartify }}</span>{% endif %}
-            </li>
-            {% if entry.location %}
-            <li class="list-inline-item">
-                <i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> <span itemprop="location">{{ entry.location | smartify }}</span>
-            </li>
-            {% endif %}
-        </ul>
-
-        {% if entry.notes %}
-            {% if entry.notes.size > 500 %}
-            <details class="small mt-3">
-                <summary class="fg-secondary">Details</summary>
-                <div class="mt-3" itemprop="description">{{ entry.notes | markdownify }}</div>
-            </details>
-            {% else %}
-            <div class="small mt-3" itemprop="description">{{ entry.notes | markdownify }}</div>
-            {% endif %}
-        {% endif %}
-    </article>
+    </li>
     {% endfor %}
-</div>
+</ol>

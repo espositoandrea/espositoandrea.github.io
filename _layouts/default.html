@@ -1,19 +1,17 @@
 ---
 layout: base
 ---
-{% include navigation.html %}
-
 {%- comment -%}
-  The container is the schema.org item of the page itself (`schema_type` in the front matter,
+  The wrapper is the schema.org item of the page itself (`schema_type` in the front matter,
   WebPage by default; archives are CollectionPages). On profile pages its main entity, the
-  author (Person), spans both the sidebar and the content.
+  author (Person), wraps the whole content, so that the content can add properties to it.
 {%- endcomment -%}
 {%- if page.posts and page.type -%}
     {%- assign schema_type = "CollectionPage" -%}
 {%- else -%}
     {%- assign schema_type = page.schema_type | default: "WebPage" -%}
 {%- endif -%}
-<div class="container flex-grow-1" itemscope itemtype="https://schema.org/{{ schema_type }}">
+<div itemscope itemtype="https://schema.org/{{ schema_type }}">
     <link itemprop="url" href="{{ page.url | absolute_url | replace: '/index.html', '/' }}">
     <meta itemprop="name" content="{{ page.title | default: site.title | smartify | strip_html | escape }}">
     {%- if page.description %}
@@ -25,20 +23,12 @@ layout: base
         <meta itemprop="name" content="{{ site.title }}">
         <link itemprop="author" href="{{ '/#person' | absolute_url }}">
     </div>
-    <div class="row relative"
-        {%- if schema_type == "ProfilePage" %} itemprop="mainEntity" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}"{% endif %}>
-        <aside class="lg:col-3">
-            {%include sidebar.html %}
-        </aside>
-        <main class="col">
-            {{ content }}
-        </main>
+    {%- if schema_type == "ProfilePage" %}
+    <div itemprop="mainEntity" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
+        {% include person-meta.html %}
+        {{ content }}
     </div>
+    {%- else %}
+    {{ content }}
+    {%- endif %}
 </div>
-
-<footer class="text-center bg-2 py-3 mt-12 fg-2">
-    <small>
-        Last update: {{ site.time | date: "%a %b %d %Y %H:%M:%S GMT%z (%Z)"}}.
-        <a target="_blank" rel="noopener noreferrer" href="{{ 'pgp.asc' | absolute_url }}">Public GPG key</a>.
-    </small>
-</footer>

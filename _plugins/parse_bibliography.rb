@@ -119,10 +119,14 @@ module Jekyll
       }.join "\n"
     end
 
+    # Lines with microdata (<meta>/<link>) are left alone: markup in their attributes would
+    # end up in the structured data.
     # @param [String] input
     # @return String
     def emphasize_author(input)
       input.split("\n").map { |line|
+        next line if line.match?(/<(meta|link)\b/)
+
         line.gsub 'Andrea Esposito', '<strong>Andrea Esposito</strong>'
       }.join "\n"
     end

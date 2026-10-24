@@ -1,0 +1,81 @@
+---
+layout: page
+section: research
+lang: en
+permalink: /research
+title: Research
+lede: >-
+  I study how people and AI systems can work together: AI that augments human
+  abilities instead of replacing them, and that people can understand, question,
+  and trust.
+description: >-
+  Research of Andrea Esposito on Human-Centred and Symbiotic AI, Human-AI Interaction, and
+  eXplainable AI: research interests, recent publications, and talks.
+---
+{%- assign none = "" | split: "" -%}
+{%- assign talks = site.data.talks.talks | default: none | concat: site.data.talks.seminars | sort: 'date' | reverse -%}
+{%- assign talks_count = talks.size -%}
+
+<nav class="index-grid" aria-label="Research pages">
+    <a class="index-tile" href="{{ '/publications' | relative_url }}">
+        <span class="index-count">{% bibliography_count %}</span>
+        <span class="index-title">Publications</span>
+        <span class="index-text">Journal articles, conference and workshop papers, chapters, and theses, with free versions whenever possible.</span>
+    </a>
+    <a class="index-tile" href="{{ '/curriculum' | relative_url }}">
+        <span class="index-count"><i class="fa-regular fa-id-card" aria-hidden="true"></i></span>
+        <span class="index-title">Curriculum</span>
+        <span class="index-text">Positions, education, and memberships.</span>
+    </a>
+</nav>
+
+<div class="research-grid">
+    <section aria-labelledby="interests">
+        <div class="section-head"><h2 id="interests">Research interests</h2></div>
+        <ol class="interest-list interest-list-single">
+            {%- for interest in site.data.research_interests %}
+            <li>
+                <h3>{{ interest.title }}</h3>
+                <p>{{ interest.description }}</p>
+            </li>
+            {%- endfor %}
+        </ol>
+    </section>
+
+    <div>
+        <section class="page-section" aria-labelledby="recent-publications">
+            <div class="section-head">
+                <h2 id="recent-publications">Recent publications</h2>
+                <a href="{{ '/publications' | relative_url }}">All publications →</a>
+            </div>
+            {% capture recent %}{% bibliography --group_by none --max 3 %}{% endcapture %}
+            {{ recent | edit_urls | remove_number | emphasize_author }}
+        </section>
+
+        {% if talks.size > 0 %}
+        <section class="page-section" aria-labelledby="recent-talks">
+            <div class="section-head">
+                <h2 id="recent-talks">Recent talks</h2>
+                <a href="{{ '/talks' | relative_url }}">All talks →</a>
+            </div>
+            <ul class="entry-list">
+                {%- for talk in talks limit: 3 %}
+                {%- assign context = talk.event | default: talk.course %}
+                <li class="entry">
+                    <div class="entry-main">
+                        <div class="entry-head">
+                            <span class="entry-title">{{ talk.titleTranslation | default: talk.title | smartify }}</span>
+                            <time class="meta text-nowrap" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: "%b %-d, %Y" }}</time>
+                        </div>
+                        {%- if context.name or talk.institution %}
+                        <p class="entry-text">{{ context.nameTranslation | default: context.name | default: talk.institution | smartify }}</p>
+                        {%- endif %}
+                    </div>
+                </li>
+                {%- endfor %}
+            </ul>
+        </section>
+        {% endif %}
+
+    </div>
+</div>

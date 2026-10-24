@@ -1,26 +1,29 @@
 ---
 layout: default
+section: writing
+nav_url: /blog/posts/
 lang: en
 ---
 
-<main class="container p-5 flex-grow-1">
-    <header>
-        <h1>Archive of posts
-            {{ content | smartify }}</h1>
-        <hr>
+<article class="page">
+    <header class="page-header shell">
+        <nav aria-label="Breadcrumbs">
+            <ol class="crumbs">
+                <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+                <li><a href="{{ '/blog/posts/' | relative_url }}">Archive</a></li>
+                <li aria-current="page">{{ page.title | default: page.date | date: "%Y" }}</li>
+            </ol>
+        </nav>
+        {% include kicker.html label="Archive" %}
+        <h1 class="page-title">Posts {{ content | strip | smartify }}</h1>
+        <p class="page-lede">{{ page.posts.size }} {% if page.posts.size == 1 %}post{% else %}posts{% endif %}.</p>
     </header>
 
-    <ul>
-        {% for post in page.posts %}
-            <li>
-                <a href="{{ post.url | absolute_url }}">
-                    {{ post.title | smartify }}
-                </a>
-                &mdash; Published by
-                <span>{{ post.author }}</span>
-                on
-                <span>{{ post.date | date: "%B %e, %Y" }}</span>
-            </li>
-        {% endfor %}
-    </ul>
-</main>
+    <div class="page-body shell">
+        <div class="post-list">
+            {% for post in page.posts %}
+                {% include post.html post=post %}
+            {% endfor %}
+        </div>
+    </div>
+</article>

@@ -10,10 +10,10 @@
 <div itemscope itemtype="https://schema.org/ItemList"{% if include.mainEntity %} itemprop="mainEntity"{% endif %}>
 <meta itemprop="name" content="News from {{ site.title }}">
 <meta itemprop="numberOfItems" content="{{ news.size | at_most: news_limit }}">
-<ul class="list-unstyled news">
+<ul class="news">
 {%- for item in news limit: news_limit %}
   {%- capture news_id %}news-{{ item.date | date: '%Y-%m-%d' }}-{{ item.title | slugify: 'latin' }}{% endcapture %}
-  <li class="mb-3" id="{{ news_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/NewsArticle">
+  <li id="{{ news_id }}" itemprop="itemListElement" itemscope itemtype="https://schema.org/NewsArticle">
     <link itemprop="url" href="{{ news_page }}#{{ news_id }}">
     <link itemprop="mainEntityOfPage" href="{{ news_page }}#{{ news_id }}">
     <span hidden itemprop="author" itemscope itemtype="https://schema.org/Person" itemid="{{ '/#person' | absolute_url }}">
@@ -22,9 +22,9 @@
     </span>
     <link itemprop="image" href="{{ item.image | default: site.author.picture | absolute_url }}">
     <meta itemprop="inLanguage" content="en">
-    <time class="fg-secondary" itemprop="datePublished" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%b %-d, %Y" }}</time> &middot;
-    <strong itemprop="headline">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</strong>
-    {% if item.description %}<div itemprop="description">{{ item.description | markdownify | remove: '<p>' | remove: '</p>' }}</div>{% endif %}
+    <time class="meta" itemprop="datePublished" datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: "%b %-d, %Y" }}</time>
+    <div class="news-body"><strong itemprop="headline">{% if item.url %}<a href="{{ item.url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</strong>
+    {% if item.description %}<div itemprop="description">{{ item.description | markdownify | remove: '<p>' | remove: '</p>' }}</div>{% endif %}</div>
   </li>
 {%- endfor %}
 </ul>

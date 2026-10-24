@@ -1,0 +1,122 @@
+# Photographs shown on /photography and on the home page, together with the ones published
+# in blog posts (see _plugins/photo_stream.rb). Order does not matter: photos are sorted by
+# date, newest first.
+#
+# Photos posted on Instagram: save a copy under assets/images/photography/ and link the
+# post, rather than pointing `image` at Instagram (its image URLs expire). An entry with an
+# `instagram` link but no `image` is shown as an embedded Instagram post instead.
+#
+# - image: /assets/images/photography/2026-10-old-town.jpg   # local path or full URL
+#   alt: What the photo shows, for people who cannot see it  # required with `image`
+#   date: 2026-10-01
+#   title: Optional title
+#   caption: Optional caption, in Markdown
+#   location: Nice, France                                    # optional
+#   exif:                                                     # optional, every field too
+#     camera: Fujifilm X100V
+#     lens: 23mm f/2                                          # optional
+#     focal_length: 23                                        # mm
+#     aperture: 2                                             # f-number
+#     shutter_speed: 1/250                                    # seconds
+#     iso: 400
+#   instagram: https://www.instagram.com/p/XXXXXXXXXXX/       # optional
+#
+# Photos in blog posts: list them in the post's front matter, with the same fields
+# (`src` or `image` for the file) and an `id`, then place each one in the text, where the
+# story reaches it, with `{% include photo.html id="..." %}` (see _includes/photo.html for
+# the widths). Photos that are not placed are shown at the end of the post. A post in the
+# "Photography" category without such a list contributes its cover `image`.
+#
+#   photos:
+#     - id: harbour
+#       src: /assets/images/photography/2026-10-harbour.jpg
+#       alt: ...
+#       caption: ...
+- image: /assets/images/photography/2025-05-an-afternoon-pause.jpg
+  alt: A wooden tray on a table holds a teal and gold porcelain teacup with green tea, a glass teapot with a black lid, a small book titled L’arte di conoscere se stessi by Arthur Schopenhauer, an unopened box of Toscano Garibaldi cigars, a metal lighter, and a single Toscano cigar. The scene is softly lit, evoking a calm, introspective atmosphere.
+  date: 2025-05-29 19:02:51
+  title: An Afternoon Pause
+  location: Bari, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 2.8
+    shutter_speed: 1/800
+    iso: 5000
+- image: /assets/images/photography/2025-09-total-lunar-eclipse-2025.jpg
+  alt: A collage of the moon in various stages of the Lunar Eclipse
+  date: 2025-09-08 01:15:21
+  title: Total Lunar Eclipse 2025
+  caption: 'The total lunar eclipse of September 7, 2025: a collage of various shots taken during different stages'
+  location: Taranto, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    focal_length: 21
+    shutter_speed: 1/640
+    iso: 200
+- image: /assets/images/photography/2026-05-bee.jpg
+  alt: A picture of a bee flying towards some flowers
+  date: 2026-05-03 14:55:47
+  title: Bee
+  location: Taranto, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF70-300mmF4-5.6 R LM OIS WR
+    focal_length: 300
+    aperture: 10
+    shutter_speed: 1/3500
+    iso: 1250
+  instagram: https://www.instagram.com/p/DX4bFfhjalR/?utm_source=ig_web_copy_link
+- image: /assets/images/photography/2026-06-postcard-tibidabo.jpg
+  alt: A postcard-like shot of the Tibidabo in Barcelona depicting the ferris wheel and the merry-go-round
+  date: 2026-06-13 20:16:06
+  title: Postcard - Tibidabo
+  location: Barcelona, Spain
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 4
+    shutter_speed: 1/1800
+    iso: 800
+- image: /assets/images/photography/2026-09-postcard-heidelberg.jpg
+  alt: A postcard-like shot of Heidelberg
+  date: 2026-09-12 16:31:33
+  title: Postcard - Heidelberg
+  location: Heidelberg, Germany
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 16
+    shutter_speed: 1/1100
+    iso: 2500
+  instagram: https://www.instagram.com/p/Ddn37EWCCyu/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-04-patterns-from-gaud-s-parc-guell.jpg
+  alt: A shot of repeating circular patterns from a ceiling in Parc Guell
+  date: 2026-04-15 13:45:14
+  title: Patterns from Gaudí's Parc Guell
+  location: Barcelona, Spain
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF23mmF2.8 R WR
+    focal_length: 23
+    aperture: 16
+    shutter_speed: 1/9
+    iso: 800
+  instagram: https://www.instagram.com/p/DXTg_AOCLsZ/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
+- image: /assets/images/photography/2026-01-people-crossing-the-clouds.jpg
+  alt: A picture of a road signal for road crossings against the backdrop of clouds
+  date: 2026-01-31 11:29:53
+  title: People Crossing the Clouds
+  caption: Watch out! People may be crossing the clouds
+  location: Taranto, Italy
+  exif:
+    camera: Fujifilm X-T30 II
+    lens: XF35mmF1.4 R
+    focal_length: 35
+    aperture: 8
+    shutter_speed: 1/500
+    iso: 320
+  instagram: https://www.instagram.com/p/DU7ufh2lqrF/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==

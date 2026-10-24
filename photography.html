@@ -1,0 +1,86 @@
+---
+layout: page
+section: photography
+lang: en
+permalink: /photography
+title: Photography
+schema_type: CollectionPage
+lede: >-
+  When I'm not doing research, you'll probably find me with a camera in my hands.
+description: >-
+  Photographs by Andrea Esposito: street and architecture, from his blog posts and Instagram.
+---
+{%- assign photos = site.data.photo_stream | where_exp: "photo", "photo.embed != true" -%}
+{%- assign embeds = site.data.photo_stream | where: "embed", true -%}
+{%- assign from_blog = photos | where: "source", "blog" -%}
+{%- assign from_instagram = photos | where: "source", "instagram" -%}
+{%- assign instagram = site.data.contacts | where: "name", "Instagram" | first -%}
+
+<div class="photo-intro">
+    <div class="rich-text">
+        <p>
+            Photography is one of my greatest passions: I love wandering around a city looking for
+            street and architectural shots, and trying to see familiar places under a new light.
+            I share my photos here, in my <a href="{{ '/blog/' | relative_url }}">blog posts</a>{% if instagram %},
+            and on <a href="{{ instagram.link }}" target="_blank" rel="noopener noreferrer">Instagram</a>{% endif %}.
+        </p>
+    </div>
+    {%- if instagram %}
+    <div class="no-blank-icon">
+        <a class="btn-line" href="{{ instagram.link }}" target="_blank" rel="me noopener noreferrer">
+            <i class="fa-brands fa-instagram" aria-hidden="true"></i> {{ instagram.value }}
+        </a>
+    </div>
+    {%- endif %}
+</div>
+
+{% if photos.size > 0 %}
+<section aria-label="Gallery">
+    {% if from_blog.size > 0 and from_instagram.size > 0 %}
+    <div class="photo-filters" role="group" aria-label="Show photos from">
+        <button type="button" class="chip-filter" data-photo-filter="all" aria-pressed="true">All <span class="opacity-75">{{ photos.size }}</span></button>
+        <button type="button" class="chip-filter" data-photo-filter="blog" data-color="primary" aria-pressed="false">Blog <span class="opacity-75">{{ from_blog.size }}</span></button>
+        <button type="button" class="chip-filter" data-photo-filter="instagram" data-color="warning" aria-pressed="false">Instagram <span class="opacity-75">{{ from_instagram.size }}</span></button>
+    </div>
+    <script>
+    (() => {
+        const buttons = document.querySelectorAll('[data-photo-filter]')
+        buttons.forEach(button => button.addEventListener('click', () => {
+            const filter = button.dataset.photoFilter
+            buttons.forEach(b => b.setAttribute('aria-pressed', b === button))
+            document.querySelectorAll('.photo-grid .photo').forEach(photo => {
+                photo.hidden = filter !== 'all' && photo.dataset.source !== filter
+            })
+        }))
+    })()
+    </script>
+    {% endif %}
+    {% include photo-grid.html photos=photos id="gallery" %}
+</section>
+{% endif %}
+
+{% if embeds.size > 0 %}
+<section class="page-section" aria-labelledby="on-instagram">
+    <div class="section-head"><h2 id="on-instagram">On Instagram</h2></div>
+    <div class="instagram-embeds">
+        {% for embed in embeds %}
+        <blockquote class="instagram-media" data-instgrm-permalink="{{ embed.instagram }}" data-instgrm-version="14">
+            <a href="{{ embed.instagram }}" target="_blank" rel="noopener noreferrer">{{ embed.title | default: "View this post on Instagram" }}</a>
+        </blockquote>
+        {% endfor %}
+    </div>
+    <script async src="https://www.instagram.com/embed.js"></script>
+</section>
+{% endif %}
+
+{% if photos.size == 0 and embeds.size == 0 %}
+<div class="darkroom-empty">
+    <div class="nature-darkroom" aria-hidden="true">
+        {%- for i in (1..8) %}<span></span>{% endfor -%}
+    </div>
+    <div>
+        <h2>The first prints are still drying.</h2>
+        <p>Soon, this page will collect the photos from my blog posts and from Instagram.{% if instagram %} Meanwhile, you can find my photos on <a href="{{ instagram.link }}" target="_blank" rel="noopener noreferrer">Instagram</a>.{% endif %}</p>
+    </div>
+</div>
+{% endif %}

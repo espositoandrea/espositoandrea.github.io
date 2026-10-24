@@ -1,19 +1,17 @@
 ---
 layout: base
-body_class:
-- d-flex
-- flex-column
-body_style: >-
-    height: 100vh;
-    padding-top: 0 !important;
 ---
 
-<div class="flex-grow-1 container text-center d-flex align-items-center justify-content-center">
-    <div>
-        <h1 class="fs-6xl">{{ page.error.code }}</h1>
-
-        <p><strong>{{ page.error.message | markdownify }}</strong></p>
-        <p>{{ page.error.description | markdownify }}</p>
-        <a class="btn-solid theme-primary" href="{{ '/' | absolute_url }}">Go to the home page</a>
-    </div>
-</div>
+<section class="shell error-page">
+    <p class="kicker"><span class="kicker-num">Error {{ page.error.code }}</span></p>
+    <h1 class="error-code">{{ page.error.code }}</h1>
+    <div class="page-lede">{{ page.error.message | markdownify }}</div>
+    <div class="rich-text">{{ page.error.description | markdownify }}</div>
+    <nav class="error-links" aria-label="Where to go next">
+        <a class="btn-line is-accent" href="{{ '/' | relative_url }}">Home page</a>
+        {%- include nav-items.html %}
+        {%- for item in nav_items %}
+        <a class="btn-line" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {%- endfor %}
+    </nav>
+</section>
