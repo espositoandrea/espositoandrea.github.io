@@ -93,31 +93,6 @@
     shutter_speed: 1/1100
     iso: 2500
   instagram: https://www.instagram.com/p/Ddn37EWCCyu/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
-- image: /assets/images/photography/2026-03-still-life-calmness-in-frankfurt.jpg
-  alt: A picture of some candles and a TV remote, with a warm tone
-  date: 2026-03-18 17:04:05
-  title: Still Life - Calmness in Frankfurt
-  exif:
-    camera: Fujifilm X-T30 II
-    lens: XF35mmF1.4 R
-    focal_length: 35
-    aperture: 11
-    shutter_speed: 1/20
-    iso: 800
-  instagram: https://www.instagram.com/p/DWD0v86ldd9/?utm_source=ig_web_copy_link&mdxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
-- image: /assets/images/photography/2026-03-frankfurt-skyline.jpg
-  alt: A picture of the famous skyline of Frankfurt
-  date: 2026-03-22 14:32:51
-  title: Frankfurt Skyline
-  location: Frankfurt, Germany
-  exif:
-    camera: Fujifilm X-T30 II
-    lens: XF35mmF1.4 R
-    focal_length: 35
-    aperture: 13
-    shutter_speed: 1/280
-    iso: 320
-  instagram: https://www.instagram.com/p/DWkGDdEkmyL/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
 - image: /assets/images/photography/2026-04-patterns-from-gaud-s-parc-guell.jpg
   alt: A shot of repeating circular patterns from a ceiling in Parc Guell
   date: 2026-04-15 13:45:14
@@ -145,55 +120,3 @@
     shutter_speed: 1/500
     iso: 320
   instagram: https://www.instagram.com/p/DU7ufh2lqrF/?utm_source=ig_web_copy_link&vrfl=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
-- image: /assets/images/photography/2026-03-european-central-bank-building.jpg
-  alt: A shot of the European Central Bank building in frankfurt
-  date: 2026-03-19 16:42:43
-  title: European Central Bank Building
-  location: Frankfurt, Germany
-  exif:
-    camera: Fujifilm X-T30 II
-    lens: XF35mmF1.4 R
-    focal_length: 35
-    aperture: 4
-    shutter_speed: 1/1800
-    iso: 320
-  instagram: https://www.instagram.com/p/DXHc7d5iYem/?utm_source=ig_web_copy_link&obrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
-- image: /assets/images/photography/2026-03-frankfurt-am-main.jpg
-  alt: A shot of the Main river in Frankfurt
-  date: 2026-03-22 14:36:08
-  title: Frankfurt am Main
-  location: Frankfurt, Germany
-  exif:
-    camera: Fujifilm X-T30 II
-    lens: XF35mmF1.4 R
-    focal_length: 35
-    aperture: 11
-    shutter_speed: 1/600
-    iso: 320
-  instagram: https://www.instagram.com/p/DW1bXSpFuYm/?utm_source=ig_web_copy_link&dlrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
-- image: /assets/images/photography/2026-04-patterns-towards-darkness.jpg
-  alt: A picture of some patterns in a cealing of a train station in Frankfurt
-  date: 2026-04-11 12:04:05
-  title: Patterns Towards Darkness
-  location: Frankfurt, Germany
-  exif:
-    camera: Fujifilm X-T30 II
-    lens: XF23mmF2.8 R WR
-    focal_length: 23
-    aperture: 4
-    shutter_speed: 1/850
-    iso: 320
-  instagram: https://www.instagram.com/p/DX15o7kCKfD/?utm_source=ig_web_copy_link&rpxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
-- image: /assets/images/photography/2026-09-hauptwache.jpg
-  alt: A picture of the Hauptwache station in Frankfurt, with a couple of people getting out
-  date: 2026-09-11 20:04:03
-  title: Hauptwache
-  location: Frankfurt, Germany
-  exif:
-    camera: Fujifilm X-T30 II
-    lens: XF23mmF2.8 R WR
-    focal_length: 23
-    aperture: 2.8
-    shutter_speed: 1/100
-    iso: 400
-  instagram: https://www.instagram.com/p/DdgZUftofsG/?utm_source=ig_web_copy_link&mdxt=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==
