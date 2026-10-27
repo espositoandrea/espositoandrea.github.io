@@ -64,7 +64,7 @@ section: publications
 		</div>
 	</header>
 
-	<div class="paper-grid page-body">
+	<div class="paper-grid page-body{% if page.links.pdf %} has-side{% endif %}">
 		<div class="paper-main">
 			{% if page.entry.abstract %}
 				<section class="page-section" aria-labelledby="abstract">
@@ -90,5 +90,16 @@ section: publications
 				</section>
 			{% endif %}
 		</div>
+		{% if page.links.pdf %}
+			<aside class="paper-side" aria-labelledby="pdf-preview">
+				<h2 class="nature-label" id="pdf-preview">PDF preview</h2>
+				<a class="paper-preview" href="{{ page.links.pdf }}" target="_blank" rel="noopener noreferrer">
+					<object class="paper-preview-frame" data="{{ page.links.pdf }}#page=1&amp;toolbar=0&amp;navpanes=0&amp;view=FitH" type="application/pdf" aria-label="Preview of the first page of the paper">
+						<span class="paper-preview-fallback"><span class="fas fa-file-pdf" aria-hidden="true"></span> Open PDF</span>
+					</object>
+				</a>
+				<a class="paper-preview-link" href="{{ page.links.pdf }}" target="_blank" rel="noopener noreferrer">Open the full PDF</a>
+			</aside>
+		{% endif %}
 	</div>
 </article>
