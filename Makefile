@@ -2,10 +2,13 @@
 # (_pandoc/<layout>.lua reshapes the post, _pandoc/<layout>.typ lays it out, Typst compiles it):
 #   ARTICLES: two-column article
 #   LETTERS:  blocked letter
+#   PHOTOS:   magazine-style photo essay (posts with a `photos` list)
 ARTICLES = 2024-11-26-beyond-automation
 LETTERS = 2026-09-19-on-doom-scrolling-and-brain-fog 2025-09-07-my-struggle-with-boredom-in-an-uninteresting-city 2025-08-30-typewriter 2025-10-04-on-compendiums-and-general-notebooks-usage
 
-POST_PDFS = $(patsubst %,assets/posts/pdfs/%.pdf,$(ARTICLES) $(LETTERS))
+PHOTOS = 2026-10-24-frankfurt-through-my-lens
+
+POST_PDFS = $(patsubst %,assets/posts/pdfs/%.pdf,$(ARTICLES) $(LETTERS) $(PHOTOS))
 
 all: _bibliography/references.bib pdfs
 
@@ -28,7 +31,7 @@ _bibliography/references.bib: $(BASE_BIB)
 # Jekyll convention: posts are named YYYY-MM-DD-title, so the date is the first 10 characters
 post_date = $(shell printf '%s' '$(1)' | cut -c1-10)
 
-# Jekyll-only syntax ({% link %}, {:...} attributes, ...) is rewritten before pandoc reads a post
+# Jekyll-only syntax ({% link %}, {% include photo.html %}, {:...} attributes, ...) is rewritten before pandoc reads a post
 PREPROCESS = sed -E -f _pandoc/preprocess.sed
 SITE_URL = $(shell awk -F'"' '/^url:/ {print $$2}' _config.yml)
 
@@ -50,7 +53,7 @@ $(IMG_DIR)/$(call img_name,$(1)).img:
 	mv '$$@.download' '$$@'
 endef
 
-$(foreach src,$(sort $(foreach post,$(ARTICLES) $(LETTERS),$(call post_image_srcs,_posts/$(post).md))),\
+$(foreach src,$(sort $(foreach post,$(ARTICLES) $(LETTERS) $(PHOTOS),$(call post_image_srcs,_posts/$(post).md))),\
 	$(if $(call is_remote,$(src)),$(eval $(call remote_image_rule,$(src)))))
 
 # The fonts of the PDFs are downloaded rather than kept in the repository
@@ -65,7 +68,7 @@ $(FONTS_DIR)/.stamp: _pandoc/fetch-fonts.sh
 # timestamps, which are meaningless after a git checkout): _build/hash/<post>.sha always re-checks the content
 # hash but is only rewritten when it changes. Remote images are order-only prerequisites: fetched when missing,
 # never a trigger.
-# $(1) = post name, $(2) = layout (article or letter)
+# $(1) = post name, $(2) = layout (article, letter or photo)
 define pdf_rule
 _build/hash/$(1).sha: FORCE
 	@mkdir -p $$(@D)
@@ -81,3 +84,4 @@ assets/posts/pdfs/$(1).pdf: _build/hash/$(1).sha $(FONTS_DIR)/.stamp | $(call po
 endef
 $(foreach post,$(ARTICLES),$(eval $(call pdf_rule,$(post),article)))
 $(foreach post,$(LETTERS),$(eval $(call pdf_rule,$(post),letter)))
+$(foreach post,$(PHOTOS),$(eval $(call pdf_rule,$(post),photo)))
