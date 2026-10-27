@@ -5,7 +5,7 @@
 
 #show: base.with(title: $t_title$, author: $t_author$, date: $t_date$)
 
-#let margin-x = 2.8cm
+#let margin-x = 2.2cm
 #let margin-bottom = 2.6cm
 #let accent = link-color
 #let ink = luma(20)
@@ -24,40 +24,75 @@
   if p.exif != "" [ \ #text(size: 7pt)[#p.exif]]
 }
 
-// A photo of the story, exactly where the text places it. Photos are as wide as the text plus a little bleed
-// ("wide", the default; "full": to the edges of the page; "text": as wide as the text). When the page has not
-// enough room left for the photo, it is scaled down to fill what is left (down to 50%); if even that is too
-// little, it starts the next page. Tall photos are limited in height.
+// A photo of the story, exactly where the text places it. By default ("wide") it takes two thirds of the width,
+// with its caption in the remaining third, on alternating sides, as in a magazine; "text" spans the text with the
+// caption below, and "full" bleeds to the edges of the page. When the page has not enough room left for the photo,
+// it is scaled down to fill what is left (down to 60%); if even that is too little, it starts the next page.
 #let photo(n, layout: "") = {
   let p = photos.at(n - 1)
   let anchor = [#metadata(p.id)#label("photo-" + p.id)]
   context {
     let size = measure(image(p.src, width: 100pt))
     let ratio = size.width / size.height
-    let bleed = if layout == "full" { margin-x } else if layout == "text" { 0pt } else { 0.5cm }
-    let caption-height = 1.9cm
-    let above = 1.4em.to-absolute()
-    let natural-width = calc.min(page.width - 2 * margin-x + 2 * bleed, 9.5cm * ratio)
+    let text-width = page.width - 2 * margin-x
+    let beside = layout in ("", "wide")
+    let caption-height = if beside { 0pt } else { 1.9cm }
+    let above = 1.2em.to-absolute()
+    let natural-width = if beside {
+      calc.min(text-width * 0.68, 8.5cm * ratio)
+    } else {
+      calc.min(text-width + if layout == "full" { 2 * margin-x } else { 0pt }, 11cm * ratio)
+    }
     let natural-height = natural-width / ratio + caption-height
     let room = page.height - margin-bottom - here().position().y - above - 0.4cm
     let width = natural-width
-    if room < natural-height and room >= 0.5 * natural-height {
+    if room < natural-height and room >= 0.6 * natural-height {
       width = (room - caption-height) * ratio
     }
-    block(breakable: false, above: above, below: 1.8em, width: 100%, align(center, block(width: width)[
-      #anchor
-      #image(p.src, alt: p.alt, width: 100%)
-      #v(0.6em)
-      #align(left, caption-of(p))
-    ]))
+    let picture = [#anchor #image(p.src, alt: p.alt, width: 100%)]
+    if beside {
+      let flipped = calc.rem(n, 2) == 0
+      block(breakable: false, above: above, below: 1.5em, width: 100%, grid(
+        columns: if flipped { (1fr, width) } else { (width, 1fr) },
+        column-gutter: 6mm,
+        ..if flipped {
+          (align(bottom + right, caption-of(p)), picture)
+        } else {
+          (picture, align(bottom + left, caption-of(p)))
+        },
+      ))
+    } else {
+      block(breakable: false, above: above, below: 1.5em, width: 100%, align(center, block(width: width)[
+        #picture
+        #v(0.6em)
+        #align(left, caption-of(p))
+      ]))
+    }
   }
 }
 
 // The first paragraph of the text
-#let lead(body) = {
-  set text(size: 1.2em)
-  set par(leading: 0.8em)
+#let lead(body) = block(width: 88%, {
+  set text(size: 1.25em)
+  set par(leading: 0.75em)
   body
+})
+
+// The text between two photos or headings: two narrow columns, as in a magazine. A short run is balanced between
+// the two columns (their height is half the height of the text in one column); a long one just flows.
+#let body-columns(body) = {
+  set text(size: 9.6pt)
+  set par(justify: true, leading: 0.62em, spacing: 0.62em, first-line-indent: 1em)
+  context {
+    let gutter = 7mm
+    let column-width = (page.width - 2 * margin-x - gutter) / 2
+    let height = measure(block(width: column-width, body)).height
+    if height < 9cm {
+      block(height: height / 2 + 1.6em, columns(2, gutter: gutter, body))
+    } else {
+      columns(2, gutter: gutter, body)
+    }
+  }
 }
 
 #set page(
