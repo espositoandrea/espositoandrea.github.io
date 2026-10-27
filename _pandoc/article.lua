@@ -5,6 +5,7 @@
 --   * "## Heading" becomes a level-1 heading (and a PDF bookmark).
 --   * The blocks after the last horizontal rule (the cross-post notice) go in a box on the first page.
 --   * <figure><img src=URL><figcaption>..</figcaption></figure> becomes a figure (see common.lua).
+--   * `bibliography: file.bib` (in _bibliography/): {% cite key %} became [@key], listed at the end.
 
 local stringify = pandoc.utils.stringify
 
@@ -38,6 +39,11 @@ return common.pipeline{
       -- keep the university and department, drop the street address
       local inst = common.lines(meta.institution)
       meta.affiliation = pandoc.MetaInlines{pandoc.Str(inst[2] .. ', ' .. inst[1])}
+    end
+
+    -- references: the BibTeX file of the post, in _bibliography/ (formatted by article.typ with nature.csl)
+    if meta.bibliography then
+      meta.bib_path = common.code(common.tstr('/_bibliography/' .. stringify(meta.bibliography)))
     end
 
     if meta.excerpt then

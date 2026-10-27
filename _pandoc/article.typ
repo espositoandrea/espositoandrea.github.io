@@ -45,6 +45,10 @@
 
 #show quote.where(block: true): set pad(x: 1em)
 #show quote.where(block: true): set par(first-line-indent: 0pt)
+$if(bib_path)$
+// the references are the superscript numbers: footnotes get symbols so that they cannot be mistaken for them
+#set footnote(numbering: "*")
+$endif$
 #show footnote.entry: set text(size: 7.8pt)
 #show footnote.entry: set par(first-line-indent: 0pt)
 #set list(indent: 0.4em)
@@ -103,3 +107,11 @@ $if(notice)$
 $endif$
 
 $body$
+$if(bib_path)$
+
+// References, in the style of Nature (numbered in order of citation, superscript in the text)
+#set bibliography(title: none, style: "/nature.csl")
+#show bibliography: set text(font: sans, size: 7.6pt)
+#show bibliography: set par(first-line-indent: 0pt, justify: false)
+#bibliography($bib_path$)
+$endif$
