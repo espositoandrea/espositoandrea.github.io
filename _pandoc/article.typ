@@ -19,14 +19,14 @@
     if counter(page).get().first() > 1 {
       set text(font: sans, size: 7.5pt, fill: muted)
       grid(columns: (1fr, 1fr), align: (left, right), [$short_author$], [$short_title$])
-      v(-0.55em)
+      v(0.5em)
       line(length: 100%, stroke: 0.4pt + rule-color)
     }
   },
   footer: context {
     set text(font: sans, size: 7.5pt, fill: muted)
     line(length: 100%, stroke: 0.4pt + rule-color)
-    v(-0.55em)
+    v(0.5em)
     grid(columns: (1fr, 1fr), align: (left, right), [$site_url$], counter(page).display())
   },
 )
