@@ -10,10 +10,39 @@
 #let muted = luma(110)
 #let rule-color = luma(205)
 
+// Typst does not balance the columns of the last page: the left column is filled first. Balancing it takes a spacer
+// across both columns at the bottom of the last page, anchored at the end of the text, whose height is derived
+// from the previous layout pass: the end of the text (in which column, at what height) gives the amount of text
+// on the page, and the columns are given half of it (plus a line). The layout settles in two or three passes.
+#let top-margin = 2.3cm
+#let balance-end = context {
+  let ends = query(<balance-end>)
+  let spacers = query(<balance-spacer>)
+  let height = 0pt
+  if ends.len() > 0 and spacers.len() > 0 {
+    let end = ends.first().location()
+    let spacer = spacers.first()
+    let spacer-position = spacer.location().position()
+    if end.page() > 1 and end.page() == spacer.location().page() {
+      let region-bottom = spacer-position.y + spacer.value + 1pt
+      let used = end.position().y - top-margin
+      let total = if end.position().x > page.width / 2 { spacer-position.y - top-margin + used } else { used }
+      let wanted = calc.max(0pt, region-bottom - top-margin - total / 2 - 1.8em.to-absolute())
+      // columns end on line boundaries, so the estimate jumps by a line when the spacer changes: only follow it
+      // when the correction is larger than that, which lets the layout settle
+      height = if calc.abs(wanted - spacer.value) < 1.6em.to-absolute() { spacer.value } else { wanted }
+    }
+  }
+  // the spacer takes no room in the flow, and the marker none either (a zero-height block: unlike a paragraph, it
+  // cannot push a page of its own when the last page is full)
+  place(bottom, scope: "parent", float: true, clearance: 0pt, block(height: height + 1pt, width: 100%)[#metadata(height) <balance-spacer>])
+  block(width: 0pt, height: 0pt, above: 0pt, below: 0pt)[#metadata(none) <balance-end>]
+}
+
 #set page(
   paper: "a4",
   fill: none,
-  margin: (x: 1.9cm, top: 2.3cm, bottom: 2.2cm),
+  margin: (x: 1.9cm, top: top-margin, bottom: 2.2cm),
   columns: 2,
   header: context {
     if counter(page).get().first() > 1 {
@@ -115,3 +144,5 @@ $if(bib_path)$
 #show bibliography: set par(first-line-indent: 0pt, justify: false)
 #bibliography($bib_path$)
 $endif$
+
+#balance-end
