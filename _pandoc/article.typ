@@ -72,8 +72,18 @@
 #show heading.where(level: 3): it => block(above: 1.2em, below: 0.35em, sticky: true,
   text(font: sans, size: 8.8pt, weight: "medium", style: "italic", it.body))
 
-#show quote.where(block: true): set pad(x: 1em)
-#show quote.where(block: true): set par(first-line-indent: 0pt)
+// Block quotes, with their credit (the "— Name" last line of the quote) right-aligned under them
+#show quote.where(block: true): it => block(
+  width: 100%, above: 1.2em, below: 1.2em, inset: (left: 0.9em, y: 0.1em), stroke: (left: 1.5pt + brand),
+  {
+    set par(first-line-indent: 0pt)
+    text(style: "italic", it.body)
+    if it.attribution != none {
+      v(0.5em, weak: true)
+      align(right, text(font: sans, size: 7.8pt, style: "normal", fill: muted)[— #it.attribution])
+    }
+  },
+)
 $if(bib_path)$
 // the references are the superscript numbers: footnotes get symbols so that they cannot be mistaken for them
 #set footnote(numbering: "*")
