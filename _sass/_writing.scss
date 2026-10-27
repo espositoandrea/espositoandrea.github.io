@@ -255,6 +255,20 @@
     li + li { margin-top: .35rem; }
     p + ul { margin-top: -.5rem; }
 
+    // References of a post ({% bibliography --template bib-ref %}): the style of the site numbers them ([1]), they are not publication cards
+    ol.bibliography {
+      margin-bottom: 1.6rem;
+      padding: 0;
+      list-style: none;
+      font-size: .92rem;
+      line-height: 1.55;
+      color: var(--fg-2);
+      > li { border: 0; }
+      .reference { overflow-wrap: anywhere; }
+      .reference > span { display: flex; gap: .7rem; }
+      .csl-left-margin { flex: none; color: var(--fg-3); }
+    }
+
     blockquote {
       margin: 2rem 0;
       padding: 0 0 0 1.5rem;
