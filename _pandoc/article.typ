@@ -30,7 +30,7 @@
       let wanted = calc.max(0pt, region-bottom - top-margin - total / 2 - 1.8em.to-absolute())
       // columns end on line boundaries, so the estimate jumps by a line when the spacer changes: only follow it
       // when the correction is larger than that, which lets the layout settle
-      height = if calc.abs(wanted - spacer.value) < 1.6em.to-absolute() { spacer.value } else { wanted }
+      height = if calc.abs(wanted - spacer.value) < 2.5em.to-absolute() { spacer.value } else { wanted }
     }
   }
   // the spacer takes no room in the flow, and the marker none either (a zero-height block: unlike a paragraph, it
