@@ -5,7 +5,7 @@
 -- exif...), as shown on the site by _includes/photo.html. The preprocessor (preprocess.sed) turns
 -- {% include photo.html id="x" %} into ![](photo:x), which is replaced here by a #photo(...) call of the
 -- template. Photos of the list that are not placed in the text are added at the end, as on the site.
--- The first paragraph of the text is set as a lead, the rest in two columns.
+-- The text runs in two columns, between the photos and the headings.
 
 local stringify = pandoc.utils.stringify
 
@@ -104,9 +104,9 @@ return common.pipeline{
       if not placed[i] then blocks:insert(pandoc.RawBlock('typst', ('#photo(%d)'):format(i))) end
     end
 
-    -- The first paragraph is the lead. The rest of the text runs in two columns (#body-columns); the headings and
-    -- the photos span the page, so a run of text ends where a photo or a heading begins.
-    local out, run, led = pandoc.List(), pandoc.List(), false
+    -- The text runs in two columns (#body-columns); the headings and the photos span the page, so a run of text
+    -- ends where a photo or a heading begins.
+    local out, run = pandoc.List(), pandoc.List()
     local function flush()
       if #run > 0 then
         out:insert(pandoc.RawBlock('typst', '#body-columns['))
@@ -119,11 +119,6 @@ return common.pipeline{
       if block.t == 'Header' or (block.t == 'RawBlock' and block.text:match('^#photo')) then
         flush()
         out:insert(block)
-      elseif not led and block.t == 'Para' then
-        led = true
-        out:insert(pandoc.RawBlock('typst', '#lead['))
-        out:insert(block)
-        out:insert(pandoc.RawBlock('typst', ']'))
       else
         run:insert(block)
       end

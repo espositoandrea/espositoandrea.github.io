@@ -71,13 +71,6 @@
   }
 }
 
-// The first paragraph of the text
-#let lead(body) = block(width: 88%, {
-  set text(size: 1.25em)
-  set par(leading: 0.75em)
-  body
-})
-
 // The text between two photos or headings: two narrow columns, as in a magazine. A short run is balanced between
 // the two columns (their height is half the height of the text in one column); a long one just flows.
 #let body-columns(body) = {
