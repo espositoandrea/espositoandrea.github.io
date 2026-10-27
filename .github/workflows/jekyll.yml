@@ -71,17 +71,18 @@ jobs:
           path: |
             assets/posts/pdfs
             _build
-          key: post-pdfs-${{ matrix.name }}-${{ hashFiles('_posts/*.md', '_pandoc/**', 'Makefile') }}
+          key: post-pdfs-v2-${{ matrix.name }}-${{ hashFiles('_posts/*.md', '_pandoc/**', 'Makefile') }}
           restore-keys: |
-            post-pdfs-${{ matrix.name }}-
+            post-pdfs-v2-${{ matrix.name }}-
 
+      # Typst typesets the PDFs (no LaTeX needed); the fonts are downloaded by the Makefile
       - name: Install PDF tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends groff poppler-utils python3-pil
-          # the packaged pandoc is too old for the custom writers
-          curl -fsSL -o pandoc.deb https://github.com/jgm/pandoc/releases/download/3.8/pandoc-3.8-1-amd64.deb
+          # the packaged pandoc is too old for the Typst writer
+          curl -fsSL -o pandoc.deb https://github.com/jgm/pandoc/releases/download/3.12.1/pandoc-3.12.1-1-amd64.deb
           sudo dpkg -i pandoc.deb
+          curl -fsSL https://github.com/typst/typst/releases/download/v0.15.1/typst-x86_64-unknown-linux-musl.tar.xz \
+            | sudo tar -xJ --strip-components=1 -C /usr/local/bin typst-x86_64-unknown-linux-musl/typst
 
       - name: Build post PDFs
         run: make pdfs
