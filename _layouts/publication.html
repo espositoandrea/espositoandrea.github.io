@@ -76,6 +76,12 @@ section: publications
 {%- elsif preview_pdf == nil and page.entry.copyright contains "CC" and page.entry.url contains ".pdf" -%}
 	{%- assign preview_pdf = page.entry.url -%}
 {%- endif -%}
+{%- comment -%}
+	A self-archived PDF is the author's version unless the paper is open access (then the
+	publisher's own PDF is redistributable). Show where to read the version of record instead.
+{%- endcomment -%}
+{%- assign author_version = false -%}
+{%- if page.links.pdf -%}{%- unless page.entry.copyright contains "CC" -%}{%- assign author_version = true -%}{%- endunless -%}{%- endif -%}
 <div class="paper-grid page-body{% if preview_pdf or page.access.size > 0 %} has-side{% endif %}">
 		<div class="paper-main">
 			{% if page.entry.abstract %}
@@ -105,6 +111,23 @@ section: publications
 		{% if preview_pdf %}
 			<aside class="paper-side" aria-labelledby="pdf-preview">
 				<h2 class="nature-label" id="pdf-preview">PDF preview</h2>
+				{% if author_version %}
+					<p class="paper-disclaimer" role="note">
+						<span class="fas fa-circle-info" aria-hidden="true"></span>
+						This is the <strong>author's version</strong>. It may differ from the version of record published by the venue, which is the one to cite.
+					</p>
+					{% assign record_links = page.access | where_exp: "l", "l.label != 'PDF'" %}
+					<div class="paper-record no-blank-icon">
+						{% if record_links.size > 0 %}
+							{% for link in record_links %}
+								<a class="btn-line is-accent" href="{{ link.url }}" target="_blank" rel="noopener noreferrer" title="{{ link.description }}"><span class="{{ link.icon }}" aria-hidden="true"></span> Read the version of record <small>({{ link.label }})</small></a>
+							{% endfor %}
+						{% else %}
+							{% assign record_url = page.entry.url | default: page.entry.doi | prepend: "https://doi.org/" %}
+							<a class="btn-line is-accent" href="{{ page.entry.url | default: record_url }}" target="_blank" rel="noopener noreferrer"><span class="fas fa-file-lines" aria-hidden="true"></span> Version of record <small>(publisher)</small></a>
+						{% endif %}
+					</div>
+				{% endif %}
 				<a class="paper-preview no-blank-icon" href="{{ preview_pdf }}" target="_blank" rel="noopener noreferrer" aria-label="Open the full PDF">
 					<object class="paper-preview-frame" data="{{ preview_pdf }}#page=1&amp;toolbar=0&amp;navpanes=0&amp;view=FitH" type="application/pdf" aria-label="Preview of the first page of the paper">
 						<span class="paper-preview-fallback"><span class="fas fa-file-pdf" aria-hidden="true"></span> Open PDF</span>
