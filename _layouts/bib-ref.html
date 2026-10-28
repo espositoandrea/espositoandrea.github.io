@@ -1,0 +1,8 @@
+---
+---
+{%- comment -%}
+  A reference in the list of references of a post: {% bibliography --template bib-ref --cited --cited_in_order ... %}.
+  The entry is formatted in the style of the site (see `scholar` in _config.yml), with its number and the anchor
+  that the in-text citations ({% cite %}) link to.
+{%- endcomment -%}
+<span class="reference">{{ reference }}</span>

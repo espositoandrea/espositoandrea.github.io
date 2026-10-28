@@ -116,7 +116,7 @@ section: writing
         {% if pdf_file %}
         <aside class="note mt-3" aria-label="PDF version">
             <i class="fa-solid fa-file-pdf" aria-hidden="true"></i>
-            <span>You can also read this post <a href="{{ pdf_file.path | relative_url }}">in PDF format</a>.</span>
+            <span>You can also read this post {% if page.photos.size > 0 %}as a <a href="{{ pdf_file.path | relative_url }}">printable photo magazine (PDF)</a>{% else %}<a href="{{ pdf_file.path | relative_url }}">in PDF format</a>{% endif %}.</span>
         </aside>
         {% endif %}
     </header>
