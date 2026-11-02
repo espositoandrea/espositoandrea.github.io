@@ -41,6 +41,36 @@ description: >-
 {% include cv-entries.html entries=cv.experiences icon="briefcase" property="worksFor" role="EmployeeRole" organization="Organization" %}
 </section>
 
+<section class="page-section" aria-labelledby="teaching">
+<div class="section-head"><h2 id="teaching">Teaching</h2></div>
+{%- comment -%} The courses are the pages of the teachings collection: their front matter is the source of truth. {%- endcomment %}
+{% assign courses = site.teachings | sort: "academicYear" | reverse %}
+<ol class="timeline">
+    {% for course in courses %}
+    <li class="timeline-item{% unless course.period.end %} is-current{% endunless %}">
+        <p class="timeline-when">
+            <time datetime="{{ course.period.start | date: '%Y-%m' }}">{{ course.period.start | date: "%b %Y" }}</time>
+            &ndash;
+            {% if course.period.end %}<time datetime="{{ course.period.end | date: '%Y-%m' }}">{{ course.period.end | date: "%b %Y" }}</time>{% else %}<span class="timeline-now">Present</span>{% endif %}
+        </p>
+        <div class="timeline-body">
+            <h3 class="timeline-title">{{ course.role | default: "Main Lecturer" }}: <a href="{{ course.url | relative_url }}">{{ course.titleTranslation | default: course.title | smartify }}</a></h3>
+            <ul class="entry-facts">
+                <li>
+                    <i class="fa-solid fa-graduation-cap fa-fw" aria-hidden="true"></i>
+                    {{ course.levelTranslation | default: course.level }} in {{ course.degreeTranslation | default: course.degree }}
+                </li>
+                <li>
+                    <i class="fa-solid fa-building-columns fa-fw" aria-hidden="true"></i>
+                    {{ course.institution.name }} &middot; {{ course.institution.department }}
+                </li>
+            </ul>
+        </div>
+    </li>
+    {% endfor %}
+</ol>
+</section>
+
 <section class="page-section" aria-labelledby="education">
 <div class="section-head"><h2 id="education">Education</h2></div>
 {% include cv-entries.html entries=cv.education icon="graduation-cap" property="alumniOf" role="OrganizationRole" organization="EducationalOrganization" %}

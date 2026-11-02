@@ -11,7 +11,9 @@ level: Corso di Laurea Triennale
 levelTranslation: Bachelor's degree
 institution:
   name: University of Bari Aldo Moro
+  name_it: Università degli Studi di Bari Aldo Moro
   department: Department of Computer Science
+  department_it: Dipartimento di Informatica
 excerpt: >-
   Lead lecturer for a third-year course (taught in Italian) on designing and
   evaluating interactive software that is not only functional, but also safe,
@@ -24,6 +26,28 @@ excerpt: >-
   error, and usability evaluation. Teaching combines lectures and hands-on
   exercises with a group case study, where students apply these techniques to a
   design problem and present their results.
+location: Bari, Apulia, Italy
+location_it: Bari, Italia
+period:
+  start: 2025-10-01
+  end: 2027-04-30
+lectures:
+  start: 2025-10-16
+  end: 2026-02-09
+excerpt_it: >-
+  Docente titolare di un insegnamento del terzo anno (in lingua italiana) sulla
+  progettazione e la valutazione di software interattivo che non sia solo
+  funzionale, ma anche sicuro, efficiente e piacevole da usare. Gli studenti
+  imparano a comprendere compiti e contesti d'uso degli utenti e ad applicare
+  principi, metodi e standard fondamentali, come la famiglia ISO 9241, per
+  realizzare sistemi usabili.
+
+  Gli argomenti includono usabilità e UX, accessibilità, progettazione
+  centrata sull'utente, raccolta dei requisiti, prototipazione, interaction
+  design, progettazione per l'errore umano e valutazione dell'usabilità. La
+  didattica combina lezioni ed esercitazioni con un caso di studio di gruppo,
+  in cui gli studenti applicano queste tecniche a un problema di design e
+  presentano i risultati.
 ---
 
 ## Informazioni utili

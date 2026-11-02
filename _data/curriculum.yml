@@ -215,36 +215,6 @@ experiences:
       Postdoctoral researcher for the project MetaboLinkAI.
     notes_it: |-
       Ricercatore postdoc per il progetto MetaboLinkAI.
-  - title: Lead Lecturer
-    # Italian drafted by Claude: to be reviewed
-    title_it: Docente titolare dell'insegnamento
-    category: job
-    years:
-      start: 2025-10-01
-      end: 2027-04-30
-    institute:
-      name: University of Bari "Aldo Moro"
-      name_it: Università degli Studi di Bari "Aldo Moro"
-      department: Department of Computer Science
-      department_it: Dipartimento di Informatica
-      url: https://uniba.it
-    location: Bari, Apulia, Italy
-    location_it: Bari, Italia
-    notes: |-
-      Lead lecturer of the third-year Bachelor's course in Human-Computer
-      Interaction (taught in Italian) for the degree in Computer Science and
-      Digital Communication (Italian Navy), academic year 2025/2026. The
-      course covers the design and evaluation of usable, accessible
-      interactive systems, combining lectures, hands-on exercises and a group
-      case study. Lectures were held from 16 October 2025 to 9 February 2026.
-    notes_it: |-
-      Docente titolare dell'insegnamento di Interazione Uomo-Macchina (terzo
-      anno, in lingua italiana) del Corso di Laurea Triennale in Informatica e
-      Comunicazione Digitale (Marina Militare), anno accademico 2025/2026.
-      L'insegnamento riguarda la progettazione e la valutazione di sistemi
-      interattivi usabili e accessibili, con lezioni, esercitazioni e un caso
-      di studio di gruppo. Le lezioni si sono svolte dal 16 ottobre 2025 al 9
-      febbraio 2026.
   - title: Research Fellow
     title_it: Assegnista di ricerca (tipo B)
     category: research-grant
@@ -322,66 +292,6 @@ experiences:
           Distacco (secondment) dall'Università degli Studi di Bari Aldo Moro nell'ambito del progetto “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” (<https://project-gendai.eu>).
     location: Bari, Apulia, Italy
     location_it: Bari, Italia
-  - title: Teaching Assistant
-    title_it: Assistente alla didattica
-    category: teaching
-    teaching:
-      course: Human-Computer Interaction
-      course_it: Interazione Uomo-Macchina
-      degree: Bachelor's Degree in Computer Science
-      degree_it: Corso di Laurea Triennale in Informatica
-      lecturer:
-        name: Maria Francesca Costabile
-        title: Prof.ssa
-      activities: |-
-        The activities revolved around the HCI design process "UCD Sprint".
-      activities_it: |-
-        Le attività riguardavano il processo di design dal nome "UCD Sprint".
-    years:
-      start: 2023-11-23
-      end: 2024-02-22
-    institute:
-      name: University of Bari "Aldo Moro"
-      name_it: Università degli Studi di Bari "Aldo Moro"
-      department: Department of Computer Science
-      department_it: Dipartimento di Informatica
-      url: https://uniba.it
-    location: Bari, Apulia, Italy
-    location_it: Bari, Italia
-    notes: |-
-      Teaching assistant for the Bachelor’s Degree course in Human-Computer
-      Interaction. The activities revolved around the HCI design process
-      ["UCD Sprint"](https://ucdsprint.com).
-  - title: Teaching Assistant
-    title_it: Assistente alla didattica
-    category: teaching
-    teaching:
-      course: Human-Computer Interaction
-      course_it: Interazione Uomo-Macchina
-      degree: Bachelor's Degree in Computer Science
-      degree_it: Corso di Laurea Triennale in Informatica
-      lecturer:
-        name: Maria Francesca Costabile
-        title: Prof.ssa
-      activities: |-
-        The activities revolved around the HCI design process "UCD Sprint".
-      activities_it: |-
-        Le attività riguardavano il processo di design dal nome "UCD Sprint".
-    years:
-      start: 2022-12-01
-      end: 2023-02-28
-    institute:
-      name: University of Bari "Aldo Moro"
-      name_it: Università degli Studi di Bari "Aldo Moro"
-      department: Department of Computer Science
-      department_it: Dipartimento di Informatica
-      url: https://uniba.it
-    location: Bari, Apulia, Italy
-    location_it: Bari, Italia
-    notes: |-
-      Teaching assistant for the Bachelor’s Degree course in Human-Computer
-      Interaction. The activities revolved around the HCI design process
-      ["UCD Sprint"](https://ucdsprint.com).
   - title: Visiting Junior Researcher
     title_it: Ricercatore junior visitatore
     category: visiting-abroad
