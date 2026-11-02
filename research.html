@@ -29,6 +29,35 @@ description: >-
     </a>
 </nav>
 
+{%- assign bib = site.data.bibliometrics %}
+{%- if bib %}
+<section class="page-section" aria-labelledby="bibliometrics">
+    <div class="section-head">
+        <h2 id="bibliometrics">Bibliometrics</h2>
+        <span class="meta">Updated manually on <time datetime="{{ bib.updated | date: '%Y-%m-%d' }}">{{ bib.updated | date: "%b %-d, %Y" }}</time></span>
+    </div>
+    <div class="biblio-groups">
+        <div class="biblio-group">
+            <h3 class="biblio-source"><a href="https://www.scopus.com/authid/detail.uri?authorId={{ bib.scopus.id }}" target="_blank" rel="noopener noreferrer">Scopus</a></h3>
+            <div class="index-grid biblio-grid">
+                <div class="index-tile"><span class="index-count">{{ bib.scopus.documents }}</span><span class="index-title">Documents</span></div>
+                <div class="index-tile"><span class="index-count">{{ bib.scopus.citations.total }}</span><span class="index-title">Citations</span><span class="index-text">from {{ bib.scopus.citations.documents }} documents</span></div>
+                <div class="index-tile"><span class="index-count">{{ bib.scopus.hindex }}</span><span class="index-title">h-index</span></div>
+            </div>
+        </div>
+        <div class="biblio-group">
+            <h3 class="biblio-source"><a href="https://scholar.google.com/citations?user={{ bib.googleScholar.id }}" target="_blank" rel="noopener noreferrer">Google Scholar</a></h3>
+            <div class="index-grid biblio-grid">
+                <div class="index-tile"><span class="index-count">{{ bib.googleScholar.citations }}</span><span class="index-title">Citations</span></div>
+                <div class="index-tile"><span class="index-count">{{ bib.googleScholar.hindex }}</span><span class="index-title">h-index</span></div>
+                <div class="index-tile"><span class="index-count">{{ bib.googleScholar.i10index }}</span><span class="index-title">i10-index</span></div>
+            </div>
+        </div>
+    </div>
+    <p class="meta mt-3">These figures are copied by hand, so they may lag behind the live profiles: follow the links for the live values.</p>
+</section>
+{%- endif %}
+
 <div class="research-grid">
     <section aria-labelledby="interests">
         <div class="section-head"><h2 id="interests">Research interests</h2></div>

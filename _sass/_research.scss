@@ -283,6 +283,26 @@
     &:hover { background: var(--bg-1); color: var(--fg-body); }
     &:hover .index-title { color: var(--accent); }
   }
+  // Bibliometrics: one group of three tiles per source
+  .biblio-groups {
+    display: grid;
+    gap: 2rem;
+    @media (min-width: 768px) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; }
+  }
+  .biblio-source {
+    margin: 0 0 .75rem;
+    font-size: 1.1rem;
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+  }
+  .biblio-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    .index-tile { padding: 1rem .8rem 1.2rem; }
+    .index-tile:hover { background: none; }
+    .index-tile:hover .index-title { color: inherit; }
+    .index-count { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem); }
+    .index-title { font-size: 1rem; }
+  }
   .index-count {
     font-family: var(--font-serif);
     font-size: 2.6rem;
