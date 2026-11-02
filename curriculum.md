@@ -71,6 +71,26 @@ description: >-
 </ol>
 </section>
 
+{%- if cv.subject_expert %}
+<section class="page-section" aria-labelledby="subject-expert">
+<div class="section-head"><h2 id="subject-expert">Subject-matter expert</h2></div>
+<p class="entry-text">{{ cv.subject_expert.institution | smartify }}</p>
+<ul class="entry-list">
+    {%- for a in cv.subject_expert.appointments %}
+    <li class="entry">
+        <div class="entry-main">
+            <div class="entry-head">
+                <span class="entry-title">{{ a.course | smartify }}</span>
+                <span class="meta text-nowrap">Since <time datetime="{{ a.since | date: '%Y-%m-%d' }}">{{ a.since | date: "%b %-d, %Y" }}</time></span>
+            </div>
+            <p class="entry-text">Sector {{ a.sector }}</p>
+        </div>
+    </li>
+    {%- endfor %}
+</ul>
+</section>
+{%- endif %}
+
 <section class="page-section" aria-labelledby="education">
 <div class="section-head"><h2 id="education">Education</h2></div>
 {% include cv-entries.html entries=cv.education icon="graduation-cap" property="alumniOf" role="OrganizationRole" organization="EducationalOrganization" %}
@@ -90,6 +110,65 @@ description: >-
         </div>
     </li>
     {% endfor %}
+</ul>
+</section>
+<section class="page-section" aria-labelledby="events">
+<div class="section-head"><h2 id="events">Organisation of scientific events</h2></div>
+{%- assign event_groups = "conferences,workshops" | split: "," %}
+<ul class="entry-list">
+    {%- for group in event_groups %}
+    {%- for ev in site.data.events[group] %}
+    <li class="entry"><div class="entry-main">
+        <div class="entry-head">
+            <a class="entry-title" href="{{ ev.link }}" target="_blank" rel="noopener noreferrer">{{ ev.title | smartify }}</a>
+            <span class="meta text-nowrap">
+                {%- if ev.start == ev.end %}{{ ev.start | date: "%b %-d, %Y" }}{% else %}{{ ev.start | date: "%b %-d" }} &ndash; {{ ev.end | date: "%b %-d, %Y" }}{% endif -%}
+            </span>
+        </div>
+        <p class="entry-text">{{ ev.position }}{% if ev.event %}, workshop at {{ ev.event | smartify }}{% endif %}
+            {%- if ev.paper %} &middot; <a href="{% details_link {{ev.paper}} %}">Workshop proposal</a>{% endif %}</p>
+    </div></li>
+    {%- endfor %}
+    {%- endfor %}
+</ul>
+</section>
+
+<section class="page-section" aria-labelledby="outreach">
+<div class="section-head"><h2 id="outreach">Outreach and volunteering</h2></div>
+<ol class="timeline">
+    {%- for item in site.data.outreach %}
+    <li class="timeline-item">
+        <p class="timeline-when">
+            {%- if item.start == item.end %}<time datetime="{{ item.start | date: '%Y-%m-%d' }}">{{ item.start | date: "%b %-d, %Y" }}</time>
+            {%- else %}<time datetime="{{ item.start | date: '%Y-%m-%d' }}">{{ item.start | date: "%b %-d" }}</time> &ndash; <time datetime="{{ item.end | date: '%Y-%m-%d' }}">{{ item.end | date: "%b %-d, %Y" }}</time>{% endif -%}
+        </p>
+        <div class="timeline-body">
+            <h3 class="timeline-title">{{ item.title | smartify }}</h3>
+            <ul class="entry-facts">
+                <li><i class="fa-solid fa-location-dot fa-fw" aria-hidden="true"></i> {{ item.location | smartify }}</li>
+            </ul>
+            <div class="entry-text">{{ item.notes | markdownify }}</div>
+        </div>
+    </li>
+    {%- endfor %}
+</ol>
+</section>
+
+<section class="page-section" aria-labelledby="languages">
+<div class="section-head"><h2 id="languages">Languages</h2></div>
+<ul class="entry-list">
+    {%- for entry in site.data.languages %}
+    {%- assign lang = entry[1] %}
+    <li class="entry"><div class="entry-main">
+        <div class="entry-head">
+            <span class="entry-title">{{ lang.name.en }}</span>
+            <span class="meta">{{ lang.level.en }}</span>
+        </div>
+        {%- if lang.cefr %}
+        <p class="entry-text">CEFR levels: listening {{ lang.cefr.listening }}, reading {{ lang.cefr.reading }}, comprehension {{ lang.cefr.comprehension }}, oral production {{ lang.cefr.oralProduction }}, oral interaction {{ lang.cefr.oralInteraction }}.</p>
+        {%- endif %}
+    </div></li>
+    {%- endfor %}
 </ul>
 </section>
 </div>
