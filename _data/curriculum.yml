@@ -215,6 +215,23 @@ experiences:
       Postdoctoral researcher for the project MetaboLinkAI.
     notes_it: |-
       Ricercatore postdoc per il progetto MetaboLinkAI.
+  - title: Project Secondee --- GenDAI Project
+    title_it: Ricercatore visitatore su progetto -- progetto GenDAI
+    category: visiting-abroad
+    years:
+      start: 2026-03-16
+      end: 2026-09-16
+    institute:
+      name: InConTec GmbH
+      name_it: InConTec GmbH
+      url: https://www.incontec.de
+    location: Pfungstadt, Hesse, Germany
+    location_it: Pfungstadt, Assia, Germania
+    notes: |-
+      Secondment from University of Bari Aldo Moro within the “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” project (<https://project-gendai.eu>).
+    # Italian drafted by Claude: to be reviewed
+    notes_it: |-
+      Distacco (secondment) dall'Università degli Studi di Bari Aldo Moro nell'ambito del progetto “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” (<https://project-gendai.eu>).
   - title: Research Fellow
     title_it: Assegnista di ricerca (tipo B)
     category: research-grant
@@ -273,6 +290,37 @@ experiences:
         L’inclusione digitale è un diritto primario per tutti i cittadini e rappresenta un “must have” per garantire l’accesso alla conoscenza, all’istruzione e al lavoro. Tuttavia, in Italia quattro persone su dieci continuano a non utilizzare Internet regolarmente e più della metà della popolazione non dispone di competenze digitali di base. Nonostante i progressi nelle tecnologie assistive, la Direttiva UE 2019/882 riconosce la sfida continua dell’accessibilità del web, in particolare per le persone con disabilità. Le attività di questo assegno di ricerca sono nell'ambito del progetto PRIN PNRR 2022 "PROTECT - imPROving ciTizEn inClusivity Through Conversational AI", che esplora come agenti intelligenti che interagiscono con gli utenti possano migliorare l'accessibilità del web.
     location: Bari, Apulia, Italy
     location_it: Bari, Italia
+  - title: Visiting Researcher
+    title_it: Ricercatore visitatore
+    category: visiting-abroad
+    years:
+      start: 2024-02-08
+      end: 2024-08-07
+    institute:
+      name: Ludwig-Maximilians-Universität
+      name_it: Ludwig-Maximilians-Universität
+      department: Institut für Informatik
+      department_it: Institut für Informatik
+      url: https://www.lmu.de/en/index.html
+    location: Munich, Bavaria, Germany
+    location_it: Monaco di Baviera, Germania
+    notes: |-
+      During his stay at LMU, he conducted research on human-centered
+      conversational assistant for low-risk tasks (3D Modelling) as part of a
+      project by the European Network of Human-Centered Artificial Intelligence
+      "[Humane-AI](https://www.humane-ai.eu)" titled "[Making for Everyone:
+      Interactive, voice-based support for the design of 3D objects for digital
+      fabrication](https://www.humane-ai.eu/project/making-for-everyone-interactive-voice-based-support-for-the-design-of-3d-objects-for-digital-fabrication/)"
+      (WP3).
+    notes_it: |-
+      Durante la sua permanenza presso la LMU, Andrea ha condotto, presso il
+      laboratorio "Human Centered Ubiquitous Media" coordinato dal Prof.
+      Albrecht Schmidt, una ricerca su assistenti conversazionali
+      human-centered per task a basso rischio (modellazione 3D) per un
+      progetto della rete Europea per la Human-Centered Artificial
+      Intelligence "Humane-AI" dal titolo "Making for Everyone: Interactive,
+      voice-based support for the design of 3D objects for digital
+      fabrication" (WP3).
   - title: Teaching Assistant
     title_it: Assistente alla didattica
     category: teaching
