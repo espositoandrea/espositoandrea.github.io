@@ -56,6 +56,20 @@
                 <div class="entry-text" itemprop="description">{{ entry.notes | markdownify }}</div>
                 {% endif %}
             {% endif %}
+
+            {% if entry.secondments %}
+            <ul class="entry-facts">
+                {% for secondment in entry.secondments %}
+                <li>
+                    <i class="fa-solid fa-plane-departure fa-fw" aria-hidden="true"></i>
+                    <strong>{{ secondment.title | smartify }}</strong>,
+                    {{ secondment.years.start | date: "%b %Y" }} &ndash; {{ secondment.years.end | date: "%b %Y" }},
+                    {% if secondment.institute.url %}<a href="{{ secondment.institute.url }}" target="_blank" rel="noopener noreferrer">{{ secondment.institute.name | smartify }}</a>{% else %}{{ secondment.institute.name | smartify }}{% endif %}
+                    ({{ secondment.location | smartify }})
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
     </li>
     {% endfor %}

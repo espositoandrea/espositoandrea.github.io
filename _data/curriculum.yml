@@ -215,23 +215,36 @@ experiences:
       Postdoctoral researcher for the project MetaboLinkAI.
     notes_it: |-
       Ricercatore postdoc per il progetto MetaboLinkAI.
-  - title: Project Secondee --- GenDAI Project
-    title_it: Ricercatore visitatore su progetto -- progetto GenDAI
-    category: visiting-abroad
-    years:
-      start: 2026-03-16
-      end: 2026-09-16
-    institute:
-      name: InConTec GmbH
-      name_it: InConTec GmbH
-      url: https://www.incontec.de
-    location: Pfungstadt, Hesse, Germany
-    location_it: Pfungstadt, Assia, Germania
-    notes: |-
-      Secondment from University of Bari Aldo Moro within the “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” project (<https://project-gendai.eu>).
+  - title: Lead Lecturer
     # Italian drafted by Claude: to be reviewed
+    title_it: Docente titolare dell'insegnamento
+    category: job
+    years:
+      start: 2025-10-01
+      end: 2027-04-30
+    institute:
+      name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
+      department: Department of Computer Science
+      department_it: Dipartimento di Informatica
+      url: https://uniba.it
+    location: Bari, Apulia, Italy
+    location_it: Bari, Italia
+    notes: |-
+      Lead lecturer of the third-year Bachelor's course in Human-Computer
+      Interaction (taught in Italian) for the degree in Computer Science and
+      Digital Communication (Italian Navy), academic year 2025/2026. The
+      course covers the design and evaluation of usable, accessible
+      interactive systems, combining lectures, hands-on exercises and a group
+      case study. Lectures were held from 16 October 2025 to 9 February 2026.
     notes_it: |-
-      Distacco (secondment) dall'Università degli Studi di Bari Aldo Moro nell'ambito del progetto “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” (<https://project-gendai.eu>).
+      Docente titolare dell'insegnamento di Interazione Uomo-Macchina (terzo
+      anno, in lingua italiana) del Corso di Laurea Triennale in Informatica e
+      Comunicazione Digitale (Marina Militare), anno accademico 2025/2026.
+      L'insegnamento riguarda la progettazione e la valutazione di sistemi
+      interattivi usabili e accessibili, con lezioni, esercitazioni e un caso
+      di studio di gruppo. Le lezioni si sono svolte dal 16 ottobre 2025 al 9
+      febbraio 2026.
   - title: Research Fellow
     title_it: Assegnista di ricerca (tipo B)
     category: research-grant
@@ -288,6 +301,24 @@ experiences:
         perspective.
     notes_it: |-
         L’inclusione digitale è un diritto primario per tutti i cittadini e rappresenta un “must have” per garantire l’accesso alla conoscenza, all’istruzione e al lavoro. Tuttavia, in Italia quattro persone su dieci continuano a non utilizzare Internet regolarmente e più della metà della popolazione non dispone di competenze digitali di base. Nonostante i progressi nelle tecnologie assistive, la Direttiva UE 2019/882 riconosce la sfida continua dell’accessibilità del web, in particolare per le persone con disabilità. Le attività di questo assegno di ricerca sono nell'ambito del progetto PRIN PNRR 2022 "PROTECT - imPROving ciTizEn inClusivity Through Conversational AI", che esplora come agenti intelligenti che interagiscono con gli utenti possano migliorare l'accessibilità del web.
+    # Periods spent elsewhere as part of this appointment
+    secondments:
+      - title: Project Secondee --- GenDAI Project
+        title_it: Ricercatore visitatore su progetto -- progetto GenDAI
+        years:
+          start: 2026-03-16
+          end: 2026-09-16
+        institute:
+          name: InConTec GmbH
+          name_it: InConTec GmbH
+          url: https://www.incontec.de
+        location: Pfungstadt, Hesse, Germany
+        location_it: Pfungstadt, Assia, Germania
+        notes: |-
+          Secondment from University of Bari Aldo Moro within the “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” project (<https://project-gendai.eu>).
+        # Italian drafted by Claude: to be reviewed
+        notes_it: |-
+          Distacco (secondment) dall'Università degli Studi di Bari Aldo Moro nell'ambito del progetto “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” (<https://project-gendai.eu>).
     location: Bari, Apulia, Italy
     location_it: Bari, Italia
   - title: Visiting Researcher
@@ -439,13 +470,11 @@ experiences:
       start: 2021-10-01
       end: 2021-11-30
     institute:
-      name: University of Bari "Aldo Moro"
-      name_it: Università degli Studi di Bari "Aldo Moro"
-      department: Department of Computer Science
-      department_it: Dipartimento di Informatica
-      url: https://uniba.it
-    location: Bari, Apulia, Italy
-    location_it: Bari, Italia
+      name: Consulta Umbria
+      name_it: Consulta Umbria
+      url: https://www.consultaumbria.com
+    location: INTERACT 2021 (Bari)
+    location_it: INTERACT 2021 (Bari)
     notes: |-
       Provided technical support for post-event activities for the [INTERACT
       2021 international
@@ -462,13 +491,11 @@ experiences:
       start: 2021-08-31
       end: 2021-09-03
     institute:
-      name: University of Bari "Aldo Moro"
-      name_it: Università degli Studi di Bari "Aldo Moro"
-      department: Department of Computer Science
-      department_it: Dipartimento di Informatica
-      url: https://uniba.it
-    location: Bari, Apulia, Italy
-    location_it: Bari, Italia
+      name: Consulta Umbria
+      name_it: Consulta Umbria
+      url: https://www.consultaumbria.com
+    location: INTERACT 2021 (Bari)
+    location_it: INTERACT 2021 (Bari)
     notes: |-
       Provided technical support and managed the audio-video systems
       at the [INTERACT 2021 international conference](https://www.interact2021.org){:target="_blank"},
