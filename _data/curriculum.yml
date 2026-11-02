@@ -305,6 +305,7 @@ experiences:
     secondments:
       - title: Project Secondee --- GenDAI Project
         title_it: Ricercatore visitatore su progetto -- progetto GenDAI
+        category: visiting-abroad
         years:
           start: 2026-03-16
           end: 2026-09-16
@@ -321,37 +322,6 @@ experiences:
           Distacco (secondment) dall'Università degli Studi di Bari Aldo Moro nell'ambito del progetto “GenDAI – Genomic applications for laboratory Diagnostics supported by Artificial Intelligence” (<https://project-gendai.eu>).
     location: Bari, Apulia, Italy
     location_it: Bari, Italia
-  - title: Visiting Researcher
-    title_it: Ricercatore visitatore
-    category: visiting-abroad
-    years:
-      start: 2024-02-08
-      end: 2024-08-07
-    institute:
-      name: Ludwig-Maximilians-Universität
-      name_it: Ludwig-Maximilians-Universität
-      department: Institut für Informatik
-      department_it: Institut für Informatik
-      url: https://www.lmu.de/en/index.html
-    location: Munich, Bavaria, Germany
-    location_it: Monaco di Baviera, Germania
-    notes: |-
-      During his stay at LMU, he conducted research on human-centered
-      conversational assistant for low-risk tasks (3D Modelling) as part of a
-      project by the European Network of Human-Centered Artificial Intelligence
-      "[Humane-AI](https://www.humane-ai.eu)" titled "[Making for Everyone:
-      Interactive, voice-based support for the design of 3D objects for digital
-      fabrication](https://www.humane-ai.eu/project/making-for-everyone-interactive-voice-based-support-for-the-design-of-3d-objects-for-digital-fabrication/)"
-      (WP3).
-    notes_it: |-
-      Durante la sua permanenza presso la LMU, Andrea ha condotto, presso il
-      laboratorio "Human Centered Ubiquitous Media" coordinato dal Prof.
-      Albrecht Schmidt, una ricerca su assistenti conversazionali
-      human-centered per task a basso rischio (modellazione 3D) per un
-      progetto della rete Europea per la Human-Centered Artificial
-      Intelligence "Humane-AI" dal titolo "Making for Everyone: Interactive,
-      voice-based support for the design of 3D objects for digital
-      fabrication" (WP3).
   - title: Teaching Assistant
     title_it: Assistente alla didattica
     category: teaching
@@ -382,29 +352,6 @@ experiences:
       Teaching assistant for the Bachelor’s Degree course in Human-Computer
       Interaction. The activities revolved around the HCI design process
       ["UCD Sprint"](https://ucdsprint.com).
-  - title: Researcher
-    title_it: Ricercatore
-    category: visiting-national
-    years:
-      start: 2023-04-12
-      end: 2023-10-11
-    institute:
-      name: Eusoft S.r.l.
-      name_it: Eusoft S.r.l.
-      url: https://www.eusoft.it
-    location: Bari, Italy
-    location_it: Bari, Italia
-    notes:
-      Part of the requirements of the D.M. 352/22 that regulates grant for
-      the PhD scholarship, he performs part of his research in a non-academic
-      research laboratory. During his stay at Eusoft, he conducts research on
-      human-centered conversational interfaces for laboratory management
-      system (i.e., a LIMS - Laboratory Information Management System)
-    notes_it: |-
-      Durante la sua permanenza presso Eusoft, Andrea ha condotto
-      ricerca su interfacce conversazionali human-centered per sistemi di
-      gestione di laboratori di analisi (un LIMS - Laboratory Information
-      Management System)
   - title: Teaching Assistant
     title_it: Assistente alla didattica
     category: teaching
@@ -575,6 +522,62 @@ education:
         role: co-supervisor
     evaluation: Awarded cum laude.
     evaluation_it: Con lode.
+    # Periods spent elsewhere as part of the PhD
+    secondments:
+      - title: Visiting Researcher
+        title_it: Ricercatore visitatore
+        category: visiting-national
+        years:
+          start: 2023-04-12
+          end: 2023-10-11
+        institute:
+          name: Eusoft S.r.l.
+          name_it: Eusoft S.r.l.
+          url: https://www.eusoft.it
+        location: Bari, Italy
+        location_it: Bari, Italia
+        notes:
+          Part of the requirements of the D.M. 352/22 that regulates grant for
+          the PhD scholarship, he performs part of his research in a non-academic
+          research laboratory. During his stay at Eusoft, he conducts research on
+          human-centered conversational interfaces for laboratory management
+          system (i.e., a LIMS - Laboratory Information Management System)
+        notes_it: |-
+          Durante la sua permanenza presso Eusoft, Andrea ha condotto
+          ricerca su interfacce conversazionali human-centered per sistemi di
+          gestione di laboratori di analisi (un LIMS - Laboratory Information
+          Management System)
+      - title: Visiting Researcher
+        title_it: Ricercatore visitatore
+        category: visiting-abroad
+        years:
+          start: 2024-02-08
+          end: 2024-08-07
+        institute:
+          name: Ludwig-Maximilians-Universität
+          name_it: Ludwig-Maximilians-Universität
+          department: Institut für Informatik
+          department_it: Institut für Informatik
+          url: https://www.lmu.de/en/index.html
+        location: Munich, Bavaria, Germany
+        location_it: Monaco di Baviera, Germania
+        notes: |-
+          During his stay at LMU, he conducted research on human-centered
+          conversational assistant for low-risk tasks (3D Modelling) as part of a
+          project by the European Network of Human-Centered Artificial Intelligence
+          "[Humane-AI](https://www.humane-ai.eu)" titled "[Making for Everyone:
+          Interactive, voice-based support for the design of 3D objects for digital
+          fabrication](https://www.humane-ai.eu/project/making-for-everyone-interactive-voice-based-support-for-the-design-of-3d-objects-for-digital-fabrication/)"
+          (WP3).
+        notes_it: |-
+          Durante la sua permanenza presso la LMU, Andrea ha condotto, presso il
+          laboratorio "Human Centered Ubiquitous Media" coordinato dal Prof.
+          Albrecht Schmidt, una ricerca su assistenti conversazionali
+          human-centered per task a basso rischio (modellazione 3D) per un
+          progetto della rete Europea per la Human-Centered Artificial
+          Intelligence "Humane-AI" dal titolo "Making for Everyone: Interactive,
+          voice-based support for the design of 3D objects for digital
+          fabrication" (WP3).
     notes: |-
         PhD research in Human-Centered Artificial Intelligence at the
         intersection of Human–Computer Interaction and Artificial Intelligence.
