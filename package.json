@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "og-images": "node scripts/og-images.mjs"
+    "og-images": "node scripts/og-images.mjs",
+    "bibliometrics": "node scripts/update-bibliometrics.mjs"
   },
   "dependencies": {
     "bootstrap": "^6.0.0-alpha.1"

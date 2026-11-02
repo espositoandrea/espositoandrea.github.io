@@ -1,16 +1,16 @@
-# Bibliometric indicators, updated by hand.
-# Not rendered on the website yet; used by the CV generator.
-updated: 2026-03-13
+# Bibliometric indicators, refreshed with `npm run bibliometrics` (scripts/update-bibliometrics.mjs).
+# Shown on /research (with the update date) and used by the CV generator.
+updated: 2026-11-02
 scopus:
   id: 57209432178
-  documents: 30
+  documents: 32
   citations:
-    total: 167
-    documents: 138
-  hindex: 7
-  coauthors: 38
+    total: 325
+    documents: 279
+  hindex: 8
+  coauthors: 40
 googleScholar:
   id: xDmY2lgAAAAJ
-  citations: 367
-  hindex: 10
-  i10index: 11
+  citations: 608
+  hindex: 11
+  i10index: 14
