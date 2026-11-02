@@ -219,6 +219,8 @@ experiences:
     title_it: Assegnista di ricerca (tipo B)
     category: research-grant
     grant:
+      type: Research Fellowship (type B)
+      type_it: Assegno di Ricerca (Tipo B)
       ref:
         type: D.R.
         number: 2375
@@ -431,6 +433,8 @@ experiences:
     title_it: Borsista di ricerca
     category: research-grant
     grant:
+      type: Research Grant
+      type_it: Borsa di Ricerca
       ref:
         type: D.R.
         number: 1293
