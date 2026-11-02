@@ -1,0 +1,41 @@
+# Projects the author worked on.
+# Not rendered on the website yet (see projects.md); used by the CV generator.
+#
+# - start, end (null = ongoing), title, link
+#   description / description_it: Markdown
+- start: 2023-05-17
+  end: null
+  title: Rhino-Cyt
+  link: https://doi.org/10.1016/j.artmed.2024.102933
+  description: >-
+    A human-centered symbiotic AI platform that aids physicians in conducting a rhinocytological exam. The system provides classification explanations, confidence rating for each classified cells, and allows for interventions to edit the AI's output.
+  description_it: >-
+    Una piattaforma di intelligenza artificiale simbiotica centrata sull’uomo che assiste i medici nell’esecuzione di un esame rinocitologico. Il sistema fornisce spiegazioni sulla classificazione, una valutazione di fiducia per ciascuna cellula classificata e permette interventi per modificare l’output dell’IA.
+- start: 2020-12-01
+  end: null
+  title: eGLU-Box PA
+  link: https://eglubox.it
+  description: >-
+    A web platform for the semi-automatic and remote execution of usability tests with users. ISO 25000 Certified Product. It is used by Italian Public Administrations for the execution of usability tests. He handled the server management, as well as the addition of new management features and the evaluation of the display function.
+  description_it: >-
+    Piattaforma web per l'esecuzione semi-automatica e remota dei test
+    d'usabilità con utenti. Prodotto Certificato ISO 25000 e disponibile a
+    tutte le Pubbliche Amministrazioni italiane per l'esecuzione di test
+    d'usabilità. Si è occupato della gestione del server, nonché
+    dell'aggiunta di nuove funzioni gestionali e della valutazione di
+    funzione di visualizzazione.
+- start: 2020-03-26
+  end: null
+  title: SERENE
+  link: https://github.com/uxsad
+  description: >-
+    A web platform (formerly UXSAD) for the semi-automatic evaluation of usability and UX issues in websites. It provides usability experts with the ability to generate a library for collecting interaction data within websites. This data is then automatically analyzed by a custom artificial intelligence model to perform emotional analysis. Implemented in Laravel and Python. Source code available in various repositories published on the project’s GitHub profile.
+  description_it: >-
+    Una piattaforma web (ex UXSAD) per la valutazione semi-automatica di
+    problemi di usabilità e UX nei siti web. Fornisce la possibilità agli
+    esperti di usabilità di generare una libreria per la raccolta di dati
+    di interazione all'interno di siti web. Tali dati sono poi
+    automaticamente analizzati da un modello di intelligenza artificiale
+    personalizzato per effettuare analisi emotiva. Implementato in Laravel
+    e Python. Codice sorgente disponibile su diverse repository pubblicate
+    sul profilo GitHub del progetto.

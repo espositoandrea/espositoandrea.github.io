@@ -1,0 +1,43 @@
+# Academic references, in the order they should be listed.
+# Not rendered on the website yet; used by the CV generator.
+#
+# - name:        full name, with academic title
+#   title:       role
+#   institution: university or institute
+#   department:  department
+#   email:       contact address
+- name: Prof. Maria Francesca Costabile
+  title: Full Professor
+  institution: University of Bari
+  department: Department of Computer Science
+  email: maria.costabile@uniba.it
+- name: Prof. Rosa Lanzilotti
+  title: Full Professor
+  institution: University of Bari
+  department: Department of Computer Science
+  email: rosa.lanzilotti@uniba.it
+- name: Prof. Giuseppe Desolda
+  title: Assistant Professor
+  institution: University of Bari
+  department: Department of Computer Science
+  email: giuseppe.desolda@uniba.it
+- name: Prof. Maristella Matera
+  title: Full Professor
+  institution: Politecnico di Milano
+  department: Dipartimento di Elettronica, Informazione e Bioingegneria
+  email: maristella.matera@polimi.it
+- name: Prof. Dr. Albrecht Schmidt
+  title: Full Professor
+  institution: Ludwig-Maximilians-Universität (LMU) Munich
+  department: Institut für Informatik
+  email: albrecht.schmidt@ifi.lmu.de
+- name: Prof. Dr. Florian Müller
+  title: Assistant Professor
+  institution: TU Darmstadt
+  department: Department of Computer Science
+  email: florian.mueller4@tu-darmstadt.de
+- name: Prof. Dr. Sebastian Feger
+  title: Professor
+  institution: TH Rosenheim
+  department: Campus Chiemgau
+  email: sebastian.feger@th-rosenheim.de

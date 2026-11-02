@@ -27,7 +27,9 @@ talks:
     event:
       name: FAIR Spoke 6 Workshop 2025 --- WP 6.1
       url: https://www.uniba.it/it/eventi-alluniversita/anno-2025/fair-spoke-workshop-2025
-    location: Bari (Italy)
+    location:
+      en: Bari (Italy)
+      it: Bari (Italia)
     poster: https://doi.org/10.54985/peeref.2504p5507567
   - title: Explanation-Driven Visual Interventions in Genomics
     date: 2026-06-08
@@ -35,7 +37,9 @@ talks:
     event:
       name: Workshop on Trustable, Reproducible, and Intelligent Information Visualization Systems (TRI-IVIS 2026) co-located with the 18th International Conference on Advanced Visual Interfaces (AVI 2026)
       url: https://triivis26.di.uniba.it
-    location: Venice (Italy)
+    location:
+      en: Venice (Italy)
+      it: Venezia (Italia)
     paper: Esposito2026ExplanationDriven
     video: https://youtu.be/MnNFXxQhU4M
   - date: 2026-04-14
@@ -44,14 +48,18 @@ talks:
     event:
       name: "AutomationXP26 Workshop at CHI'26: Agentic Automation Experiences---Rethinking the Interaction of Humans and AI Agents"
       url: https://matthiasbaldauf.com/automationxp26/
-    location: Barcelona (Spain)
+    location:
+      en: Barcelona (Spain)
+      it: Barcellona (Spagna)
     paper: Desolda2026Automation
   - date: 2026-02-25
     title: "PhD Viva---A Human--AI Interaction Model: Leveraging Human-Centred Design for Symbiotic AI"
     type: PhD Viva
     event:
       name: "PhD Viva at the University of Bari Aldo Moro"
-    location: Bari (Italy)
+    location:
+      en: Bari (Italy)
+      it: Bari (Italia)
     paper: Esposito2026Human
   - title: "Explanation-Driven Interventions for Artificial Intelligence Model Customization: Empowering End-Users to Tailor Black-Box AI in Rhinocytology"
     date: 2025-06-17
@@ -203,7 +211,9 @@ seminars:
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
+  institution_it: Università degli Studi di Bari Aldo Moro, Dipartimento di Informatica
   location: Taranto, Italy
+  location_it: Taranto, Italia
 
 - title: Docker e Container - Con un Focus su Laravel
   titleTranslation: Docker and Containers - With a Focus on Laravel
@@ -211,18 +221,20 @@ seminars:
   date: 2023-11-10
   duration: 4 hours
   course:
-    name: Interazione Uomo-Macchina
-    nameTranslation: Human-Computer Interaction
+    name: Programmazione per il Web
+    nameTranslation: Web Programming
     language: it
   lecturer:
-    name: Prof. Giuseppe Desolda
+    name: Dott. Giuseppe Desolda
     url: https://ivu.di.uniba.it/people/desolda
   degree: Informatica e Comunicazione Digitale
   degreeTranslation: Computer Science and Digital Communication
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
+  institution_it: Università degli Studi di Bari Aldo Moro, Dipartimento di Informatica
   location: Taranto, Italy
+  location_it: Taranto, Italia
 
 - title: Docker e Container - Con un Focus su Laravel
   titleTranslation: Docker and Containers - With a Focus on Laravel
@@ -230,18 +242,20 @@ seminars:
   date: 2022-12-21
   duration: 2 hours
   course:
-    name: Interazione Uomo-Macchina
-    nameTranslation: Human-Computer Interaction
+    name: Programmazione per il Web
+    nameTranslation: Web Programming
     language: it
   lecturer:
-    name: Prof. Giuseppe Desolda
+    name: Dott. Giuseppe Desolda
     url: https://ivu.di.uniba.it/people/desolda
   degree: Informatica e Comunicazione Digitale
   degreeTranslation: Computer Science and Digital Communication
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
+  institution_it: Università degli Studi di Bari Aldo Moro, Dipartimento di Informatica
   location: Taranto, Italy
+  location_it: Taranto, Italia
 
 - title: Introduzione a Figma
   titleTranslation: Introduction to Figma
@@ -260,4 +274,6 @@ seminars:
   degreeLevel: Corso di Laurea Triennale
   degreeLevelTranslation: Bachelor's degree
   institution: University of Bari Aldo Moro, Department of Computer Science
+  institution_it: Università degli Studi di Bari Aldo Moro, Dipartimento di Informatica
   location: Taranto, Italy
+  location_it: Taranto, Italia

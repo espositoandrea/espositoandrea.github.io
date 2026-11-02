@@ -1,0 +1,30 @@
+# Certificates and completed courses.
+# Not rendered on the website yet; used by the CV generator.
+#
+# - date, title, issuer, link
+#   type / type_it: kind of certificate (English / Italian)
+# TODO: add ACM peer review
+- date: 2026-01-16
+  title: ACM Certified Reviewer --- ACM's Reviewer Training and Certification Course
+  type: Course completion
+  type_it: Completamento del corso
+  issuer: ACM
+  link: https://reviewers.acm.org/training-course
+- date: 2024-09-30
+  title: Completion of the Certified Peer Reviewer Course
+  type: Course completion
+  type_it: Completamento del corso
+  issuer: Elsevier Researcher Academy
+  link: https://researcheracademy.elsevier.com/navigating-peer-review/certified-peer-reviewer-course
+- date: 2020-10-10
+  title: EFSET English Certificate 78/100 (C2 Proficient)
+  type: English language proficiency certificate
+  type_it: Certificato di lingua inglese
+  issuer: EF Standard English Test (EF SET)
+  link: http://efset.org/cert/pTyzBu
+- date: 2020-06-25
+  title: Transparency and Accountability for Robots and Artificial Intelligence Systems
+  type: Course completion
+  type_it: Completamento del corso
+  issuer: IEEE
+  link: https://www.credential.net/31c3f024-6359-4edb-94e9-eecadd628d4d

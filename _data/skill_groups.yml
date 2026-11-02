@@ -1,0 +1,88 @@
+# Skills grouped by area (the percentage bars in curriculum.yml are a separate list).
+# Not rendered on the website yet; used by the CV generator.
+#
+# Each skill is either a plain string, or { en: ..., it: ... } when it is translated.
+# Strings are Markdown (\TeX/\LaTeX become "TeX and LaTeX" in the generated CV).
+- section: General Skills
+  section_it: Competenze generali
+  skills:
+    - Information processing
+    - { en: Artificial Intelligence, it: Intelligenza Artificiale }
+    - { en: Mastery of LaTeX, it: Padronanza del LaTeX }
+    - { en: Mastery of Office Suite, it: Padronanza della Suite Office }
+    - { en: Problem-Solving skills, it: Problem-Solving }
+    - "Legacy UNIX Systems (e.g.: \\*roff, pipelines, etc.)"
+- section: Environments and Developing
+  section_it: Environments e Sviluppo
+  skills:
+    - { en: Imperative Programming, it: Programmazione imperativa }
+    - { en: Functional Programming, it: Programmazione funzionale }
+    - { en: Android Programming (native), it: Programmazione Android (nativa) }
+    - { en: "Linux Operating Systems (Arch-based, Debian-based)", it: "Sistemi operativi Linux (Arch-based, Debian-based)" }
+    - Windows
+- section: AI Techniques
+  section_it: Tecniche di AI
+  skills:
+    - Machine Learning
+    - Deep Learning
+    - { en: CNN for computer vision, it: CNN per la visione computerizzata }
+    - { en: NLP techniques, it: tecniche di NLP }
+    - { en: First-Order Logic models, it: modelli in First-Order Logic }
+    - { en: "non-monotonous reasoning (e.g., abduction)", it: "ragionamento non monotono (es., abduzione)" }
+- section: Software and Process Engineering
+  section_it: Ingegneria del software e di processo
+  skills:
+    - { en: UML Language, it: linguaggio UML }
+    - { en: Design of Microservices architectures, it: progettazione microservizi }
+    - { en: Design of REST APIs, it: progettazione API REST }
+    - { en: DVC for experimental reproducibility, it: DVC per la riproducibilità della sperimentazione }
+- section: Languages
+  section_it: Linguaggi
+  skills:
+    - PHP
+    - Kotlin
+    - Java
+    - MySQL
+    - MongoDB
+    - Python
+    - Ruby
+    - Nodejs
+    - TeX and LaTeX
+    - TypeScript
+    - JavaScript
+    - MATLAB
+    - C# (Unity Game Engine)
+    - HTML & CSS
+    - C
+    - C++
+    - SQL
+    - Haskell
+    - "\\*roff"
+    - { en: "Markup Languages (Markdown, Asciidoc, RsT)", it: "Linguaggi di Markup (Markdown, Asciidoc, RsT)" }
+    - Swift
+- section: Frameworks and Libraries
+  section_it: Frameworks e Librerie
+  skills:
+    - Laravel
+    - Electron
+    - Jekyll
+    - SciKit-Learn
+    - Tensorflow
+- section: IDEs and Tools
+  section_it: IDEs e Tools
+  skills:
+    - Vim
+    - Android Studio
+    - Eclipse
+    - IntelliJ IDEA
+    - PyCharm
+    - RubyMine
+    - WebStorm
+    - CLion
+    - Visual Studio Code
+    - Git
+    - GitHub
+    - TravisCI
+    - GitHub Actions
+    - Visual Paradigm
+    - SonarQube

@@ -1,0 +1,54 @@
+# Peer-review activity.
+# Not rendered on the website yet; used by the CV generator.
+#
+# Conference/workshop `years` entries are either a bare year (plain reviewer) or
+# { year: 2025, role: "PC" } (role is shown next to the year).
+journals:
+  - Behaviour & Information Technology (BIT)
+  - IEEE Access
+  - Journal of Ambient Intelligence and Smart Environments (JAISE)
+  - Artificial Intelligence in Medicine (AIIM)
+  - Interacting with Computers
+  - Archives of Computational Methods in Engineering
+  - Information Systems Frontiers
+  - Proceedings of the ACM on Human-Computer Interaction (PACMHCI)---EICS Track
+  - ACM Transactions on Interactive Intelligent Systems (TiiS)
+  - Social Sciences & Humanities Open
+  - Scientific Reports
+  - Minds and Machines
+conferences:
+  - name: EUSSET Conference on Computer-Supported Cooperative Work (ECSCW)
+    years: [{ year: 2026, role: "PC" }]
+  - name: Human Hybrid-Artificial Intelligence (HHAI)
+    years: [{ year: 2025, role: "PC" }, { year: 2026, role: "PC" }]
+  - name: ACM International Conference on Mobile Human-Computer Interaction (MobileHCI)
+    years: [2024]
+  - name: Biannual Conference of the Italian SIGCHI Chapter (CHItaly)
+    years: [2023]
+  - name: IFIP TC-13 Conference on Human-Computer Interaction (INTERACT)
+    years: [2023, { year: 2025, role: "AC" }]
+  - name: ACM Conference on Human Factors in Computing Systems (CHI)
+    years: [2023, 2026]
+  - name: ACM Conference on Intelligent User Interfaces (IUI)
+    years: [2025]
+  - name: Mensch und Computer (MuC)
+    years: [{ year: 2025, role: "AC" }]
+  - name: International Symposium on End-User Development (IS-EUD)
+    years: [2025]
+  - name: International Conference on Advanced Visual Interfaces (AVI)
+    years: [2024, { year: 2026, role: "PC" }]
+  - name: International Conference Series on Hybrid Human-Artificial Intelligence
+    years: [2025]
+  - name: ACM SIGCHI Symposium on Engineering Interactive Computing Systems (EICS)
+    years: [2025]
+workshops:
+  - name: International Workshop on Augmented Artificial Intelligence (A2ID)
+    years: [{ year: 2025, role: "Organizer/Chair" }]
+  - name: Workshop on Cyber Security Education for Industry and Academia (CSE4IA)
+    years: [2024]
+  - name: Workshop on Designing and Building Hybrid Human-AI Systems (SYNERGY)
+    years: [2025]
+  - name: Workshop on Innovative Medical image Processing with AI-driven preCision Technologies (IMPACT)
+    years: [2025]
+  - name: "Stimulating Cognitive Engagement in Hybrid Decision-Making: Friction, Reliance and Biases (Frictional AI)"
+    years: [2025]

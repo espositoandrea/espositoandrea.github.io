@@ -1,0 +1,35 @@
+# Scientific events organised (conferences and workshops).
+# Not rendered on the website yet; used by the CV generator.
+#
+# - start, end:  dates
+#   title:       title of the event (HTML allowed)
+#   event:       (workshops) the event it is co-located with
+#   link:        website
+#   paper:       (optional) BibTeXKey of the workshop proposal in references.bib
+#   position:    role of the author
+conferences:
+  - start: 2026-06-30
+    end: 2026-07-03
+    title: 18th ACM SIGCHI Symposium on Engineering Interactive Computing Systems
+    link: https://eics.acm.org/2026/
+    position: Web Chair
+  - start: 2025-06-16
+    end: 2025-06-18
+    title: 10th International Symposium on End-User Development (IS-EUD 2025)
+    link: https://iseud2025.ubicomp.net
+    position: Web Chair
+workshops:
+  - start: 2025-06-16
+    end: 2025-06-16
+    title: "1st International Workshop on Augmented Artificial Intelligence: a Symbiotic Approach to Enhance Decision-Making (A<sup>2</sup>ID)"
+    event: 10th International Symposium on End-User Development (IS-EUD 2025)
+    link: https://a2id.di.uniba.it
+    paper: Calvano2025A2ID
+    position: Co-Chair
+  - start: 2024-06-17
+    end: 2024-06-17
+    title: 2024 Workshop on Child-Centered AI for Empowering Creative and Inclusive Learning Experiences
+    event: 23rd ACM Interaction Design and Children Conference (IDC 2024)
+    link: https://ccai4ecile.di.uniba.it
+    paper: Ragone2024ChildCentered
+    position: Co-Chair

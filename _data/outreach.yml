@@ -1,0 +1,70 @@
+# Other experiences: outreach, student volunteering, Third Mission activities.
+# Not rendered on the website yet; used by the CV generator.
+#
+# - start, end, title, location, notes (Markdown), each with an `_it` variant
+- start: 2024-09-27
+  end: 2024-09-27
+  title: Poster Presentation and Scientific Dissemination
+  title_it: Presentazione poster e divulgazione scientifica
+  location: European Research Night (Taranto, Italy)
+  location_it: Notte Europea dei Ricercatori (Taranto, Italia)
+  notes: |-
+    Took part to the European Research Night through the presentation of various
+    posters as part of the Interaction, Visualization, Usability & UX (IVU) from the Department of
+    Computer Science of the University of Bari.
+  notes_it: |-
+    Partecipazione alla "Notte Europea dei Ricercatori" (European
+    Researchers' Night) presentando vari poster inerenti la
+    ricerca condotta dall'Università degli Studi di Bari "Aldo Moro"
+    nell'ambito dell'intelligenza artificiale e della interazione uomo-macchina.
+- start: 2023-04-03
+  end: 2023-04-07
+  title: Student Volunteer at DeepLearn 2023 (Spring Edition)
+  title_it: Student Volunteer a DeepLearn 2023 (Spring Edition)
+  location: 9th International School on Deep Learning (Bari, Italy)
+  location_it: 9th International School on Deep Learning (Bari, Italia)
+  notes: |-
+    Student volunteer at the DeepLearn 2023 Spring Edition school. Helped
+    Lecturers and participants in the organisation of the lectures, both in presence, remotely, and in hybrid form.
+  notes_it: |-
+    Partecipazione come "student volunteer" (studente volontario) alla
+    scuola internazionale DeepLearn 2023 Spring Edition, tenutasi a Bari dal
+    3/04/2023 al 7/04/2023. Ha fornito supporto a docenti e partecipanti
+    durante l'organizzazione delle lezioni in presenza, in remoto, e
+    ibride.
+- start: 2021-09-24
+  end: 2021-09-24
+  title: Poster Presentation and Scientific Dissemination
+  title_it: Presentazione poster e divulgazione scientifica
+  location: European Research Night (Bari, Italy)
+  location_it: Notte Europea dei Ricercatori (Bari, Italia)
+  notes: |-
+    Took part to the European Research Night through the presentation of a
+    poster titled "Automatic analysis of PET scans to support the
+    diagnosis of Dementia" as part of the Computational Intelligence Laboratory (CILAB) from the Department of
+    Computer Science of the University of Bari.
+  notes_it: |-
+    Partecipazione alla "Notte Europea dei Ricercatori" (European
+    Researchers' Night, ERN Apulia 3) presentando vari poster inerenti la
+    ricerca condotta dall'Università degli Studi di Bari "Aldo Moro"
+    nell'ambito dell'intelligenza artificiale e della visione
+    computerizzata.
+- start: 2021-08-30
+  end: 2021-09-03
+  title: Student Volunteer at INTERACT 2021
+  title_it: Student Volunteer a INTERACT 2021
+  location: 18th IFIP TC13 International Conference on Human-Computer Interaction (Bari, Italy)
+  location_it: 18° IFIP TC13 International Conference on Human-Computer Interaction (Bari, Italia)
+  notes: |-
+    Student volunteer at the INTERACT 2021 International Conference. Helped
+    the organization of the conference itself alongside the Technical
+    Chairs and the Online Experience Chairs, and provided technical support
+    to participants and Chairs throughout the conference.
+  notes_it: |-
+    Partecipazione come "student volunteer" (studente volontario) alla
+    conferenza internazionale 18th IFIP TC 13 International Conference on
+    Human-Computer Interaction (INTERACT 2021), tenutasi a Bari dal
+    30/08/2021 al 3/09/2021. Durante questa attività ha coadiuvato gli
+    Online Experience Chair per la messa a punto e l'esecuzione delle
+    sessioni ibride della conferenza, oltre a fornire supporto ai Session
+    Chair durante le sessioni in presenza.

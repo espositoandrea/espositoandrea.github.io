@@ -9,6 +9,12 @@ en:
   flag: ""
   stars:
     full: 5
+  cefr:
+    listening: C2
+    reading: C2
+    comprehension: C1
+    oralProduction: C1
+    oralInteraction: C1
 it:
   name:
     it: "Italiano"
@@ -20,3 +26,4 @@ it:
   flag: ""
   stars:
     full: 5
+  native: true

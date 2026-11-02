@@ -2,6 +2,7 @@ sex: M
 birthdate: 1999-08-18
 title: PhD
 position: Postdoctoral Researcher
+position_it: Ricercatore Postdoc
 affiliation:
   institution: 
     name: Inria
@@ -47,6 +48,8 @@ brief: |
   [Ludwig-Maximilians Universität (LMU)]{:target="_blank"} in Munich
   and [Eusoft S.r.l.]{:target="_blank"}, as well as a project secondee for the
   [GenDAI]{:target="_blank"} project at [InConTec GmbH]{:target="_blank"}.
+  He also collaborates with the European Network of Human-Centered Artificial
+  Intelligence [Humane-AI]{:target="_blank"}.
   He serves as a reviewer and program committee member for major HCI and AI venues.
 
   He is an active member of the [IFIP TC13 WG 13.11/12.14]{:target="_blank"}
@@ -69,6 +72,80 @@ brief: |
   [MetaboLinkAI]: https://www.metabolinkai.net
 
   Andrea is committed to advancing the field of Human-Centred AI, working to improve the interaction between humans and AI systems.
+# Italian version of `brief` (used by the Italian CV)
+brief_it: |
+  Andrea Esposito è ricercatore postdoc presso [Inria]{:target="_blank"}, nel
+  team [Wimmics]{:target="_blank"} dell'[Université Côte d'Azur]{:target="_blank"},
+  dove si occupa di Human-Centered AI e Symbiotic AI all'intersezione tra
+  Human-Computer Interaction e Intelligenza Artificiale.
+
+  È dottore di ricerca (con lode) in Informatica e Matematica presso
+  l'[Università degli Studi di Bari Aldo Moro]{:target="_blank"}. La sua ricerca
+  dottorale, svolta nel [Laboratorio IVU]{:target="_blank"} del
+  [Dipartimento di Informatica]{:target="_blank"} dell'Università di Bari, si è
+  concentrata su modelli di interazione uomo-IA basati su trasparenza,
+  spiegabilità e fiducia, con applicazioni in ambito sanitario, accessibilità
+  e cybersecurity. La tesi di dottorato è stata
+  [pubblicata da Springer](https://link.springer.com/book/9783658526313){:target="_blank"}.
+
+  Presso Inria lavora al progetto [MetaboLinkAI]{:target="_blank"}, sviluppando
+  assistenti conversazionali basati su LLM per l'esplorazione di knowledge
+  graph di metabolomica.
+
+  Nell'ambito del dottorato ha trascorso sei mesi come ricercatore in visita
+  presso la [Ludwig-Maximilians Universität (LMU)]{:target="_blank"} di Monaco
+  e sei mesi presso [Eusoft S.r.l.]{:target="_blank"}, ed è stato project
+  secondee per il progetto [GenDAI]{:target="_blank"} presso
+  [InConTec GmbH]{:target="_blank"}. Collabora inoltre con la rete europea di
+  Human-Centered Artificial Intelligence [Humane-AI]{:target="_blank"}. È
+  revisore e membro di comitati di programma per importanti sedi di HCI e AI.
+
+  È membro attivo del gruppo di lavoro congiunto
+  [IFIP TC13 WG 13.11/12.14]{:target="_blank"} su *Human-Centered Intelligent
+  Interactive Systems*.
+
+  Andrea si impegna a far progredire il campo della Human-Centred AI,
+  lavorando per migliorare l'interazione tra esseri umani e sistemi
+  intelligenti.
+
+  [Inria]: https://www.inria.fr/
+  [Université Côte d'Azur]: https://univ-cotedazur.fr/
+  [Wimmics]: https://team.inria.fr/wimmics/
+  [IFIP TC13 WG 13.11/12.14]: https://wg11.ifip-tc13.org
+  [Laboratorio IVU]: https://ivu.di.uniba.it
+  [Dipartimento di Informatica]: https://www.uniba.it/ricerca/dipartimenti/informatica
+  [Università degli Studi di Bari Aldo Moro]: https://www.uniba.it/
+  [Humane-AI]: https://www.humane-ai.eu/
+  [Ludwig-Maximilians Universität (LMU)]: https://www.lmu.de/en/index.html
+  [Eusoft S.r.l.]: https://www.eusoft.it/
+  [GenDAI]: https://project-gendai.eu
+  [InConTec GmbH]: https://www.incontec.de
+  [MetaboLinkAI]: https://www.metabolinkai.net
+# Current position, as shown in the Italian CV for public evaluations
+current_position_it: |-
+  Ricercatore postdoc presso il Centre Inria d'Université Côte d'Azur, team Wimmics (Sophia Antipolis, Francia), dal 1 ottobre 2026, nell'ambito del progetto *MetaboLinkAI*.
+
+  Dottore di Ricerca in Informatica e Matematica (con lode) presso l'Università degli Studi di Bari "Aldo Moro", con discussione finale della tesi il 25 febbraio 2026 (settore INFO-01/A). Vincitore di una borsa di Dottorato regolamentata "D.M. n. 352 del 9 aprile 2022" - Piano Nazionale di Ripresa e Resilienza (PNRR), Missione 4, Componente 2, Investimento 3.3 - Progetto "Human-Centered Artificial Intelligence (HCAI) techniques for supporting end users interacting with AI systems", co-finanziato da "Eusoft S.r.l." (CUP H91I22000410007).
+
+  Dal 1 ottobre 2024 al 30 settembre 2026 titolare di un Assegno di Ricerca (tipo B), P.R. 01.115, nell'ambito del progetto *PROTECT - imPROving ciTizEn inClusivity Through Conversational AI*. Settore scientifico disciplinare: INFO-01/A IINF-05/A.
+
+  È membro del Laboratorio Interaction, Visualization, Usability & UX (IVU Lab), coordinato dalla Prof.ssa Rosa Lanzilotti. Cultore della materia in tre insegnamenti (interazione uomo-macchina, programmazione per il web, interaction with intelligent systems).
+subject_expert:
+  institution: Department of Computer Science of the University of Bari
+  institution_it: Dipartimento di Informatica dell'Università degli Studi di Bari
+  appointments:
+    - course: Human-Computer Interaction
+      course_it: Interazione Uomo-Macchina
+      sector: INFO-01/A
+      since: 2024-11-20
+    - course: Web Programming
+      course_it: Programmazione per il Web
+      sector: INFO-01/A
+      since: 2024-11-20
+    - course: Interaction with Intelligent Systems
+      course_it: Interaction with Intelligent Systems
+      sector: INFO-01/A
+      since: 2024-11-20
 memberships:
   - institution: Association for Computing Machinery
     short: ACM
@@ -102,23 +179,62 @@ memberships:
     url: https://portal.insticc.org
     since: 2024-01-29
     value: "22959"
+  - institution: Working Group 13.11/12.14 – Human-Centered Intelligent Systems (HCISS)
+    short: IFIP TC13 WG 13.11/12-14
+    url: https://ifip-tc13.org/working-groups/working-group-13-11-12-14-human-centered-intelligent-systems-hciss/
+    since: 2024-03-11
+  - institution: GRIN Società Informatica Italiana
+    short: GRIN
+    url: https://www.grin-informatica.it
+    since: 2024-11-01
+    value: andreaesposito
+  - institution: Working Group 12.15 – Generative AI
+    short: "Observer: IFIP TC12 WG 12.15"
+    url: https://www.ifiptc12.org/working-groups
+    since: 2025-07-15
+# Conventions for the extra keys (ignored by the website templates unless noted):
+#   <field>_it            Italian version of <field> (used by the Italian CV)
+#   category              job | research-grant | teaching | visiting-abroad | visiting-national
+#   grant                 legal reference, funder and project of a research grant
+#   teaching              structured description of a teaching-assistant role
+#   institute.department  department of the institute
 experiences:
   - title: Postdoctoral Researcher
+    title_it: Ricercatore Postdoc
+    category: job
     years:
       start: 2026-10-01
       end: null
     institute:
       name: Centre Inria d'Université Côte d'Azur
+      name_it: Centre Inria d'Université Côte d'Azur
       url: https://www.inria.fr/fr/centre-inria-universite-cote-azur
     location: Sophia Antipolis, France
+    location_it: Sophia Antipolis, Francia
     notes: |-
       Postdoctoral researcher for the project MetaboLinkAI.
+    notes_it: |-
+      Ricercatore postdoc per il progetto MetaboLinkAI.
   - title: Research Fellow
+    title_it: Assegnista di ricerca (tipo B)
+    category: research-grant
+    grant:
+      ref:
+        type: D.R.
+        number: 2375
+        date: 2024-06-18
+      funder: Italian Ministry of University and Research (MUR) - PRIN 2022 PNRR
+      funder_it: Ministero dell'Università e della Ricerca (MUR) - PRIN 2022 PNRR
+      project: Design and implementation of techniques for the transparency and explainability of artificial intelligence models to improve the accessibility of software systems
+      project_it: Progettazione ed implementazione di tecniche per la trasparenza e la spiegabilità di modelli di intelligenza artificiale per migliorare l'accessibilità dei sistemi software
     years:
       start: 2024-10-01
       end: 2026-09-30
     institute:
       name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
+      department: Department of Computer Science
+      department_it: Dipartimento di Informatica
       url: https://uniba.it
     notes: |-
         Research Fellow working in Human-Centered Artificial Intelligence
@@ -151,53 +267,107 @@ experiences:
         evaluation of approaches to improve transparency, explainability, and
         trust in conversational AI systems, following a human-centered design
         perspective.
+    notes_it: |-
+        L’inclusione digitale è un diritto primario per tutti i cittadini e rappresenta un “must have” per garantire l’accesso alla conoscenza, all’istruzione e al lavoro. Tuttavia, in Italia quattro persone su dieci continuano a non utilizzare Internet regolarmente e più della metà della popolazione non dispone di competenze digitali di base. Nonostante i progressi nelle tecnologie assistive, la Direttiva UE 2019/882 riconosce la sfida continua dell’accessibilità del web, in particolare per le persone con disabilità. Le attività di questo assegno di ricerca sono nell'ambito del progetto PRIN PNRR 2022 "PROTECT - imPROving ciTizEn inClusivity Through Conversational AI", che esplora come agenti intelligenti che interagiscono con gli utenti possano migliorare l'accessibilità del web.
     location: Bari, Apulia, Italy
+    location_it: Bari, Italia
   - title: Teaching Assistant
+    title_it: Assistente alla didattica
+    category: teaching
+    teaching:
+      course: Human-Computer Interaction
+      course_it: Interazione Uomo-Macchina
+      degree: Bachelor's Degree in Computer Science
+      degree_it: Corso di Laurea Triennale in Informatica
+      lecturer:
+        name: Maria Francesca Costabile
+        title: Prof.ssa
+      activities: |-
+        The activities revolved around the HCI design process "UCD Sprint".
+      activities_it: |-
+        Le attività riguardavano il processo di design dal nome "UCD Sprint".
     years:
       start: 2023-11-23
       end: 2024-02-22
     institute:
       name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
+      department: Department of Computer Science
+      department_it: Dipartimento di Informatica
       url: https://uniba.it
     location: Bari, Apulia, Italy
+    location_it: Bari, Italia
     notes: |-
       Teaching assistant for the Bachelor’s Degree course in Human-Computer
       Interaction. The activities revolved around the HCI design process
       ["UCD Sprint"](https://ucdsprint.com).
   - title: Researcher
+    title_it: Ricercatore
+    category: visiting-national
     years:
       start: 2023-04-12
       end: 2023-10-11
     institute:
       name: Eusoft S.r.l.
+      name_it: Eusoft S.r.l.
       url: https://www.eusoft.it
     location: Bari, Italy
+    location_it: Bari, Italia
     notes:
       Part of the requirements of the D.M. 352/22 that regulates grant for
       the PhD scholarship, he performs part of his research in a non-academic
       research laboratory. During his stay at Eusoft, he conducts research on
       human-centered conversational interfaces for laboratory management
       system (i.e., a LIMS - Laboratory Information Management System)
+    notes_it: |-
+      Durante la sua permanenza presso Eusoft, Andrea ha condotto
+      ricerca su interfacce conversazionali human-centered per sistemi di
+      gestione di laboratori di analisi (un LIMS - Laboratory Information
+      Management System)
   - title: Teaching Assistant
+    title_it: Assistente alla didattica
+    category: teaching
+    teaching:
+      course: Human-Computer Interaction
+      course_it: Interazione Uomo-Macchina
+      degree: Bachelor's Degree in Computer Science
+      degree_it: Corso di Laurea Triennale in Informatica
+      lecturer:
+        name: Maria Francesca Costabile
+        title: Prof.ssa
+      activities: |-
+        The activities revolved around the HCI design process "UCD Sprint".
+      activities_it: |-
+        Le attività riguardavano il processo di design dal nome "UCD Sprint".
     years:
       start: 2022-12-01
       end: 2023-02-28
     institute:
       name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
+      department: Department of Computer Science
+      department_it: Dipartimento di Informatica
       url: https://uniba.it
     location: Bari, Apulia, Italy
+    location_it: Bari, Italia
     notes: |-
       Teaching assistant for the Bachelor’s Degree course in Human-Computer
       Interaction. The activities revolved around the HCI design process
       ["UCD Sprint"](https://ucdsprint.com).
-  - title: Visiting Researcher
+  - title: Visiting Junior Researcher
+    title_it: Ricercatore junior visitatore
+    category: visiting-abroad
     years:
       start: 2022-06-08
       end: 2022-07-08
     institute:
-      name: Ludwig-Maximillian Universität
+      name: Ludwig-Maximilians-Universität
+      name_it: Ludwig-Maximilians-Universität
+      department: Institut für Informatik
+      department_it: Institut für Informatik
       url: https://www.lmu.de/en/index.html
     location: Munich, Bavaria, Germany
+    location_it: Monaco di Baviera, Germania
     notes: |-
       Collaborating as a visiting researcher to a project by the European
       Network of Human-Centered Artificial Intelligence
@@ -205,34 +375,78 @@ experiences:
       Interactive, voice-based support for the design of 3D objects for digital
       fabrication](https://www.humane-ai.eu/project/making-for-everyone-interactive-voice-based-support-for-the-design-of-3d-objects-for-digital-fabrication/)"
       (WP3).
-  - title: INTERACT 2021 Technical Support
+    notes_it: |-
+      Collaboratore come ricercatore in visita presso il laboratorio "Human
+      Centered Ubiquitous Media" coordinato dal Prof. Albrecht Schmidt, per
+      un progetto della rete Europea per la Human-Centered Artificial
+      Intelligence "Humane-AI" dal titolo "Making for Everyone: Interactive,
+      voice-based support for the design of 3D objects for digital
+      fabrication" (WP3).
+  - title: INTERACT 2021 Post-Event Technical Support
+    title_it: Contratto di Collaborazione Occasionale per "Consulenza tecnica informatica evento INTERACT 2021"
+    category: job
     years:
       start: 2021-10-01
       end: 2021-11-30
     institute:
-      name: Consulta Umbria
-      url: https://www.consultaumbria.com
-    location: INTERACT 2021 (Bari)
+      name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
+      department: Department of Computer Science
+      department_it: Dipartimento di Informatica
+      url: https://uniba.it
+    location: Bari, Apulia, Italy
+    location_it: Bari, Italia
     notes: |-
       Provided technical support for post-event activities for the [INTERACT
       2021 international
-      conference](https://www.interact2021.org){:target="_blank"}.
+      conference](https://www.interact2021.org){:target="_blank"}, held in Bari
+      from 31 August 2021 to 3 September 2021.
+    notes_it: |-
+      Fornito supporto tecnico di manutenzione per attività post-evento legate
+      alla conferenza internazionale INTERACT 2021, tenutasi a Bari dal 31
+      agosto 2021 al 3 settembre 2021.
   - title: INTERACT 2021 Technical Support
+    title_it: Contratto di Collaborazione Occasionale per "Servizio di assistenza tecnica e gestione dei sistemi audiovisivi durante la conferenza INTERACT 2021"
+    category: job
     years:
       start: 2021-08-31
       end: 2021-09-03
     institute:
-      name: Consulta Umbria
-      url: https://www.consultaumbria.com
-    location: INTERACT 2021 (Bari)
+      name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
+      department: Department of Computer Science
+      department_it: Dipartimento di Informatica
+      url: https://uniba.it
+    location: Bari, Apulia, Italy
+    location_it: Bari, Italia
     notes: |-
       Provided technical support and managed the audio-video systems
-      at the [INTERACT 2021 international conference](https://www.interact2021.org){:target="_blank"}.
+      at the [INTERACT 2021 international conference](https://www.interact2021.org){:target="_blank"},
+      held in Bari from 31 August 2021 to 3 September 2021.
+    notes_it: |-
+      Fornito supporto tecnico e gestita la strumentazione audio-video
+      durante la conferenza internazionale INTERACT 2021, tenutasi a Bari dal
+      31 agosto 2021 al 3 settembre 2021.
   - title: Early Stage Researcher
+    title_it: Borsista di ricerca
+    category: research-grant
+    grant:
+      ref:
+        type: D.R.
+        number: 1293
+        date: 2020-05-21
+      funder: Italian Ministry of Economic Development (MISE)
+      funder_it: Ministero dello Sviluppo Economico (MISE)
+      project: Evaluation and redesign of visualization techniques to support the discovery of usability errors in eGLU-Box
+      project_it: Valutazione e riprogettazione di tecniche di visualizzazione per supportare la scoperta di errori d'usabilità in eGLU-Box
     institute:
       name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
+      department: Department of Computer Science
+      department_it: Dipartimento di Informatica
       url: https://uniba.it
-    location: Bari (BA), Apulia, Italy
+    location: Bari, Apulia, Italy
+    location_it: Bari, Italia
     years:
       start: 2020-12-01
       end: 2021-09-30
@@ -248,16 +462,59 @@ experiences:
 
       During this period, multiple research activities (that are leading to
       various publications: check the [publications' section](#publications)) were started.
+    notes_it: |-
+      Impiegato nel contesto del progetto "eGLU-Box": un sistema certificato
+      ISO-25000 mirato a coadiuvare la valutazione dell'usabilità di siti web
+      seguendo il protocollo eGLU (un framework e standard per i test di
+      usabilità). I compiti principali riguardano:
+
+      * la progettazione, implementazione e documentazione di un
+        "reverse proxy" da utilizzare in eGLU-Box utilizzando Laravel (PHP);
+      * la valutazione (e il refactoring) di varie componenti del sistema.
+
+      Durante questo periodo, diverse attività di ricerca sono state avviate e
+      stanno portando alla pubblicazione di vari articoli.
+# Extra education keys (rendered by _includes/cv-entries.html):
+#   thesis, supervisors (name + role), evaluation
 education:
   - title: Ph.D. in Computer Science and Mathematics
+    title_it: Dottorato di Ricerca in Informatica e Matematica
     institute:
       name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
       url: https://uniba.it
     location: Bari (BA), Apulia, Italy
+    location_it: Bari, Italia
     years:
       start: 2022-10-01
       end: 2026-02-25
-    notes: >-
+    thesis: "A Human–AI Interaction Model: Leveraging Human-Centred Design for Symbiotic AI"
+    supervisors:
+      - name: Prof. Giuseppe Desolda
+        role: supervisor
+      - name: Prof. Rosa Lanzilotti
+        role: co-supervisor
+    evaluation: Awarded cum laude.
+    evaluation_it: Con lode.
+    notes: |-
+        PhD research in Human-Centered Artificial Intelligence at the
+        intersection of Human–Computer Interaction and Artificial Intelligence.
+        His work focuses on the design of human–AI interaction models that
+        enable effective collaboration between humans and intelligent systems.
+
+        The research contributes to the conceptual and methodological
+        foundations of Symbiotic AI, investigating how AI systems can support
+        human decision-making through transparent, explainable, and trustworthy
+        interaction mechanisms.
+
+        The thesis proposes a model for human–AI interaction grounded in
+        human-centered design principles, including the formalization and
+        evaluation of trust in AI systems through user studies across multiple
+        application domains.
+
+        Visiting research periods at Ludwig Maximilian University of Munich (6
+        months) and at Eusoft S.r.l. (6 months).
+
         Winner of a fully-funded Ph.D. fellowship within the framework of the Italian
         "[D.M. n. 352, April 9, 2022](https://www.mur.gov.it/it/atti-e-normativa/decreto-ministeriale-n352-del-09-04-2022)"
         - under the National Recovery and Resilience
@@ -265,16 +522,34 @@ education:
         "Human-Centered Artificial Intelligence (HCAI) techniques for
         supporting end users interacting with AI systems", co-supported by
         "[Eusoft S.r.l.](https://www.eusoft.it)" (CUP H91I22000410007).
+    notes_it: |-
+        Vincitore di una borsa di Dottorato regolamentata "D.M. n. 352 del 9
+        aprile 2022" - Piano Nazionale di Ripresa e Resilienza (PNRR),
+        Missione 4, Componente 2, Investimento 3.3 - Progetto "Human-Centered
+        Artificial Intelligence (HCAI) techniques for supporting end users
+        interacting with AI systems", co-finanziato da "Eusoft S.r.l." (CUP
+        H91I22000410007).
   - title: Master's Degree in Computer Science - Artificial Intelligence
+    title_it: Laurea Magistrale in Computer Science - Artificial Intelligence
     institute:
       name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
       url: https://uniba.it
     location: Bari (BA), Apulia, Italy
+    location_it: Bari, Italia
     years:
       start: 2020-09-28
       end: 2022-07-19
+    thesis: Design and Development of a Human-Centred Conversational Agent for 3D Modelling
+    supervisors:
+      - name: Prof. Giuseppe Desolda
+        role: supervisor
+      - name: Prof. Rosa Lanzilotti
+        role: co-supervisor
+    evaluation: Graduated summa cum laude with a praise from the Commission.
+    evaluation_it: Laureato con 110/110 con lode e menzione speciale della Commissione.
+    papers: [Desolda2023Digital]
     notes: >-
-        Graduated summa cum laude with a special mention.
         Obtained the Master's Degree, in English, in "Computer Science" at the
         University of Bari "A. Moro". His thesis, titled "Design And Development of a Human-Centred Conversational Agent for 3D Modelling", was developed under the
         supervision of the [IVU Laboratory](http://ivu.di.uniba.it) of the
@@ -283,34 +558,68 @@ education:
         of WP3 of the [Humane-AI](http://www.humane-ai.eu) network, and for this
         reason he was a visitor for one month at the
         [Human-Centered Ubiquitous Media](https://www.en.um.informatik.uni-muenchen.de/index.html) research group of the
-        [Ludwig-Maximillian Universität](https://www.lmu.de/) in Munich,
+        [Ludwig-Maximilians-Universität](https://www.lmu.de/) in Munich,
         Germany.
+
+
+        The thesis focused on exploring the way lay users approach the task of
+        3D modelling with the support of an AI agent. It discusses a Wizard of
+        Oz user study and provides an initial implementation of an AI system
+        that adopts the users' mental model of the task, providing an example
+        of HCAI system.
+    notes_it: |-
+        La tesi è incentrata sull'esplorazione del modello mentale di utenti
+        non esperti nel task della modellazione 3D, con il supporto di un
+        agente intelligente basato su AI. La tesi discute uno studio con utenti
+        Wizard of Oz e fornisce una implementazione iniziale di un sistema
+        basato su AI che adotta il modello mentale degli utenti per il task,
+        fornendo quindi un esempio di sistema HCAI.
   - title: Bachelor's Degree in Computer Science and Digital Communication
+    title_it: Laurea in Informatica e Comunicazione Digitale
     institute:
       name: University of Bari "Aldo Moro"
+      name_it: Università degli Studi di Bari "Aldo Moro"
       url: https://uniba.it
     location: Taranto (TA), Apulia, Italy
+    location_it: Taranto, Italia
     years:
       start: 2017-09-25
       end: 2020-07-16
+    thesis: Rilevazione automatica di UX smell attraverso l'analisi intelligente delle interazioni degli utenti
+    supervisors:
+      - name: Prof. Giuseppe Desolda
+        role: supervisor
+      - name: Prof. Rosa Lanzilotti
+        role: co-supervisor
+    evaluation: Graduated summa cum laude with a praise from the Commission having a grade point average of 30/30.
+    evaluation_it: Laureato con 110/110 con lode e menzione speciale della Commissione di Laurea, avendo una media dei voti pari a 30/30.
+    papers: [Desolda2021Detecting]
     notes: >-
-        Graduated summa cum laude and a special mention with a Thesis titled
-        "Rilevazione automatica
-        di UX smell attraverso l'analisi intelligente delle interazioni degli
-        utenti" ("Automatic Detection of UX Smells Through the Intelligent
-        Analysis of Users' Interaction", that led to multiple publications),
-        developed under the supervision of the [IVU
-        Laboratory](http://ivu.di.uniba.it) of the University of Bari.
-        Graduated with an average mark of 30/30.
+        Thesis ("Automatic Detection of UX Smells Through the Intelligent
+        Analysis of Users' Interaction") developed under the supervision of the
+        [IVU Laboratory](http://ivu.di.uniba.it) of the University of Bari. The
+        thesis was focused on the intersection of Affective Computing and HCI
+        and presented a first attempt at automating usability testing and
+        UX-smells detection through the use of an intelligent system. It led to
+        multiple publications.
+    notes_it: |-
+        La tesi è incentrata sull'intersezione dell'Affective Computing e della
+        HCI e presenta un primo tentativo di automatizzare i test di usabilità
+        e il rilevamento di UX-smell attraverso l'uso di un sistema
+        intelligente.
   - title: Scientific High School Diploma
+    title_it: Diploma di Liceo Scientifico (opz. Scienze Applicate)
     institute:
       name: I.I.S.S. "P.ssa Maria Pia"
+      name_it: I.I.S.S. "Principessa Maria Pia"
       url: http://www.iismariapia.edu.it
     location: Taranto (TA), Italy
+    location_it: Taranto, Italia
     years:
       start: 2012-09-15
       end: 2017-07-23
-    notes: Diploma achieved with full marks and honors.
+    evaluation: Graduated summa cum laude.
+    evaluation_it: Diplomato con 100/100 con Lode.
 contacts:
   - name: GitHub
     value: espositoandrea

@@ -1,0 +1,16 @@
+# Bibliometric indicators, updated by hand.
+# Not rendered on the website yet; used by the CV generator.
+updated: 2026-03-13
+scopus:
+  id: 57209432178
+  documents: 30
+  citations:
+    total: 167
+    documents: 138
+  hindex: 7
+  coauthors: 38
+googleScholar:
+  id: xDmY2lgAAAAJ
+  citations: 367
+  hindex: 10
+  i10index: 11
