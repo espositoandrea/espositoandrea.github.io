@@ -423,7 +423,7 @@ education:
     location_it: Bari, Italia
     years:
       start: 2022-10-01
-      end: 2026-02-25
+      end: 2025-09-30
     thesis: "A Human–AI Interaction Model: Leveraging Human-Centred Design for Symbiotic AI"
     supervisors:
       - name: Prof. Giuseppe Desolda
@@ -489,6 +489,9 @@ education:
           voice-based support for the design of 3D objects for digital
           fabrication" (WP3).
     notes: |-
+        The PhD program ended on September 30, 2025; the thesis was defended on
+        February 25, 2026.
+
         PhD research in Human-Centered Artificial Intelligence at the
         intersection of Human–Computer Interaction and Artificial Intelligence.
         His work focuses on the design of human–AI interaction models that
@@ -515,6 +518,9 @@ education:
         supporting end users interacting with AI systems", co-supported by
         "[Eusoft S.r.l.](https://www.eusoft.it)" (CUP H91I22000410007).
     notes_it: |-
+        Il corso di dottorato si è concluso il 30 settembre 2025; la tesi è
+        stata discussa il 25 febbraio 2026.
+
         Vincitore di una borsa di Dottorato regolamentata "D.M. n. 352 del 9
         aprile 2022" - Piano Nazionale di Ripresa e Resilienza (PNRR),
         Missione 4, Componente 2, Investimento 3.3 - Progetto "Human-Centered
